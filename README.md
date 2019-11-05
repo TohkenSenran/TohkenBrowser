@@ -1,16 +1,6 @@
-# Chrome Extension (built with TypeScript + React)
+# Optimized browser for "Tohken Ranbu" on chrome-extension
+# 刀剣乱舞専用ブラウザ「刀剣専覧」 
 
-> This project is a boilerplate project to allow you to quickly build chrome extensions using TypeScript and React.
-
-## Building
-
-1.  Clone repo
-2.  `npm i`
-3.  `npm run dev` to compile once or `npm run watch` to run the dev task in watch mode
-4.  `npm run build` to build a production (minified) version
+> This project is personal and unofficially chrome-extension.
 
 ## Installation
-
-1.  Complete the steps to build the project above
-2.  Go to [_chrome://extensions_](chrome://extensions) in Google Chrome
-3.  With the developer mode checkbox ticked, click **Load unpacked extension...** and select the _dist_ folder from this repo
