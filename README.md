@@ -2,7 +2,7 @@
 
 > This project is personal and unofficially chrome-extension. このプロジェクトは個人的で非公式のものです。
 
-Optimized browser "Tohken Senran" is the chrome-extension that makes DMM GAMES "Tohken Ranbu" better to play. 
+Optimized browser "Tohken Senran" is the chrome-extension that makes DMM GAMES "Tohken Ranbu" better to play.  
 As optimized game browser, changing game size, switching audio On / Off, and screen shots is easily.  
 It is also possible to display each information of Honmaru in a glance.  
 刀剣専覧はDMM GAMESの刀剣乱舞を遊びやすくするクローム拡張機能です。  
