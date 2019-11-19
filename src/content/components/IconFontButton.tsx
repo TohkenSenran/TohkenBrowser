@@ -9,11 +9,25 @@ const IconFontButton: React.FC<{
     tooltipText: string;
     onClick?: () => void;
 }> = ({ iconName, tooltipText, onClick }) => (
-    <IconButton onClick={onClick}>
-        <Tooltip title={tooltipText}>
+    <Tooltip
+        title={tooltipText}
+        PopperProps={
+            {
+                popperOptions: {
+                    modifiers: {
+                        offset: {
+                            enabled: true,
+                            offset: '0,-90',
+                        },
+                    },
+                },
+            }
+        }
+    >
+        <IconButton onClick={onClick}>
             <Icon>{iconName}</Icon>
-        </Tooltip>
-    </IconButton>
+        </IconButton>
+    </Tooltip >
 );
 
 export default IconFontButton;
