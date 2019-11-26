@@ -19,7 +19,7 @@ export const repairNo = 4;
 
 export const statusLabel = {
     none: '',
-    hp_max: '生存',
+    hp: '生存',
     atk: '打撃',
     def: '統率',
     mobile: '機動',

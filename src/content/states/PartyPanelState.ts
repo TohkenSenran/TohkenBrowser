@@ -19,7 +19,7 @@ export const getSpeedCorrect = (value: string): speedCorrect => {
 
 export enum textType {
     none,
-    hp_max,
+    hp,
     atk,
     def,
     mobile,
@@ -36,7 +36,7 @@ export const getTextType = (index: number): textType => {
         case 0:
             return textType.none;
         case 1:
-            return textType.hp_max;
+            return textType.hp;
         case 2:
             return textType.atk;
         case 3:

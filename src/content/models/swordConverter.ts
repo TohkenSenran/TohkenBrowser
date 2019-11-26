@@ -13,6 +13,7 @@ export const swordConverter = (
     equips?: Equips,
 ) => {
     // console.log(`inSwordConv seiralId ${serialId}`);
+    // console.log('selectTextType: ', selectTextType);
     // undefined対策
     if (swords === undefined) swords = {};
     if (serialId === undefined) serialId = null;
