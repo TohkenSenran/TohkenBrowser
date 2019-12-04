@@ -21,6 +21,7 @@ const theme: Theme = createMuiTheme({
   },
   typography: {
     fontFamily: 'Noto Serif JP',
+    fontSize: 14,
     fontWeightRegular: 600,
   },
   overrides: {
