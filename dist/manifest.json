@@ -21,6 +21,7 @@
     "contextMenus",
     "storage",
     "tabs",
+    "notifications",
     "<all_urls>"
   ],
   "icons": {

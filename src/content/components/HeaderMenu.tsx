@@ -14,8 +14,10 @@ import ReloadButton from './ReloadButton';
 import ScreenshotButton from './ScreenshotButton';
 
 import { requestType, sendMessageToBackground } from '../models/sendMessageToBackground';
+import ToastNotification from './ToastNotification';
 
 const HeaderMenu: React.FC = () => {
+
     return (
         <React.Fragment>
             <AppBar
@@ -40,6 +42,7 @@ const HeaderMenu: React.FC = () => {
                     <ScreenshotButton />
                     <MuteButton />
                     <ModeButton />
+                    <ToastNotification />
                     <span style={{ marginLeft: 'auto', marginRight: -15 }}>
                         <IconFontButton iconName="history" tooltipText="履歴" />
                         <PopoverMenu />
