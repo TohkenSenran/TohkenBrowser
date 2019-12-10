@@ -46,7 +46,6 @@ export const forgeColorName = {
     601: 'purple',
 };
 
-
 export const equipStatus = {
     0: {
         name: '不明',
@@ -714,4 +713,6 @@ export const swordName = {
     175: '水心子正秀・極',
     176: '源清麿',
     177: '源清麿・極',
+    178: '松井江',
+    179: '松井江・極',
 };
