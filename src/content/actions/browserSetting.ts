@@ -7,7 +7,6 @@ export enum browserSettingActionType {
     LOAD_BROWSERSTATE = 'LOAD_BROWSERSTATE',
     CHECK_DEVCONNECT = 'CHECK_DEVCONNECT',
     SET_ALERTMESSAGE = 'SET_ALERTMESSAGE',
-    SET_NOWDATE = 'SET_NOWDATE',
 }
 
 export interface SelectBrowserScaleAction {
@@ -40,11 +39,6 @@ export interface CheckDevConnectAction {
 export interface SetAlertMessageAction {
     type: browserSettingActionType.SET_ALERTMESSAGE;
     alertMessage: AlertMessage;
-}
-
-export interface SetNowDateAction {
-    type: browserSettingActionType.SET_NOWDATE;
-    date: number;
 }
 
 export const selectScale = (scale: number): SelectBrowserScaleAction => (
@@ -110,18 +104,10 @@ export const setAlertMessage = (alertMessage: AlertMessage): SetAlertMessageActi
     }
 );
 
-export const setNowDate = (date: number): SetNowDateAction => (
-    {
-        type: browserSettingActionType.SET_NOWDATE,
-        date,
-    }
-);
-
 export type BrowserSettingAction =
     SelectBrowserScaleAction |
     ChangeViewModeAction |
     ChangeMuteAction |
     LoadBrowserStateAction |
     CheckDevConnectAction |
-    SetAlertMessageAction |
-    SetNowDateAction;
+    SetAlertMessageAction;

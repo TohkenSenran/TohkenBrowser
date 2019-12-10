@@ -26,7 +26,7 @@ export type PartyPanelProps = StateToProps & DispatchToProps;
 const mapStateToProps = (state: RootState): StateToProps => (
     {
         partyPanel: state.partyPanel,
-        date: state.browserSetting.date,
+        date: state.responseJson.date,
         party: state.responseJson.party,
         sword: state.responseJson.sword,
         equip: state.responseJson.equip,

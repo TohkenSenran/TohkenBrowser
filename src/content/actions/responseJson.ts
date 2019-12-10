@@ -8,6 +8,7 @@ import { ResponseJsonState } from '../states/ResponseJsonState';
 
 export enum responseJsonActionType {
     UPDATE_JSONSTATE = 'UPDATE_JSONSTATE',
+    UPDATE_DATE = 'UPDATE_DATE',
 }
 
 export interface UpdateJsonStateAction {
@@ -18,20 +19,40 @@ export interface UpdateJsonStateAction {
     forge: Forges;
     repair: Repairs;
     duty: Duty;
+    date: number;
+}
+
+export interface UpdateDateAction {
+    type: responseJsonActionType.UPDATE_DATE;
+    date: number;
 }
 
 // まとめてデータ更新
-export const updateJsonState = (responseJson: ResponseJsonState): UpdateJsonStateAction => (
-    {
-        type: responseJsonActionType.UPDATE_JSONSTATE,
-        sword: responseJson.sword,
-        party: responseJson.party,
-        equip: responseJson.equip,
-        forge: responseJson.forge,
-        repair: responseJson.repair,
-        duty: responseJson.duty,
-    }
-);
+export const updateJsonState = (
+    responseJson: ResponseJsonState,
+): UpdateJsonStateAction => (
+        {
+            type: responseJsonActionType.UPDATE_JSONSTATE,
+            sword: responseJson.sword,
+            party: responseJson.party,
+            equip: responseJson.equip,
+            forge: responseJson.forge,
+            repair: responseJson.repair,
+            duty: responseJson.duty,
+            date: responseJson.date,
+        }
+    );
+
+// タイマー更新用
+export const updateDate = (
+    date: number,
+): UpdateDateAction => (
+        {
+            type: responseJsonActionType.UPDATE_DATE,
+            date,
+        }
+    );
 
 export type ResponseJsonAction =
-    UpdateJsonStateAction;
+    UpdateJsonStateAction |
+    UpdateDateAction;

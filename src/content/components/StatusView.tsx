@@ -16,7 +16,7 @@ const StatusView: React.FC<StatusViewProps> = (props) => {
     // 10秒ごとに更新
     const intervalId: NodeJS.Timeout = setInterval(
       () => {
-        props.setNow(Date.now());
+        props.updateDate(Date.now());
         // console.log(`interval: ${props.browserSetting.date}`);
       },
       10000,

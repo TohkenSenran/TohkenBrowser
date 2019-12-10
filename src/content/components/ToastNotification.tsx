@@ -3,7 +3,7 @@ import * as React from 'react';
 import toastedNotes from 'toasted-notes';
 
 import { Box, Button, Card, CardContent } from '@material-ui/core';
-import { RootState, rootInitialState } from '../states';
+import { rootInitialState, RootState } from '../states';
 import store from '../store';
 
 // 過去の値との比較
@@ -11,11 +11,15 @@ let oldState: RootState = rootInitialState;
 store.subscribe(() => {
     if ((oldState) &&
         (oldState.responseJson) &&
-        (oldState.responseJson.forge) &&
-        (oldState.responseJson.forge[1]) &&
-        (oldState.responseJson.forge[1].finished_at)) {
-        console.log('更新前_終了時刻', oldState.responseJson.forge[1].finished_at);
+        (oldState.responseJson.date)) {
+        console.log('前更新時刻', oldState.responseJson.date);
     }
+    if ((store.getState()) &&
+        (store.getState().responseJson) &&
+        (store.getState().responseJson.date)) {
+        console.log('現更新時刻', store.getState().responseJson.date);
+    }
+
     if ((store.getState()) &&
         (store.getState().responseJson) &&
         (store.getState().responseJson.forge) &&
@@ -25,7 +29,6 @@ store.subscribe(() => {
     }
     oldState = store.getState();
 });
-
 
 const CustomNotification: React.FC<{ onClick: () => void, imagePath: string, text: string }> = ({ onClick, imagePath, text }) => {
     return (

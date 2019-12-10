@@ -54,14 +54,17 @@ export const analyseJson = (json: any, oldJson: ResponseJsonState): void => {
         // console.log(`duty ${Object.keys(duty).length}`);
         // store.dispatch(updateJsonDuty(duty));
 
-        store.dispatch(updateJsonState({
-            page,
-            sword,
-            party,
-            equip,
-            forge,
-            repair,
-            duty,
-        }));
+        store.dispatch(updateJsonState(
+            {
+                page,
+                sword,
+                party,
+                equip,
+                forge,
+                repair,
+                duty,
+                date: Date.now(),
+            }
+        ));
     }
 };

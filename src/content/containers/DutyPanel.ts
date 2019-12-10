@@ -15,7 +15,7 @@ export type DutyPanelProps = StateToProps;
 
 const mapStateToProps = (state: RootState): StateToProps => (
     {
-        date: state.browserSetting.date,
+        date: state.responseJson.date,
         duty: state.responseJson.duty,
         sword: state.responseJson.sword,
     }

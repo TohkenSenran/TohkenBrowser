@@ -15,7 +15,6 @@ export type BrowserSettingState = {
     scale: number;
     devConnect: boolean;
     alertMessage: AlertMessage;
-    date: number;
 };
 
 export const setBrowserSetting =
@@ -28,7 +27,6 @@ export const setBrowserSetting =
             title: null,
             text: null,
         },
-        date: number = Date.now(),
     ): BrowserSettingState => (
             {
                 mode,
@@ -36,7 +34,6 @@ export const setBrowserSetting =
                 scale,
                 devConnect,
                 alertMessage,
-                date,
             }
         );
 

@@ -1,10 +1,13 @@
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 
-import { BrowserSettingAction, changeViewMode, checkDevConnect, setNowDate } from '../actions/browserSetting';
+import { BrowserSettingAction, changeViewMode } from '../actions/browserSetting';
+import { ResponseJsonAction, updateDate } from '../actions/responseJson';
+
 import StatusView from '../components/StatusView';
 import { BrowserSettingState, windowMode } from '../states/BrowserSettingState';
 import { RootState } from '../states/index';
+import { ResponseJsonState } from '../states/ResponseJsonState';
 
 interface StateToProps {
     browserSetting: BrowserSettingState;
@@ -12,7 +15,7 @@ interface StateToProps {
 
 interface DispatchToProps {
     onClick: (mode: windowMode) => void;
-    setNow: (date: number) => void;
+    updateDate: (date: number) => void;
 }
 
 export type StatusViewProps = StateToProps & DispatchToProps;
@@ -23,12 +26,14 @@ const mapStateToProps = (state: RootState): StateToProps => (
     }
 );
 
-const mapDispatchToProps = (dispatch: Dispatch<BrowserSettingAction>): DispatchToProps => (
-    {
-        onClick: (mode: windowMode) => { dispatch(changeViewMode(mode)); },
-        setNow: (date: number) => { dispatch(setNowDate(date)); },
-    }
-);
+const mapDispatchToProps = (
+    dispatch: Dispatch<BrowserSettingAction | ResponseJsonAction>,
+): DispatchToProps => (
+        {
+            onClick: (mode: windowMode) => { dispatch(changeViewMode(mode)); },
+            updateDate: (date: number) => { dispatch(updateDate(date)); },
+        }
+    );
 
 export default connect<StateToProps, DispatchToProps>(
     mapStateToProps,

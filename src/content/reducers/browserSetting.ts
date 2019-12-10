@@ -38,11 +38,6 @@ const browserSetting: Reducer<BrowserSettingState, BrowserSettingAction> =
                     ...state,
                     alertMessage: action.alertMessage,
                 };
-            case browserSettingActionType.SET_NOWDATE:
-                return {
-                    ...state,
-                    date: action.date,
-                };
             default:
                 return state;
         }
