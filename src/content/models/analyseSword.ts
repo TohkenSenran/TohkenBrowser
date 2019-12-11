@@ -25,6 +25,7 @@ export const analyseSword = (
         case 'home/back':
         case 'composition/compose':
         case 'composition/union':
+        case 'item/add_exp':
             const singleSword: Sword = jsonValue.sword ? jsonValue.sword : swordInitialState;
             // console.log(`get single sword: ${singleSword.serial_id}`);
             // console.log('before oldSword obj: %O', sword);

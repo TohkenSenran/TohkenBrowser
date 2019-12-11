@@ -26,7 +26,7 @@ const textStyle: React.CSSProperties = {
 
 const ForgePanel: React.FC<ForgePanelProps> = (props) => {
     const forges: JSX.Element[] = [];
-    console.log('Update Forge');
+    // console.log('Update Forge');
     // console.log('forge: %O', props.forge);
     // console.log('date: ', props.date);
     for (let i = 0; i < forgeNo; i += 1) {

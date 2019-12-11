@@ -11,7 +11,7 @@ import { windowMode } from '../states/BrowserSettingState';
 import HomePanel from './HomePanel';
 
 const StatusView: React.FC<StatusViewProps> = (props) => {
-  console.log('View Update');
+  // console.log('View Update');
   React.useEffect(() => {
     // 10秒ごとに更新
     const intervalId: NodeJS.Timeout = setInterval(

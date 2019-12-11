@@ -9,7 +9,7 @@ import SwordPanel from './SwordPanel';
 const RepairPanel: React.FC<RepairPanelProps> = (props) => {
     const swordData: Swords = props.sword;
     const repairs: JSX.Element[] = [];
-    console.log('Update Duty');
+    // console.log('Update Duty');
 
     for (let i = 0; i < 4; i += 1) {
         let repairState = repairConverter(repairInitialState, props.date);

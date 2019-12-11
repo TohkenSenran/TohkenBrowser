@@ -22,7 +22,7 @@ const responseJson: Reducer<ResponseJsonState, ResponseJsonAction> =
                     date: action.date,
                 };
             case responseJsonActionType.UPDATE_DATE:
-                console.log('in responseJson UPDATE_DATE');
+                // console.log('in responseJson UPDATE_DATE');
                 return {
                     ...state,
                     date: action.date,

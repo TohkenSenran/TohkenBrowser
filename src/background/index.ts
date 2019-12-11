@@ -87,7 +87,7 @@ chrome.runtime.onConnect.addListener((port: chrome.runtime.Port) => {
       if ((tabs) && (tabs[0]) && (tabs[0].id)) {
         // DevToolの検出に接続先のurlを使用
         // port切断をDevToolの終了と判断し，url情報をリセット
-        console.log('onDisconnect');
+        // console.log('onDisconnect');
         chrome.tabs.sendMessage(tabs[0].id, { targetPageUrl: 'disconnect' });
         devConnected = false;
       }

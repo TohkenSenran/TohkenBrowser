@@ -9,7 +9,7 @@ export const createBrowser = () => {
         chrome.storage.local.get(key, (items) => {
             const keys = Object.keys(items);
             chrome.storage.local.getBytesInUse(keys, (bytesInUse: number) => {
-                console.log(`getByutesInUse ${bytesInUse}`);
+                // console.log(`getByutesInUse ${bytesInUse}`);
                 let browserWindow: BrowserWindow = setBrowserWindow();
                 if (bytesInUse !== 0) {
                     chrome.storage.local.get(key, (response) => {

@@ -26,7 +26,7 @@ const ScreenshotButton: React.FC = () => {
     };
 
     React.useEffect(() => {
-        console.log('component update', onShot);
+        // console.log('component update', onShot);
         if (onShot) {
             // console.log('screenShot!');
 

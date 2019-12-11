@@ -10,7 +10,7 @@ import SwordPanel from './SwordPanel';
 const DutyPanel: React.FC<DutyPanelProps> = (props) => {
     const dutyData: Duty = props.duty;
     const swordData: Swords = props.sword;
-    console.log('Update Duty');
+    // console.log('Update Duty');
     return (
         <React.Fragment>
             <Box display="flex" flexDirection="row">

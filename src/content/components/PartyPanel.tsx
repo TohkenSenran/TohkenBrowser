@@ -18,7 +18,7 @@ const PartyPanel: React.FC<PartyPanelProps> = (props) => {
     const partyData: Parties = props.party;
     const swordData: Swords = props.sword;
     const equipData: Equips = props.equip;
-    console.log('Update Party');
+    // console.log('Update Party');
     // console.log(`updatePartyPanel ${props.partyPanel.correct}`);
     const parties: JSX.Element[] = [];
     for (let i = 0; i < 4; i += 1) {

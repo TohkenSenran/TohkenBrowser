@@ -42,7 +42,6 @@ const HeaderMenu: React.FC = () => {
                     <ScreenshotButton />
                     <MuteButton />
                     <ModeButton />
-                    <ToastNotification />
                     <span style={{ marginLeft: 'auto', marginRight: -15 }}>
                         <IconFontButton iconName="history" tooltipText="履歴" />
                         <PopoverMenu />
