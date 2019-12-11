@@ -29,7 +29,7 @@ const ForgePanel: React.FC<ForgePanelProps> = (props) => {
     // console.log('Update Forge');
     // console.log('forge: %O', props.forge);
     // console.log('date: ', props.date);
-    for (let i = 0; i < forgeNo; i += 1) {
+    for (let i: number = 0; i < forgeNo; i += 1) {
         // console.log('forge: %O', props.forge[(i + 1).toString()]);
         // console.log('initForge: %O', forgeInitialState);
         const forgeState = forgeConverter(

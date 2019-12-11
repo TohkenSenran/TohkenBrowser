@@ -8,6 +8,7 @@ import { Parties } from '../states/responseJson/Party';
 import { Swords } from '../states/responseJson/Sword';
 import SelectSpeedCorrectMenu from './SelectSpeedCorrectMenu';
 import SwordPanel from './SwordPanel';
+import { partyNo, partyMemberNo } from '../../constants';
 
 const PartyPanel: React.FC<PartyPanelProps> = (props) => {
     const handleClick = () => {
@@ -21,9 +22,9 @@ const PartyPanel: React.FC<PartyPanelProps> = (props) => {
     // console.log('Update Party');
     // console.log(`updatePartyPanel ${props.partyPanel.correct}`);
     const parties: JSX.Element[] = [];
-    for (let i = 0; i < 4; i += 1) {
+    for (let i: number = 0; i < partyNo; i += 1) {
         const party: JSX.Element[] = [];
-        for (let j = 0; j < 6; j += 1) {
+        for (let j: number = 0; j < partyMemberNo; j += 1) {
             // console.log(`partyName ${partyData[i + 1].party_name}`);
             party.push(
                 <div style={{ display: 'inline-block' }}>
