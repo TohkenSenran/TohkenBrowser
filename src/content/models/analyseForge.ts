@@ -19,12 +19,15 @@ export const analyseForge = (jsonValue: any, page: string, oldForge: Forges): Fo
                 finished_at: jsonValue.finished_at,
                 creating_at: jsonValue.now,
             };
-            forge[jsonValue.slot_no.toString()] = singleForge;
+            // 鍛刀後の情報（sword_id）がある場合は手伝い札を使用しているため登録不要
+            if (!(singleForge.sword_id)) {
+                forge[jsonValue.slot_no.toString()] = singleForge;
+            }
             break;
         case 'forge/complete':
         case 'forge/fast':
             // console.log('in forge comp or fast');
-            // 鍛刀の完了情報（特定は不完全）
+            // 鍛刀の完了情報（特定は不完全，特に鍛刀を開きなおしてsword_idを取得していないと不可）
             for (let i: number = 0; i < forgeNo; i += 1) {
                 if (forge[(i + 1).toString()]) {
                     // const targetForge: Forge = forge[(i + 1).toString()];
