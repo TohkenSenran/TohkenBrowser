@@ -5,7 +5,8 @@ export const windowBeforeUnloadEvent = async () => {
         position: { x: window.screenX, y: window.screenY },
         size: { height: window.outerHeight, width: window.outerWidth },
     };
-    console.log(`settingBrowserWindow? ${await setBrowserWindow(browserWindow)}`);
+    await setBrowserWindow(browserWindow);
+    // console.log(`settingBrowserWindow? ${await setBrowserWindow(browserWindow)}`);
 };
 
 export const setBrowserWindow: (browserWindow: BrowserWindow) => Promise<boolean> =

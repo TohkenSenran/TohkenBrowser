@@ -15,7 +15,7 @@ export type RepairPanelProps = StateToProps;
 
 const mapStateToProps = (state: RootState): StateToProps => (
     {
-        date: state.responseJson.date,
+        date: state.responseJson.newDate,
         repair: state.responseJson.repair,
         sword: state.responseJson.sword,
     }

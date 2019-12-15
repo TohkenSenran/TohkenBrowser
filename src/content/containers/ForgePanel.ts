@@ -15,7 +15,7 @@ export type ForgePanelProps = StateToProps;
 
 const mapStateToProps = (state: RootState): StateToProps => (
     {
-        date: state.responseJson.date,
+        date: state.responseJson.newDate,
         forge: state.responseJson.forge,
         sword: state.responseJson.sword,
     }

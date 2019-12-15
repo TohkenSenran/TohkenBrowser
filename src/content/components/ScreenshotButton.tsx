@@ -37,16 +37,6 @@ const ScreenshotButton: React.FC = () => {
                 setOnShot(false);
             }, 300);
         }
-        // setOnShot(false);
-        /*
-        return () => {
-            if (onShot) {
-                // console.log('screenShot!');
-                sendMessageToBackground(requestType.screenshot);
-                setOnShot(false);
-            }
-        };
-        */
     });
 
     return (

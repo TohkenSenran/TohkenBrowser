@@ -30,8 +30,12 @@ const mapDispatchToProps = (
     dispatch: Dispatch<BrowserSettingAction | ResponseJsonAction>,
 ): DispatchToProps => (
         {
-            onClick: (mode: windowMode) => { dispatch(changeViewMode(mode)); },
-            updateDate: (date: number) => { dispatch(updateDate(date)); },
+            onClick: (mode: windowMode) => {
+                dispatch(changeViewMode(mode));
+            },
+            updateDate: (date: number) => {
+                dispatch(updateDate(date));
+            },
         }
     );
 
