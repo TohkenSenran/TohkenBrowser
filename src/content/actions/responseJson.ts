@@ -19,7 +19,8 @@ export interface UpdateJsonStateAction {
     forge: Forges;
     repair: Repairs;
     duty: Duty;
-    date: number;
+    newDate: number;
+    oldDate: number;
 }
 
 export interface UpdateDateAction {
@@ -39,7 +40,8 @@ export const updateJsonState = (
             forge: responseJson.forge,
             repair: responseJson.repair,
             duty: responseJson.duty,
-            date: responseJson.date,
+            newDate: responseJson.newDate,
+            oldDate: responseJson.oldDate,
         }
     );
 

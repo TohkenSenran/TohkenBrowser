@@ -63,7 +63,8 @@ export const analyseJson = (json: any, oldJson: ResponseJsonState): void => {
                 forge,
                 repair,
                 duty,
-                date: Date.now(),
+                newDate: Date.now(),
+                oldDate: oldJson.newDate,
             }
         ));
     }

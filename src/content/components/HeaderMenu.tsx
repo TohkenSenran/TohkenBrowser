@@ -8,13 +8,13 @@ import Typography from '@material-ui/core/Typography';
 import { headerMenuHeight, twitterURL } from '../../constants';
 import ModeButton from '../containers/ModeButton';
 import MuteButton from '../containers/MuteButton';
+import ToastNotification from '../containers/ToastNotification';
 import IconFontButton from './IconFontButton';
 import PopoverMenu from './PopoverMenu';
 import ReloadButton from './ReloadButton';
 import ScreenshotButton from './ScreenshotButton';
 
 import { requestType, sendMessageToBackground } from '../models/sendMessageToBackground';
-import ToastNotification from './ToastNotification';
 
 const HeaderMenu: React.FC = () => {
 
@@ -42,6 +42,7 @@ const HeaderMenu: React.FC = () => {
                     <ScreenshotButton />
                     <MuteButton />
                     <ModeButton />
+                    <ToastNotification />
                     <span style={{ marginLeft: 'auto', marginRight: -15 }}>
                         <IconFontButton iconName="history" tooltipText="履歴" />
                         <PopoverMenu />

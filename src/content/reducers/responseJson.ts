@@ -19,13 +19,15 @@ const responseJson: Reducer<ResponseJsonState, ResponseJsonAction> =
                     forge: action.forge,
                     repair: action.repair,
                     duty: action.duty,
-                    date: action.date,
+                    newDate: action.newDate,
+                    oldDate: action.oldDate,
                 };
             case responseJsonActionType.UPDATE_DATE:
                 // console.log('in responseJson UPDATE_DATE');
                 return {
                     ...state,
-                    date: action.date,
+                    newDate: action.date,
+                    oldDate: state.newDate,
                 };
             default:
                 // console.log('in responseJson reducer');

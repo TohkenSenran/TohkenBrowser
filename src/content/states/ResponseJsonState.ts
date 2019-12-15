@@ -13,7 +13,8 @@ export interface ResponseJsonState {
     forge: Forges;
     repair: Repairs;
     duty: Duty;
-    date: number;
+    newDate: number;
+    oldDate: number;
 }
 
 export const responseJsonInitialState: ResponseJsonState = {
@@ -24,5 +25,6 @@ export const responseJsonInitialState: ResponseJsonState = {
     forge: {},
     repair: {},
     duty: dutyInitialState,
-    date: Date.now(),
+    newDate: Date.now(),
+    oldDate: 0,
 };

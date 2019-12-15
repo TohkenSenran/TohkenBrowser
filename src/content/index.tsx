@@ -21,7 +21,9 @@ window.onbeforeunload = () => {
 // Jsonデータ取得
 chrome.runtime.onMessage.addListener((responseJson: any) => {
   // console.log('Get responseJson!');
+  // console.log('forgeState before anlyse %O', store.getState().responseJson.forge);
   analyseJson(responseJson, (store.getState()).responseJson);
+  // console.log('forgeState after anlyse %O', store.getState().responseJson.forge);
 });
 /*
 // storage変更情報取得
