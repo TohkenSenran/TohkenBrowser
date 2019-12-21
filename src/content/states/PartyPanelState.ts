@@ -60,16 +60,18 @@ export const getTextType = (index: number): textType => {
     }
 };
 
-export interface PartyPanelState {
+export type PartyPanelState = {
     textType: number;
     correct: speedCorrect;
     horseDisable: boolean;
-}
+    viewProps: boolean;
+};
 
 export const partyPanelInitialState: PartyPanelState = {
     textType: 0,
     correct: speedCorrect.none,
     horseDisable: false,
+    viewProps: false,
 };
 
 /*

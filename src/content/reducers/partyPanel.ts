@@ -23,6 +23,11 @@ const partyPanel: Reducer<PartyPanelState, PartyPanelAction> =
                     ...state,
                     horseDisable: action.horseDisable,
                 };
+            case partyPanelActionType.SELECT_VIEWPROPS:
+                return {
+                    ...state,
+                    viewProps: action.viewProps,
+                };
             default:
                 return state;
         }

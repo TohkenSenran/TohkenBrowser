@@ -5,6 +5,7 @@ export enum partyPanelActionType {
     SELECT_SPEEDCORRECT = 'SELECT_SPEEDCORRECT',
     SELECT_DISPLAYTEXT = 'SELECT_DISPLAYTEXT',
     CHECK_HORSEDISABLE = 'CHECK_HORSEDISABLE',
+    SELECT_VIEWPROPS = 'SELECT_VIEWPROPS',
 }
 
 export interface LoadPartyPanelStateAction {
@@ -25,6 +26,11 @@ export interface SelectDisplayTextAction {
 export interface CheckHorseDisableAction {
     type: partyPanelActionType.CHECK_HORSEDISABLE;
     horseDisable: boolean;
+}
+
+export interface SelectViewPropsAction {
+    type: partyPanelActionType.SELECT_VIEWPROPS;
+    viewProps: boolean;
 }
 
 export const loadPartyPanelState = (
@@ -64,8 +70,16 @@ export const checkHorseDisable = (horseDisable: boolean): CheckHorseDisableActio
     }
 );
 
+export const selectViewProps = (viewProps: boolean): SelectViewPropsAction => (
+    {
+        type: partyPanelActionType.SELECT_VIEWPROPS,
+        viewProps: !viewProps,
+    }
+);
+
 export type PartyPanelAction =
     LoadPartyPanelStateAction |
     SelectSpeedCorrectAction |
     SelectDisplayTextAction |
-    CheckHorseDisableAction;
+    CheckHorseDisableAction |
+    SelectViewPropsAction;

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import toastedNotes from 'toasted-notes';
 
-import { partyNo, swordName, forgeNo, repairNo } from '../../constants';
+import { forgeNo, repairNo, swordName } from '../../constants';
 import { ToastNotificationProps } from '../containers/ToastNotification';
 import NotificationCard from './NotificationCard';
 

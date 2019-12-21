@@ -11,17 +11,7 @@ const responseJson: Reducer<ResponseJsonState, ResponseJsonAction> =
         switch (action.type) {
             case responseJsonActionType.UPDATE_JSONSTATE:
                 // console.log('in loadState of responseJson');
-                return {
-                    ...state,
-                    sword: action.sword,
-                    party: action.party,
-                    equip: action.equip,
-                    forge: action.forge,
-                    repair: action.repair,
-                    duty: action.duty,
-                    newDate: action.newDate,
-                    oldDate: action.oldDate,
-                };
+                return action.responseJson;
             case responseJsonActionType.UPDATE_DATE:
                 // console.log('in responseJson UPDATE_DATE');
                 return {

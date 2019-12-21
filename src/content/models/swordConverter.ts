@@ -98,14 +98,16 @@ export const swordConverter = (
     selectStatus = stateText ? stateText : selectStatus;
     // console.log(`textCheck: ${selectStatus} `);
     return ({
-        imageURL: chrome.extension.getURL(`img/Setting/Swords/${sword.sword_id}/${damageState}.png`),
+        imageURL: chrome.extension.getURL(
+            `img/Setting/Swords/${sword.sword_id}/${damageState}.png`
+        ),
         fatigueValue,
         selectStatus,
     });
 };
 
 // 装備込みのステータス計算
-const getEquipSwordStatus =
+export const getEquipSwordStatus =
     (sword: Sword, selectTextType: textType, horseDisable: boolean, equips: Equips): number => {
 
         // console.log('horseDisable: ', horseDisable);

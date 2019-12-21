@@ -13,14 +13,7 @@ export enum responseJsonActionType {
 
 export interface UpdateJsonStateAction {
     type: responseJsonActionType.UPDATE_JSONSTATE;
-    sword: Swords;
-    party: Parties;
-    equip: Equips;
-    forge: Forges;
-    repair: Repairs;
-    duty: Duty;
-    newDate: number;
-    oldDate: number;
+    responseJson: ResponseJsonState;
 }
 
 export interface UpdateDateAction {
@@ -34,14 +27,7 @@ export const updateJsonState = (
 ): UpdateJsonStateAction => (
         {
             type: responseJsonActionType.UPDATE_JSONSTATE,
-            sword: responseJson.sword,
-            party: responseJson.party,
-            equip: responseJson.equip,
-            forge: responseJson.forge,
-            repair: responseJson.repair,
-            duty: responseJson.duty,
-            newDate: responseJson.newDate,
-            oldDate: responseJson.oldDate,
+            responseJson,
         }
     );
 

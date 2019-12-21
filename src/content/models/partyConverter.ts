@@ -1,5 +1,10 @@
+import { partyMemberNo } from '../../constants';
 import { Party } from '../states/responseJson/Party';
+import { Swords } from '../states/responseJson/Sword';
 import { getRemainingTime } from './getRemainingTime';
+import { Equips } from '../states/responseJson/Equip';
+import { getEquipSwordStatus } from './swordConverter';
+import { textType } from '../states/PartyPanelState';
 
 const getState = (status: string | number) => {
     switch (status) {
@@ -17,25 +22,39 @@ const getState = (status: string | number) => {
     }
 };
 
-const getStateStyle = (status: string | number): React.CSSProperties => {
-    switch (status) {
-        case '1':
-        case 1:
-            return { marginLeft: 3 };
-        case '2':
-        case 2:
-            return { marginLeft: 3, color: '#9644E3' };
-        case '3':
-        case 3:
-            return { marginLeft: 3, color: '#A24E36' };
-        default:
-            return { marginLeft: 3 };
+interface MemberProps {
+    lv: string;
+    scout: string;
+}
+
+const getMemberProps = (party: Party, swords: Swords, equips: Equips): MemberProps => {
+    let totalLv: number = 0;
+    let totalScout: number = 0;
+    let member: number = 0;
+    for (let i: number = 0; i < partyMemberNo; i += 1) {
+        if (party.slot[i + 1]) {
+            const serialId = party.slot[i + 1].serial_id;
+            if ((serialId) && (swords[serialId]) && (swords[serialId].level)) {
+                totalLv += parseInt(swords[serialId].level.toString(), 10);
+                totalScout += getEquipSwordStatus(swords[serialId], textType.scout, false, equips);
+                member += 1;
+            }
+        }
     }
+    return {
+        lv: `Lv ${totalLv}/${Math.round(totalLv / member * 10) / 10}`,
+        scout: `偵察計 ${totalScout}`,
+    };
+
 };
 
-export const partyConverter = (party: Party, date: number) => ({
-    name: party.party_name || '無名部隊',
-    state: getState(party.status),
-    stateStyle: getStateStyle(party.status),
-    remainingTime: getRemainingTime(party.finished_at, date),
-});
+export const partyConverter = (party: Party, swords: Swords, equips: Equips, date: number) => {
+    const memberProps = getMemberProps(party, swords, equips);
+    return ({
+        name: party.party_name || '無名部隊',
+        state: getState(party.status),
+        remainingTime: getRemainingTime(party.finished_at, date),
+        memberLv: memberProps.lv,
+        memberScout: memberProps.scout,
+    });
+};
