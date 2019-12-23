@@ -63,7 +63,7 @@ const SwordPanel: React.FC<{
     }
 
     return (
-        <Box component="div" style={boxStyle}>
+        <Box style={boxStyle}>
             <img height="60" width="60" style={{ margin: 3 }} src={swordState.imageURL} />
             <p style={textStyle}>{swordState.selectStatus}</p>
         </Box>

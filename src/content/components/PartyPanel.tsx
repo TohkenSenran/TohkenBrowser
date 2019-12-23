@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Card, CardContent } from '@material-ui/core';
+import { Box, Card, CardContent, Fade, Collapse } from '@material-ui/core';
 import { partyMemberNo, partyNo } from '../../constants';
 import { PartyPanelProps } from '../containers/PartyPanel';
 import { partyConverter } from '../models/partyConverter';
@@ -15,10 +15,7 @@ const PartyPanel: React.FC<PartyPanelProps> = (props) => {
         // console.log(`PartyPanel Click! ${props.partyPanel.textType.toString()}`);
         props.selectText(props.partyPanel.textType);
     };
-    const partyPropClick = () => {
-        props.clickPartyProps(props.partyPanel.viewProps);
-        // console.log(`propClick ${props.partyPanel.viewProps}`);
-    };
+
     const partyData: Parties = props.party;
     const swordData: Swords = props.sword;
     const equipData: Equips = props.equip;
@@ -44,77 +41,96 @@ const PartyPanel: React.FC<PartyPanelProps> = (props) => {
         for (let j: number = 0; j < partyMemberNo; j += 1) {
             // console.log(`partyName ${partyData[i + 1].party_name}`);
             party.push(
-                <div style={{ display: 'inline-block' }}>
-                    <SwordPanel
-                        swords={swordData}
-                        serialId={partyData[i + 1].slot[j + 1].serial_id}
-                        selectCorrect={props.partyPanel.correct}
-                        selectTextType={props.partyPanel.textType}
-                        horseDisable={props.partyPanel.horseDisable}
-                        equips={equipData}
-                    />
-                </div>,
+                <SwordPanel
+                    swords={swordData}
+                    serialId={partyData[i + 1].slot[j + 1].serial_id}
+                    selectCorrect={props.partyPanel.correct}
+                    selectTextType={props.partyPanel.textType}
+                    horseDisable={props.partyPanel.horseDisable}
+                    equips={equipData}
+                />,
             );
         }
 
         const partyState = partyConverter(partyData[i + 1], swordData, equipData, props.date);
-        const firstState = props.partyPanel.viewProps ?
-            partyState.memberLv : partyState.state;
-        const secondState = props.partyPanel.viewProps ?
-            partyState.memberScout : partyState.remainingTime;
-
-        let firstStateStyle: React.CSSProperties = {
-            marginLeft: 3,
+        const firstStateStyle: React.CSSProperties = {
             whiteSpace: 'nowrap',
+            display: 'block',
         };
-        let secondStateStyle: React.CSSProperties = {
-            marginLeft: 3,
+        const secondStateStyle: React.CSSProperties = {
             whiteSpace: 'nowrap',
+            display: 'block',
             letterSpacing: -1,
         };
 
-        if (props.partyPanel.viewProps) {
-            const totalScout: number = parseInt(partyState.memberScout.replace(/[^0-9^\.]/g, ''));
-            firstStateStyle = { ...firstStateStyle, letterSpacing: -1 };
-            if (totalScout < 320) {
-                secondStateStyle = { ...secondStateStyle, color: 'navy' };
-            } else if (totalScout < 500) {
-                secondStateStyle = { ...secondStateStyle, color: 'darkorange' };
-            } else {
-                secondStateStyle = { ...secondStateStyle, color: 'crimson' };
-            }
-        } else {
-            switch (partyState.state) {
-                case '遠征中':
-                    firstStateStyle = { ...firstStateStyle, color: '#9644E3' };
-                    break;
-                case '出陣中':
-                    firstStateStyle = { ...firstStateStyle, color: '#A24E36' };
-                    break;
-            }
-            secondStateStyle = { ...secondStateStyle };
+        // 表示系を生成
+        let partyFirstStyle: React.CSSProperties = { ...firstStateStyle };
+        switch (partyState.state) {
+            case '遠征中':
+                partyFirstStyle = { ...firstStateStyle, color: '#9644E3' };
+                break;
+            case '出陣中':
+                partyFirstStyle = { ...firstStateStyle, color: '#A24E36' };
+                break;
         }
+
+        let partyStateComponent: JSX.Element = (
+            <Box>
+                <Box style={partyFirstStyle}>
+                    {partyState.state}
+                </Box>
+                <Box style={secondStateStyle}>
+                    {partyState.remainingTime}
+                </Box>
+            </Box>
+        );
+
+        const memberFirstStyle: React.CSSProperties = { ...firstStateStyle, letterSpacing: -1 };
+        let memberSecondStyle: React.CSSProperties = { ...secondStateStyle };
+        const totalScout: number = parseInt(partyState.memberScout.replace(/[^0-9^\.]/g, ''));
+        if (totalScout < 320) {
+            memberSecondStyle = { ...secondStateStyle, color: 'navy' };
+        } else if (totalScout < 500) {
+            memberSecondStyle = { ...secondStateStyle, color: 'darkorange' };
+        } else {
+            memberSecondStyle = { ...secondStateStyle, color: 'crimson' };
+        }
+
+        let memberStateComponent: JSX.Element = (
+            <Box>
+                <Box style={memberFirstStyle}>
+                    {partyState.memberLv}
+                </Box>
+                <Box style={memberSecondStyle}>
+                    {partyState.memberScout}
+                </Box>
+            </Box>
+        );
 
         // props内の配列のインデックスはjsonの影響で1からスタート
         const tempParty = (
-            <div style={{ margin: '4.5px 0px' }}>
-                <div
-                    style={{ display: 'inline-block', height: 60, width: 72 }}
-                >
-                    <div style={{ fontStyle: 'bold' }}>
+            <Box onClick={handleClick} margin="4.5px 0px" display="flex" flexDirection="row">
+                <Box height="66px" width="72px" padding="3px 0px">
+                    <Box marginBottom="1px" fontStyle="bold" display="block">
                         {partyState.name}
-                    </div>
-                    <div style={firstStateStyle}>
-                        {firstState}
-                    </div>
-                    <div style={secondStateStyle}>
-                        {secondState}
-                    </div>
-                </div>
-                <div style={{ display: 'inline-block' }} onClick={handleClick}>
+                    </Box>
+                    <Box marginLeft="3px" position="relative">
+                        <Fade in={!props.partyPanel.viewProps}>
+                            <Box display="flex">
+                                {partyStateComponent}
+                            </Box>
+                        </Fade>
+                        <Fade in={props.partyPanel.viewProps}>
+                            <Box display="flex" flexWrap="wrap" position="absolute" top="0px" left="0px">
+                                {memberStateComponent}
+                            </Box>
+                        </Fade>
+                    </Box>
+                </Box>
+                <Box display="flex" flexDirection="row">
                     {party}
-                </div>
-            </div>
+                </Box>
+            </Box>
         );
         parties.push(tempParty);
     }

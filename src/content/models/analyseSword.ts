@@ -13,6 +13,7 @@ export const analyseSword = (
     let targetSwordId: string | number | null = '0';
     switch (page) {
         case 'album/list':
+        case 'album/checknew':
             // 想定外のswordが供給されるため無視
             sword = oldSword;
             break;
