@@ -24,7 +24,7 @@ const PartyPanel: React.FC<PartyPanelProps> = (props) => {
     const parties: JSX.Element[] = [];
 
     // 結成の時に表示切替
-    if ((props.page) &&
+    if ((props.partyPanel.enableMemberStateView) && (props.page) &&
         ((props.page.indexOf('party/') > -1) || (props.page.indexOf('equip/') > -1))) {
         // console.log('in party');
         if (!props.partyPanel.viewProps) {
