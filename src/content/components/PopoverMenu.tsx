@@ -8,12 +8,14 @@ import Popover from '@material-ui/core/Popover';
 import FormControl from '@material-ui/core/FormControl';
 import { makeStyles } from '@material-ui/core/styles';
 
+import EnableMemberStateView from '../containers/EnableMemberStateView';
+import EnableNotify from '../containers/EnableNotify';
 import ScaleList from '../containers/ScaleList';
 
 const useStyles = makeStyles(theme => ({
   formControl: {
     margin: theme.spacing(3, 2),
-    minWidth: 120,
+    width: 162,
   },
   typography: {
     padding: theme.spacing(2),
@@ -51,6 +53,8 @@ const PopoverMenu: React.FC = () => {
       >
         <FormControl className={classes.formControl}>
           <ScaleList />
+          <EnableNotify />
+          <EnableMemberStateView />
         </ FormControl>
       </Popover>
     </React.Fragment >

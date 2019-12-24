@@ -4,17 +4,13 @@ export enum windowMode {
     HYOU = 'HYOU',
 }
 
-export type AlertMessage = {
-    title: string | null;
-    text: string | null;
-};
-
 export type BrowserSettingState = {
     mode: windowMode;
     mute: boolean;
     scale: number;
     devConnect: boolean;
-    alertMessage: AlertMessage;
+    enableNotify: boolean;
+
 };
 
 export const setBrowserSetting =
@@ -23,17 +19,15 @@ export const setBrowserSetting =
         mode: windowMode = windowMode.SHOU,
         mute: boolean = false,
         devConnect: boolean = false,
-        alertMessage: AlertMessage = {
-            title: null,
-            text: null,
-        },
+        enableNotify: boolean = true,
+
     ): BrowserSettingState => (
             {
                 mode,
                 mute,
                 scale,
                 devConnect,
-                alertMessage,
+                enableNotify,
             }
         );
 

@@ -21,7 +21,7 @@ const ToastNotification: React.FC<ToastNotificationProps> = (props) => {
     let targetTime: number = 0;
     // console.log('update check', firstLoad);
 
-    if (props.responseJson) {
+    if (props.enableNotify && (props.responseJson)) {
         if (props.responseJson.oldDate) {
             // console.log('前更新時刻', props.responseJson.oldDate);
             oldUpdateTime = props.responseJson.oldDate;

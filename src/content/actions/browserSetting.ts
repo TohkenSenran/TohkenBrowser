@@ -1,4 +1,4 @@
-import { AlertMessage, BrowserSettingState, windowMode } from '../states/BrowserSettingState';
+import { BrowserSettingState, windowMode } from '../states/BrowserSettingState';
 
 export enum browserSettingActionType {
     SELECT_BROWSERSCALE = 'SELECT_BROWSERSCALE',
@@ -6,7 +6,7 @@ export enum browserSettingActionType {
     CHANGE_MUTE = 'CHANGE_MUTE',
     LOAD_BROWSERSTATE = 'LOAD_BROWSERSTATE',
     CHECK_DEVCONNECT = 'CHECK_DEVCONNECT',
-    SET_ALERTMESSAGE = 'SET_ALERTMESSAGE',
+    SET_ENABLENOTIFY = 'SET_ENABLENOTIFY',
 }
 
 export interface SelectBrowserScaleAction {
@@ -29,6 +29,7 @@ export interface LoadBrowserStateAction {
     scale: number;
     mode: windowMode;
     mute: boolean;
+    enableNotify: boolean;
 }
 
 export interface CheckDevConnectAction {
@@ -36,9 +37,9 @@ export interface CheckDevConnectAction {
     devConnect: boolean;
 }
 
-export interface SetAlertMessageAction {
-    type: browserSettingActionType.SET_ALERTMESSAGE;
-    alertMessage: AlertMessage;
+export interface SetEnableNotifyAction {
+    type: browserSettingActionType.SET_ENABLENOTIFY;
+    enableNotify: boolean;
 }
 
 export const selectScale = (scale: number): SelectBrowserScaleAction => (
@@ -87,6 +88,7 @@ export const loadBrowserState = (browserSetting: BrowserSettingState): LoadBrows
         scale: browserSetting.scale,
         mode: browserSetting.mode,
         mute: browserSetting.mute,
+        enableNotify: browserSetting.enableNotify,
     }
 );
 
@@ -97,10 +99,10 @@ export const checkDevConnect = (devConnect: boolean): CheckDevConnectAction => (
     }
 );
 
-export const setAlertMessage = (alertMessage: AlertMessage): SetAlertMessageAction => (
+export const setEnableNotify = (enableNotify: boolean): SetEnableNotifyAction => (
     {
-        type: browserSettingActionType.SET_ALERTMESSAGE,
-        alertMessage,
+        type: browserSettingActionType.SET_ENABLENOTIFY,
+        enableNotify,
     }
 );
 
@@ -110,4 +112,4 @@ export type BrowserSettingAction =
     ChangeMuteAction |
     LoadBrowserStateAction |
     CheckDevConnectAction |
-    SetAlertMessageAction;
+    SetEnableNotifyAction;

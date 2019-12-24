@@ -24,13 +24,14 @@ const PartyPanel: React.FC<PartyPanelProps> = (props) => {
     const parties: JSX.Element[] = [];
 
     // 結成の時に表示切替
-    if ((props.page) && (props.page.indexOf('party') > -1)) {
-        console.log('in party');
+    if ((props.page) &&
+        ((props.page.indexOf('party/') > -1) || (props.page.indexOf('equip/') > -1))) {
+        // console.log('in party');
         if (!props.partyPanel.viewProps) {
             props.clickPartyProps(false);
         }
     } else {
-        console.log('not party');
+        // console.log('not party');
         if (props.partyPanel.viewProps) {
             props.clickPartyProps(true);
         }

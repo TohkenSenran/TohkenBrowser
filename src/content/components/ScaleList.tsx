@@ -1,14 +1,14 @@
+import * as React from 'react';
+
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
-import * as React from 'react';
 
 import { ScaleListProps } from '../containers/ScaleList';
 
 const ScaleList: React.FC<ScaleListProps> = (props) => {
   const [values, setValues] = React.useState({
     scale: props.browserSetting.scale,
-    name: 'hai',
   });
 
   function handleChange(event: React.ChangeEvent<{ name?: string; value: number }>) {
@@ -23,7 +23,7 @@ const ScaleList: React.FC<ScaleListProps> = (props) => {
   }
   return (
     <>
-      <InputLabel htmlFor="scale-list">描画倍率</InputLabel>
+      <InputLabel htmlFor="scale-list">{'描画倍率'}</InputLabel>
       <Select
         value={values.scale}
         onChange={handleChange}

@@ -27,16 +27,18 @@ const browserSetting: Reducer<BrowserSettingState, BrowserSettingAction> =
                     scale: action.scale,
                     mode: action.mode,
                     mute: action.mute,
+                    enableNotify: action.enableNotify,
                 };
             case browserSettingActionType.CHECK_DEVCONNECT:
                 return {
                     ...state,
                     devConnect: action.devConnect,
                 };
-            case browserSettingActionType.SET_ALERTMESSAGE:
+            case browserSettingActionType.SET_ENABLENOTIFY:
+                // console.log('通知設定変更', action.enableNotify);
                 return {
                     ...state,
-                    alertMessage: action.alertMessage,
+                    enableNotify: action.enableNotify,
                 };
             default:
                 return state;

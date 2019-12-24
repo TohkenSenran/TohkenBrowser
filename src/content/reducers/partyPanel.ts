@@ -28,6 +28,11 @@ const partyPanel: Reducer<PartyPanelState, PartyPanelAction> =
                     ...state,
                     viewProps: action.viewProps,
                 };
+            case partyPanelActionType.SET_ENABLEMEMBERSTATEVIEW:
+                return {
+                    ...state,
+                    enableMemberStateView: action.enableMemberStateView,
+                };
             default:
                 return state;
         }

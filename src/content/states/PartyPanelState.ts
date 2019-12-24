@@ -65,6 +65,7 @@ export type PartyPanelState = {
     correct: speedCorrect;
     horseDisable: boolean;
     viewProps: boolean;
+    enableMemberStateView: boolean;
 };
 
 export const partyPanelInitialState: PartyPanelState = {
@@ -72,19 +73,5 @@ export const partyPanelInitialState: PartyPanelState = {
     correct: speedCorrect.none,
     horseDisable: false,
     viewProps: false,
+    enableMemberStateView: true,
 };
-
-/*
-export const setPartyPanelState =
-    (
-        textType: number = 0,
-        correct: speedCorrect = speedCorrect.none,
-    ): PartyPanelState => (
-            {
-                textType,
-                correct,
-            }
-        );
-
-export const partyPanelInitialState = setPartyPanelState();
-*/
