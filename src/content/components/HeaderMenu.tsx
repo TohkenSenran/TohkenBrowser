@@ -16,41 +16,34 @@ import ScreenshotButton from './ScreenshotButton';
 
 import { requestType, sendMessageToBackground } from '../models/sendMessageToBackground';
 
-const HeaderMenu: React.FC = () => {
-
-    return (
-        <React.Fragment>
-            <AppBar
-                position="fixed"
-                style={{ boxShadow: 'none', height: headerMenuHeight }}
-            >
-                <Toolbar>
-                    <Tooltip title="Twitter">
-                        <Typography
-                            variant="h5"
-                            style={{ letterSpacing: '3px', margin: '0px 30px 6px 15px' }}
-                            onClick={
-                                () => {
-                                    sendMessageToBackground(requestType.openLinkOnTab, twitterURL);
-                                }
-                            }
-                        >
-                            {'刀剣専覧'}
-                        </Typography>
-                    </Tooltip>
-                    <ReloadButton />
-                    <ScreenshotButton />
-                    <MuteButton />
-                    <ModeButton />
-                    <ToastNotification />
-                    <span style={{ marginLeft: 'auto', marginRight: -15 }}>
-                        <IconFontButton iconName="history" tooltipText="履歴" />
-                        <PopoverMenu />
-                    </span>
-                </Toolbar>
-            </AppBar>
-        </React.Fragment >
-    );
-};
+const HeaderMenu: React.FC = () => (
+  <React.Fragment>
+    <AppBar
+      position="fixed"
+      style={{ boxShadow: 'none', height: headerMenuHeight }}
+    >
+      <Toolbar>
+        <Tooltip title="Twitter">
+          <Typography
+            variant="h5"
+            style={{ letterSpacing: '3px', margin: '0px 30px 6px 15px' }}
+            onClick={() => { sendMessageToBackground(requestType.openLinkOnTab, twitterURL); }}
+          >
+            {'刀剣専覧'}
+          </Typography>
+        </Tooltip>
+        <ReloadButton />
+        <ScreenshotButton />
+        <MuteButton />
+        <ModeButton />
+        <ToastNotification />
+        <span style={{ marginLeft: 'auto', marginRight: -15 }}>
+          <IconFontButton iconName="history" tooltipText="履歴" />
+          <PopoverMenu />
+        </span>
+      </Toolbar>
+    </AppBar>
+  </React.Fragment >
+);
 
 export default HeaderMenu;

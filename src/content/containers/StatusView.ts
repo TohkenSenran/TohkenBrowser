@@ -10,36 +10,34 @@ import { RootState } from '../states/index';
 import { ResponseJsonState } from '../states/ResponseJsonState';
 
 interface StateToProps {
-    browserSetting: BrowserSettingState;
+  browserSetting: BrowserSettingState;
 }
 
 interface DispatchToProps {
-    onClick: (mode: windowMode) => void;
-    updateDate: (date: number) => void;
+  onClick: (mode: windowMode) => void;
+  updateDate: (date: number) => void;
 }
 
 export type StatusViewProps = StateToProps & DispatchToProps;
 
-const mapStateToProps = (state: RootState): StateToProps => (
-    {
-        browserSetting: state.browserSetting,
-    }
-);
+const mapStateToProps = (state: RootState): StateToProps =>
+  ({
+    browserSetting: state.browserSetting,
+  });
 
 const mapDispatchToProps = (
-    dispatch: Dispatch<BrowserSettingAction | ResponseJsonAction>,
-): DispatchToProps => (
-        {
-            onClick: (mode: windowMode) => {
-                dispatch(changeViewMode(mode));
-            },
-            updateDate: (date: number) => {
-                dispatch(updateDate(date));
-            },
-        }
-    );
+  dispatch: Dispatch<BrowserSettingAction | ResponseJsonAction>,
+): DispatchToProps =>
+  ({
+    onClick: (mode: windowMode) => {
+      dispatch(changeViewMode(mode));
+    },
+    updateDate: (date: number) => {
+      dispatch(updateDate(date));
+    },
+  });
 
 export default connect<StateToProps, DispatchToProps>(
-    mapStateToProps,
-    mapDispatchToProps,
+  mapStateToProps,
+  mapDispatchToProps,
 )(StatusView);

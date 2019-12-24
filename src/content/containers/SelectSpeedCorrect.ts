@@ -7,30 +7,28 @@ import { RootState } from '../states/index';
 import { speedCorrect } from '../states/PartyPanelState';
 
 interface StateToProps {
-    correct: speedCorrect;
+  correct: speedCorrect;
 }
 
 interface DispatchToProps {
-    selectCorrect: (correct: speedCorrect) => void;
+  selectCorrect: (correct: speedCorrect) => void;
 }
 
 export type SelectSpeedCorrectProps = StateToProps & DispatchToProps;
 
-const mapStateToProps = (state: RootState): StateToProps => (
-    {
-        correct: state.partyPanel.correct,
-    }
-);
+const mapStateToProps = (state: RootState): StateToProps =>
+  ({
+    correct: state.partyPanel.correct,
+  });
 
-const mapDispatchToProps = (dispatch: Dispatch<PartyPanelAction>): DispatchToProps => (
-    {
-        selectCorrect: (correct: speedCorrect) => {
-            dispatch(selectCorrect(correct));
-        },
-    }
-);
+const mapDispatchToProps = (dispatch: Dispatch<PartyPanelAction>): DispatchToProps =>
+  ({
+    selectCorrect: (correct: speedCorrect) => {
+      dispatch(selectCorrect(correct));
+    },
+  });
 
 export default connect<StateToProps, DispatchToProps>(
-    mapStateToProps,
-    mapDispatchToProps,
+  mapStateToProps,
+  mapDispatchToProps,
 )(SelectSpeedCorrect);

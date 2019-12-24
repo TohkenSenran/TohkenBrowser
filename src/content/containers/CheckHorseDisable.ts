@@ -6,30 +6,28 @@ import CheckHorseDisable from '../components/CheckHorseDisable';
 import { RootState } from '../states/index';
 
 interface StateToProps {
-    horseDisable: boolean;
+  horseDisable: boolean;
 }
 
 interface DispatchToProps {
-    checkHorseDisable: (horseDisable: boolean) => void;
+  checkHorseDisable: (horseDisable: boolean) => void;
 }
 
 export type CheckHorseDisableProps = StateToProps & DispatchToProps;
 
-const mapStateToProps = (state: RootState): StateToProps => (
-    {
-        horseDisable: state.partyPanel.horseDisable,
-    }
-);
+const mapStateToProps = (state: RootState): StateToProps =>
+  ({
+    horseDisable: state.partyPanel.horseDisable,
+  });
 
-const mapDispatchToProps = (dispatch: Dispatch<PartyPanelAction>): DispatchToProps => (
-    {
-        checkHorseDisable: (horseDisable: boolean) => {
-            dispatch(checkHorseDisable(horseDisable));
-        },
-    }
-);
+const mapDispatchToProps = (dispatch: Dispatch<PartyPanelAction>): DispatchToProps =>
+  ({
+    checkHorseDisable: (horseDisable: boolean) => {
+      dispatch(checkHorseDisable(horseDisable));
+    },
+  });
 
 export default connect<StateToProps, DispatchToProps>(
-    mapStateToProps,
-    mapDispatchToProps,
+  mapStateToProps,
+  mapDispatchToProps,
 )(CheckHorseDisable);

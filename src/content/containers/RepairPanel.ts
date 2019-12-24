@@ -6,21 +6,20 @@ import { Repairs } from '../states/responseJson/Repair';
 import { Swords } from '../states/responseJson/Sword';
 
 interface StateToProps {
-    date: number;
-    repair: Repairs;
-    sword: Swords;
+  date: number;
+  repair: Repairs;
+  sword: Swords;
 }
 
 export type RepairPanelProps = StateToProps;
 
-const mapStateToProps = (state: RootState): StateToProps => (
-    {
-        date: state.responseJson.newDate,
-        repair: state.responseJson.repair,
-        sword: state.responseJson.sword,
-    }
-);
+const mapStateToProps = (state: RootState): StateToProps =>
+  ({
+    date: state.responseJson.newDate,
+    repair: state.responseJson.repair,
+    sword: state.responseJson.sword,
+  });
 
 export default connect<StateToProps>(
-    mapStateToProps,
+  mapStateToProps,
 )(RepairPanel);

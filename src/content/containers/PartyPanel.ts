@@ -10,44 +10,42 @@ import { Parties } from '../states/responseJson/Party';
 import { Swords } from '../states/responseJson/Sword';
 
 interface StateToProps {
-    partyPanel: PartyPanelState;
-    date: number;
-    party: Parties;
-    sword: Swords;
-    equip: Equips;
-    page: string;
+  partyPanel: PartyPanelState;
+  date: number;
+  party: Parties;
+  sword: Swords;
+  equip: Equips;
+  page: string;
 }
 
 interface DispatchToProps {
-    selectText: (textType: textType) => void;
-    clickPartyProps: (viewProps: boolean) => void;
+  selectText: (textType: textType) => void;
+  clickPartyProps: (viewProps: boolean) => void;
 }
 
 export type PartyPanelProps = StateToProps & DispatchToProps;
 
-const mapStateToProps = (state: RootState): StateToProps => (
-    {
-        partyPanel: state.partyPanel,
-        date: state.responseJson.newDate,
-        party: state.responseJson.party,
-        sword: state.responseJson.sword,
-        equip: state.responseJson.equip,
-        page: state.responseJson.page,
-    }
-);
+const mapStateToProps = (state: RootState): StateToProps =>
+  ({
+    partyPanel: state.partyPanel,
+    date: state.responseJson.newDate,
+    party: state.responseJson.party,
+    sword: state.responseJson.sword,
+    equip: state.responseJson.equip,
+    page: state.responseJson.page,
+  });
 
-const mapDispatchToProps = (dispatch: Dispatch<PartyPanelAction>): DispatchToProps => (
-    {
-        selectText: (selectTextType: textType) => {
-            dispatch(selectText(selectTextType));
-        },
-        clickPartyProps: (viewProps: boolean) => {
-            dispatch(selectViewProps(viewProps));
-        },
-    }
-);
+const mapDispatchToProps = (dispatch: Dispatch<PartyPanelAction>): DispatchToProps =>
+  ({
+    selectText: (selectTextType: textType) => {
+      dispatch(selectText(selectTextType));
+    },
+    clickPartyProps: (viewProps: boolean) => {
+      dispatch(selectViewProps(viewProps));
+    },
+  });
 
 export default connect<StateToProps, DispatchToProps>(
-    mapStateToProps,
-    mapDispatchToProps,
+  mapStateToProps,
+  mapDispatchToProps,
 )(PartyPanel);

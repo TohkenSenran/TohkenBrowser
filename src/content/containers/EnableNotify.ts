@@ -7,30 +7,28 @@ import { BrowserSettingState } from '../states/BrowserSettingState';
 import { RootState } from '../states/index';
 
 type StateToProps = {
-    enableNotify: boolean;
+  enableNotify: boolean;
 };
 
 type DispatchToProps = {
-    onChange: (enableNotify: boolean) => void;
+  onChange: (enableNotify: boolean) => void;
 };
 
 export type EnableNotifyProps = StateToProps & DispatchToProps;
 
-const mapStateToProps = (state: RootState): StateToProps => (
-    {
-        enableNotify: state.browserSetting.enableNotify,
-    }
-);
+const mapStateToProps = (state: RootState): StateToProps =>
+  ({
+    enableNotify: state.browserSetting.enableNotify,
+  });
 
-const mapDispatchToProps = (dispatch: Dispatch<BrowserSettingAction>): DispatchToProps => (
-    {
-        onChange: (enableNotify: boolean) => {
-            dispatch(setEnableNotify(enableNotify));
-        },
-    }
-);
+const mapDispatchToProps = (dispatch: Dispatch<BrowserSettingAction>): DispatchToProps =>
+  ({
+    onChange: (enableNotify: boolean) => {
+      dispatch(setEnableNotify(enableNotify));
+    },
+  });
 
 export default connect<StateToProps, DispatchToProps>(
-    mapStateToProps,
-    mapDispatchToProps,
+  mapStateToProps,
+  mapDispatchToProps,
 )(EnableNotify);

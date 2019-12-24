@@ -6,7 +6,7 @@ import partyPanel from './partyPanel';
 import responseJson from './responseJson';
 
 export const rootReducer: Reducer<RootState> = combineReducers<RootState>({
-    browserSetting,
-    partyPanel,
-    responseJson,
+  browserSetting,
+  partyPanel,
+  responseJson,
 });

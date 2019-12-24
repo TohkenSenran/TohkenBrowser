@@ -47,7 +47,7 @@ chrome.browserAction.onClicked.addListener(clickExtensionButton);
 chrome.contextMenus.create({
   title: '刀剣専覧初期化',
   contexts: ['browser_action'],
-  onclick: function () {
+  onclick: () => {
     chrome.storage.local.clear(() => {
       alert('刀剣乱舞専用ブラウザをリセットしました。\n＊ゲームへの影響はありません。');
     });

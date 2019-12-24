@@ -1,100 +1,92 @@
 import { getTextType, PartyPanelState, speedCorrect, textType } from '../states/PartyPanelState';
 
 export enum partyPanelActionType {
-    LOAD_PARTYPANELSTATE = 'LOAD_PARTYPANELSTATE',
-    SELECT_SPEEDCORRECT = 'SELECT_SPEEDCORRECT',
-    SELECT_DISPLAYTEXT = 'SELECT_DISPLAYTEXT',
-    CHECK_HORSEDISABLE = 'CHECK_HORSEDISABLE',
-    SELECT_VIEWPROPS = 'SELECT_VIEWPROPS',
-    SET_ENABLEMEMBERSTATEVIEW = 'SET_ENABLEMEMBERSTATEVIEW',
+  LOAD_PARTYPANELSTATE = 'LOAD_PARTYPANELSTATE',
+  SELECT_SPEEDCORRECT = 'SELECT_SPEEDCORRECT',
+  SELECT_DISPLAYTEXT = 'SELECT_DISPLAYTEXT',
+  CHECK_HORSEDISABLE = 'CHECK_HORSEDISABLE',
+  SELECT_VIEWPROPS = 'SELECT_VIEWPROPS',
+  SET_ENABLEMEMBERSTATEVIEW = 'SET_ENABLEMEMBERSTATEVIEW',
 }
 
 export interface LoadPartyPanelStateAction {
-    type: partyPanelActionType.LOAD_PARTYPANELSTATE;
-    partyPanelState: PartyPanelState;
+  type: partyPanelActionType.LOAD_PARTYPANELSTATE;
+  partyPanelState: PartyPanelState;
 }
 
 export interface SelectSpeedCorrectAction {
-    type: partyPanelActionType.SELECT_SPEEDCORRECT;
-    correct: speedCorrect;
+  type: partyPanelActionType.SELECT_SPEEDCORRECT;
+  correct: speedCorrect;
 }
 
 export interface SelectDisplayTextAction {
-    type: partyPanelActionType.SELECT_DISPLAYTEXT;
-    textType: textType;
+  type: partyPanelActionType.SELECT_DISPLAYTEXT;
+  textType: textType;
 }
 
 export interface CheckHorseDisableAction {
-    type: partyPanelActionType.CHECK_HORSEDISABLE;
-    horseDisable: boolean;
+  type: partyPanelActionType.CHECK_HORSEDISABLE;
+  horseDisable: boolean;
 }
 
 export interface SelectViewPropsAction {
-    type: partyPanelActionType.SELECT_VIEWPROPS;
-    viewProps: boolean;
+  type: partyPanelActionType.SELECT_VIEWPROPS;
+  viewProps: boolean;
 }
 
 export interface SetEnableMemberStateViewAction {
-    type: partyPanelActionType.SET_ENABLEMEMBERSTATEVIEW;
-    enableMemberStateView: boolean;
+  type: partyPanelActionType.SET_ENABLEMEMBERSTATEVIEW;
+  enableMemberStateView: boolean;
 }
 
 export const loadPartyPanelState = (
-    partyPanelState: PartyPanelState,
-): LoadPartyPanelStateAction => (
-        {
-            type: partyPanelActionType.LOAD_PARTYPANELSTATE,
-            partyPanelState,
-        }
-    );
+  partyPanelState: PartyPanelState,
+): LoadPartyPanelStateAction => ({
+  type: partyPanelActionType.LOAD_PARTYPANELSTATE,
+  partyPanelState,
+});
 
-export const selectCorrect = (correct: speedCorrect): SelectSpeedCorrectAction => (
-    {
-        type: partyPanelActionType.SELECT_SPEEDCORRECT,
-        correct,
-    }
-);
+export const selectCorrect = (correct: speedCorrect): SelectSpeedCorrectAction =>
+  ({
+    type: partyPanelActionType.SELECT_SPEEDCORRECT,
+    correct,
+  });
 
 export const selectText = (selectType: textType): SelectDisplayTextAction => {
-    let nextTextType: textType = textType.none;
-    if (selectType < Object.keys(textType).length - 1) {
-        nextTextType = getTextType(selectType + 1);
-    }
-    // console.log(`in PartyPanel action ${nextTextType}`);
-    return (
-        {
-            type: partyPanelActionType.SELECT_DISPLAYTEXT,
-            textType: nextTextType,
-        }
-    );
+  let nextTextType: textType = textType.none;
+  if (selectType < Object.keys(textType).length - 1) {
+    nextTextType = getTextType(selectType + 1);
+  }
+  // console.log(`in PartyPanel action ${nextTextType}`);
+  return ({
+    type: partyPanelActionType.SELECT_DISPLAYTEXT,
+    textType: nextTextType,
+  });
 };
 
-export const checkHorseDisable = (horseDisable: boolean): CheckHorseDisableAction => (
-    {
-        type: partyPanelActionType.CHECK_HORSEDISABLE,
-        horseDisable: !horseDisable,
-    }
-);
+export const checkHorseDisable = (horseDisable: boolean): CheckHorseDisableAction =>
+  ({
+    type: partyPanelActionType.CHECK_HORSEDISABLE,
+    horseDisable: !horseDisable,
+  });
 
-export const selectViewProps = (viewProps: boolean): SelectViewPropsAction => (
-    {
-        type: partyPanelActionType.SELECT_VIEWPROPS,
-        viewProps: !viewProps,
-    }
-);
+export const selectViewProps = (viewProps: boolean): SelectViewPropsAction =>
+  ({
+    type: partyPanelActionType.SELECT_VIEWPROPS,
+    viewProps: !viewProps,
+  });
 
 export const setEnableMemberStateView =
-    (enableMemberStateView: boolean): SetEnableMemberStateViewAction => (
-        {
-            type: partyPanelActionType.SET_ENABLEMEMBERSTATEVIEW,
-            enableMemberStateView,
-        }
-    );
+  (enableMemberStateView: boolean): SetEnableMemberStateViewAction =>
+    ({
+      type: partyPanelActionType.SET_ENABLEMEMBERSTATEVIEW,
+      enableMemberStateView,
+    });
 
 export type PartyPanelAction =
-    LoadPartyPanelStateAction |
-    SelectSpeedCorrectAction |
-    SelectDisplayTextAction |
-    CheckHorseDisableAction |
-    SelectViewPropsAction |
-    SetEnableMemberStateViewAction;
+  LoadPartyPanelStateAction |
+  SelectSpeedCorrectAction |
+  SelectDisplayTextAction |
+  CheckHorseDisableAction |
+  SelectViewPropsAction |
+  SetEnableMemberStateViewAction;

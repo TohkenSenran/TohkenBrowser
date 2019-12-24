@@ -7,30 +7,28 @@ import { BrowserSettingState, windowMode } from '../states/BrowserSettingState';
 import { RootState } from '../states/index';
 
 type StateToProps = {
-    browserSetting: BrowserSettingState;
+  browserSetting: BrowserSettingState;
 };
 
 type DispatchToProps = {
-    onClick: (mode: windowMode) => void;
+  onClick: (mode: windowMode) => void;
 };
 
 export type ModeButtonProps = StateToProps & DispatchToProps;
 
-const mapStateToProps = (state: RootState): StateToProps => (
-    {
-        browserSetting: state.browserSetting,
-    }
-);
+const mapStateToProps = (state: RootState): StateToProps =>
+  ({
+    browserSetting: state.browserSetting,
+  });
 
-const mapDispatchToProps = (dispatch: Dispatch<BrowserSettingAction>): DispatchToProps => (
-    {
-        onClick: (mode: windowMode) => {
-            dispatch(changeViewMode(mode));
-        },
-    }
-);
+const mapDispatchToProps = (dispatch: Dispatch<BrowserSettingAction>): DispatchToProps =>
+  ({
+    onClick: (mode: windowMode) => {
+      dispatch(changeViewMode(mode));
+    },
+  });
 
 export default connect<StateToProps, DispatchToProps>(
-    mapStateToProps,
-    mapDispatchToProps,
+  mapStateToProps,
+  mapDispatchToProps,
 )(ModeButton);

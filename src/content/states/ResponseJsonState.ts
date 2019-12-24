@@ -6,25 +6,25 @@ import { Repairs } from './responseJson/Repair';
 import { Swords } from './responseJson/Sword';
 
 export interface ResponseJsonState {
-    page: string;
-    sword: Swords;
-    party: Parties;
-    equip: Equips;
-    forge: Forges;
-    repair: Repairs;
-    duty: Duty;
-    newDate: number;
-    oldDate: number;
+  page: string;
+  sword: Swords;
+  party: Parties;
+  equip: Equips;
+  forge: Forges;
+  repair: Repairs;
+  duty: Duty;
+  newDate: number;
+  oldDate: number;
 }
 
 export const responseJsonInitialState: ResponseJsonState = {
-    page: '',
-    sword: {},
-    party: partiesInitialState,
-    equip: {},
-    forge: {},
-    repair: {},
-    duty: dutyInitialState,
-    newDate: Date.now(),
-    oldDate: 0,
+  page: '',
+  sword: {},
+  party: partiesInitialState,
+  equip: {},
+  forge: {},
+  repair: {},
+  duty: dutyInitialState,
+  newDate: Date.now(),
+  oldDate: 0,
 };
