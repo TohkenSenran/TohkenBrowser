@@ -1,11 +1,6 @@
 import * as React from 'react';
 
-import Icon from '@material-ui/core/Icon';
-import IconButton from '@material-ui/core/IconButton';
-
-import Popover from '@material-ui/core/Popover';
-
-import FormControl from '@material-ui/core/FormControl';
+import { Box, Icon, IconButton, Popover, FormControl } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
 import EnableMemberStateView from '../containers/EnableMemberStateView';
@@ -15,7 +10,7 @@ import ScaleList from '../containers/ScaleList';
 const useStyles = makeStyles(theme => ({
   formControl: {
     margin: theme.spacing(3, 2),
-    width: 162,
+    width: 132,
   },
   typography: {
     padding: theme.spacing(2),
@@ -53,8 +48,9 @@ const PopoverMenu: React.FC = () => {
       >
         <FormControl className={classes.formControl}>
           <ScaleList />
-          <EnableNotify />
-          <EnableMemberStateView />
+          <Box marginTop="6px">
+            <EnableNotify />
+          </Box>
         </ FormControl>
       </Popover>
     </React.Fragment >
