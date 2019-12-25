@@ -37,6 +37,7 @@ export const analyseSword = (
       break;
     // 一部の刀剣男子のみの情報
     case 'party/get_sally_party_info':
+    case 'party/get_wait_party_info':
     case 'sally':
     case 'sally/eventresume':
     case 'conquest':

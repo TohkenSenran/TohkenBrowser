@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Box, Card, CardContent, Collapse, Fade } from '@material-ui/core';
+import { Box, Card, CardContent, Fade } from '@material-ui/core';
 import { partyMemberNo, partyNo } from '../../constants';
 import { PartyPanelProps } from '../containers/PartyPanel';
 import { partyConverter } from '../models/partyConverter';
