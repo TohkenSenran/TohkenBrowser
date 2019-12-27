@@ -1,16 +1,18 @@
 import * as React from 'react';
 
-import { Box, Icon, IconButton, Popover, FormControl } from '@material-ui/core';
+import { Box, Divider, FormControl, Icon, IconButton, Popover } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
+import CheckHorseDisable from '../containers/CheckHorseDisable';
 import EnableMemberStateView from '../containers/EnableMemberStateView';
 import EnableNotify from '../containers/EnableNotify';
 import ScaleList from '../containers/ScaleList';
+import SelectSpeedCorrect from '../containers/SelectSpeedCorrect';
 
 const useStyles = makeStyles(theme => ({
   formControl: {
     margin: theme.spacing(3, 2),
-    width: 132,
+    width: 144,
   },
   typography: {
     padding: theme.spacing(2),
@@ -50,6 +52,11 @@ const PopoverMenu: React.FC = () => {
           <ScaleList />
           <Box marginTop="6px">
             <EnableNotify />
+          </Box>
+          <Box marginTop="6px">
+            <SelectSpeedCorrect />
+            <Divider />
+            <CheckHorseDisable />
           </Box>
         </ FormControl>
       </Popover>
