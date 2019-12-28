@@ -139,14 +139,7 @@ const PartyPanel: React.FC<PartyPanelProps> = (props) => {
       style={{ background: 'white', width: 479, height: 288 }}
     >
       <CardContent style={{ padding: 0, marginTop: 6, marginLeft: 6 }}>
-        <div style={{ position: 'relative' }}>
-          <div style={{ position: 'absolute', top: -9, left: -9 }}>
-            <SelectSpeedCorrectMenu />
-          </div>
-          <div>
-            {parties}
-          </div>
-        </div>
+        {parties}
       </CardContent>
     </Card>
   );

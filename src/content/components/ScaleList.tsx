@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import InputLabel from '@material-ui/core/InputLabel';
+import { FormLabel, InputLabel } from '@material-ui/core';
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
 

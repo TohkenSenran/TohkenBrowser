@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Checkbox, FormLabel, Box } from '@material-ui/core';
+import { Checkbox, FormLabel, Box, ExpansionPanel, ExpansionPanelDetails, ExpansionPanelSummary, Divider, Tooltip } from '@material-ui/core';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
@@ -22,7 +22,6 @@ export const SelectSpeedCorrect: React.FC<SelectSpeedCorrectProps> = (props) => 
 
   return (
     <React.Fragment>
-      <FormLabel style={{ fontSize: 12 }}>{'機動補正選択'}</FormLabel>
       <RadioGroup
         aria-label="correctType"
         value={value}
@@ -44,10 +43,13 @@ export const SelectSpeedCorrect: React.FC<SelectSpeedCorrectProps> = (props) => 
           label="時代7補正"
         />
       </RadioGroup>
-      <FormControlLabel
-        control={<Checkbox checked={props.horseDisable} onChange={handleCheckChange} size="small" />}
-        label="市街/屋内戦"
-      />
+      <Divider />
+      <Tooltip title="馬の有効/無効を切替">
+        <FormControlLabel
+          control={<Checkbox checked={props.horseDisable} onChange={handleCheckChange} size="small" />}
+          label="市街/屋内戦"
+        />
+      </Tooltip>
     </React.Fragment>
   );
 };

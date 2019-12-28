@@ -1,7 +1,7 @@
 import * as React from 'react';
 
+import { FormControlLabel, Switch, Tooltip } from '@material-ui/core';
 import { EnableNotifyProps } from '../containers/EnableNotify';
-import { FormControlLabel, Switch } from '@material-ui/core';
 
 const EnableNotify: React.FC<EnableNotifyProps> = (props) => {
   // console.log('switch状態', props.enableNotify);
