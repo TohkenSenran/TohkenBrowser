@@ -5,6 +5,10 @@ export const analyseParty = (jsonValue: any, page: string, oldParty: Parties): P
   // console.log(`analyseParty ${page}`);
   let party: Parties = oldParty ? { ...oldParty } : {};
   switch (page) {
+    case 'party/change_battle_party':
+      // partyプロパティが不適当のため無視
+      party = oldParty ? oldParty : {};
+      break;
     case 'party/setsword':
     case 'party/removesword':
     case 'party/partyreplacement':
@@ -14,6 +18,7 @@ export const analyseParty = (jsonValue: any, page: string, oldParty: Parties): P
       }
       break;
     case 'party/get_sally_party_info':
+    case 'party/get_wait_party_info':
       // 部隊の一部情報のみ供給
       party = {};
       for (let i: number = 0; i < partyNo; i += 1) {
