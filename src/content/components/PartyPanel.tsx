@@ -24,7 +24,7 @@ const PartyPanel: React.FC<PartyPanelProps> = (props) => {
   const parties: JSX.Element[] = [];
 
   // 結成の時に表示切替
-  if (false && (props.page) &&
+  if (props.partyPanel.enableMemberStateView && (props.page) &&
     ((props.page.indexOf('party/') > -1) || (props.page.indexOf('equip/') > -1))) {
     // console.log('in party');
     if (!props.partyPanel.viewProps) {
@@ -53,13 +53,13 @@ const PartyPanel: React.FC<PartyPanelProps> = (props) => {
 
     const partyState = partyConverter(partyData[i + 1], swordData, equipData, props.date);
     const firstStateStyle: React.CSSProperties = {
-      whiteSpace: 'nowrap',
       display: 'block',
+      whiteSpace: 'nowrap',
     };
     const secondStateStyle: React.CSSProperties = {
-      whiteSpace: 'nowrap',
       display: 'block',
       letterSpacing: -1,
+      whiteSpace: 'nowrap',
     };
 
     // 表示系を生成
@@ -108,37 +108,45 @@ const PartyPanel: React.FC<PartyPanelProps> = (props) => {
 
     // props内の配列のインデックスはjsonの影響で1からスタート
     const tempParty = (
-      <Box onClick={handleClick} margin="4.5px 0px" display="flex" flexDirection="row">
-        <Box height="66px" width="72px" padding="3px 0px">
+      <Box onClick={handleClick} marginTop="4px" display="flex" flexDirection="row">
+        <Box height="66px" width="70px" padding="3px 0px">
           <Box marginBottom="1px" fontStyle="bold" display="block">
             {partyState.name}
           </Box>
-          <Box marginLeft="3px" position="relative">
-            <Fade in={!props.partyPanel.viewProps}>
-              <Box display="flex">
-                {partyStateComponent}
-              </Box>
-            </Fade>
-            <Fade in={props.partyPanel.viewProps}>
-              <Box display="flex" flexWrap="wrap" position="absolute" top="0px" left="0px">
-                {memberStateComponent}
-              </Box>
-            </Fade>
+          <Box marginLeft="3px">
+            {partyStateComponent}
           </Box>
         </Box>
         <Box display="flex" flexDirection="row">
           {party}
+        </Box>
+        <Box position="relative">
+          <Fade in={!props.partyPanel.viewProps}>
+            <Box display="flex">
+              <React.Fragment />
+            </Box>
+          </Fade>
+          <Fade in={props.partyPanel.viewProps}>
+            <Box display="flex" flexWrap="wrap" position="absolute" top="0px" left="0px" width="100px">
+              {memberStateComponent}
+            </Box>
+          </Fade>
         </Box>
       </Box>
     );
     parties.push(tempParty);
   }
 
+  const partyPanel_NormalStyle: React.CSSProperties = { height: 288, width: 478 };
+  const partyPanel_ExtendStyle: React.CSSProperties = { height: 288, width: 578 };
+  const partyPanelStyle: React.CSSProperties = props.partyPanel.viewProps ?
+    partyPanel_ExtendStyle : partyPanel_NormalStyle;
+
   return (
     <Card
-      style={{ background: 'white', width: 479, height: 288 }}
+      style={partyPanelStyle}
     >
-      <CardContent style={{ padding: 0, marginTop: 6, marginLeft: 6 }}>
+      <CardContent style={{ padding: 0, margin: 6 }}>
         {parties}
       </CardContent>
     </Card>

@@ -7,9 +7,9 @@ import RepairPanel from '../containers/RepairPanel';
 
 const HomePanel: React.FC = () => (
   <Card
-    style={{ background: 'white', height: 288, width: 276 }}
+    style={{ height: 288, width: 276 }}
   >
-    <CardContent style={{ padding: 0, marginTop: 6, marginLeft: 6 }}>
+    <CardContent style={{ padding: 0, margin: 6 }}>
       <ForgePanel />
       <RepairPanel />
       <DutyPanel />
