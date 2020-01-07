@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 
-import { PartyPanelAction, selectText, selectViewProps } from '../actions/partyPanel';
+import { PartyPanelAction, selectText, selectExtendView } from '../actions/partyPanel';
 import PartyPanel from '../components/PartyPanel';
 import { RootState } from '../states/index';
 import { PartyPanelState, textType } from '../states/PartyPanelState';
@@ -20,7 +20,7 @@ interface StateToProps {
 
 interface DispatchToProps {
   selectText: (textType: textType) => void;
-  clickPartyProps: (viewProps: boolean) => void;
+  clickPartyProps: (extendView: boolean) => void;
 }
 
 export type PartyPanelProps = StateToProps & DispatchToProps;
@@ -40,8 +40,8 @@ const mapDispatchToProps = (dispatch: Dispatch<PartyPanelAction>): DispatchToPro
     selectText: (selectTextType: textType) => {
       dispatch(selectText(selectTextType));
     },
-    clickPartyProps: (viewProps: boolean) => {
-      dispatch(selectViewProps(viewProps));
+    clickPartyProps: (extendView: boolean) => {
+      dispatch(selectExtendView(extendView));
     },
   });
 

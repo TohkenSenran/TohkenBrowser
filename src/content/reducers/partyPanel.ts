@@ -23,10 +23,10 @@ const partyPanel: Reducer<PartyPanelState, PartyPanelAction> =
           ...state,
           horseDisable: action.horseDisable,
         };
-      case partyPanelActionType.SELECT_VIEWPROPS:
+      case partyPanelActionType.SELECT_EXTENDVIEW:
         return {
           ...state,
-          viewProps: action.viewProps,
+          extendView: action.extendView,
         };
       case partyPanelActionType.SET_ENABLEMEMBERSTATEVIEW:
         return {

@@ -18,7 +18,7 @@ interface DispatchToProps {
   updateDate: (date: number) => void;
 }
 
-export type StatusViewProps = StateToProps & DispatchToProps;
+export type StatusExtendView = StateToProps & DispatchToProps;
 
 const mapStateToProps = (state: RootState): StateToProps =>
   ({

@@ -1,6 +1,8 @@
 import * as React from 'react';
 
 import { Box, Card, CardContent, Fade } from '@material-ui/core';
+import { Transition } from 'react-transition-group';
+
 import { partyMemberNo, partyNo } from '../../constants';
 import { PartyPanelProps } from '../containers/PartyPanel';
 import { partyConverter } from '../models/partyConverter';
@@ -28,12 +30,12 @@ const PartyPanel: React.FC<PartyPanelProps> = (props) => {
     (((props.page.indexOf('party/') > -1) && (props.page !== 'party/get_sally_party_info')) ||
       (props.page.indexOf('equip/') > -1))) {
     // console.log('in party');
-    if (!props.partyPanel.viewProps) {
+    if (!props.partyPanel.extendView) {
       props.clickPartyProps(false);
     }
   } else {
     // console.log('not party');
-    if (props.partyPanel.viewProps) {
+    if (props.partyPanel.extendView) {
       props.clickPartyProps(true);
     }
   }
@@ -122,12 +124,12 @@ const PartyPanel: React.FC<PartyPanelProps> = (props) => {
           {party}
         </Box>
         <Box position="relative">
-          <Fade in={!props.partyPanel.viewProps}>
+          <Fade in={!props.partyPanel.extendView}>
             <Box display="flex">
               <React.Fragment />
             </Box>
           </Fade>
-          <Fade in={props.partyPanel.viewProps}>
+          <Fade in={props.partyPanel.extendView}>
             <Box display="flex" flexWrap="wrap" position="absolute" top="0px" left="0px" width="100px">
               {memberStateComponent}
             </Box>
@@ -138,14 +140,25 @@ const PartyPanel: React.FC<PartyPanelProps> = (props) => {
     parties.push(tempParty);
   }
 
+  // 
+  const partyPanelStyle = {
+    extend: {
+      height: 288,
+      width: 760,
+    },
+    normal: {
+      height: 288,
+      width: 478,
+      transition: 'all .5s ease',
+    },
+  };
+
   const partyPanel_NormalStyle: React.CSSProperties = { height: 288, width: 478 };
   const partyPanel_ExtendStyle: React.CSSProperties = { height: 288, width: 578 };
-  const partyPanelStyle: React.CSSProperties = props.partyPanel.viewProps ?
-    partyPanel_ExtendStyle : partyPanel_NormalStyle;
 
   return (
     <Card
-      style={partyPanelStyle}
+      style={props.partyPanel.extendView ? partyPanelStyle.extend : partyPanelStyle.normal}
     >
       <CardContent style={{ padding: 0, margin: 6 }}>
         {parties}

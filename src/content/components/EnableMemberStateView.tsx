@@ -1,9 +1,9 @@
 import * as React from 'react';
 
 import { FormControlLabel, Switch } from '@material-ui/core';
-import { EnableMemberStateViewProps } from '../containers/EnableMemberStateView';
+import { EnableMemberStateExtendView } from '../containers/EnableMemberStateView';
 
-const EnableMemberStateView: React.FC<EnableMemberStateViewProps> = (props) => {
+const EnableMemberStateView: React.FC<EnableMemberStateExtendView> = (props) => {
   // console.log('switch状態', props.EnableMemberStateView);
   const handleChange = () => (event: React.ChangeEvent<HTMLInputElement>) => {
     // console.log('switch切替', event.target.checked);

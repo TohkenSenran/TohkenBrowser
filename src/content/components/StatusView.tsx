@@ -6,11 +6,11 @@ import Typography from '@material-ui/core/Typography';
 
 import { gameSize, headerMenuHeight, statusViewHeight } from '../../constants';
 import PartyPanel from '../containers/PartyPanel';
-import { StatusViewProps } from '../containers/StatusView';
+import { StatusExtendView } from '../containers/StatusView';
 import { windowMode } from '../states/BrowserSettingState';
 import HomePanel from './HomePanel';
 
-const StatusView: React.FC<StatusViewProps> = (props) => {
+const StatusView: React.FC<StatusExtendView> = (props) => {
   // console.log('View Update');
   React.useEffect(() => {
     // 10秒ごとに更新

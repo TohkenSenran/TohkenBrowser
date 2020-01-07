@@ -13,7 +13,7 @@ type DispatchToProps = {
   onChange: (enableMemberStateView: boolean) => void;
 };
 
-export type EnableMemberStateViewProps = StateToProps & DispatchToProps;
+export type EnableMemberStateExtendView = StateToProps & DispatchToProps;
 
 const mapStateToProps = (state: RootState): StateToProps =>
   ({
