@@ -4,7 +4,7 @@ import { Box, Divider, FormControl, Icon, IconButton, Popover } from '@material-
 import { makeStyles } from '@material-ui/core/styles';
 
 import CheckHorseDisable from '../containers/CheckHorseDisable';
-import EnableMemberStateView from '../containers/EnableMemberStateView';
+import EnableExtendView from '../containers/EnableExtendView';
 import EnableNotify from '../containers/EnableNotify';
 import ScaleList from '../containers/ScaleList';
 import SelectSpeedCorrect from '../containers/SelectSpeedCorrect';

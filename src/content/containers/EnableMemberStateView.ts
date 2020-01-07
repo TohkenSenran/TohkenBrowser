@@ -1,33 +1,33 @@
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 
-import { PartyPanelAction, setEnableMemberStateView } from '../actions/partyPanel';
-import EnableMemberStateView from '../components/EnableMemberStateView';
+import { PartyPanelAction, setEnableExtendView } from '../actions/partyPanel';
+import EnableExtendView from '../components/EnableExtendView';
 import { RootState } from '../states/index';
 
 type StateToProps = {
-  enableMemberStateView: boolean;
+  enableExtendView: boolean;
 };
 
 type DispatchToProps = {
-  onChange: (enableMemberStateView: boolean) => void;
+  onChange: (enableExtendView: boolean) => void;
 };
 
 export type EnableMemberStateExtendView = StateToProps & DispatchToProps;
 
 const mapStateToProps = (state: RootState): StateToProps =>
   ({
-    enableMemberStateView: state.partyPanel.enableMemberStateView,
+    enableExtendView: state.partyPanel.enableExtendView,
   });
 
 const mapDispatchToProps = (dispatch: Dispatch<PartyPanelAction>): DispatchToProps =>
   ({
-    onChange: (enableMemberStateView: boolean) => {
-      dispatch(setEnableMemberStateView(enableMemberStateView));
+    onChange: (enableExtendView: boolean) => {
+      dispatch(setEnableExtendView(enableExtendView));
     },
   });
 
 export default connect<StateToProps, DispatchToProps>(
   mapStateToProps,
   mapDispatchToProps,
-)(EnableMemberStateView);
+)(EnableExtendView);

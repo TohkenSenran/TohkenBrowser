@@ -6,7 +6,7 @@ export enum partyPanelActionType {
   SELECT_DISPLAYTEXT = 'SELECT_DISPLAYTEXT',
   CHECK_HORSEDISABLE = 'CHECK_HORSEDISABLE',
   SELECT_EXTENDVIEW = 'SELECT_EXTENDVIEW',
-  SET_ENABLEMEMBERSTATEVIEW = 'SET_ENABLEMEMBERSTATEVIEW',
+  SET_ENABLEEXTENDVIEW = 'SET_ENABLEEXTENDVIEW',
 }
 
 export interface LoadPartyPanelStateAction {
@@ -34,9 +34,9 @@ export interface SelectExtendViewAction {
   extendView: boolean;
 }
 
-export interface SetEnableMemberStateViewAction {
-  type: partyPanelActionType.SET_ENABLEMEMBERSTATEVIEW;
-  enableMemberStateView: boolean;
+export interface SetEnableExtendViewAction {
+  type: partyPanelActionType.SET_ENABLEEXTENDVIEW;
+  enableExtendView: boolean;
 }
 
 export const loadPartyPanelState = (
@@ -76,11 +76,11 @@ export const selectExtendView = (extendView: boolean): SelectExtendViewAction =>
     extendView: !extendView,
   });
 
-export const setEnableMemberStateView =
-  (enableMemberStateView: boolean): SetEnableMemberStateViewAction =>
+export const setEnableExtendView =
+  (enableExtendView: boolean): SetEnableExtendViewAction =>
     ({
-      type: partyPanelActionType.SET_ENABLEMEMBERSTATEVIEW,
-      enableMemberStateView,
+      type: partyPanelActionType.SET_ENABLEEXTENDVIEW,
+      enableExtendView,
     });
 
 export type PartyPanelAction =
@@ -89,4 +89,4 @@ export type PartyPanelAction =
   SelectDisplayTextAction |
   CheckHorseDisableAction |
   SelectExtendViewAction |
-  SetEnableMemberStateViewAction;
+  SetEnableExtendViewAction;

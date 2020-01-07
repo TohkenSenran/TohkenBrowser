@@ -1,10 +1,10 @@
 import * as React from 'react';
 
 import { FormControlLabel, Switch } from '@material-ui/core';
-import { EnableMemberStateExtendView } from '../containers/EnableMemberStateView';
+import { EnableMemberStateExtendView } from '../containers/EnableExtendView';
 
-const EnableMemberStateView: React.FC<EnableMemberStateExtendView> = (props) => {
-  // console.log('switch状態', props.EnableMemberStateView);
+const EnableExtendView: React.FC<EnableMemberStateExtendView> = (props) => {
+  // console.log('switch状態', props.EnableExtendView);
   const handleChange = () => (event: React.ChangeEvent<HTMLInputElement>) => {
     // console.log('switch切替', event.target.checked);
     props.onChange(event.target.checked);
@@ -12,10 +12,10 @@ const EnableMemberStateView: React.FC<EnableMemberStateExtendView> = (props) => 
 
   return (
     <FormControlLabel
-      control={<Switch checked={props.enableMemberStateView} onChange={handleChange()} value="enableMemberStateView" />}
+      control={<Switch checked={props.enableExtendView} onChange={handleChange()} value="enableExtendView" />}
       label={'結成表示切替'}
     />
   );
 };
 
-export default EnableMemberStateView;
+export default EnableExtendView;
