@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Box, Fade } from '@material-ui/core';
+import { Box, Divider, Fade, Tooltip } from '@material-ui/core';
 
 import { partyMemberNo, partyNo } from '../../constants';
 import { partyConverter } from '../models/partyConverter';
@@ -14,11 +14,12 @@ const PartyPanelContents: React.FC<{
   partyData: Parties,
   swordData: Swords,
   equipData: Equips,
+  extendView: boolean,
   partyPanel: PartyPanelState,
   date: number,
   onClick: () => void,
 }> =
-  ({ partyData, swordData, equipData, partyPanel, date, onClick }) => {
+  ({ partyData, swordData, equipData, extendView, partyPanel, date, onClick }) => {
 
     const parties: JSX.Element[] = [];
 
@@ -38,15 +39,13 @@ const PartyPanelContents: React.FC<{
 
       const partyState = partyConverter(partyData[i + 1], swordData, equipData, date);
 
-      let partyStateStyle: React.CSSProperties = {
+      const textStyle: React.CSSProperties = {
         display: 'block',
-        whiteSpace: 'nowrap',
+        whiteSpace: 'pre',
       };
-      const remainingTimeStyle: React.CSSProperties = {
-        display: 'block',
-        letterSpacing: -1,
-        whiteSpace: 'nowrap',
-      };
+
+      let partyStateStyle: React.CSSProperties = { ...textStyle };
+      const remainingTimeStyle: React.CSSProperties = { ...textStyle, letterSpacing: -1 };
 
       // 状態に合わせて表示色を変更
       switch (partyState.state) {
@@ -69,6 +68,34 @@ const PartyPanelContents: React.FC<{
         </Box>
       );
 
+      const memberLvStyle: React.CSSProperties = { ...textStyle };
+      let memberScoutStyle: React.CSSProperties = { ...textStyle, marginLeft: '6px' };
+      const totalScout: number = parseInt(partyState.memberScout.replace(/[^0-9^\.]/g, ''));
+      if (totalScout < 320) {
+        memberScoutStyle = { ...memberScoutStyle, color: 'navy' };
+      } else if (totalScout < 500) {
+        memberScoutStyle = { ...memberScoutStyle, color: 'darkorange' };
+      } else {
+        memberScoutStyle = { ...memberScoutStyle, color: 'crimson' };
+      }
+
+      const memberStateComponent: JSX.Element = (
+        <Box>
+          <Divider />
+          <Box display="flex" alignItems="center" height="66px" >
+            <Box width="72px" style={memberLvStyle}>
+              {partyState.memberLv}
+            </Box>
+            <Tooltip title={<Box style={{ whiteSpace: 'pre' }}>{'江戸城内のマップ切替\n長距離：320未満\n中距離：500未満\n短距離：500以上'} </Box>}>
+              <Box width="72px" style={memberScoutStyle}>
+                {partyState.memberScout}
+              </Box>
+            </Tooltip>
+          </Box>
+          <Divider />
+        </Box>
+      );
+
       const tempParty = (
         <Box onClick={onClick} marginTop="4px" display="flex" flexDirection="row">
           <Box height="66px" width="70px" padding="3px 0px">
@@ -83,20 +110,26 @@ const PartyPanelContents: React.FC<{
             {party}
           </Box>
           <Box position="relative">
-            <Fade in={!partyPanel.extendView}>
+            <Fade in={!extendView}>
               <Box display="flex">
                 <React.Fragment />
               </Box>
             </Fade>
-            <Fade in={partyPanel.extendView}>
-              <Box display="flex" flexWrap="wrap" position="absolute" top="0px" left="0px" width="100px">
-                {'拡張表示'}
+            <Fade in={extendView}>
+              <Box
+                display="flex"
+                flexWrap="wrap"
+                position="absolute"
+                top="0px"
+                left="0px"
+                marginLeft="9px"
+              >
+                {memberStateComponent}
               </Box>
             </Fade>
           </Box>
         </Box>
       );
-
       parties.push(tempParty);
     }
 

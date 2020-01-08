@@ -21,25 +21,35 @@ const PartyPanel: React.FC<PartyPanelProps> = (props) => {
   // console.log(`updatePartyPanel ${props.partyPanel.correct}`);
 
   // 結成の時に表示切替
-  // props.partyPanel.enableExtendView &&
-  if ((props.page) &&
+  let extendView: boolean = false;
+  if ((props.partyPanel.enableExtendView) && (props.page) &&
     (((props.page.indexOf('party/') > -1) && (props.page !== 'party/get_sally_party_info')) ||
       (props.page.indexOf('equip/') > -1))) {
     // console.log('in party', props.partyPanel.extendView);
+    /*
     if (!props.partyPanel.extendView) {
       props.clickPartyProps(false);
     }
+    */
+    // console.log('in party', extendView);
+
+    if (!extendView) { extendView = true; }
   } else {
     // console.log('not party', props.partyPanel.extendView);
+    /*
     if (props.partyPanel.extendView) {
       props.clickPartyProps(true);
     }
+    */
+    if (extendView) { extendView = false; }
+    // console.log('not party', extendView);
+
   }
 
-  const partyPanelStyle = {
+  const panelStyle = {
     extend: {
       height: 288,
-      width: 760,
+      width: 636,
       transition: 'all .5s ease',
     },
     normal: {
@@ -48,16 +58,16 @@ const PartyPanel: React.FC<PartyPanelProps> = (props) => {
       transition: 'all .5s ease',
     },
   };
+  const partyPanelStyle: React.CSSProperties = extendView ? panelStyle.extend : panelStyle.normal;
 
   return (
-    <Card
-      style={props.partyPanel.extendView ? partyPanelStyle.extend : partyPanelStyle.normal}
-    >
+    <Card style={partyPanelStyle}>
       <CardContent style={{ padding: 0, margin: 6 }}>
         <PartyPanelContents
           partyData={partyData}
           swordData={swordData}
           equipData={equipData}
+          extendView={extendView}
           partyPanel={props.partyPanel}
           date={props.date}
           onClick={handleClick}

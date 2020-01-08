@@ -13,7 +13,7 @@ const EnableExtendView: React.FC<EnableMemberStateExtendView> = (props) => {
   return (
     <FormControlLabel
       control={<Switch checked={props.enableExtendView} onChange={handleChange()} value="enableExtendView" />}
-      label={'結成表示切替'}
+      label={'結成表示'}
     />
   );
 };

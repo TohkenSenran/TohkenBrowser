@@ -31,7 +31,7 @@ const SwordPanel: React.FC<{
   let textStyle: React.CSSProperties = {
     position: 'absolute',
     left: '50%',
-    top: '100%',
+    top: '98%',
     letterSpacing: (swordState.selectStatus.indexOf('残り') === -1) ? '0em' : '-0.05em',
     transform: 'translateX(-50%) translateY(-95%)',
     whiteSpace: 'nowrap',

@@ -9,6 +9,7 @@ import ExpandMore from '@material-ui/icons/ExpandMore';
 import EnableNotify from '../containers/EnableNotify';
 import ScaleList from '../containers/ScaleList';
 import SelectSpeedCorrect from '../containers/SelectSpeedCorrect';
+import EnableExtendView from '../containers/EnableExtendView';
 
 const useStyles = makeStyles(() =>
   createStyles({
@@ -53,6 +54,11 @@ const DrawerMenu: React.FC = () => {
               <Tooltip title="鍛刀・手入の完了を通知" classes={{ tooltip: classes.customWidth }}>
                 <Box>
                   <EnableNotify />
+                </Box>
+              </Tooltip>
+              <Tooltip title="結成画面表示時に補助情報を表示" classes={{ tooltip: classes.customWidth }}>
+                <Box>
+                  <EnableExtendView />
                 </Box>
               </Tooltip>
             </Box>

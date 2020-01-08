@@ -42,8 +42,8 @@ const getMemberProps = (party: Party, swords: Swords, equips: Equips): MemberPro
     }
   }
   return {
-    lv: `Lv ${totalLv}/${Math.round(totalLv / member * 10) / 10}`,
-    scout: `偵察計 ${totalScout}`,
+    lv: `男子Lv\n合計：${totalLv}\n平均：${Math.round(totalLv / member * 10) / 10}`,
+    scout: `偵察値\n合計：${totalScout}\n `,
   };
 
 };
