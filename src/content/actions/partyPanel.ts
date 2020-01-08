@@ -1,4 +1,4 @@
-import { getTextType, PartyPanelState, speedCorrect, textType } from '../states/PartyPanelState';
+import { PartyPanelState, speedCorrect, textType } from '../states/PartyPanelState';
 
 export enum partyPanelActionType {
   LOAD_PARTYPANELSTATE = 'LOAD_PARTYPANELSTATE',
@@ -54,8 +54,8 @@ export const selectCorrect = (correct: speedCorrect): SelectSpeedCorrectAction =
 
 export const selectText = (selectType: textType): SelectDisplayTextAction => {
   let nextTextType: textType = textType.none;
-  if (selectType < Object.keys(textType).length - 1) {
-    nextTextType = getTextType(selectType + 1);
+  if (selectType < (Object.keys(textType).length / 2) - 1) {
+    nextTextType = selectType + 1;
   }
   // console.log(`in PartyPanel action ${nextTextType}`);
   return ({
