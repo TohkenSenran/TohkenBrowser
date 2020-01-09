@@ -5,8 +5,8 @@ export enum partyPanelActionType {
   SELECT_SPEEDCORRECT = 'SELECT_SPEEDCORRECT',
   SELECT_DISPLAYTEXT = 'SELECT_DISPLAYTEXT',
   CHECK_HORSEDISABLE = 'CHECK_HORSEDISABLE',
-  SELECT_EXTENDVIEW = 'SELECT_EXTENDVIEW',
   SET_ENABLEEXTENDVIEW = 'SET_ENABLEEXTENDVIEW',
+  SELECT_VIEWSTATUS = 'SELECT_VIEWSTATUS',
 }
 
 export interface LoadPartyPanelStateAction {
@@ -29,14 +29,14 @@ export interface CheckHorseDisableAction {
   horseDisable: boolean;
 }
 
-export interface SelectExtendViewAction {
-  type: partyPanelActionType.SELECT_EXTENDVIEW;
-  extendView: boolean;
-}
-
 export interface SetEnableExtendViewAction {
   type: partyPanelActionType.SET_ENABLEEXTENDVIEW;
   enableExtendView: boolean;
+}
+
+export interface SelectViewStatusAction {
+  type: partyPanelActionType.SELECT_VIEWSTATUS;
+  selectViewStatus: boolean[];
 }
 
 export const loadPartyPanelState = (
@@ -70,12 +70,6 @@ export const checkHorseDisable = (horseDisable: boolean): CheckHorseDisableActio
     horseDisable: !horseDisable,
   });
 
-export const selectExtendView = (extendView: boolean): SelectExtendViewAction =>
-  ({
-    type: partyPanelActionType.SELECT_EXTENDVIEW,
-    extendView: !extendView,
-  });
-
 export const setEnableExtendView =
   (enableExtendView: boolean): SetEnableExtendViewAction =>
     ({
@@ -83,10 +77,17 @@ export const setEnableExtendView =
       enableExtendView,
     });
 
+export const setSelectViewStatus =
+  (selectViewStatus: boolean[]): SelectViewStatusAction =>
+    ({
+      type: partyPanelActionType.SELECT_VIEWSTATUS,
+      selectViewStatus,
+    });
+
 export type PartyPanelAction =
   LoadPartyPanelStateAction |
   SelectSpeedCorrectAction |
   SelectDisplayTextAction |
   CheckHorseDisableAction |
-  SelectExtendViewAction |
-  SetEnableExtendViewAction;
+  SetEnableExtendViewAction |
+  SelectViewStatusAction;

@@ -35,14 +35,24 @@ export type PartyPanelState = {
   textType: number;
   correct: speedCorrect;
   horseDisable: boolean;
-  extendView: boolean;
   enableExtendView: boolean;
+  selectViewStatus: boolean[];
+};
+
+export const initialSelectViewStatus = (): boolean[] => {
+  const viewStatus: boolean[] = [];
+  Object.entries(textType).forEach(([key, value]) => {
+    if (typeof value === 'number') {
+      viewStatus.push(true);
+    }
+  });
+  return viewStatus;
 };
 
 export const partyPanelInitialState: PartyPanelState = {
   textType: 0,
   correct: speedCorrect.none,
   horseDisable: false,
-  extendView: false,
   enableExtendView: true,
+  selectViewStatus: initialSelectViewStatus(),
 };

@@ -6,10 +6,11 @@ import { FormControl, FormLabel } from '@material-ui/core';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import ExpandMore from '@material-ui/icons/ExpandMore';
 
+import EnableExtendView from '../containers/EnableExtendView';
 import EnableNotify from '../containers/EnableNotify';
 import ScaleList from '../containers/ScaleList';
 import SelectSpeedCorrect from '../containers/SelectSpeedCorrect';
-import EnableExtendView from '../containers/EnableExtendView';
+import SelectViewStatus from '../containers/SelectViewStatus';
 
 const useStyles = makeStyles(() =>
   createStyles({
@@ -27,8 +28,9 @@ const DrawerMenu: React.FC = () => {
   const handleClose = () => { setOpen(false); };
 
   const expansionStyle: React.CSSProperties = {
+    marginTop: '3px',
     border: 'solid',
-    borderColor: 'gray',
+    borderColor: 'lightgray',
     borderRadius: 0,
     borderWidth: '1px 0px',
     boxShadow: 'none',
@@ -62,7 +64,7 @@ const DrawerMenu: React.FC = () => {
                 </Box>
               </Tooltip>
             </Box>
-            <Box marginTop="12px">
+            <Box marginTop="9px">
               <ExpansionPanel style={expansionStyle}>
                 <Tooltip
                   title="各男子の機動値について，レベルや疲労を考慮した値に補正"
@@ -76,6 +78,20 @@ const DrawerMenu: React.FC = () => {
                   </ExpansionPanelSummary>
                 </Tooltip>
                 <SelectSpeedCorrect />
+              </ExpansionPanel>
+              <ExpansionPanel style={expansionStyle}>
+                <Tooltip
+                  title="部隊部分をクリックした際に表示されるステータスを選択"
+                  classes={{ tooltip: classes.customWidth }}
+                >
+                  <ExpansionPanelSummary
+                    style={{ padding: 0, fontSize: 16 }}
+                    expandIcon={<ExpandMore />}
+                  >
+                    {'能力表示選択'}
+                  </ExpansionPanelSummary>
+                </Tooltip>
+                <SelectViewStatus />
               </ExpansionPanel>
             </Box>
           </ FormControl>
