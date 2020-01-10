@@ -1,4 +1,4 @@
-import { PartyPanelState, speedCorrect, textType } from '../states/PartyPanelState';
+import { PartyPanelState, speedCorrect, textType, partyPanelInitialState } from '../states/PartyPanelState';
 
 export enum partyPanelActionType {
   LOAD_PARTYPANELSTATE = 'LOAD_PARTYPANELSTATE',
@@ -41,10 +41,19 @@ export interface SelectViewStatusAction {
 
 export const loadPartyPanelState = (
   partyPanelState: PartyPanelState,
-): LoadPartyPanelStateAction => ({
-  type: partyPanelActionType.LOAD_PARTYPANELSTATE,
-  partyPanelState,
-});
+): LoadPartyPanelStateAction => {
+  // 新規追加の設定値をstoreからロードすると，新しい設定値がundefinedになる
+  Object.keys(partyPanelInitialState).forEach((key: string) => {
+    if (partyPanelState[key] === undefined) {
+      // console.log('undefinedkey', key);
+      partyPanelState[key] = partyPanelInitialState[key];
+    }
+  });
+  return ({
+    type: partyPanelActionType.LOAD_PARTYPANELSTATE,
+    partyPanelState,
+  });
+};
 
 export const selectCorrect = (correct: speedCorrect): SelectSpeedCorrectAction =>
   ({
@@ -52,17 +61,21 @@ export const selectCorrect = (correct: speedCorrect): SelectSpeedCorrectAction =
     correct,
   });
 
-export const selectText = (selectType: textType): SelectDisplayTextAction => {
-  let nextTextType: textType = textType.none;
-  if (selectType < (Object.keys(textType).length / 2) - 1) {
-    nextTextType = selectType + 1;
-  }
-  // console.log(`in PartyPanel action ${nextTextType}`);
-  return ({
-    type: partyPanelActionType.SELECT_DISPLAYTEXT,
-    textType: nextTextType,
-  });
-};
+export const selectText =
+  (selectType: textType, selectViewStatus: boolean[]): SelectDisplayTextAction => {
+    const getNextType = (oldType: textType): textType => (
+      (oldType + 1 < (Object.keys(textType).length / 2)) ? oldType + 1 : textType.none
+    );
+    let nextTextType: textType = getNextType(selectType);
+    while (!selectViewStatus[nextTextType]) {
+      nextTextType = getNextType(nextTextType);
+    }
+    // console.log(`in PartyPanel action ${nextTextType}`);
+    return ({
+      type: partyPanelActionType.SELECT_DISPLAYTEXT,
+      textType: nextTextType,
+    });
+  };
 
 export const checkHorseDisable = (horseDisable: boolean): CheckHorseDisableAction =>
   ({

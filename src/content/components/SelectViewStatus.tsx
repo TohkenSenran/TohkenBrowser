@@ -10,7 +10,7 @@ const SelectViewStatus: React.FC<SelectViewStatusProps> = (props) => {
   const checks: JSX.Element[] = [];
 
   const [viewStatus, setViewStatus] =
-    React.useState(props.selectViewStatus ? props.selectViewStatus : initialSelectViewStatus);
+    React.useState(props.selectViewStatus);
 
   const handleChange = (target: number) => (event: React.ChangeEvent<HTMLInputElement>) => {
     // console.log('viewStatus: %o', viewStatus);

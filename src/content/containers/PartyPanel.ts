@@ -19,7 +19,7 @@ interface StateToProps {
 }
 
 interface DispatchToProps {
-  selectText: (textType: textType) => void;
+  selectText: (textType: textType, selectViewStatus: boolean[]) => void;
 }
 
 export type PartyPanelProps = StateToProps & DispatchToProps;
@@ -36,8 +36,8 @@ const mapStateToProps = (state: RootState): StateToProps =>
 
 const mapDispatchToProps = (dispatch: Dispatch<PartyPanelAction>): DispatchToProps =>
   ({
-    selectText: (selectTextType: textType) => {
-      dispatch(selectText(selectTextType));
+    selectText: (selectTextType: textType, selectViewStatus: boolean[]) => {
+      dispatch(selectText(selectTextType, selectViewStatus));
     },
   });
 

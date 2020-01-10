@@ -1,4 +1,4 @@
-import { BrowserSettingState, windowMode } from '../states/BrowserSettingState';
+import { BrowserSettingState, windowMode, browserSettingInitialState } from '../states/BrowserSettingState';
 
 export enum browserSettingActionType {
   SELECT_BROWSERSCALE = 'SELECT_BROWSERSCALE',
@@ -79,10 +79,14 @@ export const changeMute = (mute: boolean): ChangeMuteAction =>
 export const loadBrowserState = (browserSetting: BrowserSettingState): LoadBrowserStateAction =>
   ({
     type: browserSettingActionType.LOAD_BROWSERSTATE,
-    scale: browserSetting.scale,
-    mode: browserSetting.mode,
-    mute: browserSetting.mute,
-    enableNotify: browserSetting.enableNotify,
+    scale: (browserSetting.scale !== undefined) ?
+      browserSetting.scale : browserSettingInitialState.scale,
+    mode: (browserSetting.mode !== undefined) ?
+      browserSetting.mode : browserSettingInitialState.mode,
+    mute: (browserSetting.mute !== undefined) ?
+      browserSetting.mute : browserSettingInitialState.mute,
+    enableNotify: (browserSetting.enableNotify !== undefined) ?
+      browserSetting.enableNotify : browserSettingInitialState.enableNotify,
   });
 
 export const checkDevConnect = (devConnect: boolean): CheckDevConnectAction =>
