@@ -78,6 +78,11 @@ const PartyPanelContents: React.FC<{
       } else {
         memberScoutStyle = { ...memberScoutStyle, color: 'crimson' };
       }
+      let memberFatigueStyle: React.CSSProperties = { ...textStyle, marginLeft: '6px' };
+      const averageFatigue: number = parseInt(partyState.memberFatigue.replace(/[^0-9^\.]/g, ''));
+      if (averageFatigue >= 50) {
+        memberFatigueStyle = { ...memberFatigueStyle, color: 'deeppink' };
+      }
 
       const memberStateComponent: JSX.Element = (
         <Box>
@@ -89,6 +94,11 @@ const PartyPanelContents: React.FC<{
             <Tooltip title={<Box style={{ whiteSpace: 'pre' }}>{'江戸城内のマップ切替\n長距離：320未満\n中距離：500未満\n短距離：500以上'} </Box>}>
               <Box width="72px" style={memberScoutStyle}>
                 {partyState.memberScout}
+              </Box>
+            </Tooltip>
+            <Tooltip title={<Box style={{ whiteSpace: 'pre' }}>{'英気（疲労度）の\n平均が遠征大成功\n確率（*未確定）'} </Box>}>
+              <Box width="72px" style={memberFatigueStyle}>
+                {partyState.memberFatigue}
               </Box>
             </Tooltip>
           </Box>

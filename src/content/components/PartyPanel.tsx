@@ -49,7 +49,7 @@ const PartyPanel: React.FC<PartyPanelProps> = (props) => {
   const panelStyle = {
     extend: {
       height: 288,
-      width: 636,
+      width: 715,
       transition: 'all .5s ease',
     },
     normal: {
