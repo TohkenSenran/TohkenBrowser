@@ -1,5 +1,5 @@
 import { gameURL } from '../../constants';
-import { BrowserWindow, setBrowserWindow } from '../../content/states/BrowserWindowState';
+import { BrowserWindow, initialBrowserWindow } from '../../content/states/BrowserWindowState';
 
 export const createBrowser = () => {
   try {
@@ -10,7 +10,7 @@ export const createBrowser = () => {
       const keys = Object.keys(items);
       chrome.storage.local.getBytesInUse(keys, (bytesInUse: number) => {
         // console.log(`getByutesInUse ${bytesInUse}`);
-        let browserWindow: BrowserWindow = setBrowserWindow();
+        let browserWindow: BrowserWindow = initialBrowserWindow;
         if (bytesInUse !== 0) {
           chrome.storage.local.get(key, (response) => {
             browserWindow = response.browserWindow;

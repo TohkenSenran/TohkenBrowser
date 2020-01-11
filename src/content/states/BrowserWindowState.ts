@@ -3,12 +3,7 @@ export interface BrowserWindow {
   size: { height: number, width: number };
 }
 
-export const setBrowserWindow =
-  (
-    position: { x: number, y: number } = { x: 100, y: 100 },
-    size: { height: number, width: number } = { height: 600, width: 800 },
-  ): BrowserWindow =>
-    ({
-      position,
-      size,
-    });
+export const initialBrowserWindow: BrowserWindow = {
+  position: { x: 100, y: 100 },
+  size: { height: 600, width: 800 },
+};
