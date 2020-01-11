@@ -24,7 +24,7 @@ const PartyPanel: React.FC<PartyPanelProps> = (props) => {
   let extendView: boolean = false;
   if ((props.partyPanel.enableExtendView) && (props.page) &&
     (((props.page.indexOf('party/') > -1) && (props.page !== 'party/get_sally_party_info')) ||
-      (props.page.indexOf('equip/') > -1))) {
+      ((props.page.indexOf('equip/') > -1) && (props.page !== 'equip/destroy')))) {
     // console.log('in party', props.partyPanel.extendView);
     /*
     if (!props.partyPanel.extendView) {
