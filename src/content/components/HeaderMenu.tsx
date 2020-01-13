@@ -16,6 +16,7 @@ import ScreenshotButton from './ScreenshotButton';
 
 import { requestType, sendMessageToBackground } from '../models/sendMessageToBackground';
 import DrawerMenu from './DrawerMenu';
+import HandbookButton from './HandbookButton';
 
 const HeaderMenu: React.FC = () => (
   <React.Fragment>
@@ -39,6 +40,7 @@ const HeaderMenu: React.FC = () => (
         <ModeButton />
         <ToastNotification />
         <span style={{ marginLeft: 'auto', marginRight: -15 }}>
+          <HandbookButton />
           <IconFontButton iconName="history" tooltipText="履歴" />
           <DrawerMenu />
         </span>

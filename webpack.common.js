@@ -5,6 +5,8 @@ module.exports = {
     devtools: path.join(__dirname, 'src/devtools/devtools.ts'),
     background: path.join(__dirname, 'src/background/index.ts'),
     content: path.join(__dirname, 'src/content/index.tsx'),
+    handbook: path.join(__dirname, 'src/handbook/index.tsx'),
+
   },
   output: {
     path: path.join(__dirname, 'dist/js'),
