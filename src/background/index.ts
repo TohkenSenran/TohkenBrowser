@@ -5,6 +5,7 @@ import { clickExtensionButton } from './models/clickExtensionButton';
 import { getBrowserId } from './models/getBrowserId';
 import { muteWindow } from './models/muteWindow';
 import { openLinkOnTab } from './models/openLinkOnTab';
+import { popupWindow } from './models/popupWindow';
 import { removeBrowserId } from './models/removeBrowserId';
 import { screenshot } from './models/screenshot';
 
@@ -35,6 +36,13 @@ chrome.runtime.onMessage.addListener(async (request, sender, sendResponse) => {
       if (sender.tab) {
         openLinkOnTab(sender.tab.windowId, request.payload);
       }
+      break;
+    case requestType.createHandbookWindow:
+      // createHandbookWindow();
+      popupWindow.createWindow(
+        'handbookWindow',
+        chrome.extension.getURL('html/handbook.html'),
+      );
       break;
     default:
       break;

@@ -1,6 +1,7 @@
-import { createBrowser } from './createBrowser';
+import { gameURL } from '../../constants';
 import { getBrowserId } from './getBrowserId';
 import { getWindowsInfo } from './getWindowsInfo';
+import { popupWindow } from './popupWindow';
 
 export const clickExtensionButton = async () => {
   // strorageからbrowserWindowの有無をチェック
@@ -20,5 +21,14 @@ export const clickExtensionButton = async () => {
       return;
     }
   }
-  createBrowser();
+  popupWindow.createWindow(
+    'browserWindow',
+    gameURL,
+    (newWindow: chrome.windows.Window) => {
+      if ((newWindow) && (newWindow.tabs)) {
+        chrome.storage.local.set({ browserId: newWindow.id });
+      }
+    },
+  );
+  // createBrowser();
 };

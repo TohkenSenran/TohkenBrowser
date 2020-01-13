@@ -1,3 +1,4 @@
+import { popupWindow } from '../../background/models/popupWindow';
 import { BrowserWindow } from '../states/BrowserWindowState';
 
 export const windowBeforeUnloadEvent = async () => {
@@ -5,14 +6,6 @@ export const windowBeforeUnloadEvent = async () => {
     position: { x: window.screenX, y: window.screenY },
     size: { height: window.outerHeight, width: window.outerWidth },
   };
-  await setBrowserWindow(browserWindow);
+  popupWindow.saveState('browserWindow', browserWindow);
   // console.log(`settingBrowserWindow? ${await setBrowserWindow(browserWindow)}`);
 };
-
-export const setBrowserWindow: (browserWindow: BrowserWindow) => Promise<boolean> =
-  (browserWindow: BrowserWindow) =>
-    new Promise((resolve: (value: boolean) => void) => {
-      chrome.storage.local.set({ browserWindow }, () => {
-        resolve(true);
-      });
-    });
