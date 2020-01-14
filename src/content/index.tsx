@@ -5,13 +5,13 @@ import { Provider } from 'react-redux';
 import Content from './components/Content';
 import store from './store';
 
-import { getBrowserId } from '../background/models/getBrowserId';
-import { windowBeforeUnloadEvent } from './models/windowBeforeUnloadEvent';
-import { windowLoadEvent } from './models/windowLoadEvent';
+import { getWindowId } from '../background/models/getWindowId';
 
 import { analyseJson } from './models/analyseJson';
 import { getCurrentWindowId } from './models/getCurrentWindowId';
 import { setWindowTitle } from './models/setWindowTitle';
+import { windowBeforeUnloadEvent } from './models/windowBeforeUnloadEvent';
+import { windowLoadEvent } from './models/windowLoadEvent';
 
 // 終了直前の処理
 window.onbeforeunload = () => {
@@ -32,7 +32,7 @@ chrome.storage.onChanged.addListener((changes, areaName) => {
 });
 */
 const startReactDom = async () => {
-  const browserId: number = await getBrowserId();
+  const browserId: number = await getWindowId('browserWindowId');
   // console.log(`browserId from strage ${browserId}`);
   const currentWindowId: number = await getCurrentWindowId();
   if (browserId === currentWindowId) {

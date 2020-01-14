@@ -2,11 +2,11 @@ import { requestType } from '../content/models/sendMessageToBackground';
 
 import { gameTitle, gameURL } from '../constants';
 import { clickExtensionButton } from './models/clickExtensionButton';
-import { getBrowserId } from './models/getBrowserId';
+import { getWindowId } from './models/getWindowId';
 import { muteWindow } from './models/muteWindow';
 import { openLinkOnTab } from './models/openLinkOnTab';
 import { popupWindow } from './models/popupWindow';
-import { removeBrowserId } from './models/removeBrowserId';
+import { removeWindowId } from './models/removeWindowId';
 import { screenshot } from './models/screenshot';
 
 // ContentScriptからのメッセージ取得
@@ -64,10 +64,13 @@ chrome.contextMenus.create({
 
 // ブラウザウィンドウの削除検出
 chrome.windows.onRemoved.addListener(async (windowId: number) => {
-  const browserId: number = await getBrowserId();
+  const browserId: number = await getWindowId('browserWindowId');
   if (windowId === browserId) {
     devConnected = false;
-    console.log(`remove browser? ${await removeBrowserId()}`);
+    removeWindowId('browserWindowId');
+    // console.log(`remove browser? ${await removeBrowserId()}`);
+  } else if (windowId === browserId) {
+    removeWindowId('handbookWindowId');
   }
 });
 
