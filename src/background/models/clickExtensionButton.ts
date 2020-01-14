@@ -7,7 +7,8 @@ export const clickExtensionButton = async () => {
   // strorageからbrowserWindowの有無をチェック
   const browserId: number = await getBrowserId();
   if (browserId) {
-    // stroageに登録されたIdが存在するかをチェック
+    // 重複起動チェック
+    // stroageに登録されたidが存在するかをチェック
     const windowsInfo: chrome.windows.Window[] = await getWindowsInfo();
     let checkBrowser: boolean = false;
     for (const targetWindow of windowsInfo) {
@@ -24,10 +25,5 @@ export const clickExtensionButton = async () => {
   popupWindow.createWindow(
     'browserWindow',
     gameURL,
-    (newWindow: chrome.windows.Window) => {
-      if ((newWindow) && (newWindow.tabs)) {
-        chrome.storage.local.set({ browserId: newWindow.id });
-      }
-    },
   );
 };

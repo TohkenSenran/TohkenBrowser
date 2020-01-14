@@ -1,44 +1,52 @@
 import { initialWindowState, WindowState } from '../states/WindowState';
+import { createWindow } from './createWindow';
+import { getWindowId } from './getWindowId';
+import { getWindowsInfo } from './getWindowsInfo';
+import { getWindowState } from './getWindowState';
 
 // 拡張機能でのウィンドウ作成（storageを使ったサイズ・位置の保存）
 export const popupWindow = {
   createWindow: async (
     windowName: string,
     loadUrl: string,
-    callback?: (window?: chrome.windows.Window) => void,
   ) => {
-    const getWindowState: (key: string) => Promise<WindowState> = (key: string) =>
-      new Promise((resolve: (value: WindowState) => void) => {
-        chrome.storage.local.get((items) => {
-          resolve(items[key]);
-        });
-      });
-
-    const createWindow = (
-      window: WindowState,
-      url: string,
-      callback?: (window?: chrome.windows.Window) => void,
-    ): void => {
-      chrome.windows.create({
-        focused: true,
-        type: 'popup',
-        url,
-        width: window.size.width,
-        height: window.size.height,
-        top: window.position.y,
-        left: window.position.x,
-      },
-        callback,
-      );
-    };
 
     const windowState: WindowState = await getWindowState(windowName);
+
+    // 重複起動チェック
+    const windowId: number = await getWindowId(`${windowName}Id`);
+    if (windowId) {
+      // 重複起動チェック
+      // stroageに登録されたidが存在するかをチェック
+      const windowsInfo: chrome.windows.Window[] = await getWindowsInfo();
+      let checkWindow: boolean = false;
+      for (const targetWindow of windowsInfo) {
+        if ((targetWindow) && (targetWindow.id) && (targetWindow.id === windowId)) {
+          checkWindow = true;
+          break;
+        }
+      }
+      // 存在する場合，ウィンドウを作らずアクティブにする
+      if (checkWindow) {
+        chrome.windows.update(windowId, { focused: true });
+        return;
+      }
+    }
+    // idが未定義 or 存在しない場合，ウィンドウを作成
+    const obj = {};
+    obj[`${windowName}Id`] = 0;
     createWindow(
       (windowState !== undefined) ? windowState : initialWindowState,
       loadUrl,
-      callback,
+      (newWindow: chrome.windows.Window) => {
+        if ((newWindow) && (newWindow.tabs)) {
+          obj[`${windowName}Id`] = newWindow.id;
+          chrome.storage.local.set(obj);
+        }
+      },
     );
   },
+
   saveState: async (windowName: string, windowState: WindowState) => {
     const setBrowserWindow: (key: string, window: WindowState) => Promise<void> =
       (key: string, window: WindowState) => new Promise(() => {
