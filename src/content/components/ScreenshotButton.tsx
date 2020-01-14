@@ -1,7 +1,9 @@
 import * as React from 'react';
 
 import { Icon, IconButton, Tooltip } from '@material-ui/core';
-import { requestType, sendMessageToBackground } from '../models/sendMessageToBackground';
+
+import { requestType } from '../../background/states/requestType';
+import { sendMessageToBackground } from '../models/sendMessageToBackground';
 
 const ScreenshotButton: React.FC = () => {
   const [open, setOpen] = React.useState(false);

@@ -1,4 +1,5 @@
-import { requestType, sendMessageToBackground } from './sendMessageToBackground';
+import { requestType } from '../../background/states/requestType';
+import { sendMessageToBackground } from './sendMessageToBackground';
 
 export const getCurrentWindowId: () => Promise<number> = () =>
   new Promise((resolve: (value: number) => void) => {

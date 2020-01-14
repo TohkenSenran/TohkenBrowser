@@ -1,13 +1,4 @@
-// 送信内容のインターフェース設定
-export enum requestType {
-  muteChange = 'muteChage',
-  screenshot = 'screenshot',
-  getCurrentWindowId = 'getCurrentWindowId',
-  getDevConnectState = 'getDevConnectState',
-  responseBody = 'responseBody',
-  openLinkOnTab = 'openLinkOnTab',
-  createHandbookWindow = 'createHandbookWindow',
-}
+import { requestType } from '../../background/states/requestType';
 
 export const sendMessageToBackground = (
   request: requestType,

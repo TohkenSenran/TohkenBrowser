@@ -7,5 +7,8 @@ export const windowBeforeUnloadEvent = async () => {
     size: { height: window.outerHeight, width: window.outerWidth },
   };
   popupWindow.saveState('browserWindow', browserWindow);
+
+  // 便利帳を一緒に消す
+
   // console.log(`settingBrowserWindow? ${await setBrowserWindow(browserWindow)}`);
 };

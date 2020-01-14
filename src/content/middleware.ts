@@ -1,7 +1,8 @@
 import { Action, Dispatch, Middleware, Store } from 'redux';
 
+import { requestType } from '../background/states/requestType';
 import { browserSettingActionType } from './actions/browserSetting';
-import { requestType, sendMessageToBackground } from './models/sendMessageToBackground';
+import { sendMessageToBackground } from './models/sendMessageToBackground';
 import { windowTransform } from './models/windowTransform';
 import { RootState } from './states';
 

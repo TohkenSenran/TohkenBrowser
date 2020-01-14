@@ -10,11 +10,11 @@ import ModeButton from '../containers/ModeButton';
 import MuteButton from '../containers/MuteButton';
 import ToastNotification from '../containers/ToastNotification';
 import IconFontButton from './IconFontButton';
-import PopoverMenu from './PopoverMenu';
 import ReloadButton from './ReloadButton';
 import ScreenshotButton from './ScreenshotButton';
 
-import { requestType, sendMessageToBackground } from '../models/sendMessageToBackground';
+import { requestType } from '../../background/states/requestType';
+import { sendMessageToBackground } from '../models/sendMessageToBackground';
 import DrawerMenu from './DrawerMenu';
 import HandbookButton from './HandbookButton';
 
@@ -29,7 +29,9 @@ const HeaderMenu: React.FC = () => (
           <Typography
             variant="h5"
             style={{ letterSpacing: '3px', margin: '0px 30px 6px 15px' }}
-            onClick={() => { sendMessageToBackground(requestType.openLinkOnTab, twitterURL); }}
+            onClick={() => {
+              sendMessageToBackground(requestType.openLinkOnTab, twitterURL);
+            }}
           >
             {'刀剣専覧'}
           </Typography>

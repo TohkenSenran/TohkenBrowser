@@ -1,4 +1,4 @@
-import { requestType } from '../content/models/sendMessageToBackground';
+import { requestType } from './states/requestType';
 
 import { gameTitle, gameURL } from '../constants';
 import { clickExtensionButton } from './models/clickExtensionButton';

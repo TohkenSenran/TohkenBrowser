@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { requestType, sendMessageToBackground } from '../models/sendMessageToBackground';
+import { requestType } from '../../background/states/requestType';
+import { sendMessageToBackground } from '../models/sendMessageToBackground';
 import IconFontButton from './IconFontButton';
 
 const HandbookButton: React.FC = () => {
