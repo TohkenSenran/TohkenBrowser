@@ -1,6 +1,6 @@
 import { requestType } from './states/requestType';
 
-import { gameTitle, gameURL } from '../constants';
+import { gameTitle, gameURL, handbookWindow, browserWindow } from '../constants';
 import { clickExtensionButton } from './models/clickExtensionButton';
 import { getWindowId } from './models/getWindowId';
 import { muteWindow } from './models/muteWindow';
@@ -8,6 +8,7 @@ import { openLinkOnTab } from './models/openLinkOnTab';
 import { popupWindow } from './models/popupWindow';
 import { removeWindowId } from './models/removeWindowId';
 import { screenshot } from './models/screenshot';
+import { removeWindow } from './models/removeWindow';
 
 // ContentScriptからのメッセージ取得
 let devConnected: boolean = false;
@@ -40,9 +41,13 @@ chrome.runtime.onMessage.addListener(async (request, sender, sendResponse) => {
     case requestType.createHandbookWindow:
       // createHandbookWindow();
       popupWindow.createWindow(
-        'handbookWindow',
+        handbookWindow,
         chrome.extension.getURL('html/handbook.html'),
       );
+      break;
+    case requestType.closeHandbookWindow:
+      // console.log('hdWindow: ', await getWindowId(`${handbookWindow}Id`));
+      removeWindow(await getWindowId(`${handbookWindow}Id`));
       break;
     default:
       break;
@@ -64,13 +69,17 @@ chrome.contextMenus.create({
 
 // ブラウザウィンドウの削除検出
 chrome.windows.onRemoved.addListener(async (windowId: number) => {
-  const browserId: number = await getWindowId('browserWindowId');
+  console.log('onClosingId', windowId);
+  const browserId: number = await getWindowId(`${browserWindow}Id`);
+  const handbookId: number = await getWindowId(`${handbookWindow}Id`);
+  console.log('browser', browserId);
+  console.log('handbook', handbookId);
   if (windowId === browserId) {
     devConnected = false;
-    removeWindowId('browserWindowId');
+    removeWindowId(`${browserWindow}Id`);
     // console.log(`remove browser? ${await removeBrowserId()}`);
-  } else if (windowId === browserId) {
-    removeWindowId('handbookWindowId');
+  } else if (windowId === handbookId) {
+    removeWindowId(`${handbookWindow}Id`);
   }
 });
 

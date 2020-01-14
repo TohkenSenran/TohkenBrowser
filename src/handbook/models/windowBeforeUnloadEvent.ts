@@ -1,22 +1,15 @@
 import { popupWindow } from '../../background/models/popupWindow';
 import { WindowState } from '../../background/states/WindowState';
+import { handbookWindow } from '../../constants';
 
 export const windowBeforeUnloadEvent = async () => {
-  const handbookWindow: WindowState = {
+  const handbookWindowState: WindowState = {
     position: { x: window.screenX, y: window.screenY },
     size: { height: window.outerHeight, width: window.outerWidth },
   };
 
-  popupWindow.saveState('handbookWindow', handbookWindow);
+  popupWindow.saveState(handbookWindow, handbookWindowState);
 
   // await setHandbookWindow(handbookWindow);
   // console.log(`settinghandbookWindow? ${await sethandbookWindow(handbookWindow)}`);
 };
-
-export const setHandbookWindow: (handbookWindow: WindowState) => Promise<boolean> =
-  (handbookWindow: WindowState) =>
-    new Promise((resolve: (value: boolean) => void) => {
-      chrome.storage.local.set({ handbookWindow }, () => {
-        resolve(true);
-      });
-    });

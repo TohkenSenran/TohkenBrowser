@@ -7,4 +7,5 @@ export enum requestType {
   responseBody = 'responseBody',
   openLinkOnTab = 'openLinkOnTab',
   createHandbookWindow = 'createHandbookWindow',
+  closeHandbookWindow = 'closeHandbookWindow',
 }
