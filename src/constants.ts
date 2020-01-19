@@ -12,6 +12,9 @@ export const headerMenuHeight: number = 65;
 export const statusViewHeight: number = 300;
 
 // ゲーム内定数
+export const browserWindow = 'browserWindow';
+export const handbookWindow = 'handbookWindow';
+
 export const partyNo = 4;
 export const partyMemberNo = 6;
 export const forgeNo = 4;
@@ -717,4 +720,995 @@ export const swordName = {
   179: '松井江・極',
   180: '山鳥毛',
   181: '山鳥毛・極',
+};
+
+// 抜けている番号は情報不足のためフォロー必須
+export const itemName = {
+  1: {
+    1: 'お守り',
+    3: '仙人団子',
+    4: '御札・富士',
+    5: '御札・松',
+    6: '御札・竹',
+    7: '御札・梅',
+    8: '手伝い札',
+    13: '小判箱・小',
+    14: '小判箱・中',
+    15: '小判箱・大',
+    17: '幕ノ内弁当',
+    18: '手紙一式',
+    19: '旅装束',
+    20: '旅道具',
+    21: '遠征呼び戻し鳩',
+    22: '兵糧丸',
+    24: '蘇言機',
+    25: '笛',
+    26: '琴',
+    27: '三味線',
+    28: '太鼓',
+    29: '鈴',
+    37: '一口団子',
+    50: '三倍枡',
+    58: '引換シール',
+    60: '福豆',
+    68: '堆肥',
+    69: '特別肥料',
+    89: '紅白饅頭',
+    113: '慈姑',
+    114: '花梨',
+    115: '寒椿',
+    116: '喜知次',
+    1001: '根兵糖',
+  },
+  2: {},
+  // 装備類（馬，刀装）
+  // 3: {},
+  4: {
+    0: '小判',
+  },
+  5: {
+    1: '依頼札',
+    2: '木炭',
+    3: '玉鋼',
+    4: '冷却材',
+    5: '砥石',
+  },
+};
+
+// リソースのid確認
+export const resourceId = {
+  charcoal: 2,
+  steel: 3,
+  coolant: 4,
+  file: 5,
+};
+
+export const conquestData = {
+  1: {
+    age: '維新の記憶',
+    destination: '鳥羽・伏見の戦い',
+    require: {
+      time: 10,
+      totalLv: 5,
+      swordType: {
+        tanto: false,
+        wakizashi: false,
+        uchigatana: false,
+        tachi: false,
+        odachi: false,
+        yari: false,
+        naginata: false,
+        tsurugi: false,
+      },
+    },
+    reward: {
+      normal: {
+        sword_exp: 25,
+        user_exp: 10,
+        item: [
+          {
+            item_type: 5,
+            item_id: 2,
+            item_num: 10,
+          },
+          {
+            item_type: 5,
+            item_id: 3,
+            item_num: 15,
+          },
+        ],
+      },
+      greatAdd: {
+        item: [],
+      },
+    },
+  },
+  2: {
+    age: '維新の記憶',
+    destination: '世直し一揆',
+    require: {
+      time: 30,
+      totalLv: 10,
+      swordType: {
+        tanto: true,
+        wakizashi: false,
+        uchigatana: false,
+        tachi: false,
+        odachi: false,
+        yari: false,
+        naginata: false,
+        tsurugi: false,
+      },
+    },
+    reward: {
+      normal: {
+        sword_exp: 70,
+        user_exp: 20,
+        item: [
+          {
+            item_type: 5,
+            item_id: 4,
+            item_num: 30,
+          },
+          {
+            item_type: 5,
+            item_id: 5,
+            item_num: 30,
+          },
+        ],
+      },
+      greatAdd: {
+        item: [],
+      },
+    },
+  },
+  3: {
+    age: '維新の記憶',
+    destination: '甲州勝沼の戦い',
+    require: {
+      time: 20,
+      totalLv: 20,
+      swordType: {
+        tanto: false,
+        wakizashi: true,
+        uchigatana: false,
+        tachi: false,
+        odachi: false,
+        yari: false,
+        naginata: false,
+        tsurugi: false,
+      },
+    },
+    reward: {
+      normal: {
+        sword_exp: 65,
+        user_exp: 20,
+        item: [
+          {
+            item_type: 5,
+            item_id: 2,
+            item_num: 20,
+          },
+          {
+            item_type: 5,
+            item_id: 4,
+            item_num: 20,
+          },
+        ],
+      },
+      greatAdd: {
+        item: [],
+      },
+    },
+  },
+  4: {
+    age: '維新の記憶',
+    destination: '白河戦線',
+    require: {
+      time: 60,
+      totalLv: 30,
+      swordType: {
+        tanto: true,
+        wakizashi: true,
+        uchigatana: false,
+        tachi: false,
+        odachi: false,
+        yari: false,
+        naginata: false,
+        tsurugi: false,
+      },
+    },
+    reward: {
+      normal: {
+        sword_exp: 135,
+        user_exp: 35,
+        item: [
+          {
+            item_type: 5,
+            item_id: 3,
+            item_num: 60,
+          },
+          {
+            item_type: 5,
+            item_id: 5,
+            item_num: 60,
+          },
+        ],
+      },
+      greatAdd: {
+        item: [],
+      },
+    },
+  },
+  5: {
+    age: '江戸の記憶',
+    destination: '公武合体運動',
+    require: {
+      time: 90,
+      totalLv: 50,
+      swordType: {
+        tanto: false,
+        wakizashi: false,
+        uchigatana: false,
+        tachi: false,
+        odachi: false,
+        yari: false,
+        naginata: false,
+        tsurugi: false,
+      },
+    },
+    reward: {
+      normal: {
+        sword_exp: 285,
+        user_exp: 55,
+        item: [
+          {
+            item_type: 5,
+            item_id: 4,
+            item_num: 90,
+          },
+          {
+            item_type: 5,
+            item_id: 5,
+            item_num: 90,
+          },
+        ],
+      },
+      greatAdd: {
+        item: [
+          {
+            item_type: 1,
+            item_id: 13,
+            item_num: 1,
+          },
+        ],
+      },
+    },
+  },
+  6: {
+    age: '江戸の記憶',
+    destination: '加役方人足寄場',
+    require: {
+      time: 180,
+      totalLv: 60,
+      swordType: {
+        tanto: false,
+        wakizashi: false,
+        uchigatana: true,
+        tachi: false,
+        odachi: false,
+        yari: false,
+        naginata: false,
+        tsurugi: false,
+      },
+    },
+    reward: {
+      normal: {
+        sword_exp: 570,
+        user_exp: 100,
+        item: [
+          {
+            item_type: 5,
+            item_id: 3,
+            item_num: 50,
+          },
+          {
+            item_type: 5,
+            item_id: 5,
+            item_num: 250,
+          },
+        ],
+      },
+      greatAdd: {
+        item: [
+          {
+            item_type: 1,
+            item_id: 13,
+            item_num: 1,
+          },
+        ],
+      },
+    },
+  },
+  7: {
+    age: '江戸の記憶',
+    destination: '享保の大飢饉',
+    require: {
+      time: 120,
+      totalLv: 80,
+      swordType: {
+        tanto: false,
+        wakizashi: false,
+        uchigatana: false,
+        tachi: true,
+        odachi: false,
+        yari: false,
+        naginata: false,
+        tsurugi: false,
+      },
+    },
+    reward: {
+      normal: {
+        sword_exp: 380,
+        user_exp: 70,
+        item: [
+          {
+            item_type: 5,
+            item_id: 2,
+            item_num: 120,
+          },
+          {
+            item_type: 5,
+            item_id: 4,
+            item_num: 120,
+          },
+        ],
+      },
+      greatAdd: {
+        item: [
+          {
+            item_type: 5,
+            item_id: 1,
+            item_num: 1,
+          },
+        ],
+      },
+    },
+  },
+  8: {
+    age: '江戸の記憶',
+    destination: '天下泰平',
+    require: {
+      time: 150,
+      totalLv: 100,
+      swordType: {
+        tanto: false,
+        wakizashi: false,
+        uchigatana: true,
+        tachi: true,
+        odachi: false,
+        yari: false,
+        naginata: false,
+        tsurugi: false,
+      },
+    },
+    reward: {
+      normal: {
+        sword_exp: 585,
+        user_exp: 90,
+        item: [
+          {
+            item_type: 5,
+            item_id: 3,
+            item_num: 180,
+          },
+          {
+            item_type: 5,
+            item_id: 5,
+            item_num: 120,
+          },
+        ],
+      },
+      greatAdd: {
+        item: [
+          {
+            item_type: 1,
+            item_id: 8,
+            item_num: 1,
+          },
+        ],
+      },
+    },
+  },
+  9: {
+    age: '織豊の記憶',
+    destination: '美濃国の決戦',
+    require: {
+      time: 240,
+      totalLv: 110,
+      swordType: {
+        tanto: false,
+        wakizashi: false,
+        uchigatana: false,
+        tachi: false,
+        odachi: false,
+        yari: false,
+        naginata: false,
+        tsurugi: false,
+      },
+    },
+    reward: {
+      normal: {
+        sword_exp: 760,
+        user_exp: 130,
+        item: [
+          {
+            item_type: 5,
+            item_id: 2,
+            item_num: 130,
+          },
+          {
+            item_type: 5,
+            item_id: 3,
+            item_num: 240,
+          },
+        ],
+      },
+      greatAdd: {
+        item: [
+          {
+            item_type: 5,
+            item_id: 1,
+            item_num: 1,
+          },
+        ],
+      },
+    },
+  },
+  10: {
+    age: '織豊の記憶',
+    destination: '反旗を翻した原因',
+    require: {
+      time: 180,
+      totalLv: 120,
+      swordType: {
+        tanto: false,
+        wakizashi: false,
+        uchigatana: false,
+        tachi: false,
+        odachi: true,
+        yari: false,
+        naginata: false,
+        tsurugi: false,
+      },
+    },
+    reward: {
+      normal: {
+        sword_exp: 25,
+        user_exp: 10,
+        item: [
+          {
+            item_type: 5,
+            item_id: 3,
+            item_num: 100,
+          },
+          {
+            item_type: 5,
+            item_id: 4,
+            item_num: 60,
+          },
+          {
+            item_type: 5,
+            item_id: 5,
+            item_num: 150,
+          },
+        ],
+      },
+      greatAdd: {
+        item: [
+          {
+            item_type: 1,
+            item_id: 8,
+            item_num: 1,
+          },
+        ],
+      },
+    },
+  },
+  11: {
+    age: '織豊の記憶',
+    destination: '安土城の警備',
+    require: {
+      time: 600,
+      totalLv: 130,
+      swordType: {
+        tanto: false,
+        wakizashi: false,
+        uchigatana: false,
+        tachi: false,
+        odachi: false,
+        yari: false,
+        naginata: false,
+        tsurugi: false,
+      },
+    },
+    reward: {
+      normal: {
+        sword_exp: 2325,
+        user_exp: 315,
+        item: [
+          {
+            item_type: 5,
+            item_id: 2,
+            item_num: 200,
+          },
+          {
+            item_type: 5,
+            item_id: 4,
+            item_num: 500,
+          },
+        ],
+      },
+      greatAdd: {
+        item: [
+          {
+            item_type: 1,
+            item_id: 14,
+            item_num: 1,
+          },
+        ],
+      },
+    },
+  },
+  12: {
+    age: '織豊の記憶',
+    destination: '天下布武',
+    require: {
+      time: 480,
+      totalLv: 140,
+      swordType: {
+        tanto: false,
+        wakizashi: false,
+        uchigatana: false,
+        tachi: false,
+        odachi: false,
+        yari: false,
+        naginata: false,
+        tsurugi: false,
+      },
+    },
+    reward: {
+      normal: {
+        sword_exp: 1860,
+        user_exp: 255,
+        item: [
+          {
+            item_type: 5,
+            item_id: 3,
+            item_num: 200,
+          },
+          {
+            item_type: 5,
+            item_id: 5,
+            item_num: 500,
+          },
+        ],
+      },
+      greatAdd: {
+        item: [
+          {
+            item_type: 1,
+            item_id: 8,
+            item_num: 1,
+          },
+        ],
+      },
+    },
+  },
+  13: {
+    age: '戦国の記憶',
+    destination: '長篠城攻城戦',
+    require: {
+      time: 120,
+      totalLv: 150,
+      swordType: {
+        tanto: false,
+        wakizashi: false,
+        uchigatana: false,
+        tachi: false,
+        odachi: false,
+        yari: false,
+        naginata: false,
+        tsurugi: false,
+      },
+    },
+    reward: {
+      normal: {
+        sword_exp: 540,
+        user_exp: 80,
+        item: [
+          {
+            item_type: 5,
+            item_id: 3,
+            item_num: 80,
+          },
+          {
+            item_type: 5,
+            item_id: 4,
+            item_num: 100,
+          },
+          {
+            item_type: 5,
+            item_id: 5,
+            item_num: 60,
+          },
+        ],
+      },
+      greatAdd: {
+        item: [
+          {
+            item_type: 5,
+            item_id: 1,
+            item_num: 1,
+          },
+        ],
+      },
+    },
+  },
+  14: {
+    age: '戦国の記憶',
+    destination: '西上作戦',
+    require: {
+      time: 300,
+      totalLv: 180,
+      swordType: {
+        tanto: false,
+        wakizashi: false,
+        uchigatana: false,
+        tachi: false,
+        odachi: true,
+        yari: false,
+        naginata: false,
+        tsurugi: false,
+      },
+    },
+    reward: {
+      normal: {
+        sword_exp: 1345,
+        user_exp: 170,
+        item: [
+          {
+            item_type: 5,
+            item_id: 2,
+            item_num: 100,
+          },
+          {
+            item_type: 5,
+            item_id: 3,
+            item_num: 380,
+          },
+        ],
+      },
+      greatAdd: {
+        item: [
+          {
+            item_type: 1,
+            item_id: 14,
+            item_num: 1,
+          },
+        ],
+      },
+    },
+  },
+  15: {
+    age: '戦国の記憶',
+    destination: '甲相駿三国同盟',
+    require: {
+      time: 720,
+      totalLv: 200,
+      swordType: {
+        tanto: false,
+        wakizashi: false,
+        uchigatana: false,
+        tachi: false,
+        odachi: false,
+        yari: false,
+        naginata: false,
+        tsurugi: false,
+      },
+    },
+    reward: {
+      normal: {
+        sword_exp: 3600,
+        user_exp: 385,
+        item: [
+          {
+            item_type: 5,
+            item_id: 2,
+            item_num: 100,
+          },
+          {
+            item_type: 5,
+            item_id: 3,
+            item_num: 200,
+          },
+          {
+            item_type: 5,
+            item_id: 4,
+            item_num: 500,
+          },
+        ],
+      },
+      greatAdd: {
+        item: [
+          {
+            item_type: 1,
+            item_id: 8,
+            item_num: 2,
+          },
+        ],
+      },
+    },
+  },
+  16: {
+    age: '戦国の記憶',
+    destination: '比叡山延暦寺',
+    require: {
+      time: 360,
+      totalLv: 220,
+      swordType: {
+        tanto: false,
+        wakizashi: false,
+        uchigatana: false,
+        tachi: false,
+        odachi: false,
+        yari: false,
+        naginata: false,
+        tsurugi: false,
+      },
+    },
+    reward: {
+      normal: {
+        sword_exp: 1610,
+        user_exp: 200,
+        item: [
+          {
+            item_type: 5,
+            item_id: 2,
+            item_num: 150,
+          },
+          {
+            item_type: 5,
+            item_id: 5,
+            item_num: 400,
+          },
+        ],
+      },
+      greatAdd: {
+        item: [
+          {
+            item_type: 1,
+            item_id: 15,
+            item_num: 1,
+          },
+        ],
+      },
+    },
+  },
+  17: {
+    age: '武家の記憶',
+    destination: '鎌倉防衛戦',
+    require: {
+      time: 720,
+      totalLv: 240,
+      swordType: {
+        tanto: false,
+        wakizashi: false,
+        uchigatana: false,
+        tachi: false,
+        odachi: false,
+        yari: false,
+        naginata: false,
+        tsurugi: false,
+      },
+    },
+    reward: {
+      normal: {
+        sword_exp: 3220,
+        user_exp: 380,
+        item: [
+          {
+            item_type: 5,
+            item_id: 2,
+            item_num: 250,
+          },
+          {
+            item_type: 5,
+            item_id: 3,
+            item_num: 250,
+          },
+          {
+            item_type: 5,
+            item_id: 4,
+            item_num: 250,
+          },
+        ],
+      },
+      greatAdd: {
+        item: [
+          {
+            item_type: 1,
+            item_id: 8,
+            item_num: 2,
+          },
+        ],
+      },
+    },
+  },
+  18: {
+    age: '武家の記憶',
+    destination: '元寇防塁',
+    require: {
+      time: 1080,
+      totalLv: 260,
+      swordType: {
+        tanto: false,
+        wakizashi: false,
+        uchigatana: false,
+        tachi: false,
+        odachi: false,
+        yari: true,
+        naginata: false,
+        tsurugi: false,
+      },
+    },
+    reward: {
+      normal: {
+        sword_exp: 4830,
+        user_exp: 560,
+        item: [
+          {
+            item_type: 5,
+            item_id: 2,
+            item_num: 200,
+          },
+          {
+            item_type: 5,
+            item_id: 3,
+            item_num: 500,
+          },
+          {
+            item_type: 5,
+            item_id: 4,
+            item_num: 300,
+          },
+        ],
+      },
+      greatAdd: {
+        item: [
+          {
+            item_type: 1,
+            item_id: 8,
+            item_num: 2,
+          },
+          {
+            item_type: 1,
+            item_id: 15,
+            item_num: 1,
+          },
+        ],
+      },
+    },
+  },
+  19: {
+    age: '武家の記憶',
+    destination: '流鏑馬揃え',
+    require: {
+      time: 900,
+      totalLv: 280,
+      swordType: {
+        tanto: false,
+        wakizashi: false,
+        uchigatana: false,
+        tachi: false,
+        odachi: false,
+        yari: false,
+        naginata: true,
+        tsurugi: false,
+      },
+    },
+    reward: {
+      normal: {
+        sword_exp: 4500,
+        user_exp: 475,
+        item: [
+          {
+            item_type: 5,
+            item_id: 2,
+            item_num: 350,
+          },
+          {
+            item_type: 5,
+            item_id: 3,
+            item_num: 200,
+          },
+          {
+            item_type: 5,
+            item_id: 4,
+            item_num: 100,
+          },
+          {
+            item_type: 5,
+            item_id: 5,
+            item_num: 250,
+          },
+        ],
+      },
+      greatAdd: {
+        item: [
+          {
+            item_type: 1,
+            item_id: 15,
+            item_num: 1,
+          },
+        ],
+      },
+    },
+  },
+  20: {
+    age: '武家の記憶',
+    destination: '奥州合戦',
+    require: {
+      time: 1440,
+      totalLv: 300,
+      swordType: {
+        tanto: false,
+        wakizashi: false,
+        uchigatana: false,
+        tachi: false,
+        odachi: false,
+        yari: false,
+        naginata: false,
+        tsurugi: false,
+      },
+    },
+    reward: {
+      normal: {
+        sword_exp: 7200,
+        user_exp: 1490,
+        item: [
+          {
+            item_type: 5,
+            item_id: 2,
+            item_num: 300,
+          },
+          {
+            item_type: 5,
+            item_id: 3,
+            item_num: 400,
+          },
+          {
+            item_type: 5,
+            item_id: 4,
+            item_num: 500,
+          },
+        ],
+      },
+      greatAdd: {
+        item: [
+          {
+            item_type: 1,
+            item_id: 15,
+            item_num: 1,
+          },
+          {
+            item_type: 5,
+            item_id: 1,
+            item_num: 3,
+          },
+        ],
+      },
+    },
+  },
+
 };

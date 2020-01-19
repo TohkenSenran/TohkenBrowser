@@ -10,6 +10,6 @@ export const equipInitialState: Equip = {
   equip_id: '0',
   soldier: '0',
   priority: 0,
-}
+};
 
 export type Equips = { [key: string]: Equip };

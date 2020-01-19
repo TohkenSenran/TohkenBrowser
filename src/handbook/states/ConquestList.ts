@@ -1,0 +1,31 @@
+export type ConquestList = {
+  age: string,
+  destination: string,
+  time: number,
+  totalLv: number,
+  requireSwords: string,
+  swordExp: number,
+  userExp: number,
+  charcoal: number,
+  steel: number,
+  coolant: number,
+  file: number,
+  item: string,
+  greatAdd: string,
+};
+
+export const initialConquestList: ConquestList = {
+  age: '不明時代',
+  destination: '不明地',
+  time: 0,
+  totalLv: 0,
+  requireSwords: '自由',
+  swordExp: 0,
+  userExp: 0,
+  charcoal: 0,
+  steel: 0,
+  coolant: 0,
+  file: 0,
+  item: '不明',
+  greatAdd: '不明',
+};
