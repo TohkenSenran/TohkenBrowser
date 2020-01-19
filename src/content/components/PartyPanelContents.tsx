@@ -106,15 +106,44 @@ const PartyPanelContents: React.FC<{
         </Box>
       );
 
+      const textShadow: string =
+        '  1px 1px 0 rgba(255,255,255,0.5), -1px -1px 0 rgba(255,255,255,0.5),' +
+        ' -1px 1px 0 rgba(255,255,255,0.5),  1px -1px 0 rgba(255,255,255,0.5),' +
+        '  0px 1px 0 rgba(255,255,255,0.5),  0px -1px 0 rgba(255,255,255,0.5),' +
+        ' -1px 0px 0 rgba(255,255,255,0.5),  1px  0px 0 rgba(255,255,255,0.5)';
+      const memberStateCompactComp: JSX.Element = (
+        <Box>
+          <Box display="flex" alignItems="center" height="66px" >
+            <Box width="72px" style={memberLvStyle}>
+              {partyState.memberLv}
+            </Box>
+            <Box
+              width="72px"
+              style={{ ...memberScoutStyle, textShadow }}>
+              {partyState.memberScout}
+            </Box>
+            <Box
+              width="72px"
+              style={{ ...memberFatigueStyle, textShadow }}>
+              {partyState.memberFatigue}
+            </Box>
+          </Box>
+        </Box>
+      );
+
       const tempParty = (
         <Box onClick={onClick} marginTop="4px" display="flex" flexDirection="row">
           <Box height="66px" width="70px" padding="3px 0px">
-            <Box marginBottom="1px" fontStyle="bold" display="block">
-              {partyState.name}
-            </Box>
-            <Box marginLeft="3px">
-              {partyStateComponent}
-            </Box>
+            <Tooltip title={memberStateCompactComp} placement="right">
+              <Box>
+                <Box marginBottom="1px" fontStyle="bold" display="block">
+                  {partyState.name}
+                </Box>
+                <Box marginLeft="3px">
+                  {partyStateComponent}
+                </Box>
+              </Box>
+            </Tooltip>
           </Box>
           <Box display="flex" flexDirection="row">
             {party}
