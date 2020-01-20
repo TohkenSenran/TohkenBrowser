@@ -1,11 +1,10 @@
 import * as React from 'react';
 
+import { Box } from '@material-ui/core';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import Tooltip from '@material-ui/core/Tooltip';
-import Typography from '@material-ui/core/Typography';
 
-import { headerMenuHeight, twitterURL } from '../../constants';
+import { headerMenuHeight } from '../../constants';
 import ModeButton from '../containers/ModeButton';
 import MuteButton from '../containers/MuteButton';
 import ToastNotification from '../containers/ToastNotification';
@@ -13,10 +12,9 @@ import IconFontButton from './IconFontButton';
 import ReloadButton from './ReloadButton';
 import ScreenshotButton from './ScreenshotButton';
 
-import { requestType } from '../../background/states/requestType';
-import { sendMessageToBackground } from '../models/sendMessageToBackground';
 import DrawerMenu from './DrawerMenu';
 import HandbookButton from './HandbookButton';
+import Title from './Title';
 
 const HeaderMenu: React.FC = () => (
   <React.Fragment>
@@ -25,17 +23,9 @@ const HeaderMenu: React.FC = () => (
       style={{ boxShadow: 'none', height: headerMenuHeight }}
     >
       <Toolbar>
-        <Tooltip title="Twitter">
-          <Typography
-            variant="h5"
-            style={{ letterSpacing: '3px', margin: '0px 30px 6px 15px' }}
-            onClick={() => {
-              sendMessageToBackground(requestType.openLinkOnTab, twitterURL);
-            }}
-          >
-            {'刀剣専覧'}
-          </Typography>
-        </Tooltip>
+        <Box>
+          {Title}
+        </Box>
         <ReloadButton />
         <ScreenshotButton />
         <MuteButton />
