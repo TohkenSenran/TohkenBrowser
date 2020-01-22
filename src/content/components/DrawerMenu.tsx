@@ -11,6 +11,7 @@ import EnableNotify from '../containers/EnableNotify';
 import ScaleList from '../containers/ScaleList';
 import SelectSpeedCorrect from '../containers/SelectSpeedCorrect';
 import SelectViewStatus from '../containers/SelectViewStatus';
+import IconFontButton from './IconFontButton';
 
 const useStyles = makeStyles(() =>
   createStyles({
@@ -37,14 +38,7 @@ const DrawerMenu: React.FC = () => {
   };
   return (
     <React.Fragment>
-      <Tooltip
-        title={'設定'}
-        PopperProps={{ popperOptions: { modifiers: { offset: { enabled: true, offset: '0,-90' } } } }}
-      >
-        <IconButton onClick={handleClick}>
-          <Icon>menu</Icon>
-        </IconButton>
-      </Tooltip>
+      <IconFontButton iconName="menu" tooltipText="設定" onClick={handleClick} />
 
       <Drawer anchor="right" open={open} onClose={handleClose} >
         <Box margin="15px" style={{ userSelect: 'none' }}>
