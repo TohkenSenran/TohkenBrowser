@@ -34,7 +34,7 @@ const Content: React.FC = () => {
 
   return (
     <div style={{ userSelect: 'none' }}>
-      <AppBar position="sticky">
+      <AppBar position="sticky" style={{ boxShadow: 'none', borderBottom: 'solid 1px #E6E6E6' }}>
         <Tabs value={value} onChange={handleChange}>
           <Tab value="conquest" label="遠征情報一覧" />
         </Tabs>
