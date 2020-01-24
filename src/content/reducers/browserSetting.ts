@@ -28,6 +28,7 @@ const browserSetting: Reducer<BrowserSettingState, BrowserSettingAction> =
           mode: action.mode,
           mute: action.mute,
           enableNotify: action.enableNotify,
+          addCopyright: action.addCopyright,
         };
       case browserSettingActionType.CHECK_DEVCONNECT:
         return {
@@ -39,6 +40,12 @@ const browserSetting: Reducer<BrowserSettingState, BrowserSettingAction> =
         return {
           ...state,
           enableNotify: action.enableNotify,
+        };
+      case browserSettingActionType.ADD_COPYRIGHT:
+        // console.log('通知設定変更', action.enableNotify);
+        return {
+          ...state,
+          addCopyright: action.addCopyright,
         };
       default:
         return state;

@@ -12,6 +12,7 @@ import ScaleList from '../containers/ScaleList';
 import SelectSpeedCorrect from '../containers/SelectSpeedCorrect';
 import SelectViewStatus from '../containers/SelectViewStatus';
 import IconFontButton from './IconFontButton';
+import AddCopyright from '../containers/AddCopyright';
 
 const useStyles = makeStyles(() =>
   createStyles({
@@ -50,6 +51,11 @@ const DrawerMenu: React.FC = () => {
               <Tooltip title="鍛刀・手入の完了を通知" classes={{ tooltip: classes.customWidth }}>
                 <Box>
                   <EnableNotify />
+                </Box>
+              </Tooltip>
+              <Tooltip title="スクリーンショット撮影時にCopyrightを追加" classes={{ tooltip: classes.customWidth }}>
+                <Box>
+                  <AddCopyright />
                 </Box>
               </Tooltip>
               <Tooltip title="結成画面表示時に補助情報を表示" classes={{ tooltip: classes.customWidth }}>

@@ -7,6 +7,7 @@ export enum browserSettingActionType {
   LOAD_BROWSERSTATE = 'LOAD_BROWSERSTATE',
   CHECK_DEVCONNECT = 'CHECK_DEVCONNECT',
   SET_ENABLENOTIFY = 'SET_ENABLENOTIFY',
+  ADD_COPYRIGHT = 'ADD_COPYRIGHT',
 }
 
 export interface SelectBrowserScaleAction {
@@ -30,6 +31,7 @@ export interface LoadBrowserStateAction {
   mode: windowMode;
   mute: boolean;
   enableNotify: boolean;
+  addCopyright: boolean;
 }
 
 export interface CheckDevConnectAction {
@@ -40,6 +42,11 @@ export interface CheckDevConnectAction {
 export interface SetEnableNotifyAction {
   type: browserSettingActionType.SET_ENABLENOTIFY;
   enableNotify: boolean;
+}
+
+export interface AddCopyrightAction {
+  type: browserSettingActionType.ADD_COPYRIGHT;
+  addCopyright: boolean;
 }
 
 export const selectScale = (scale: number): SelectBrowserScaleAction =>
@@ -87,6 +94,8 @@ export const loadBrowserState = (browserSetting: BrowserSettingState): LoadBrows
       browserSetting.mute : browserSettingInitialState.mute,
     enableNotify: (browserSetting.enableNotify !== undefined) ?
       browserSetting.enableNotify : browserSettingInitialState.enableNotify,
+    addCopyright: (browserSetting.addCopyright !== undefined) ?
+      browserSetting.addCopyright : browserSettingInitialState.addCopyright,
   });
 
 export const checkDevConnect = (devConnect: boolean): CheckDevConnectAction =>
@@ -101,10 +110,17 @@ export const setEnableNotify = (enableNotify: boolean): SetEnableNotifyAction =>
     enableNotify,
   });
 
+export const addCopyright = (addCopyright: boolean): AddCopyrightAction =>
+  ({
+    type: browserSettingActionType.ADD_COPYRIGHT,
+    addCopyright,
+  });
+
 export type BrowserSettingAction =
   SelectBrowserScaleAction |
   ChangeViewModeAction |
   ChangeMuteAction |
   LoadBrowserStateAction |
   CheckDevConnectAction |
-  SetEnableNotifyAction;
+  SetEnableNotifyAction |
+  AddCopyrightAction;

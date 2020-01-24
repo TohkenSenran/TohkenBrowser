@@ -1,5 +1,6 @@
 const port: chrome.runtime.Port = chrome.runtime.connect({ name: 'devtools' });
 
+// 刀剣のページから実行される
 chrome.devtools.inspectedWindow.eval(
   'document.baseURI',
   (targetPageUrl: string) => {

@@ -7,7 +7,6 @@ import { ResponseJsonAction, updateDate } from '../actions/responseJson';
 import StatusView from '../components/StatusView';
 import { BrowserSettingState, windowMode } from '../states/BrowserSettingState';
 import { RootState } from '../states/index';
-import { ResponseJsonState } from '../states/ResponseJsonState';
 
 interface StateToProps {
   browserSetting: BrowserSettingState;

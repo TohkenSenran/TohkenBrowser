@@ -26,7 +26,7 @@ export const analyseJson = (json: any, oldJson: ResponseJsonState): void => {
   }
 
   if (json) {
-    const page: string = json.page ? json.page : 'NOTFOUND';
+    const page: string = json.page ? json.page : 'notfound';
     console.log('page:', page);
 
     const sword: Swords = analyseSword(json, json.page, oldJson.sword, oldJson.repair);

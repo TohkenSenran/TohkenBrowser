@@ -7,10 +7,10 @@ import Toolbar from '@material-ui/core/Toolbar';
 import { headerMenuHeight } from '../../constants';
 import ModeButton from '../containers/ModeButton';
 import MuteButton from '../containers/MuteButton';
+import ScreenshotButton from '../containers/ScreenshotButton';
 import ToastNotification from '../containers/ToastNotification';
 import IconFontButton from './IconFontButton';
 import ReloadButton from './ReloadButton';
-import ScreenshotButton from './ScreenshotButton';
 
 import DrawerMenu from './DrawerMenu';
 import HandbookButton from './HandbookButton';

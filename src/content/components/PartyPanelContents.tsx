@@ -119,12 +119,14 @@ const PartyPanelContents: React.FC<{
             </Box>
             <Box
               width="72px"
-              style={{ ...memberScoutStyle, textShadow }}>
+              style={{ ...memberScoutStyle, textShadow }}
+            >
               {partyState.memberScout}
             </Box>
             <Box
               width="72px"
-              style={{ ...memberFatigueStyle, textShadow }}>
+              style={{ ...memberFatigueStyle, textShadow }}
+            >
               {partyState.memberFatigue}
             </Box>
           </Box>

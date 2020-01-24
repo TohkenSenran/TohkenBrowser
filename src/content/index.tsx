@@ -7,23 +7,33 @@ import store from './store';
 
 import { getWindowId } from '../background/models/getWindowId';
 
+import { checkDevConnect } from './actions/browserSetting';
 import { analyseJson } from './models/analyseJson';
 import { getCurrentWindowId } from './models/getCurrentWindowId';
 import { setWindowTitle } from './models/setWindowTitle';
 import { windowBeforeUnloadEvent } from './models/windowBeforeUnloadEvent';
 import { windowLoadEvent } from './models/windowLoadEvent';
+import { contentRequest } from './states/contentRequest';
 
 // 終了直前の処理
 window.onbeforeunload = () => {
   windowBeforeUnloadEvent();
 };
 
-// Jsonデータ取得
-chrome.runtime.onMessage.addListener((responseJson: any) => {
+// contentが受ける情報の処理
+chrome.runtime.onMessage.addListener(({ type, payload }) => {
   // console.log('Get responseJson!');
   // console.log('forgeState before anlyse %O', store.getState().responseJson.forge);
-  analyseJson(responseJson, (store.getState()).responseJson);
-  // console.log('forgeState after anlyse %O', store.getState().responseJson.forge);
+  switch (type) {
+    case contentRequest.requestJson:
+      analyseJson(payload, (store.getState()).responseJson);
+      break;
+    case contentRequest.disconnected:
+      store.dispatch(checkDevConnect(false));
+      break;
+    default:
+      break;
+  }
 });
 /*
 // storage変更情報取得

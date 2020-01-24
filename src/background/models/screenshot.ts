@@ -1,14 +1,6 @@
 import { gameRatio, headerMenuHeight } from '../../constants';
 
-export const screenshot = () => {
-  chrome.windows.getCurrent((browserWindow: chrome.windows.Window) => {
-    chrome.tabs.captureVisibleTab(browserWindow.id, { format: 'png' }, (dataUrl: string) => {
-      saveScreenshot(dataUrl);
-    });
-  });
-};
-
-const saveScreenshot = (dataUrl: string) => {
+const saveScreenshot = (dataUrl: string, addCopyright: boolean) => {
   const dateFormat = require('dateformat');
   // console.log('inSaveScreenshot');
   const image = new Image();
@@ -19,6 +11,17 @@ const saveScreenshot = (dataUrl: string) => {
     const context = canvas.getContext('2d');
     if (context) {
       context.drawImage(image, 0, -headerMenuHeight);
+      if (addCopyright) {
+        const copyright = '©2015-2020 DMM GAMES/Nitroplus';
+        const textPos: { x: number, y: number } = { x: canvas.width - 6, y: canvas.height - 6 };
+        context.font = 'bold 16px serif';
+        context.strokeStyle = '#fff';
+        context.lineWidth = 3;
+        context.lineJoin = 'round';
+        context.textAlign = 'end';
+        context.strokeText(copyright, textPos.x, textPos.y);
+        context.fillText(copyright, textPos.x, textPos.y);
+      }
       // save the image
       const link = document.createElement('a');
       link.download = `Tohken_${dateFormat(new Date(), 'yyyymmddHHMMss')}.png`;
@@ -28,4 +31,22 @@ const saveScreenshot = (dataUrl: string) => {
     }
   };
   image.src = dataUrl;
+  console.log('saved image');
+};
+
+export const screenshot = (sender: chrome.runtime.MessageSender, addCopyright: boolean) => {
+  if ((sender) && (sender.tab) && (sender.tab.windowId)) {
+    chrome.tabs.captureVisibleTab(
+      sender.tab.windowId,
+      { format: 'png' },
+      (dataUrl: string) => {
+        console.log('scrennshotting');
+        saveScreenshot(dataUrl, addCopyright);
+        if ((sender) && (sender.tab) && (sender.tab.id)) {
+          // console.log('scrennshotted');
+          // sendMessageToWindow(sender.tab.id, contentRequest.screenshot);
+        }
+      },
+    );
+  }
 };
