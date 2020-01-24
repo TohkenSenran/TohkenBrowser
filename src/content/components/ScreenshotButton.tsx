@@ -7,34 +7,15 @@ import { ScreenshotButtonProps } from '../containers/ScreenshotButton';
 import { sendMessageToBackground } from '../models/sendMessageToBackground';
 
 const ScreenshotButton: React.FC<ScreenshotButtonProps> = (props) => {
-  // const [open, setOpen] = React.useState(false);
-  // const [onShot, setOnShot] = React.useState(false);
-  // let onShot: boolean = false;
+  const [open, setOpen] = React.useState(false);
+  const [onShot, setOnShot] = React.useState(false);
+
   const handleClick = () => {
-    // props.checkOnScreenshot(true);
-    // console.log('screenshot!');
-
-    sendMessageToBackground(requestType.screenshot, props.addCopyright);
-
-    /*
-    chrome.runtime.onMessage.addListener(({ type, payload }) => {
-      // console.log('Get responseJson!');
-      // console.log('forgeState before anlyse %O', store.getState().responseJson.forge);
-      switch (type) {
-        case contentRequest.screenshot:
-          console.log('screenshot finish!');
-          setOnShot(false);
-          break;
-      }
-    });
-  */
-
-    // onShot = false;
-    // setOpen(false);
-    // setOnShot(true);
+    setOpen(false);
+    setOnShot(true);
   };
-  /*
   const handleTooltipClose = () => {
+    // console.log('tooltipClose');
     setOpen(false);
   };
   const handleTooltipOpen = () => {
@@ -42,28 +23,24 @@ const ScreenshotButton: React.FC<ScreenshotButtonProps> = (props) => {
   };
 
   React.useEffect(() => {
+    // console.log('component update', onShot);
     if (onShot) {
-      // console.log('screenShot!');
-
       // setTimeoutを使わないとスクリーンショットにtooltipが映り込む
       // スクリーンショットのタイミングがずれるため暫定処理
       setTimeout(() => {
-        sendMessageToBackground(
-          requestType.screenshot,
-          'screenshot',
-          (response: any) => {
-            console.log('screenshot finish!');
-            setOnShot(!response);
-          },
-        );
-      }, 300);
+        sendMessageToBackground(requestType.screenshot, props.addCopyright);
+        setOnShot(false);
+      }, 500);
     }
-  });
-  */
+  }, [onShot]);
+
   return (
     <Box>
       <Tooltip
         title={'撮影'}
+        open={open}
+        onClose={handleTooltipClose}
+        onOpen={handleTooltipOpen}
         PopperProps={{ popperOptions: { modifiers: { offset: { enabled: true, offset: '0,-90' } } } }}
       >
         <IconButton onClick={handleClick}>
