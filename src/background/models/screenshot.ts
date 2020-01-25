@@ -31,7 +31,7 @@ const saveScreenshot = (dataUrl: string, addCopyright: boolean) => {
     }
   };
   image.src = dataUrl;
-  console.log('saved image');
+  // console.log('saved image');
 };
 
 export const screenshot = (sender: chrome.runtime.MessageSender, addCopyright: boolean) => {
@@ -40,7 +40,7 @@ export const screenshot = (sender: chrome.runtime.MessageSender, addCopyright: b
       sender.tab.windowId,
       { format: 'png' },
       (dataUrl: string) => {
-        console.log('scrennshotting');
+        // console.log('scrennshotting');
         saveScreenshot(dataUrl, addCopyright);
         if ((sender) && (sender.tab) && (sender.tab.id)) {
           // console.log('scrennshotted');
