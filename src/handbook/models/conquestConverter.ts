@@ -1,7 +1,7 @@
-import { conquestData, resourceId, swordName, itemName } from '../../constants';
+import { conquestData, resourceId, swordName, itemName, swordTypeName } from '../../constants';
 import { Item } from '../../content/states/responseJson/Item';
 import { ConquestList } from '../states/ConquestList';
-import { SwordType, swordTypeName } from '../states/SwordType';
+import { SwordType } from '../states/SwordType';
 
 export const conquestConverter = (seasonReword?: { [key: string]: Item[] }): ConquestList[] => {
   const getRequireSwords = (swordType: SwordType): string => {
@@ -27,7 +27,12 @@ export const conquestConverter = (seasonReword?: { [key: string]: Item[] }): Con
   const getItems = (rewardItem: Item[]): string => {
     let items: string = '';
     rewardItem.forEach((value: Item) => {
-      if (value.item_type.toString() !== '5') {
+      if (!((value.item_type.toString() === '5') && (
+        (value.item_id.toString() === '2') ||
+        (value.item_id.toString() === '3') ||
+        (value.item_id.toString() === '4') ||
+        (value.item_id.toString() === '5')
+      ))) {
         items += (itemName[value.item_type][value.item_id] !== undefined) ?
           `${itemName[value.item_type][value.item_id]} x ${value.item_num},\n` : `アイテム${value.item_type}-${value.item_id} x ${value.item_num},\n`;
       }

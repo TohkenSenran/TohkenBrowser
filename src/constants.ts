@@ -722,6 +722,17 @@ export const swordName = {
   181: '山鳥毛・極',
 };
 
+export enum swordTypeName {
+  tanto = '短刀',
+  wakizashi = '脇差',
+  uchigatana = '打刀',
+  tachi = '太刀',
+  odachi = '大太刀',
+  yari = '槍',
+  naginata = '薙刀',
+  tsurugi = '剣',
+}
+
 // 抜けている番号は情報不足のためフォロー必須
 export const itemName = {
   1: {
@@ -1188,8 +1199,8 @@ export const conquestData = {
     },
     reward: {
       normal: {
-        sword_exp: 25,
-        user_exp: 10,
+        sword_exp: 700,
+        user_exp: 105,
         item: [
           {
             item_type: 5,
@@ -1370,7 +1381,7 @@ export const conquestData = {
         wakizashi: false,
         uchigatana: false,
         tachi: false,
-        odachi: true,
+        odachi: false,
         yari: false,
         naginata: false,
         tsurugi: false,

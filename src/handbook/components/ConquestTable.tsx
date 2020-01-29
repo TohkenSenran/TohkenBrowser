@@ -15,7 +15,7 @@ const ConquestTable: React.FC = () => {
   const menuClose = () => { setMenuOpen(false); };
 
   const data: ConquestList[] = conquestConverter();
-
+  // console.log('data: %o', data);
   const textCellStyle: React.CSSProperties = { padding: '12px 6px', textAlign: 'center', whiteSpace: 'pre' };
   const numberCellStyle: React.CSSProperties = { padding: 6, textAlign: 'right' };
 
