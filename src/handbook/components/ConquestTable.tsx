@@ -6,7 +6,7 @@ import MaterialTable, { Action, Column, Localization, Options } from 'material-t
 import { Box } from '@material-ui/core';
 
 import { conquestConverter } from '../models/conquestConverter';
-import { ConquestList } from '../states/ConquestList';
+import { ConquestListContents } from '../states/ConquestListContents';
 import DrawerMenu from './DrawerMenu';
 
 const ConquestTable: React.FC = () => {
@@ -14,12 +14,12 @@ const ConquestTable: React.FC = () => {
   const menuClick = () => { setMenuOpen(true); };
   const menuClose = () => { setMenuOpen(false); };
 
-  const data: ConquestList[] = conquestConverter();
+  const data: ConquestListContents[] = conquestConverter();
   // console.log('data: %o', data);
   const textCellStyle: React.CSSProperties = { padding: '12px 6px', textAlign: 'center', whiteSpace: 'pre' };
   const numberCellStyle: React.CSSProperties = { padding: 6, textAlign: 'right' };
 
-  const columns: Array<Column<ConquestList>> = [
+  const columns: Array<Column<ConquestListContents>> = [
     { title: '遠征先', field: 'destination', cellStyle: textCellStyle },
     { title: '必要Lv', field: 'totalLv', cellStyle: { ...numberCellStyle, background: 'lavenderblush' } },
     { title: '必要時間', field: 'time', cellStyle: { ...numberCellStyle, background: 'lavenderblush' } },
@@ -45,7 +45,7 @@ const ConquestTable: React.FC = () => {
     sorting: false,
   };
 
-  const actions: Array<Action<ConquestList>> = [
+  const actions: Array<Action<ConquestListContents>> = [
     {
       icon: 'menu',
       isFreeAction: true,
