@@ -1,9 +1,9 @@
-import { conquestListInitialState, ConquestListState } from './ConquestList';
+import { conquestTableInitialState, ConquestTableState } from './conquestTable';
 
 export interface HandBookState {
-  conquestList: ConquestListState;
+  conquestTable: ConquestTableState;
 }
 
-export const rootInitialState: HandBookState = {
-  conquestList: conquestListInitialState,
+export const handbookInitialState: HandBookState = {
+  conquestTable: conquestTableInitialState,
 };

@@ -14,7 +14,7 @@ const StatusView: React.FC<StatusExtendView> = (props) => {
   // console.log('View Update');
   React.useEffect(() => {
     // 10秒ごとに更新
-    const intervalId: NodeJS.Timeout = setInterval(
+    const intervalId: number = window.setInterval(
       () => {
         props.updateDate(Date.now());
         // console.log(`interval: ${props.browserSetting.date}`);

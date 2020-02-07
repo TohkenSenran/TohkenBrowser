@@ -14,6 +14,7 @@ import { ResponseJsonState } from '../states/ResponseJsonState';
 import { analyseDuty } from './analyseDuty';
 import { analyseEquip } from './analyseEquip';
 import { analyseForge } from './analyseForge';
+import { analyseOptions } from './analyseOptions';
 import { analyseParty } from './analyseParty';
 import { analyseRepair } from './analyseRepair';
 import { analyseSword } from './analyseSword';
@@ -54,6 +55,8 @@ export const analyseJson = (json: any, oldJson: ResponseJsonState): void => {
     // console.log(`duty ${Object.keys(duty).length}`);
     // store.dispatch(updateJsonDuty(duty));
 
+    analyseOptions(json, json.page);
+
     store.dispatch(updateJsonState(
       {
         page,
@@ -65,7 +68,7 @@ export const analyseJson = (json: any, oldJson: ResponseJsonState): void => {
         duty,
         newDate: Date.now(),
         oldDate: oldJson.newDate,
-      }
+      },
     ));
   }
 };

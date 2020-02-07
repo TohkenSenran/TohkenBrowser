@@ -6,7 +6,7 @@ import createStyles from '@material-ui/core/styles/createStyles';
 import withStyles, { StyleRules } from '@material-ui/core/styles/withStyles';
 
 import withRoot from '../../withRoot';
-import ConquestTable from './ConquestTable';
+import ConquestTable from '../containers/ConquestTable';
 
 // styles を定義
 const styles = (): StyleRules =>

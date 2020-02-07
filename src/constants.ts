@@ -1,11 +1,12 @@
 // 刀剣専覧関連
 export const twitterURL: string = 'https://twitter.com/TohkenBrowser';
 
-// 刀剣乱舞側設定
+// ブラウザ側設定
 export const gameURL: string = 'http://pc-play.games.dmm.com/play/tohken/';
 export const gameTitle: string = `刀剣専覧 ${chrome.runtime.getManifest().version} -刀剣乱舞専用ブラウザ-`;
 export const gameSize: any = { width: 1030, height: 580 };
 export const gameRatio: number = gameSize.height / gameSize.width;
+export const handbookTitle: string = `便利帳 ${gameTitle}`;
 
 // 表示系設定
 export const headerMenuHeight: number = 65;

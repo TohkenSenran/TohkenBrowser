@@ -1,4 +1,4 @@
-import { gameTitle } from '../../constants';
+import { handbookTitle } from '../../constants';
 
 // タイトル・faviconの変更
 export const setWindowTitle = (document: Document) => {
@@ -11,5 +11,5 @@ export const setWindowTitle = (document: Document) => {
     faviconlink.href = chrome.extension.getURL('icon/TohkenBrowser.ico');
     document.getElementsByTagName('head')[0].appendChild(faviconlink);
   }
-  document.title = `便利帳 ${gameTitle}`;
+  document.title = handbookTitle;
 };

@@ -1,19 +1,19 @@
-import { Items } from '../states/Item';
+import { Items } from '../../content/states/responseJson/Item';
 
-export enum conquestListActionType {
+export enum conquestTableActionType {
   SET_SEASONITEMS = 'SET_SEASONITEMS',
 }
 
 export interface SetSeasonItemsAction {
-  type: conquestListActionType.SET_SEASONITEMS;
+  type: conquestTableActionType.SET_SEASONITEMS;
   seasonItems: Items;
 }
 
 export const setSeasonItems = (seasonItems: Items): SetSeasonItemsAction =>
   ({
-    type: conquestListActionType.SET_SEASONITEMS,
+    type: conquestTableActionType.SET_SEASONITEMS,
     seasonItems,
   });
 
-export type ConquestListActions =
+export type ConquestTableActions =
   SetSeasonItemsAction;

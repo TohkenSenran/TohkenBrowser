@@ -1,4 +1,4 @@
-export type ConquestListContents = {
+export type ConquestTableContents = {
   age: string,
   destination: string,
   time: string,
@@ -12,9 +12,10 @@ export type ConquestListContents = {
   file: string,
   item: string,
   greatAdd: string,
+  seasonReward: string,
 };
 
-export const conquestListContentsInitialState: ConquestListContents = {
+export const conquestTableContentsInitialState: ConquestTableContents = {
   age: '不明時代',
   destination: '不明地',
   time: '0:00',
@@ -28,4 +29,5 @@ export const conquestListContentsInitialState: ConquestListContents = {
   file: '0 (0)',
   item: '不明',
   greatAdd: '不明',
+  seasonReward: '不明',
 };

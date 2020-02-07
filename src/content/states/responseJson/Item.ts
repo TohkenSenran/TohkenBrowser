@@ -10,5 +10,4 @@ export const itemsInitialState: Item = {
   item_num: 0,
 };
 
-
-export type Items = { [key: string]: Item };
+export type Items = { [key: string]: Item[] };

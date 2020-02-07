@@ -4,6 +4,7 @@ import { browserWindow, gameTitle, gameURL, handbookWindow } from '../constants'
 import { contentRequest } from '../content/states/contentRequest';
 import { clickExtensionButton } from './models/clickExtensionButton';
 import { getWindowId } from './models/getWindowId';
+import { getWindowTabId } from './models/getWindowTabId';
 import { muteWindow } from './models/muteWindow';
 import { openLinkOnTab } from './models/openLinkOnTab';
 import { popupWindow } from './models/popupWindow';
@@ -11,7 +12,7 @@ import { removeWindow } from './models/removeWindow';
 import { removeWindowId } from './models/removeWindowId';
 import { screenshot } from './models/screenshot';
 import { sendMessageToWindow } from './models/sendMessageToWindow';
-import { getWindowTabId } from './models/getWindowTabId';
+import { Request } from './states/request';
 
 // ブラウザアイコンクリック時の動作
 chrome.browserAction.onClicked.addListener(clickExtensionButton);
@@ -70,7 +71,7 @@ chrome.runtime.onConnect.addListener((port: chrome.runtime.Port) => {
 });
 
 // ContentScriptからのメッセージ取得
-chrome.runtime.onMessage.addListener(async (request, sender, sendResponse) => {
+chrome.runtime.onMessage.addListener(async (request: Request, sender, sendResponse) => {
   switch (request.type) {
     case requestType.muteChange:
       muteWindow(request.payload);

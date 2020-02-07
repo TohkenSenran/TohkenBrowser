@@ -1,10 +1,12 @@
 import { conquestData, itemName, resourceId, swordName, swordTypeName } from '../../constants';
 
-import { ConquestListContents } from '../states/ConquestListContents';
-import { Item, Items } from '../states/Item';
+import { Item, Items } from '../../content/states/responseJson/Item';
+import { ConquestTableContents } from '../states/ConquestTableContents';
 import { SwordType } from '../states/SwordType';
 
-export const conquestConverter = (seasonReword?: Items): ConquestListContents[] => {
+export const conquestConverter = (seasonReword?: Items): ConquestTableContents[] => {
+  const seasonRewardItems: Items = (seasonReword !== undefined) ? seasonReword : { 0: [] };
+
   const getRequireSwords = (swordType: SwordType): string => {
     let require: string = '';
     Object.entries(swordType).forEach(([key, value]) => {
@@ -25,24 +27,46 @@ export const conquestConverter = (seasonReword?: Items): ConquestListContents[] 
     return (resourceNum !== 0) ? `${resourceNum}\n(${Math.floor(resourceNum * 1.5)})` : '-';
   };
 
-  const getItems = (rewardItem: Item[]): string => {
-    let items: string = '';
-    rewardItem.forEach((value: Item) => {
-      if (!((value.item_type.toString() === '5') && (
-        (value.item_id.toString() === '2') ||
-        (value.item_id.toString() === '3') ||
-        (value.item_id.toString() === '4') ||
-        (value.item_id.toString() === '5')
-      ))) {
-        items += (itemName[value.item_type][value.item_id] !== undefined) ?
-          `${itemName[value.item_type][value.item_id]} x ${value.item_num},\n` : `アイテム${value.item_type}-${value.item_id} x ${value.item_num},\n`;
-      }
-    });
-    // console.log('itemName', items);
-    return (items === '') ? '-' : items.slice(0, -2);
+  const getItemName = (item: Item, isSeason?: boolean): string => {
+    if (!(
+      (item.item_type.toString() === '5') &&
+      (
+        (item.item_id.toString() === '2') ||
+        (item.item_id.toString() === '3') ||
+        (item.item_id.toString() === '4') ||
+        (item.item_id.toString() === '5')
+      )
+    )) {
+      const itemNum: number = (item.item_num !== undefined) ?
+        parseInt(item.item_num.toString(), 10) : 1;
+      return (itemName[item.item_type][item.item_id] !== undefined) ?
+        `${itemName[item.item_type][item.item_id]} x ${isSeason ? itemNum * 2 : itemNum},\n` :
+        `アイテム${item.item_type}-${item.item_id} x ${isSeason ? itemNum * 2 : itemNum},\n`;
+    }
+    return '';
   };
 
-  const data: ConquestListContents[] = [];
+  const getItems = (rewardItem: Item[], isSeason?: boolean): string => {
+    let items: string = '';
+    rewardItem.forEach(
+      (value: Item) => { items += getItemName(value); },
+    );
+    if ((isSeason) && (items !== '')) {
+      items = items.slice(0, -2);
+      items += '\n(';
+      rewardItem.forEach(
+        (value: Item) => { items += getItemName(value, isSeason); },
+      );
+      items = items.slice(0, -2);
+      items += ')';
+      return items;
+    }
+    // console.log('itemName', items);
+    return (items === '') ? '-' : items.slice(0, -2);
+
+  };
+
+  const data: ConquestTableContents[] = [];
   Object.entries(conquestData).forEach(([key, value]) => {
     // console.log('item', getItems(value.reward.normal.item));
     const hour: string = (`0${Math.floor(value.require.time / 60)}`).slice(-2);
@@ -64,6 +88,7 @@ export const conquestConverter = (seasonReword?: Items): ConquestListContents[] 
       file: getResource(value.reward.normal.item, resourceId.file),
       item: getItems(value.reward.normal.item),
       greatAdd: getItems(value.reward.greatAdd.item),
+      seasonReward: getItems(seasonRewardItems[key] ? seasonRewardItems[key] : [], true),
     });
   });
 
