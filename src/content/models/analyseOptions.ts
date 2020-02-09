@@ -19,7 +19,7 @@ export const analyseOptions = (jsonValue: any, page: string): void => {
             handbookState = response.handbookState;
           }
           // 季節報酬を上書き（余計な書き換えを行わないか要注意！）
-          handbookState.conquestTable.season_reward_list = items;
+          handbookState.conquestTable.seasonRewardItems = items;
           // console.log('handbookState, %o', handbookState);
           // console.log('seasonItems, %o', handbookState.conquestTable.season_reward_list);
           chrome.storage.local.set({ handbookState });

@@ -6,13 +6,13 @@ export enum conquestTableActionType {
 
 export interface SetSeasonItemsAction {
   type: conquestTableActionType.SET_SEASONITEMS;
-  seasonItems: Items;
+  seasonRewardItems: Items;
 }
 
-export const setSeasonItems = (seasonItems: Items): SetSeasonItemsAction =>
+export const setSeasonItems = (seasonRewardItems: Items): SetSeasonItemsAction =>
   ({
     type: conquestTableActionType.SET_SEASONITEMS,
-    seasonItems,
+    seasonRewardItems,
   });
 
 export type ConquestTableActions =

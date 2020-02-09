@@ -4,7 +4,7 @@ export type Item = {
   item_num: number | string,
 };
 
-export const itemsInitialState: Item = {
+export const itemInitialState: Item = {
   item_type: 0,
   item_id: 0,
   item_num: 0,

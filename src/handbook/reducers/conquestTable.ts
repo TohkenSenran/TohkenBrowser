@@ -1,4 +1,5 @@
 import { Reducer } from 'redux';
+
 import { ConquestTableActions, conquestTableActionType } from '../actions/conquestTable';
 import { conquestTableInitialState, ConquestTableState } from '../states/conquestTable';
 
@@ -8,7 +9,7 @@ const conquestTable: Reducer<ConquestTableState, ConquestTableActions> =
       case conquestTableActionType.SET_SEASONITEMS:
         return {
           ...state,
-          season_reward_list: action.seasonItems,
+          seasonRewardItems: action.seasonRewardItems,
         };
       default:
         return state;

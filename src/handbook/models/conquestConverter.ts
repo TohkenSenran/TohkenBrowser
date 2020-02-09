@@ -1,4 +1,4 @@
-import { conquestData, itemName, resourceId, swordName, swordTypeName } from '../../constants';
+import { conquestData, itemName, resourceId, swordName } from '../../constants';
 
 import { Item, Items } from '../../content/states/responseJson/Item';
 import { ConquestTableContents } from '../states/ConquestTableContents';
@@ -10,7 +10,7 @@ export const conquestConverter = (seasonReword?: Items): ConquestTableContents[]
   const getRequireSwords = (swordType: SwordType): string => {
     let require: string = '';
     Object.entries(swordType).forEach(([key, value]) => {
-      require += value ? `${swordTypeName[key]},\n` : '';
+      require += value ? `${swordType[key]},\n` : '';
     });
     return require = (require === '') ? '-' : require.slice(0, -2);
   };

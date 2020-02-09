@@ -11,12 +11,12 @@ import { ConquestTableContents } from '../states/ConquestTableContents';
 import DrawerMenu from './DrawerMenu';
 
 const ConquestTable: React.FC<ConquestTableProps> = (props) => {
-  console.log('in ConquestTable %o', props.conquestTable.season_reward_list);
+  // console.log('in ConquestTable %o', props.conquestTable.seasonRewardItems);
   const [menuOpen, setMenuOpen] = React.useState(false);
   const menuClick = () => { setMenuOpen(true); };
   const menuClose = () => { setMenuOpen(false); };
 
-  const data: ConquestTableContents[] = conquestConverter(props.conquestTable.season_reward_list);
+  const data: ConquestTableContents[] = conquestConverter(props.conquestTable.seasonRewardItems);
   // console.log('data: %o', data);
   const textCellStyle: React.CSSProperties = { padding: '12px 6px', textAlign: 'center', whiteSpace: 'pre' };
   const numberCellStyle: React.CSSProperties = { padding: 6, textAlign: 'right' };

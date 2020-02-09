@@ -7,10 +7,10 @@ export const getSeasonReward: () => Promise<Items> = () =>
         (items) &&
         (items.handbookState) &&
         (items.handbookState.conquestTable) &&
-        (items.handbookState.conquestTable.season_reward_list)
+        (items.handbookState.conquestTable.seasonRewardItems)
       ) {
         // console.log('in getSeasonReward %o', items);
-        resolve(items.handbookState.conquestTable.season_reward_list);
+        resolve(items.handbookState.conquestTable.seasonRewardItems);
       } else {
         // 狙いのものがなければ空を吐く
         resolve({});
