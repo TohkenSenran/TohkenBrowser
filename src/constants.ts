@@ -544,195 +544,16 @@ export const equipStatus = {
   },
 };
 
-export const swordName = {
-  0: '不明',
-  3: '三日月宗近',
-  4: '三日月宗近・極',
-  5: '小狐丸',
-  6: '小狐丸・極',
-  7: '石切丸',
-  8: '石切丸・極',
-  9: '岩融',
-  10: '岩融・極',
-  11: '今剣',
-  12: '今剣・極',
-  13: '大典太光世',
-  14: '大典太光世・極',
-  15: 'ソハヤノツルキ',
-  16: 'ソハヤノツルキ・極',
-  17: '数珠丸恒次',
-  18: '数珠丸恒次・極',
-  19: 'にっかり青江',
-  20: 'にっかり青江・極',
-  23: '鳴狐',
-  24: '鳴狐・極',
-  25: '一期一振',
-  26: '一期一振・極',
-  27: '鯰尾藤四郎',
-  28: '鯰尾藤四郎・極',
-  29: '骨喰藤四郎',
-  30: '骨喰藤四郎・極',
-  31: '平野藤四郎',
-  32: '平野藤四郎・極 ',
-  33: '厚藤四郎',
-  34: '厚藤四郎・極 ',
-  35: '後藤藤四郎',
-  36: '後藤藤四郎・極',
-  37: '信濃藤四郎',
-  38: '信濃藤四郎・極',
-  39: '前田藤四郎',
-  40: '前田藤四郎・極',
-  41: '秋田藤四郎',
-  42: '秋田藤四郎・極',
-  43: '博多藤四郎',
-  44: '博多藤四郎・極',
-  45: '乱藤四郎',
-  46: '乱藤四郎・極',
-  47: '五虎退',
-  48: '五虎退・極',
-  49: '薬研藤四郎',
-  50: '薬研藤四郎・極',
-  51: '包丁藤四郎',
-  52: '包丁藤四郎・極',
-  53: '大包平',
-  54: '大包平・極',
-  55: '鶯丸',
-  56: '鶯丸・極',
-  57: '明石国行',
-  58: '明石国行・極',
-  59: '蛍丸',
-  60: '蛍丸・極',
-  61: '愛染国俊',
-  62: '愛染国俊・極',
-  63: '千子村正',
-  64: '千子村正・極',
-  65: '蜻蛉切',
-  66: '蜻蛉切・極',
-  67: '物吉貞宗',
-  68: '物吉貞宗・極',
-  69: '太鼓鐘貞宗',
-  70: '太鼓鐘貞宗・極',
-  71: '亀甲貞宗',
-  72: '亀甲貞宗・極',
-  73: '燭台切光忠',
-  74: '燭台切光忠・極',
-  75: '大般若長光',
-  76: '大般若長光・極',
-  77: '小竜景光',
-  78: '小竜景光・極',
-  79: '江雪左文字',
-  80: '江雪左文字・極',
-  81: '宗三左文字',
-  82: '宗三左文字・極',
-  83: '小夜左文字',
-  84: '小夜左文字・極',
-  85: '加州清光',
-  86: '加州清光・極',
-  87: '大和守安定',
-  88: '大和守安定・極',
-  89: '歌仙兼定',
-  90: '歌仙兼定・極',
-  91: '和泉守兼定',
-  92: '和泉守兼定・極',
-  93: '陸奥守吉行',
-  94: '陸奥守吉行・極',
-  95: '山姥切国広',
-  96: '山姥切国広・極',
-  97: '山伏国広',
-  98: '山伏国広・極',
-  99: '堀川国広',
-  100: '堀川国広・極',
-  101: '蜂須賀虎徹',
-  102: '蜂須賀虎徹・極',
-  103: '浦島虎徹',
-  104: '浦島虎徹・極',
-  105: '長曽祢虎徹',
-  106: '長曽祢虎徹・極',
-  107: '髭切',
-  108: '髭切・特一',
-  109: '髭切・特二',
-  110: '髭切・特三',
-  111: '髭切・極',
-  112: '膝丸',
-  113: '膝丸・特一',
-  114: '膝丸・特二',
-  115: '膝丸・極',
-  116: '大倶利伽羅',
-  117: '大倶利伽羅・極',
-  118: 'へし切長谷部',
-  119: 'へし切長谷部・極',
-  120: '不動行光',
-  121: '不動行光・極',
-  122: '獅子王',
-  123: '獅子王・極',
-  124: '小烏丸',
-  125: '小烏丸・極',
-  128: '同田貫正国',
-  129: '同田貫正国・極',
-  130: '鶴丸国永',
-  131: '鶴丸国永・極',
-  132: '太郎太刀',
-  133: '太郎太刀・極',
-  134: '次郎太刀',
-  135: '次郎太刀・極',
-  136: '日本号',
-  137: '日本号・極',
-  138: '御手杵',
-  139: '御手杵・極',
-  140: '巴形薙刀',
-  141: '巴形薙刀・極',
-  142: '毛利藤四郎',
-  143: '毛利藤四郎・極',
-  144: '篭手切江',
-  145: '篭手切江・極',
-  146: '謙信景光',
-  147: '謙信景光・極',
-  148: '小豆長光',
-  149: '小豆長光・極',
-  150: '日向正宗',
-  151: '日向正宗・極',
-  152: '静形薙刀',
-  153: '静形薙刀・極',
-  154: '南泉一文字',
-  155: '南泉一文字・極',
-  156: '千代金丸',
-  157: '千代金丸・極',
-  158: '山姥切長義',
-  159: '山姥切長義・極',
-  160: '豊前江',
-  161: '豊前江・極',
-  162: '祢々切丸',
-  163: '祢々切丸・極',
-  164: '白山吉光',
-  165: '白山吉光・極',
-  166: '南海太郎朝尊',
-  167: '南海太郎朝尊・極',
-  168: '肥前忠広',
-  169: '肥前忠広・極',
-  170: '北谷菜切',
-  171: '北谷菜切・極',
-  172: '桑名江',
-  173: '桑名江・極',
-  174: '水心子正秀',
-  175: '水心子正秀・極',
-  176: '源清麿',
-  177: '源清麿・極',
-  178: '松井江',
-  179: '松井江・極',
-  180: '山鳥毛',
-  181: '山鳥毛・極',
+export const swordType = {
+  tanto: '短刀',
+  wakizashi: '脇差',
+  uchigatana: '打刀',
+  tachi: '太刀',
+  odachi: '大太刀',
+  yari: '槍',
+  naginata: '薙刀',
+  tsurugi: '剣',
 };
-
-export enum swordNameType {
-  tanto = '短刀',
-  wakizashi = '脇差',
-  uchigatana = '打刀',
-  tachi = '太刀',
-  odachi = '大太刀',
-  yari = '槍',
-  naginata = '薙刀',
-  tsurugi = '剣',
-}
 
 export const raritySlotNUmber = {
   1: 1,
@@ -745,707 +566,707 @@ export const raritySlotNUmber = {
 export const swordProps = {
   0: {
     name: '不明',
-    type: '短刀',
+    type: 'tanto',
   },
   3: {
     name: '三日月宗近',
-    type: '太刀',
+    type: 'tachi',
   },
   4: {
     name: '三日月宗近・極',
-    type: '太刀',
+    type: 'tachi',
   },
   5: {
     name: '小狐丸',
-    type: '太刀',
+    type: 'tachi',
   },
   6: {
     name: '小狐丸・極',
-    type: '太刀',
+    type: 'tachi',
   },
   7: {
     name: '石切丸',
-    type: '大太刀',
+    type: 'odachi',
   },
   8: {
     name: '石切丸・極',
-    type: '大太刀',
+    type: 'odachi',
   },
   9: {
     name: '岩融',
-    type: '薙刀',
+    type: 'naginata',
   },
   10: {
     name: '岩融・極',
-    type: '薙刀',
+    type: 'naginata',
   },
   11: {
     name: '今剣',
-    type: '短刀',
+    type: 'tanto',
   },
   12: {
     name: '今剣・極',
-    type: '短刀',
+    type: 'tanto',
   },
   13: {
     name: '大典太光世',
-    type: '太刀',
+    type: 'tachi',
   },
   14: {
     name: '大典太光世・極',
-    type: '太刀',
+    type: 'tachi',
   },
   15: {
     name: 'ソハヤノツルキ',
-    type: '太刀',
+    type: 'tachi',
   },
   16: {
     name: 'ソハヤノツルキ・極',
-    type: '太刀',
+    type: 'tachi',
   },
   17: {
     name: '数珠丸恒次',
-    type: '太刀',
+    type: 'tachi',
   },
   18: {
     name: '数珠丸恒次・極',
-    type: '太刀',
+    type: 'tachi',
   },
   19: {
     name: 'にっかり青江',
-    type: '脇差',
+    type: 'wakizashi',
   },
   20: {
     name: 'にっかり青江・極',
-    type: '脇差',
+    type: 'wakizashi',
   },
   23: {
     name: '鳴狐',
-    type: '打刀',
+    type: 'uchigatana',
   },
   24: {
     name: '鳴狐・極',
-    type: '打刀',
+    type: 'uchigatana',
   },
   25: {
     name: '一期一振',
-    type: '太刀',
+    type: 'tachi',
   },
   26: {
     name: '一期一振・極',
-    type: '太刀',
+    type: 'tachi',
   },
   27: {
     name: '鯰尾藤四郎',
-    type: '脇差',
+    type: 'wakizashi',
   },
   28: {
     name: '鯰尾藤四郎・極',
-    type: '脇差',
+    type: 'wakizashi',
   },
   29: {
     name: '骨喰藤四郎',
-    type: '脇差',
+    type: 'wakizashi',
   },
   30: {
     name: '骨喰藤四郎・極',
-    type: '脇差',
+    type: 'wakizashi',
   },
   31: {
     name: '平野藤四郎',
-    type: '短刀',
+    type: 'tanto',
   },
   32: {
     name: '平野藤四郎・極 ',
-    type: '短刀',
+    type: 'tanto',
   },
   33: {
     name: '厚藤四郎',
-    type: '短刀',
+    type: 'tanto',
   },
   34: {
     name: '厚藤四郎・極 ',
-    type: '短刀',
+    type: 'tanto',
   },
   35: {
     name: '後藤藤四郎',
-    type: '短刀',
+    type: 'tanto',
   },
   36: {
     name: '後藤藤四郎・極',
-    type: '短刀',
+    type: 'tanto',
   },
   37: {
     name: '信濃藤四郎',
-    type: '短刀',
+    type: 'tanto',
   },
   38: {
     name: '信濃藤四郎・極',
-    type: '短刀',
+    type: 'tanto',
   },
   39: {
     name: '前田藤四郎',
-    type: '短刀',
+    type: 'tanto',
   },
   40: {
     name: '前田藤四郎・極',
-    type: '短刀',
+    type: 'tanto',
   },
   41: {
     name: '秋田藤四郎',
-    type: '短刀',
+    type: 'tanto',
   },
   42: {
     name: '秋田藤四郎・極',
-    type: '短刀',
+    type: 'tanto',
   },
   43: {
     name: '博多藤四郎',
-    type: '短刀',
+    type: 'tanto',
   },
   44: {
     name: '博多藤四郎・極',
-    type: '短刀',
+    type: 'tanto',
   },
   45: {
     name: '乱藤四郎',
-    type: '短刀',
+    type: 'tanto',
   },
   46: {
     name: '乱藤四郎・極',
-    type: '短刀',
+    type: 'tanto',
   },
   47: {
     name: '五虎退',
-    type: '短刀',
+    type: 'tanto',
   },
   48: {
     name: '五虎退・極',
-    type: '短刀',
+    type: 'tanto',
   },
   49: {
     name: '薬研藤四郎',
-    type: '短刀',
+    type: 'tanto',
   },
   50: {
     name: '薬研藤四郎・極',
-    type: '短刀',
+    type: 'tanto',
   },
   51: {
     name: '包丁藤四郎',
-    type: '短刀',
+    type: 'tanto',
   },
   52: {
     name: '包丁藤四郎・極',
-    type: '短刀',
+    type: 'tanto',
   },
   53: {
     name: '大包平',
-    type: '太刀',
+    type: 'tachi',
   },
   54: {
     name: '大包平・極',
-    type: '太刀',
+    type: 'tachi',
   },
   55: {
     name: '鶯丸',
-    type: '太刀',
+    type: 'tachi',
   },
   56: {
     name: '鶯丸・極',
-    type: '太刀',
+    type: 'tachi',
   },
   57: {
     name: '明石国行',
-    type: '太刀',
+    type: 'tachi',
   },
   58: {
     name: '明石国行・極',
-    type: '太刀',
+    type: 'tachi',
   },
   59: {
     name: '蛍丸',
-    type: '大太刀',
+    type: 'odachi',
   },
   60: {
     name: '蛍丸・極',
-    type: '大太刀',
+    type: 'odachi',
   },
   61: {
     name: '愛染国俊',
-    type: '短刀',
+    type: 'tanto',
   },
   62: {
     name: '愛染国俊・極',
-    type: '短刀',
+    type: 'tanto',
   },
   63: {
     name: '千子村正',
-    type: '打刀',
+    type: 'uchigatana',
   },
   64: {
     name: '千子村正・極',
-    type: '打刀',
+    type: 'uchigatana',
   },
   65: {
     name: '蜻蛉切',
-    type: '槍',
+    type: 'yari',
   },
   66: {
     name: '蜻蛉切・極',
-    type: '槍',
+    type: 'yari',
   },
   67: {
     name: '物吉貞宗',
-    type: '脇差',
+    type: 'wakizashi',
   },
   68: {
     name: '物吉貞宗・極',
-    type: '脇差',
+    type: 'wakizashi',
   },
   69: {
     name: '太鼓鐘貞宗',
-    type: '短刀',
+    type: 'tanto',
   },
   70: {
     name: '太鼓鐘貞宗・極',
-    type: '短刀',
+    type: 'tanto',
   },
   71: {
     name: '亀甲貞宗',
-    type: '打刀',
+    type: 'uchigatana',
   },
   72: {
     name: '亀甲貞宗・極',
-    type: '打刀',
+    type: 'uchigatana',
   },
   73: {
     name: '燭台切光忠',
-    type: '太刀',
+    type: 'tachi',
   },
   74: {
     name: '燭台切光忠・極',
-    type: '太刀',
+    type: 'tachi',
   },
   75: {
     name: '大般若長光',
-    type: '太刀',
+    type: 'tachi',
   },
   76: {
     name: '大般若長光・極',
-    type: '太刀',
+    type: 'tachi',
   },
   77: {
     name: '小竜景光',
-    type: '太刀',
+    type: 'tachi',
   },
   78: {
     name: '小竜景光・極',
-    type: '太刀',
+    type: 'tachi',
   },
   79: {
     name: '江雪左文字',
-    type: '太刀',
+    type: 'tachi',
   },
   80: {
     name: '江雪左文字・極',
-    type: '太刀',
+    type: 'tachi',
   },
   81: {
     name: '宗三左文字',
-    type: '打刀',
+    type: 'uchigatana',
   },
   82: {
     name: '宗三左文字・極',
-    type: '打刀',
+    type: 'uchigatana',
   },
   83: {
     name: '小夜左文字',
-    type: '短刀',
+    type: 'tanto',
   },
   84: {
     name: '小夜左文字・極',
-    type: '短刀',
+    type: 'tanto',
   },
   85: {
     name: '加州清光',
-    type: '打刀',
+    type: 'uchigatana',
   },
   86: {
     name: '加州清光・極',
-    type: '打刀',
+    type: 'uchigatana',
   },
   87: {
     name: '大和守安定',
-    type: '打刀',
+    type: 'uchigatana',
   },
   88: {
     name: '大和守安定・極',
-    type: '打刀',
+    type: 'uchigatana',
   },
   89: {
     name: '歌仙兼定',
-    type: '打刀',
+    type: 'uchigatana',
   },
   90: {
     name: '歌仙兼定・極',
-    type: '打刀',
+    type: 'uchigatana',
   },
   91: {
     name: '和泉守兼定',
-    type: '打刀',
+    type: 'uchigatana',
   },
   92: {
     name: '和泉守兼定・極',
-    type: '打刀',
+    type: 'uchigatana',
   },
   93: {
     name: '陸奥守吉行',
-    type: '打刀',
+    type: 'uchigatana',
   },
   94: {
     name: '陸奥守吉行・極',
-    type: '打刀',
+    type: 'uchigatana',
   },
   95: {
     name: '山姥切国広',
-    type: '打刀',
+    type: 'uchigatana',
   },
   96: {
     name: '山姥切国広・極',
-    type: '打刀',
+    type: 'uchigatana',
   },
   97: {
     name: '山伏国広',
-    type: '太刀',
+    type: 'tachi',
   },
   98: {
     name: '山伏国広・極',
-    type: '太刀',
+    type: 'tachi',
   },
   99: {
     name: '堀川国広',
-    type: '脇差',
+    type: 'wakizashi',
   },
   100: {
     name: '堀川国広・極',
-    type: '脇差',
+    type: 'wakizashi',
   },
   101: {
     name: '蜂須賀虎徹',
-    type: '打刀',
+    type: 'uchigatana',
   },
   102: {
     name: '蜂須賀虎徹・極',
-    type: '打刀',
+    type: 'uchigatana',
   },
   103: {
     name: '浦島虎徹',
-    type: '脇差',
+    type: 'wakizashi',
   },
   104: {
     name: '浦島虎徹・極',
-    type: '脇差',
+    type: 'wakizashi',
   },
   105: {
     name: '長曽祢虎徹',
-    type: '打刀',
+    type: 'uchigatana',
   },
   106: {
     name: '長曽祢虎徹・極',
-    type: '打刀',
+    type: 'uchigatana',
   },
   107: {
     name: '髭切',
-    type: '太刀',
+    type: 'tachi',
   },
   108: {
     name: '髭切・特一',
-    type: '太刀',
+    type: 'tachi',
   },
   109: {
     name: '髭切・特二',
-    type: '太刀',
+    type: 'tachi',
   },
   110: {
     name: '髭切・特三',
-    type: '太刀',
+    type: 'tachi',
   },
   111: {
     name: '髭切・極',
-    type: '太刀',
+    type: 'tachi',
   },
   112: {
     name: '膝丸',
-    type: '太刀',
+    type: 'tachi',
   },
   113: {
     name: '膝丸・特一',
-    type: '太刀',
+    type: 'tachi',
   },
   114: {
     name: '膝丸・特二',
-    type: '太刀',
+    type: 'tachi',
   },
   115: {
     name: '膝丸・極',
-    type: '太刀',
+    type: 'tachi',
   },
   116: {
     name: '大倶利伽羅',
-    type: '打刀',
+    type: 'uchigatana',
   },
   117: {
     name: '大倶利伽羅・極',
-    type: '打刀',
+    type: 'uchigatana',
   },
   118: {
     name: 'へし切長谷部',
-    type: '打刀',
+    type: 'uchigatana',
   },
   119: {
     name: 'へし切長谷部・極',
-    type: '打刀',
+    type: 'uchigatana',
   },
   120: {
     name: '不動行光',
-    type: '短刀',
+    type: 'tanto',
   },
   121: {
     name: '不動行光・極',
-    type: '短刀',
+    type: 'tanto',
   },
   122: {
     name: '獅子王',
-    type: '太刀',
+    type: 'tachi',
   },
   123: {
     name: '獅子王・極',
-    type: '太刀',
+    type: 'tachi',
   },
   124: {
     name: '小烏丸',
-    type: '太刀',
+    type: 'tachi',
   },
   125: {
     name: '小烏丸・極',
-    type: '太刀',
+    type: 'tachi',
   },
   128: {
     name: '同田貫正国',
-    type: '打刀',
+    type: 'uchigatana',
   },
   129: {
     name: '同田貫正国・極',
-    type: '打刀',
+    type: 'uchigatana',
   },
   130: {
     name: '鶴丸国永',
-    type: '太刀',
+    type: 'tachi',
   },
   131: {
     name: '鶴丸国永・極',
-    type: '太刀',
+    type: 'tachi',
   },
   132: {
     name: '太郎太刀',
-    type: '大太刀',
+    type: 'odachi',
   },
   133: {
     name: '太郎太刀・極',
-    type: '大太刀',
+    type: 'odachi',
   },
   134: {
     name: '次郎太刀',
-    type: '大太刀',
+    type: 'odachi',
   },
   135: {
     name: '次郎太刀・極',
-    type: '大太刀',
+    type: 'odachi',
   },
   136: {
     name: '日本号',
-    type: '槍',
+    type: 'yari',
   },
   137: {
     name: '日本号・極',
-    type: '槍',
+    type: 'yari',
   },
   138: {
     name: '御手杵',
-    type: '槍',
+    type: 'yari',
   },
   139: {
     name: '御手杵・極',
-    type: '槍',
+    type: 'yari',
   },
   140: {
     name: '巴形薙刀',
-    type: '薙刀',
+    type: 'naginata',
   },
   141: {
     name: '巴形薙刀・極',
-    type: '薙刀',
+    type: 'naginata',
   },
   142: {
     name: '毛利藤四郎',
-    type: '短刀',
+    type: 'tanto',
   },
   143: {
     name: '毛利藤四郎・極',
-    type: '短刀',
+    type: 'tanto',
   },
   144: {
     name: '篭手切江',
-    type: '脇差',
+    type: 'wakizashi',
   },
   145: {
     name: '篭手切江・極',
-    type: '脇差',
+    type: 'wakizashi',
   },
   146: {
     name: '謙信景光',
-    type: '短刀',
+    type: 'tanto',
   },
   147: {
     name: '謙信景光・極',
-    type: '短刀',
+    type: 'tanto',
   },
   148: {
     name: '小豆長光',
-    type: '太刀',
+    type: 'tachi',
   },
   149: {
     name: '小豆長光・極',
-    type: '太刀',
+    type: 'tachi',
   },
   150: {
     name: '日向正宗',
-    type: '短刀',
+    type: 'tanto',
   },
   151: {
     name: '日向正宗・極',
-    type: '短刀',
+    type: 'tanto',
   },
   152: {
     name: '静形薙刀',
-    type: '薙刀',
+    type: 'naginata',
   },
   153: {
     name: '静形薙刀・極',
-    type: '薙刀',
+    type: 'naginata',
   },
   154: {
     name: '南泉一文字',
-    type: '打刀',
+    type: 'uchigatana',
   },
   155: {
     name: '南泉一文字・極',
-    type: '打刀',
+    type: 'uchigatana',
   },
   156: {
     name: '千代金丸',
-    type: '太刀',
+    type: 'tachi',
   },
   157: {
     name: '千代金丸・極',
-    type: '太刀',
+    type: 'tachi',
   },
   158: {
     name: '山姥切長義',
-    type: '打刀',
+    type: 'uchigatana',
   },
   159: {
     name: '山姥切長義・極',
-    type: '打刀',
+    type: 'uchigatana',
   },
   160: {
     name: '豊前江',
-    type: '打刀',
+    type: 'uchigatana',
   },
   161: {
     name: '豊前江・極',
-    type: '打刀',
+    type: 'uchigatana',
   },
   162: {
     name: '祢々切丸',
-    type: '大太刀',
+    type: 'odachi',
   },
   163: {
     name: '祢々切丸・極',
-    type: '大太刀',
+    type: 'odachi',
   },
   164: {
     name: '白山吉光',
-    type: '剣',
+    type: 'tsurugi',
   },
   165: {
     name: '白山吉光・極',
-    type: '剣',
+    type: 'tsurugi',
   },
   166: {
     name: '南海太郎朝尊',
-    type: '打刀',
+    type: 'uchigatana',
   },
   167: {
     name: '南海太郎朝尊・極',
-    type: '打刀',
+    type: 'uchigatana',
   },
   168: {
     name: '肥前忠広',
-    type: '脇差',
+    type: 'wakizashi',
   },
   169: {
     name: '肥前忠広・極',
-    type: '脇差',
+    type: 'wakizashi',
   },
   170: {
     name: '北谷菜切',
-    type: '短刀',
+    type: 'tanto',
   },
   171: {
     name: '北谷菜切・極',
-    type: '短刀',
+    type: 'tanto',
   },
   172: {
     name: '桑名江',
-    type: '打刀',
+    type: 'uchigatana',
   },
   173: {
     name: '桑名江・極',
-    type: '打刀',
+    type: 'uchigatana',
   },
   174: {
     name: '水心子正秀',
-    type: '打刀',
+    type: 'uchigatana',
   },
   175: {
     name: '水心子正秀・極',
-    type: '打刀',
+    type: 'uchigatana',
   },
   176: {
     name: '源清麿',
-    type: '打刀',
+    type: 'uchigatana',
   },
   177: {
     name: '源清麿・極',
-    type: '打刀',
+    type: 'uchigatana',
   },
   178: {
     name: '松井江',
-    type: '打刀',
+    type: 'uchigatana',
   },
   179: {
     name: '松井江・極',
-    type: '打刀',
+    type: 'uchigatana',
   },
   180: {
     name: '山鳥毛',
-    type: '太刀',
+    type: 'tachi',
   },
   181: {
     name: '山鳥毛・極',
-    type: '太刀',
+    type: 'tachi',
   },
 };
 
@@ -1521,7 +1342,7 @@ export const conquestData = {
     require: {
       time: 10,
       totalLv: 5,
-      swordType: {
+      swordTypeList: {
         tanto: false,
         wakizashi: false,
         uchigatana: false,
@@ -1560,7 +1381,7 @@ export const conquestData = {
     require: {
       time: 30,
       totalLv: 10,
-      swordType: {
+      swordTypeList: {
         tanto: true,
         wakizashi: false,
         uchigatana: false,
@@ -1599,7 +1420,7 @@ export const conquestData = {
     require: {
       time: 20,
       totalLv: 20,
-      swordType: {
+      swordTypeList: {
         tanto: false,
         wakizashi: true,
         uchigatana: false,
@@ -1638,7 +1459,7 @@ export const conquestData = {
     require: {
       time: 60,
       totalLv: 30,
-      swordType: {
+      swordTypeList: {
         tanto: true,
         wakizashi: true,
         uchigatana: false,
@@ -1677,7 +1498,7 @@ export const conquestData = {
     require: {
       time: 90,
       totalLv: 50,
-      swordType: {
+      swordTypeList: {
         tanto: false,
         wakizashi: false,
         uchigatana: false,
@@ -1722,7 +1543,7 @@ export const conquestData = {
     require: {
       time: 180,
       totalLv: 60,
-      swordType: {
+      swordTypeList: {
         tanto: false,
         wakizashi: false,
         uchigatana: true,
@@ -1767,7 +1588,7 @@ export const conquestData = {
     require: {
       time: 120,
       totalLv: 80,
-      swordType: {
+      swordTypeList: {
         tanto: false,
         wakizashi: false,
         uchigatana: false,
@@ -1812,7 +1633,7 @@ export const conquestData = {
     require: {
       time: 150,
       totalLv: 100,
-      swordType: {
+      swordTypeList: {
         tanto: false,
         wakizashi: false,
         uchigatana: true,
@@ -1857,7 +1678,7 @@ export const conquestData = {
     require: {
       time: 240,
       totalLv: 110,
-      swordType: {
+      swordTypeList: {
         tanto: false,
         wakizashi: false,
         uchigatana: false,
@@ -1902,7 +1723,7 @@ export const conquestData = {
     require: {
       time: 180,
       totalLv: 120,
-      swordType: {
+      swordTypeList: {
         tanto: false,
         wakizashi: false,
         uchigatana: false,
@@ -1952,7 +1773,7 @@ export const conquestData = {
     require: {
       time: 600,
       totalLv: 130,
-      swordType: {
+      swordTypeList: {
         tanto: false,
         wakizashi: false,
         uchigatana: false,
@@ -1997,7 +1818,7 @@ export const conquestData = {
     require: {
       time: 480,
       totalLv: 140,
-      swordType: {
+      swordTypeList: {
         tanto: false,
         wakizashi: false,
         uchigatana: false,
@@ -2042,7 +1863,7 @@ export const conquestData = {
     require: {
       time: 120,
       totalLv: 150,
-      swordType: {
+      swordTypeList: {
         tanto: false,
         wakizashi: false,
         uchigatana: false,
@@ -2092,7 +1913,7 @@ export const conquestData = {
     require: {
       time: 300,
       totalLv: 180,
-      swordType: {
+      swordTypeList: {
         tanto: false,
         wakizashi: false,
         uchigatana: false,
@@ -2137,7 +1958,7 @@ export const conquestData = {
     require: {
       time: 720,
       totalLv: 200,
-      swordType: {
+      swordTypeList: {
         tanto: false,
         wakizashi: false,
         uchigatana: false,
@@ -2187,7 +2008,7 @@ export const conquestData = {
     require: {
       time: 360,
       totalLv: 220,
-      swordType: {
+      swordTypeList: {
         tanto: false,
         wakizashi: false,
         uchigatana: false,
@@ -2232,7 +2053,7 @@ export const conquestData = {
     require: {
       time: 720,
       totalLv: 240,
-      swordType: {
+      swordTypeList: {
         tanto: false,
         wakizashi: false,
         uchigatana: false,
@@ -2282,7 +2103,7 @@ export const conquestData = {
     require: {
       time: 1080,
       totalLv: 260,
-      swordType: {
+      swordTypeList: {
         tanto: false,
         wakizashi: false,
         uchigatana: false,
@@ -2337,7 +2158,7 @@ export const conquestData = {
     require: {
       time: 900,
       totalLv: 280,
-      swordType: {
+      swordTypeList: {
         tanto: false,
         wakizashi: false,
         uchigatana: false,
@@ -2392,7 +2213,7 @@ export const conquestData = {
     require: {
       time: 1440,
       totalLv: 300,
-      swordType: {
+      swordTypeList: {
         tanto: false,
         wakizashi: false,
         uchigatana: false,

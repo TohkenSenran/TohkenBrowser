@@ -1,7 +1,7 @@
 import * as React from 'react';
 import toastedNotes from 'toasted-notes';
 
-import { forgeNo, repairNo, swordName, swordProps } from '../../constants';
+import { forgeNo, repairNo, swordProps } from '../../constants';
 import { ToastNotificationProps } from '../containers/ToastNotification';
 import NotificationCard from './NotificationCard';
 
@@ -76,7 +76,7 @@ const ToastNotification: React.FC<ToastNotificationProps> = (props) => {
               if ((serialId) && (props.responseJson.sword)) {
                 const swordId = props.responseJson.sword[serialId].sword_id;
                 toastNotify(
-                  `${swordName[swordId.toString()]}\n手入完了`,
+                  `${swordProps[swordId.toString()].name}\n手入完了`,
                   chrome.extension.getURL(`img/Setting/Swords/${swordId.toString()}/Repair.png`),
                 );
               }

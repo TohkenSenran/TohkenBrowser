@@ -1,4 +1,4 @@
-export type SwordType = {
+export type SwordTypeList = {
   tanto: boolean,
   wakizashi: boolean,
   uchigatana: boolean,
@@ -9,7 +9,7 @@ export type SwordType = {
   tsurugi: boolean,
 };
 
-export const initialSwordType = {
+export const initialSwordTypeList = {
   tanto: false,
   wakizashi: false,
   uchigatana: false,

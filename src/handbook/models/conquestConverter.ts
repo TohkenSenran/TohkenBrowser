@@ -1,15 +1,15 @@
-import { conquestData, itemName, resourceId, swordName } from '../../constants';
+import { conquestData, itemName, resourceId, swordType } from '../../constants';
 
 import { Item, Items } from '../../content/states/responseJson/Item';
 import { ConquestTableContents } from '../states/ConquestTableContents';
-import { SwordType } from '../states/SwordType';
+import { SwordTypeList } from '../states/SwordTypeList';
 
 export const conquestConverter = (seasonReword?: Items): ConquestTableContents[] => {
   const seasonRewardItems: Items = (seasonReword !== undefined) ? seasonReword : { 0: [] };
 
-  const getRequireSwords = (swordType: SwordType): string => {
+  const getRequireSwords = (swordTypeList: SwordTypeList): string => {
     let require: string = '';
-    Object.entries(swordType).forEach(([key, value]) => {
+    Object.entries(swordTypeList).forEach(([key, value]) => {
       require += value ? `${swordType[key]},\n` : '';
     });
     return require = (require === '') ? '-' : require.slice(0, -2);
@@ -79,7 +79,7 @@ export const conquestConverter = (seasonReword?: Items): ConquestTableContents[]
       destination: value.destination,
       time: `${hour}:${min}`,
       totalLv: value.require.totalLv,
-      requireSwords: getRequireSwords(value.require.swordType),
+      requireSwords: getRequireSwords(value.require.swordTypeList),
       swordExp: value.reward.normal.sword_exp,
       userExp,
       charcoal: getResource(value.reward.normal.item, resourceId.charcoal),

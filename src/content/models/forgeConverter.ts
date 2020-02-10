@@ -1,4 +1,4 @@
-import { forgeColorName, swordName, swordProps } from '../../constants';
+import { forgeColorName, swordProps } from '../../constants';
 import { Forge } from '../states/responseJson/Forge';
 import { getRemainingTime } from './getRemainingTime';
 

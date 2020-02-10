@@ -1,5 +1,7 @@
 export type HomeSwordsTableContents = {
+  sword_id: number; // 刀剣の種類 *極は別ID
   name: string;
+  swordType: string;
   slotNumber: number; // スロット数
   rarity: number; // レアリティ
   level: number; // レベル
@@ -20,7 +22,9 @@ export type HomeSwordsTableContents = {
 };
 
 export const homeSwordsTableContentsInitialState: HomeSwordsTableContents = {
+  sword_id: 0, // 刀剣の種類 *極は別ID
   name: '不明',
+  swordType: '不明',
   slotNumber: 1,
   rarity: 1, // レアリティ
   level: 1, // レベル

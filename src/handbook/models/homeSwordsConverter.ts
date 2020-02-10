@@ -1,6 +1,7 @@
 import { raritySlotNUmber, swordProps } from '../../constants';
 import { Swords } from '../../content/states/responseJson/Sword';
 import { HomeSwordsTableContents } from '../states/HomeSwordsTableContents';
+import { swordConverter } from '../../content/models/swordConverter';
 
 export const homeSwordsConverter = (homeSwords: Swords): HomeSwordsTableContents[] => {
   const swords: Swords = (homeSwords !== undefined) ? homeSwords : {};
@@ -8,7 +9,9 @@ export const homeSwordsConverter = (homeSwords: Swords): HomeSwordsTableContents
   Object.entries(swords).forEach(([key, value]) => {
     if (value.protect.toString() === '1') {
       data.push({
+        sword_id: parseInt(value.sword_id.toString(), 10),
         name: swordProps[value.sword_id].name,
+        swordType: swordProps[value.sword_id].type,
         slotNumber: raritySlotNUmber[value.rarity],
         rarity: parseInt(value.rarity.toString(), 10), // レアリティ
         level: parseInt(value.level.toString(), 10), // レベル
@@ -24,7 +27,7 @@ export const homeSwordsConverter = (homeSwords: Swords): HomeSwordsTableContents
         scout: parseInt(value.scout.toString(), 10), // 偵察 *男子自身の値，刀装・馬の補正無し
         hide: parseInt(value.hide.toString(), 10), // 隠蔽 *男子自身の値，刀装・馬の補正無し
         loyalties: parseInt(value.loyalties.toString(), 10), // 必殺
-        fatigue: parseInt(value.fatigue.toString(), 10), // 疲労値 *50<=桜，20>疲労中，5>疲労大
+        fatigue: swordConverter(swords, value.serial_id).fatigueValue,
         created_at: value.created_at.toString(), // 入手日時});
       });
     }
