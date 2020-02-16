@@ -28,6 +28,8 @@ const HomeSwordsTable: React.FC<HomeSwordsTableProps> = (props) => {
     { title: '刀種', field: 'swordType', lookup: swordType, cellStyle: textCellStyle },
     { title: '刀装数', field: 'slotNumber', lookup: { 1: 1, 2: 2, 3: 3 }, cellStyle: { ...numberCellStyle, background: 'lavenderblush' } },
     { title: '英気', field: 'fatigue', filtering: false, cellStyle: numberCellStyle },
+    { title: '男子Lv', field: 'level', filtering: false, cellStyle: numberCellStyle },
+    { title: '乱舞Lv', field: 'ranbu_level', filtering: false, cellStyle: numberCellStyle },
     { title: '生存', field: 'hp_max', filtering: false, cellStyle: numberCellStyle },
     { title: '打撃', field: 'atk', filtering: false, cellStyle: numberCellStyle },
     { title: '統率', field: 'def', filtering: false, cellStyle: numberCellStyle },
@@ -49,6 +51,7 @@ const HomeSwordsTable: React.FC<HomeSwordsTableProps> = (props) => {
     filtering: true,
     headerStyle: { textAlign: 'center' },
     paging: false,
+    search: false,
   };
 
   const actions: Array<Action<HomeSwordsTableContents>> = [
@@ -63,10 +66,11 @@ const HomeSwordsTable: React.FC<HomeSwordsTableProps> = (props) => {
   return (
     <Box width="100%">
       <MaterialTable
+        actions={actions}
         options={options}
         columns={columns}
         data={data}
-        title={'遠征情報一覧'}
+        title={'本丸男子一覧'}
         localization={localization}
       />
       <DrawerMenu menuOpen={menuOpen} menuClose={menuClose} />

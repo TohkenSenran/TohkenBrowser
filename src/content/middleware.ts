@@ -2,6 +2,7 @@ import { Action, Dispatch, Middleware, Store } from 'redux';
 
 import { requestType } from '../background/states/requestType';
 import { browserSettingActionType } from './actions/browserSetting';
+import { responseJsonActionType } from './actions/responseJson';
 import { sendMessageToBackground } from './models/sendMessageToBackground';
 import { windowTransform } from './models/windowTransform';
 import { RootState } from './states';
@@ -32,7 +33,10 @@ export const middleware: Middleware = (store: Store<RootState>) =>
     }
     // Stateの保存
     // console.log('save rootState');
-    chrome.storage.local.set({ rootState });
+    // 10秒ごとの更新時はプロパティ変更がないためstore更新を行わない
+    if (action.type !== responseJsonActionType.UPDATE_DATE) {
+      chrome.storage.local.set({ rootState });
+    }
     // console.log('after rS: %O', rootState);
     // console.log('after action: %O', action);
   };

@@ -24,6 +24,7 @@ export const analyseSword = (
     case 'equip/setitem':
     case 'equip/removeitem':
     case 'home/back':
+    case 'home/leave':// 未確認
     case 'composition/compose':
     case 'composition/union':
     case 'item/add_exp':
