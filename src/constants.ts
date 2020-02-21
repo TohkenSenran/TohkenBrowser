@@ -21,6 +21,12 @@ export const partyMemberNo = 6;
 export const forgeNo = 4;
 export const repairNo = 4;
 
+export enum correctType {
+  none = 'none',
+  normal = 'normal',
+  stage7 = 'stage7',
+}
+
 export const statusLabel = {
   none: '',
   hp: '生存',

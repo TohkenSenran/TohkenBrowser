@@ -1,12 +1,12 @@
-import { equipStatus, statusLabel } from '../../constants';
-import { speedCorrect, textType } from '../states/PartyPanelState';
+import { correctType, equipStatus, statusLabel } from '../../constants';
+import { textType } from '../states/PartyPanelState';
 import { Equip, Equips } from '../states/responseJson/Equip';
 import { Sword, swordInitialState, Swords } from '../states/responseJson/Sword';
 
 export const swordConverter = (
   swords: Swords,
   serialId: string | number | null,
-  selectCorrect?: speedCorrect,
+  selectCorrect?: correctType,
   selectTextType?: textType,
   horseDisable?: boolean,
   stateText?: string,
@@ -17,7 +17,7 @@ export const swordConverter = (
   // undefined対策
   if (swords === undefined) swords = {};
   if (serialId === undefined) serialId = null;
-  if (selectCorrect === undefined) selectCorrect = speedCorrect.none;
+  if (selectCorrect === undefined) selectCorrect = correctType.none;
   if (selectTextType === undefined) selectTextType = textType.none;
   if (horseDisable === undefined) horseDisable = false;
   if (equips === undefined) equips = {};
@@ -63,16 +63,16 @@ export const swordConverter = (
       case textType.mobile:
         // 機動のみ補正
         switch (selectCorrect) {
-          case speedCorrect.none:
+          case correctType.none:
             correctedValue =
               getEquipSwordStatus(sword, selectTextType, horseDisable, equips);
             break;
-          case speedCorrect.normal:
+          case correctType.normal:
             correctedValue = (1.0 + parseFloat(sword.level.toString()) * 0.04) *
               getFatigueCorrect(fatigueValue) *
               getEquipSwordStatus(sword, selectTextType, horseDisable, equips);
             break;
-          case speedCorrect.stage7:
+          case correctType.stage7:
             correctedValue = (1.0 + parseFloat(sword.level.toString()) * 0.02) *
               getFatigueCorrect(fatigueValue) *
               getEquipSwordStatus(sword, selectTextType, horseDisable, equips);
@@ -99,7 +99,7 @@ export const swordConverter = (
   // console.log(`textCheck: ${selectStatus} `);
   return ({
     imageURL: chrome.extension.getURL(
-      `img/Setting/Swords/${sword.sword_id}/${damageState}.png`
+      `img/Setting/Swords/${sword.sword_id}/${damageState}.png`,
     ),
     fatigueValue,
     selectStatus,

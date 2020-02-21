@@ -1,19 +1,15 @@
-export enum speedCorrect {
-  none = 'none',
-  normal = 'normal',
-  stage7 = 'stage7',
-}
+import { correctType } from '../../constants';
 
-export const getSpeedCorrect = (value: string): speedCorrect => {
+export const getSpeedCorrect = (value: string): correctType => {
   switch (value) {
-    case speedCorrect.none:
-      return speedCorrect.none;
-    case speedCorrect.normal:
-      return speedCorrect.normal;
-    case speedCorrect.stage7:
-      return speedCorrect.stage7;
+    case correctType.none:
+      return correctType.none;
+    case correctType.normal:
+      return correctType.normal;
+    case correctType.stage7:
+      return correctType.stage7;
     default:
-      return speedCorrect.none;
+      return correctType.none;
   }
 };
 
@@ -33,7 +29,7 @@ export enum textType {
 
 export type PartyPanelState = {
   textType: number;
-  correct: speedCorrect;
+  correct: correctType;
   horseDisable: boolean;
   enableExtendView: boolean;
   selectViewStatus: boolean[];
@@ -51,7 +47,7 @@ export const initialSelectViewStatus = (): boolean[] => {
 
 export const partyPanelInitialState: PartyPanelState = {
   textType: 0,
-  correct: speedCorrect.none,
+  correct: correctType.none,
   horseDisable: false,
   enableExtendView: true,
   selectViewStatus: initialSelectViewStatus(),

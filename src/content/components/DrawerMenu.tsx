@@ -1,18 +1,18 @@
 import * as React from 'react';
 
-import { Box, Drawer, Icon, IconButton, Tooltip, Typography } from '@material-ui/core';
+import { Box, Drawer, Tooltip, Typography } from '@material-ui/core';
 import { ExpansionPanel, ExpansionPanelSummary } from '@material-ui/core';
 import { FormControl, FormLabel } from '@material-ui/core';
-import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
+import { createStyles, makeStyles } from '@material-ui/core/styles';
 import ExpandMore from '@material-ui/icons/ExpandMore';
 
+import AddCopyright from '../containers/AddCopyright';
 import EnableExtendView from '../containers/EnableExtendView';
 import EnableNotify from '../containers/EnableNotify';
 import ScaleList from '../containers/ScaleList';
 import SelectSpeedCorrect from '../containers/SelectSpeedCorrect';
 import SelectViewStatus from '../containers/SelectViewStatus';
 import IconFontButton from './IconFontButton';
-import AddCopyright from '../containers/AddCopyright';
 
 const useStyles = makeStyles(() =>
   createStyles({

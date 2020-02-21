@@ -1,4 +1,5 @@
-import { PartyPanelState, speedCorrect, textType, partyPanelInitialState } from '../states/PartyPanelState';
+import { correctType } from '../../constants';
+import { partyPanelInitialState, PartyPanelState, textType } from '../states/PartyPanelState';
 
 export enum partyPanelActionType {
   LOAD_PARTYPANELSTATE = 'LOAD_PARTYPANELSTATE',
@@ -16,7 +17,7 @@ export interface LoadPartyPanelStateAction {
 
 export interface SelectSpeedCorrectAction {
   type: partyPanelActionType.SELECT_SPEEDCORRECT;
-  correct: speedCorrect;
+  correct: correctType;
 }
 
 export interface SelectDisplayTextAction {
@@ -55,7 +56,7 @@ export const loadPartyPanelState = (
   });
 };
 
-export const selectCorrect = (correct: speedCorrect): SelectSpeedCorrectAction =>
+export const selectCorrect = (correct: correctType): SelectSpeedCorrectAction =>
   ({
     type: partyPanelActionType.SELECT_SPEEDCORRECT,
     correct,

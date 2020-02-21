@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 // tslint:disable-next-line: import-name
-import MaterialTable, { Action, Column, Localization, Options } from 'material-table';
+import MaterialTable, { Action, Column, Localization, Options, MTableActions } from 'material-table';
 
 import { Box } from '@material-ui/core';
 

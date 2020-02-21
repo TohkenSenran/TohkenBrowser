@@ -11,6 +11,11 @@ const homeSwordsTable: Reducer<HomeSwordsTableState, HomeSwordsTableActions> =
           ...state,
           homeSwords: action.homeSwords,
         };
+      case homeSwordsTableActionType.SELECT_CORRECT:
+        return {
+          ...state,
+          correct: action.correct,
+        };
       default:
         return state;
     }
