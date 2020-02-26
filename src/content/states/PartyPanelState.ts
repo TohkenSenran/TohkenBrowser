@@ -1,4 +1,4 @@
-import { correctType } from '../../constants';
+import { correctType, statusType } from '../../constants';
 
 export const getSpeedCorrect = (value: string): correctType => {
   switch (value) {
@@ -13,20 +13,6 @@ export const getSpeedCorrect = (value: string): correctType => {
   }
 };
 
-export enum textType {
-  none,
-  hp,
-  atk,
-  def,
-  mobile,
-  back,
-  scout,
-  hide,
-  loyalties,
-  fatigue,
-  amulet,
-}
-
 export type PartyPanelState = {
   textType: number;
   correct: correctType;
@@ -35,9 +21,9 @@ export type PartyPanelState = {
   selectViewStatus: boolean[];
 };
 
-export const initialSelectViewStatus = (): boolean[] => {
+const initialSelectViewStatus = (): boolean[] => {
   const viewStatus: boolean[] = [];
-  Object.entries(textType).forEach(([key, value]) => {
+  Object.entries(statusType).forEach(([key, value]) => {
     if (typeof value === 'number') {
       viewStatus.push(true);
     }

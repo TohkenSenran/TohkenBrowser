@@ -21,6 +21,20 @@ export const partyMemberNo = 6;
 export const forgeNo = 4;
 export const repairNo = 4;
 
+export enum statusType {
+  none,
+  hp,
+  atk,
+  def,
+  mobile,
+  back,
+  scout,
+  hide,
+  loyalties,
+  fatigue,
+  amulet,
+}
+
 export enum correctType {
   none = 'none',
   normal = 'normal',
