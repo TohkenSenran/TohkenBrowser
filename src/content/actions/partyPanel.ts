@@ -1,5 +1,5 @@
-import { correctType } from '../../constants';
-import { partyPanelInitialState, PartyPanelState, textType } from '../states/PartyPanelState';
+import { correctType, statusType } from '../../constants';
+import { partyPanelInitialState, PartyPanelState } from '../states/PartyPanelState';
 
 export enum partyPanelActionType {
   LOAD_PARTYPANELSTATE = 'LOAD_PARTYPANELSTATE',
@@ -22,7 +22,7 @@ export interface SelectSpeedCorrectAction {
 
 export interface SelectDisplayTextAction {
   type: partyPanelActionType.SELECT_DISPLAYTEXT;
-  textType: textType;
+  statusType: statusType;
 }
 
 export interface CheckHorseDisableAction {
@@ -63,18 +63,18 @@ export const selectCorrect = (correct: correctType): SelectSpeedCorrectAction =>
   });
 
 export const selectText =
-  (selectType: textType, selectViewStatus: boolean[]): SelectDisplayTextAction => {
-    const getNextType = (oldType: textType): textType => (
-      (oldType + 1 < (Object.keys(textType).length / 2)) ? oldType + 1 : textType.none
+  (selectType: statusType, selectViewStatus: boolean[]): SelectDisplayTextAction => {
+    const getNextType = (oldType: statusType): statusType => (
+      (oldType + 1 < (Object.keys(statusType).length / 2)) ? oldType + 1 : statusType.none
     );
-    let nextTextType: textType = getNextType(selectType);
+    let nextTextType: statusType = getNextType(selectType);
     while (!selectViewStatus[nextTextType]) {
       nextTextType = getNextType(nextTextType);
     }
     // console.log(`in PartyPanel action ${nextTextType}`);
     return ({
       type: partyPanelActionType.SELECT_DISPLAYTEXT,
-      textType: nextTextType,
+      statusType: nextTextType,
     });
   };
 

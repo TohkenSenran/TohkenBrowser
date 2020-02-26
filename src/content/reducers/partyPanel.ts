@@ -1,7 +1,7 @@
 import { Reducer } from 'redux';
 
 import { PartyPanelAction, partyPanelActionType } from '../actions/partyPanel';
-import { partyPanelInitialState, PartyPanelState, textType } from '../states/PartyPanelState';
+import { partyPanelInitialState, PartyPanelState } from '../states/PartyPanelState';
 
 const partyPanel: Reducer<PartyPanelState, PartyPanelAction> =
   (state = partyPanelInitialState, action) => {
@@ -16,7 +16,7 @@ const partyPanel: Reducer<PartyPanelState, PartyPanelAction> =
       case partyPanelActionType.SELECT_DISPLAYTEXT:
         return {
           ...state,
-          textType: action.textType,
+          statusType: action.statusType,
         };
       case partyPanelActionType.CHECK_HORSEDISABLE:
         return {

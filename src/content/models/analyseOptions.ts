@@ -1,4 +1,4 @@
-import { handbookInitialState, HandBookState } from '../../handbook/states';
+import { handbookInitialState, HandbookState } from '../../handbook/states';
 import { Item, Items } from '../states/responseJson/Item';
 
 export const analyseOptions = (jsonValue: any, page: string): void => {
@@ -14,7 +14,7 @@ export const analyseOptions = (jsonValue: any, page: string): void => {
         items = jsonValue.season_reward_list;
         // console.log('seasonItems: %O', items);
         chrome.storage.local.get('handbookState', (response) => {
-          let handbookState: HandBookState = handbookInitialState;
+          let handbookState: HandbookState = handbookInitialState;
           if ((response) && (response.handbookState)) {
             handbookState = response.handbookState;
           }

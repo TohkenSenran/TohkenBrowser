@@ -4,10 +4,11 @@ import { Dispatch } from 'redux';
 import { PartyPanelAction, selectText } from '../actions/partyPanel';
 import PartyPanel from '../components/PartyPanel';
 import { RootState } from '../states/index';
-import { PartyPanelState, textType } from '../states/PartyPanelState';
+import { PartyPanelState } from '../states/PartyPanelState';
 import { Equips } from '../states/responseJson/Equip';
 import { Parties } from '../states/responseJson/Party';
 import { Swords } from '../states/responseJson/Sword';
+import { statusType } from '../../constants';
 
 interface StateToProps {
   partyPanel: PartyPanelState;
@@ -19,7 +20,7 @@ interface StateToProps {
 }
 
 interface DispatchToProps {
-  selectText: (textType: textType, selectViewStatus: boolean[]) => void;
+  selectText: (statusType: statusType, selectViewStatus: boolean[]) => void;
 }
 
 export type PartyPanelProps = StateToProps & DispatchToProps;
@@ -36,7 +37,7 @@ const mapStateToProps = (state: RootState): StateToProps =>
 
 const mapDispatchToProps = (dispatch: Dispatch<PartyPanelAction>): DispatchToProps =>
   ({
-    selectText: (selectTextType: textType, selectViewStatus: boolean[]) => {
+    selectText: (selectTextType: statusType, selectViewStatus: boolean[]) => {
       dispatch(selectText(selectTextType, selectViewStatus));
     },
   });

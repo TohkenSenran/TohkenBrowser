@@ -1,5 +1,4 @@
-import { correctType, equipStatus, statusLabel } from '../../constants';
-import { textType } from '../states/PartyPanelState';
+import { correctType, equipStatus, statusLabel, statusType } from '../../constants';
 import { Equip, Equips } from '../states/responseJson/Equip';
 import { Sword, swordInitialState, Swords } from '../states/responseJson/Sword';
 
@@ -7,7 +6,7 @@ export const swordConverter = (
   swords: Swords,
   serialId: string | number | null,
   selectCorrect?: correctType,
-  selectTextType?: textType,
+  selectTextType?: statusType,
   horseDisable?: boolean,
   stateText?: string,
   equips?: Equips,
@@ -18,7 +17,7 @@ export const swordConverter = (
   if (swords === undefined) swords = {};
   if (serialId === undefined) serialId = null;
   if (selectCorrect === undefined) selectCorrect = correctType.none;
-  if (selectTextType === undefined) selectTextType = textType.none;
+  if (selectTextType === undefined) selectTextType = statusType.none;
   if (horseDisable === undefined) horseDisable = false;
   if (equips === undefined) equips = {};
 
@@ -58,9 +57,9 @@ export const swordConverter = (
   let correctedValue: number = 0;
   if ((serialId !== null) && (serialId.toString() in swords)) {
     switch (selectTextType) {
-      case textType.none:
+      case statusType.none:
         break;
-      case textType.mobile:
+      case statusType.mobile:
         // 機動のみ補正
         switch (selectCorrect) {
           case correctType.none:
@@ -79,19 +78,19 @@ export const swordConverter = (
             break;
         }
         selectStatus =
-          `${statusLabel[textType[selectTextType]]}: ${Math.floor(correctedValue)}`;
+          `${statusLabel[statusType[selectTextType]]}: ${Math.floor(correctedValue)}`;
         break;
-      case textType.fatigue:
+      case statusType.fatigue:
         selectStatus =
-          `${statusLabel[textType[selectTextType]]}: ${fatigueValue}`;
+          `${statusLabel[statusType[selectTextType]]}: ${fatigueValue}`;
         break;
-      case textType.amulet:
+      case statusType.amulet:
         selectStatus =
-          `${statusLabel[textType[selectTextType]]}: ${sword.item_id ? '有' : '無'}`;
+          `${statusLabel[statusType[selectTextType]]}: ${sword.item_id ? '有' : '無'}`;
         break;
       default:
         selectStatus =
-          `${statusLabel[textType[selectTextType]]}: ${getEquipSwordStatus(sword, selectTextType, horseDisable, equips)}`;
+          `${statusLabel[statusType[selectTextType]]}: ${getEquipSwordStatus(sword, selectTextType, horseDisable, equips)}`;
     }
   }
   // 直接テキスト入力を受け付ける
@@ -108,7 +107,7 @@ export const swordConverter = (
 
 // 装備込みのステータス計算
 export const getEquipSwordStatus =
-  (sword: Sword, selectTextType: textType, horseDisable: boolean, equips: Equips): number => {
+  (sword: Sword, selectTextType: statusType, horseDisable: boolean, equips: Equips): number => {
 
     // console.log('horseDisable: ', horseDisable);
     let equip1Id: string = '0';
@@ -137,13 +136,13 @@ export const getEquipSwordStatus =
       const equipH: Equip = equips[sword.horse_serial_id.toString()];
       horseId = equipH.equip_id.toString();
     }
-    const status: number = parseInt(sword[textType[selectTextType]], 10) +
+    const status: number = parseInt(sword[statusType[selectTextType]], 10) +
       (
-        textType[selectTextType] in equipStatus[0] ? (
-          parseInt(equipStatus[equip1Id][textType[selectTextType]], 10) +
-          parseInt(equipStatus[equip2Id][textType[selectTextType]], 10) +
-          parseInt(equipStatus[equip3Id][textType[selectTextType]], 10) +
-          parseInt(equipStatus[horseId][textType[selectTextType]], 10)) : 0
+        statusType[selectTextType] in equipStatus[0] ? (
+          parseInt(equipStatus[equip1Id][statusType[selectTextType]], 10) +
+          parseInt(equipStatus[equip2Id][statusType[selectTextType]], 10) +
+          parseInt(equipStatus[equip3Id][statusType[selectTextType]], 10) +
+          parseInt(equipStatus[horseId][statusType[selectTextType]], 10)) : 0
       );
     return status;
   };

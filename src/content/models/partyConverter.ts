@@ -1,10 +1,9 @@
-import { partyMemberNo } from '../../constants';
+import { partyMemberNo, statusType } from '../../constants';
+import { Equips } from '../states/responseJson/Equip';
 import { Party } from '../states/responseJson/Party';
 import { Swords } from '../states/responseJson/Sword';
 import { getRemainingTime } from './getRemainingTime';
-import { Equips } from '../states/responseJson/Equip';
 import { getEquipSwordStatus } from './swordConverter';
-import { textType } from '../states/PartyPanelState';
 
 const getState = (status: string | number) => {
   switch (status) {
@@ -34,7 +33,7 @@ const getMemberProps = (party: Party, swords: Swords, equips: Equips) => {
       if ((serialId) && (swords[serialId]) && (swords[serialId].level)) {
         totalFatigue += parseInt(swords[serialId].fatigue.toString(), 10);
         totalLv += parseInt(swords[serialId].level.toString(), 10);
-        totalScout += getEquipSwordStatus(swords[serialId], textType.scout, false, equips);
+        totalScout += getEquipSwordStatus(swords[serialId], statusType.scout, false, equips);
         member += 1;
       }
     }

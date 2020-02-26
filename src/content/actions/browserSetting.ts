@@ -1,4 +1,4 @@
-import { BrowserSettingState, windowMode, browserSettingInitialState } from '../states/BrowserSettingState';
+import { browserSettingInitialState, BrowserSettingState, windowMode } from '../states/BrowserSettingState';
 
 export enum browserSettingActionType {
   SELECT_BROWSERSCALE = 'SELECT_BROWSERSCALE',

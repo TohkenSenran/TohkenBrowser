@@ -2,9 +2,8 @@ import * as React from 'react';
 
 import { Box, Checkbox, FormControlLabel } from '@material-ui/core';
 
-import { statusLabel } from '../../constants';
+import { statusLabel, statusType } from '../../constants';
 import { SelectViewStatusProps } from '../containers/SelectViewStatus';
-import { initialSelectViewStatus, textType } from '../states/PartyPanelState';
 
 const SelectViewStatus: React.FC<SelectViewStatusProps> = (props) => {
   const checks: JSX.Element[] = [];
@@ -22,7 +21,7 @@ const SelectViewStatus: React.FC<SelectViewStatusProps> = (props) => {
     // console.log('viewStatus: %o', viewStatus);
   };
 
-  Object.entries(textType).forEach(([key, value]) => {
+  Object.entries(statusType).forEach(([key, value]) => {
     if ((typeof value === 'number') && value > 0) {
       // const onChange = () => { handleChange(value, viewStatus[value]); };
       checks.push(<Box>

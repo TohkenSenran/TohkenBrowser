@@ -2,9 +2,8 @@ import * as React from 'react';
 
 import Box from '@material-ui/core/Box';
 
-import { correctType } from '../../constants';
+import { correctType, statusType } from '../../constants';
 import { swordConverter } from '../models/swordConverter';
-import { textType } from '../states/PartyPanelState';
 import { Equips } from '../states/responseJson/Equip';
 import { Swords } from '../states/responseJson/Sword';
 
@@ -12,7 +11,7 @@ const SwordPanel: React.FC<{
   swords: Swords;
   serialId: string | number | null;
   selectCorrect?: correctType;
-  selectTextType?: textType;
+  selectTextType?: statusType;
   horseDisable?: boolean;
   stateText?: string;
   equips?: Equips;
