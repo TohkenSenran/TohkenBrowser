@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 
 import HomeSwordsTable from '../components/HomeSwordsTable';
 import { HomeSwordsTableState } from '../states/homeSwordsTable';
-import { HandBookState } from '../states/index';
+import { HandbookState } from '../states/index';
 
 interface StateToProps {
   homeSwordsTable: HomeSwordsTableState;
@@ -10,7 +10,7 @@ interface StateToProps {
 
 export type HomeSwordsTableProps = StateToProps;
 
-const mapStateToProps = (state: HandBookState): StateToProps =>
+const mapStateToProps = (state: HandbookState): StateToProps =>
   ({
     homeSwordsTable: state.homeSwordsTable,
   });

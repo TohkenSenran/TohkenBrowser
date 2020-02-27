@@ -6,6 +6,8 @@ import { conquestTableInitialState, ConquestTableState } from '../states/conques
 const conquestTable: Reducer<ConquestTableState, ConquestTableActions> =
   (state = conquestTableInitialState, action) => {
     switch (action.type) {
+      case conquestTableActionType.UPDATE_CONQUESTTABLE:
+        return action.conquestTable;
       case conquestTableActionType.SET_SEASONITEMS:
         return {
           ...state,

@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 
 import ConquestTable from '../components/ConquestTable';
 import { ConquestTableState } from '../states/conquestTable';
-import { HandBookState } from '../states/index';
+import { HandbookState } from '../states/index';
 
 interface StateToProps {
   conquestTable: ConquestTableState;
@@ -10,7 +10,7 @@ interface StateToProps {
 
 export type ConquestTableProps = StateToProps;
 
-const mapStateToProps = (state: HandBookState): StateToProps =>
+const mapStateToProps = (state: HandbookState): StateToProps =>
   ({
     conquestTable: state.conquestTable,
   });

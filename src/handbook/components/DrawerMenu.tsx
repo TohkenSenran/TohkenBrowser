@@ -5,6 +5,7 @@ import { ExpansionPanel, ExpansionPanelSummary } from '@material-ui/core';
 
 import { createStyles, makeStyles } from '@material-ui/core/styles';
 import ExpandMore from '@material-ui/icons/ExpandMore';
+import SelectDisplayedStatus from '../containers/SelectDisplayedStatus';
 import StatusCorrect from '../containers/StatusCorrect';
 
 const useStyles = makeStyles(() =>
@@ -48,6 +49,20 @@ const DrawerMenu: React.FC<{
               </ExpansionPanelSummary>
             </Tooltip>
             <StatusCorrect />
+          </ExpansionPanel>
+          <ExpansionPanel style={expansionStyle}>
+            <Tooltip
+              title="部隊部分をクリックした際に表示されるステータスを選択"
+              classes={{ tooltip: classes.customWidth }}
+            >
+              <ExpansionPanelSummary
+                style={{ padding: 0, fontSize: 16 }}
+                expandIcon={<ExpandMore />}
+              >
+                {'能力表示選択'}
+              </ExpansionPanelSummary>
+            </Tooltip>
+            <SelectDisplayedStatus />
           </ExpansionPanel>
         </FormControl>
       </Box>

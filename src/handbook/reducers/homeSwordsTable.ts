@@ -6,6 +6,8 @@ import { homeSwordsTableInitialState, HomeSwordsTableState } from '../states/hom
 const homeSwordsTable: Reducer<HomeSwordsTableState, HomeSwordsTableActions> =
   (state = homeSwordsTableInitialState, action) => {
     switch (action.type) {
+      case homeSwordsTableActionType.UPDATE_HOMESWORDSTABLE:
+        return action.homeSwordsTable;
       case homeSwordsTableActionType.SET_HOMESWORDS:
         return {
           ...state,
@@ -15,6 +17,11 @@ const homeSwordsTable: Reducer<HomeSwordsTableState, HomeSwordsTableActions> =
         return {
           ...state,
           correct: action.correct,
+        };
+      case homeSwordsTableActionType.SELECT_DISPLAYEDSTATUS:
+        return {
+          ...state,
+          displayedStatus: action.displayedStatus,
         };
       default:
         return state;

@@ -41,6 +41,7 @@ chrome.storage.onChanged.addListener((changes, areaName) => {
       // console.log('oldSRI %o', oldSeasonRewardItems);
       // 配列はサーバー生成なのでstringifyでのdeep equalで十分
       if (JSON.stringify(newSeasonRewardItems) !== JSON.stringify(oldSeasonRewardItems)) {
+        console.log('seasonItems更新');
         store.dispatch(setSeasonItems(newSeasonRewardItems ? newSeasonRewardItems : {}));
       }
     }
@@ -64,7 +65,7 @@ chrome.storage.onChanged.addListener((changes, areaName) => {
       // console.log('oldHomeSwords', JSON.stringify(oldHomeSwords));
 
       if (JSON.stringify(newHomeSwords) !== JSON.stringify(oldHomeSwords)) {
-        // console.log('homeSwords更新');
+        console.log('homeSwords更新');
         store.dispatch(setHomeSwords(newHomeSwords ? newHomeSwords : {}));
       }
     }
@@ -72,6 +73,7 @@ chrome.storage.onChanged.addListener((changes, areaName) => {
 });
 
 const startReactDom = async () => {
+  /*
   const seasonRewardItems: Items = await getSeasonReward();
   // console.log('in startReactDom %o', seasonItems);
   if (seasonRewardItems) {
@@ -82,6 +84,7 @@ const startReactDom = async () => {
   if (homeSwords) {
     store.dispatch(setHomeSwords(homeSwords));
   }
+  */
   setWindowTitle(document);
   const app = document.createElement('div');
   document.body.appendChild(app);

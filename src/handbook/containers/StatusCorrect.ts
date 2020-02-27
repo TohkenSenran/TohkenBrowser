@@ -4,7 +4,7 @@ import { Dispatch } from 'redux';
 import { correctType } from '../../constants';
 import { HomeSwordsTableActions, selectCorrect } from '../actions/homeSwordsTable';
 import StatusCorrect from '../components/StatusCorrect';
-import { HandBookState } from '../states/index';
+import { HandbookState } from '../states/index';
 
 interface StateToProps {
   correct: correctType;
@@ -16,7 +16,7 @@ interface DispatchToProps {
 
 export type StatusCorrectProps = StateToProps & DispatchToProps;
 
-const mapStateToProps = (state: HandBookState): StateToProps =>
+const mapStateToProps = (state: HandbookState): StateToProps =>
   ({
     correct: state.homeSwordsTable.correct,
   });
