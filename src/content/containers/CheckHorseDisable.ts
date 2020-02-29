@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 
-import { checkHorseDisable, PartyPanelAction } from '../actions/partyPanel';
+import { checkHorseDisable, PartyPanelActions } from '../actions/partyPanel';
 import CheckHorseDisable from '../components/CheckHorseDisable';
 import { RootState } from '../states/index';
 
@@ -20,7 +20,7 @@ const mapStateToProps = (state: RootState): StateToProps =>
     horseDisable: state.partyPanel.horseDisable,
   });
 
-const mapDispatchToProps = (dispatch: Dispatch<PartyPanelAction>): DispatchToProps =>
+const mapDispatchToProps = (dispatch: Dispatch<PartyPanelActions>): DispatchToProps =>
   ({
     checkHorseDisable: (horseDisable: boolean) => {
       dispatch(checkHorseDisable(horseDisable));

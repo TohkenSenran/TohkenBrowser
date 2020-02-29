@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 
 import { correctType } from '../../constants';
-import { checkHorseDisable, PartyPanelAction, selectCorrect } from '../actions/partyPanel';
+import { checkHorseDisable, PartyPanelActions, selectCorrect } from '../actions/partyPanel';
 import SelectSpeedCorrect from '../components/SelectSpeedCorrect';
 import { RootState } from '../states/index';
 
@@ -24,7 +24,7 @@ const mapStateToProps = (state: RootState): StateToProps =>
     horseDisable: state.partyPanel.horseDisable,
   });
 
-const mapDispatchToProps = (dispatch: Dispatch<PartyPanelAction>): DispatchToProps =>
+const mapDispatchToProps = (dispatch: Dispatch<PartyPanelActions>): DispatchToProps =>
   ({
     selectCorrect: (correct: correctType) => {
       dispatch(selectCorrect(correct));

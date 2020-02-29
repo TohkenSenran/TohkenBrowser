@@ -31,7 +31,7 @@ const PartyPanelContents: React.FC<{
           swords={swordData}
           serialId={partyData[i + 1].slot[j + 1].serial_id}
           selectCorrect={partyPanel.correct}
-          selectTextType={partyPanel.textType}
+          selectTextType={partyPanel.statusType}
           horseDisable={partyPanel.horseDisable}
           equips={equipData}
         />);

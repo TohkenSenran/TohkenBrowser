@@ -38,6 +38,6 @@ export const updateDate = (
   date,
 });
 
-export type ResponseJsonAction =
+export type ResponseJsonActions =
   UpdateJsonStateAction |
   UpdateDateAction;

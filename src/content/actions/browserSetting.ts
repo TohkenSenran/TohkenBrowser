@@ -116,7 +116,7 @@ export const addCopyright = (addCopyright: boolean): AddCopyrightAction =>
     addCopyright,
   });
 
-export type BrowserSettingAction =
+export type BrowserSettingActions =
   SelectBrowserScaleAction |
   ChangeViewModeAction |
   ChangeMuteAction |

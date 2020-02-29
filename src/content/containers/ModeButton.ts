@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 
-import { BrowserSettingAction, changeViewMode } from '../actions/browserSetting';
+import { BrowserSettingActions, changeViewMode } from '../actions/browserSetting';
 import ModeButton from '../components/ModeButton';
 import { BrowserSettingState, windowMode } from '../states/BrowserSettingState';
 import { RootState } from '../states/index';
@@ -21,7 +21,7 @@ const mapStateToProps = (state: RootState): StateToProps =>
     browserSetting: state.browserSetting,
   });
 
-const mapDispatchToProps = (dispatch: Dispatch<BrowserSettingAction>): DispatchToProps =>
+const mapDispatchToProps = (dispatch: Dispatch<BrowserSettingActions>): DispatchToProps =>
   ({
     onClick: (mode: windowMode) => {
       dispatch(changeViewMode(mode));

@@ -14,14 +14,14 @@ export const getSpeedCorrect = (value: string): correctType => {
 };
 
 export type PartyPanelState = {
-  textType: number;
+  statusType: number;
   correct: correctType;
   horseDisable: boolean;
   enableExtendView: boolean;
-  selectViewStatus: boolean[];
+  displayedStatus: boolean[];
 };
 
-const initialSelectViewStatus = (): boolean[] => {
+const initialDisplayedStatus = (): boolean[] => {
   const viewStatus: boolean[] = [];
   Object.entries(statusType).forEach(([key, value]) => {
     if (typeof value === 'number') {
@@ -32,9 +32,9 @@ const initialSelectViewStatus = (): boolean[] => {
 };
 
 export const partyPanelInitialState: PartyPanelState = {
-  textType: 0,
+  statusType: 0,
   correct: correctType.none,
   horseDisable: false,
   enableExtendView: true,
-  selectViewStatus: initialSelectViewStatus(),
+  displayedStatus: initialDisplayedStatus(),
 };

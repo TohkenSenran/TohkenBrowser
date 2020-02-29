@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 
-import { PartyPanelAction, selectText } from '../actions/partyPanel';
+import { PartyPanelActions, selectDisplayText } from '../actions/partyPanel';
 import PartyPanel from '../components/PartyPanel';
 import { RootState } from '../states/index';
 import { PartyPanelState } from '../states/PartyPanelState';
@@ -20,7 +20,7 @@ interface StateToProps {
 }
 
 interface DispatchToProps {
-  selectText: (statusType: statusType, selectViewStatus: boolean[]) => void;
+  selectText: (statusType: statusType, displayedStatus: boolean[]) => void;
 }
 
 export type PartyPanelProps = StateToProps & DispatchToProps;
@@ -35,10 +35,10 @@ const mapStateToProps = (state: RootState): StateToProps =>
     page: state.responseJson.page,
   });
 
-const mapDispatchToProps = (dispatch: Dispatch<PartyPanelAction>): DispatchToProps =>
+const mapDispatchToProps = (dispatch: Dispatch<PartyPanelActions>): DispatchToProps =>
   ({
-    selectText: (selectTextType: statusType, selectViewStatus: boolean[]) => {
-      dispatch(selectText(selectTextType, selectViewStatus));
+    selectText: (selectTextType: statusType, displayedStatus: boolean[]) => {
+      dispatch(selectDisplayText(selectTextType, displayedStatus));
     },
   });
 

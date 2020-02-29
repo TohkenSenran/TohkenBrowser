@@ -1,9 +1,9 @@
 import { Reducer } from 'redux';
 
-import { ResponseJsonAction, responseJsonActionType } from '../actions/responseJson';
+import { ResponseJsonActions, responseJsonActionType } from '../actions/responseJson';
 import { responseJsonInitialState, ResponseJsonState } from '../states/ResponseJsonState';
 
-const responseJson: Reducer<ResponseJsonState, ResponseJsonAction> =
+const responseJson: Reducer<ResponseJsonState, ResponseJsonActions> =
   (state = responseJsonInitialState, action) => {
     // console.log('in responseJson reducer');
     // console.log(state);

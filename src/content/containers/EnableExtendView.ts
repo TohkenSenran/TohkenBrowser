@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 
-import { PartyPanelAction, setEnableExtendView } from '../actions/partyPanel';
+import { PartyPanelActions, setEnableExtendView } from '../actions/partyPanel';
 import EnableExtendView from '../components/EnableExtendView';
 import { RootState } from '../states/index';
 
@@ -20,7 +20,7 @@ const mapStateToProps = (state: RootState): StateToProps =>
     enableExtendView: state.partyPanel.enableExtendView,
   });
 
-const mapDispatchToProps = (dispatch: Dispatch<PartyPanelAction>): DispatchToProps =>
+const mapDispatchToProps = (dispatch: Dispatch<PartyPanelActions>): DispatchToProps =>
   ({
     onChange: (enableExtendView: boolean) => {
       dispatch(setEnableExtendView(enableExtendView));

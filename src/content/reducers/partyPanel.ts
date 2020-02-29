@@ -1,9 +1,9 @@
 import { Reducer } from 'redux';
 
-import { PartyPanelAction, partyPanelActionType } from '../actions/partyPanel';
+import { PartyPanelActions, partyPanelActionType } from '../actions/partyPanel';
 import { partyPanelInitialState, PartyPanelState } from '../states/PartyPanelState';
 
-const partyPanel: Reducer<PartyPanelState, PartyPanelAction> =
+const partyPanel: Reducer<PartyPanelState, PartyPanelActions> =
   (state = partyPanelInitialState, action) => {
     switch (action.type) {
       case partyPanelActionType.LOAD_PARTYPANELSTATE:
@@ -13,10 +13,10 @@ const partyPanel: Reducer<PartyPanelState, PartyPanelAction> =
           ...state,
           correct: action.correct,
         };
-      case partyPanelActionType.SELECT_DISPLAYTEXT:
+      case partyPanelActionType.SELECT_STATUSTYPE:
         return {
           ...state,
-          statusType: action.statusType,
+          statusType: action.displayedType,
         };
       case partyPanelActionType.CHECK_HORSEDISABLE:
         return {
@@ -28,10 +28,10 @@ const partyPanel: Reducer<PartyPanelState, PartyPanelAction> =
           ...state,
           enableExtendView: action.enableExtendView,
         };
-      case partyPanelActionType.SELECT_VIEWSTATUS:
+      case partyPanelActionType.SELECT_DISPLAYEDSTATUS:
         return {
           ...state,
-          selectViewStatus: action.selectViewStatus,
+          displayedStatus: action.displayedStatus,
         };
 
       default:

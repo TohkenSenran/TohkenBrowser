@@ -10,8 +10,8 @@ import PartyPanelContents from './PartyPanelContents';
 
 const PartyPanel: React.FC<PartyPanelProps> = (props) => {
   const handleClick = () => {
-    // console.log(`PartyPanel Click! ${props.partyPanel.textType.toString()}`);
-    props.selectText(props.partyPanel.textType, props.partyPanel.selectViewStatus);
+    // console.log(`PartyPanel Click! ${props.partyPanel.statusType.toString()}`);
+    props.selectText(props.partyPanel.statusType, props.partyPanel.displayedStatus);
   };
 
   const partyData: Parties = props.party;

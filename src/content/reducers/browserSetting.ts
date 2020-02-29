@@ -1,9 +1,9 @@
 import { Reducer } from 'redux';
 
-import { BrowserSettingAction, browserSettingActionType } from '../actions/browserSetting';
+import { BrowserSettingActions, browserSettingActionType } from '../actions/browserSetting';
 import { browserSettingInitialState, BrowserSettingState } from '../states/BrowserSettingState';
 
-const browserSetting: Reducer<BrowserSettingState, BrowserSettingAction> =
+const browserSetting: Reducer<BrowserSettingState, BrowserSettingActions> =
   (state = browserSettingInitialState, action) => {
     switch (action.type) {
       case browserSettingActionType.SELECT_BROWSERSCALE:

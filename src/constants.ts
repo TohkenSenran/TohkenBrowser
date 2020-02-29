@@ -23,7 +23,7 @@ export const repairNo = 4;
 
 export enum statusType {
   none,
-  hp,
+  hp_max,
   atk,
   def,
   mobile,
@@ -43,7 +43,7 @@ export enum correctType {
 
 export const statusLabel = {
   none: '',
-  hp: '生存',
+  hp_max: '生存',
   atk: '打撃',
   def: '統率',
   mobile: '機動',

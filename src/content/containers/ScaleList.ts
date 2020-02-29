@@ -2,7 +2,7 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 
-import { BrowserSettingAction, selectScale } from '../actions/browserSetting';
+import { BrowserSettingActions, selectScale } from '../actions/browserSetting';
 import ScaleList from '../components/ScaleList';
 import { BrowserSettingState } from '../states/BrowserSettingState';
 import { RootState } from '../states/index';
@@ -22,7 +22,7 @@ const mapStateToProps = (state: RootState): StateToProps =>
     browserSetting: state.browserSetting,
   });
 
-const mapDispatchToProps = (dispatch: Dispatch<BrowserSettingAction>): DispatchToProps =>
+const mapDispatchToProps = (dispatch: Dispatch<BrowserSettingActions>): DispatchToProps =>
   ({
     onChange: (scale: number) => {
       dispatch(selectScale(scale));

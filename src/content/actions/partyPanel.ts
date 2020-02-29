@@ -4,10 +4,10 @@ import { partyPanelInitialState, PartyPanelState } from '../states/PartyPanelSta
 export enum partyPanelActionType {
   LOAD_PARTYPANELSTATE = 'LOAD_PARTYPANELSTATE',
   SELECT_SPEEDCORRECT = 'SELECT_SPEEDCORRECT',
-  SELECT_DISPLAYTEXT = 'SELECT_DISPLAYTEXT',
+  SELECT_STATUSTYPE = 'SELECT_STATUSTYPE',
   CHECK_HORSEDISABLE = 'CHECK_HORSEDISABLE',
   SET_ENABLEEXTENDVIEW = 'SET_ENABLEEXTENDVIEW',
-  SELECT_VIEWSTATUS = 'SELECT_VIEWSTATUS',
+  SELECT_DISPLAYEDSTATUS = 'SELECT_DISPLAYEDSTATUS',
 }
 
 export interface LoadPartyPanelStateAction {
@@ -20,9 +20,9 @@ export interface SelectSpeedCorrectAction {
   correct: correctType;
 }
 
-export interface SelectDisplayTextAction {
-  type: partyPanelActionType.SELECT_DISPLAYTEXT;
-  statusType: statusType;
+export interface SelectStatusTypeAction {
+  type: partyPanelActionType.SELECT_STATUSTYPE;
+  displayedType: statusType;
 }
 
 export interface CheckHorseDisableAction {
@@ -35,9 +35,9 @@ export interface SetEnableExtendViewAction {
   enableExtendView: boolean;
 }
 
-export interface SelectViewStatusAction {
-  type: partyPanelActionType.SELECT_VIEWSTATUS;
-  selectViewStatus: boolean[];
+export interface SelectDisplayedStatusAction {
+  type: partyPanelActionType.SELECT_DISPLAYEDSTATUS;
+  displayedStatus: boolean[];
 }
 
 export const loadPartyPanelState = (
@@ -62,19 +62,21 @@ export const selectCorrect = (correct: correctType): SelectSpeedCorrectAction =>
     correct,
   });
 
-export const selectText =
-  (selectType: statusType, selectViewStatus: boolean[]): SelectDisplayTextAction => {
+export const selectDisplayText =
+  (displayedType: statusType, displayedStatus: boolean[]): SelectStatusTypeAction => {
+    // console.log('displayedType', displayedType);
+    // console.log('displayedStatus', displayedStatus);
     const getNextType = (oldType: statusType): statusType => (
       (oldType + 1 < (Object.keys(statusType).length / 2)) ? oldType + 1 : statusType.none
     );
-    let nextTextType: statusType = getNextType(selectType);
-    while (!selectViewStatus[nextTextType]) {
-      nextTextType = getNextType(nextTextType);
+    let nextDsiplayedType: statusType = getNextType(displayedType);
+    while (!displayedStatus[nextDsiplayedType]) {
+      nextDsiplayedType = getNextType(nextDsiplayedType);
     }
-    // console.log(`in PartyPanel action ${nextTextType}`);
+    //console.log(`in Action nextDsiplayedType ${nextDsiplayedType}`);
     return ({
-      type: partyPanelActionType.SELECT_DISPLAYTEXT,
-      statusType: nextTextType,
+      type: partyPanelActionType.SELECT_STATUSTYPE,
+      displayedType: nextDsiplayedType,
     });
   };
 
@@ -92,16 +94,16 @@ export const setEnableExtendView =
     });
 
 export const setSelectViewStatus =
-  (selectViewStatus: boolean[]): SelectViewStatusAction =>
+  (displayedStatus: boolean[]): SelectDisplayedStatusAction =>
     ({
-      type: partyPanelActionType.SELECT_VIEWSTATUS,
-      selectViewStatus,
+      type: partyPanelActionType.SELECT_DISPLAYEDSTATUS,
+      displayedStatus,
     });
 
-export type PartyPanelAction =
+export type PartyPanelActions =
   LoadPartyPanelStateAction |
   SelectSpeedCorrectAction |
-  SelectDisplayTextAction |
+  SelectStatusTypeAction |
   CheckHorseDisableAction |
   SetEnableExtendViewAction |
-  SelectViewStatusAction;
+  SelectDisplayedStatusAction;

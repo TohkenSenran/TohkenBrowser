@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 
-import { BrowserSettingAction, setEnableNotify } from '../actions/browserSetting';
+import { BrowserSettingActions, setEnableNotify } from '../actions/browserSetting';
 import EnableNotify from '../components/EnableNotify';
 import { BrowserSettingState } from '../states/BrowserSettingState';
 import { RootState } from '../states/index';
@@ -21,7 +21,7 @@ const mapStateToProps = (state: RootState): StateToProps =>
     enableNotify: state.browserSetting.enableNotify,
   });
 
-const mapDispatchToProps = (dispatch: Dispatch<BrowserSettingAction>): DispatchToProps =>
+const mapDispatchToProps = (dispatch: Dispatch<BrowserSettingActions>): DispatchToProps =>
   ({
     onChange: (enableNotify: boolean) => {
       dispatch(setEnableNotify(enableNotify));

@@ -1,8 +1,8 @@
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 
-import { BrowserSettingAction, changeViewMode } from '../actions/browserSetting';
-import { ResponseJsonAction, updateDate } from '../actions/responseJson';
+import { BrowserSettingActions, changeViewMode } from '../actions/browserSetting';
+import { ResponseJsonActions, updateDate } from '../actions/responseJson';
 
 import StatusView from '../components/StatusView';
 import { BrowserSettingState, windowMode } from '../states/BrowserSettingState';
@@ -25,7 +25,7 @@ const mapStateToProps = (state: RootState): StateToProps =>
   });
 
 const mapDispatchToProps = (
-  dispatch: Dispatch<BrowserSettingAction | ResponseJsonAction>,
+  dispatch: Dispatch<BrowserSettingActions | ResponseJsonActions>,
 ): DispatchToProps =>
   ({
     onClick: (mode: windowMode) => {

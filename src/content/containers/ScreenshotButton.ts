@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 
-import { BrowserSettingAction } from '../actions/browserSetting';
+import { BrowserSettingActions } from '../actions/browserSetting';
 import ScreenshotButton from '../components/ScreenshotButton';
 import { BrowserSettingState } from '../states/BrowserSettingState';
 import { RootState } from '../states/index';

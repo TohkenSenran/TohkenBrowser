@@ -1,27 +1,27 @@
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 
-import { PartyPanelAction, setSelectViewStatus } from '../actions/partyPanel';
+import { PartyPanelActions, setSelectViewStatus } from '../actions/partyPanel';
 import SelectViewStatus from '../components/SelectViewStatus';
 import { RootState } from '../states/index';
 
 interface StateToProps {
-  selectViewStatus: boolean[],
+  displayedStatus: boolean[],
 }
 
 interface DispatchToProps {
-  setSelectViewStatus: (selectViewStatus: boolean[]) => void;
+  setSelectViewStatus: (displayedStatus: boolean[]) => void;
 }
 
 export type SelectViewStatusProps = StateToProps & DispatchToProps;
 
 const mapStateToProps = (state: RootState): StateToProps =>
-  ({ selectViewStatus: state.partyPanel.selectViewStatus });
+  ({ displayedStatus: state.partyPanel.displayedStatus });
 
-const mapDispatchToProps = (dispatch: Dispatch<PartyPanelAction>): DispatchToProps =>
+const mapDispatchToProps = (dispatch: Dispatch<PartyPanelActions>): DispatchToProps =>
   ({
-    setSelectViewStatus: (selectViewStatus: boolean[]) => {
-      dispatch(setSelectViewStatus(selectViewStatus));
+    setSelectViewStatus: (displayedStatus: boolean[]) => {
+      dispatch(setSelectViewStatus(displayedStatus));
     },
   });
 
