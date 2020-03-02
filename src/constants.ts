@@ -1288,6 +1288,14 @@ export const swordProps = {
     name: '山鳥毛・極',
     type: 'tachi',
   },
+  182: {
+    name: '鬼丸国綱',
+    type: 'tachi',
+  },
+  183: {
+    name: '鬼丸国綱・極',
+    type: 'tachi',
+  },
 };
 
 // 抜けている番号は情報不足のためフォロー必須
