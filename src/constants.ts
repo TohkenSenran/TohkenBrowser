@@ -660,6 +660,14 @@ export const swordProps = {
     name: 'にっかり青江・極',
     type: 'wakizashi',
   },
+  21: {
+    name: '鬼丸国綱',
+    type: 'tachi',
+  },
+  22: {
+    name: '鬼丸国綱・極',
+    type: 'tachi',
+  },
   23: {
     name: '鳴狐',
     type: 'uchigatana',
@@ -1286,14 +1294,6 @@ export const swordProps = {
   },
   181: {
     name: '山鳥毛・極',
-    type: 'tachi',
-  },
-  182: {
-    name: '鬼丸国綱',
-    type: 'tachi',
-  },
-  183: {
-    name: '鬼丸国綱・極',
     type: 'tachi',
   },
 };
