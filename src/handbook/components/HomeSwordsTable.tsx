@@ -1,12 +1,12 @@
 import * as React from 'react';
 
 // tslint:disable-next-line: import-name
-import MaterialTable, { Action, Column, Localization, Options, MTableActions } from 'material-table';
+import MaterialTable, { Action, Localization, Options } from 'material-table';
 
 import { Box } from '@material-ui/core';
 
-import { swordType } from '../../constants';
 import { HomeSwordsTableProps } from '../containers/HomeSwordsTable';
+import { generateColumns } from '../models/generateColumns';
 import { homeSwordsConverter } from '../models/homeSwordsConverter';
 import { HomeSwordsTableContents } from '../states/HomeSwordsTableContents';
 import DrawerMenu from './DrawerMenu';
@@ -17,28 +17,22 @@ const HomeSwordsTable: React.FC<HomeSwordsTableProps> = (props) => {
   const menuClick = () => { setMenuOpen(true); };
   const menuClose = () => { setMenuOpen(false); };
 
-  const data: HomeSwordsTableContents[] = homeSwordsConverter(props.homeSwordsTable.homeSwords);
+  const data: HomeSwordsTableContents[] =
+    homeSwordsConverter(props.homeSwordsTable.homeSwords, props.homeSwordsTable.correct);
   // console.log('data: %o', data);
-  const textCellStyle: React.CSSProperties = { padding: '12px 6px', textAlign: 'center', whiteSpace: 'pre' };
-  const numberCellStyle: React.CSSProperties = { padding: 6, textAlign: 'right' };
 
-  const columns: Array<Column<HomeSwordsTableContents>> = [
-    { title: 'No', field: 'sword_id', filtering: false, cellStyle: numberCellStyle },
-    { title: '刀名', field: 'name', cellStyle: textCellStyle },
-    { title: '刀種', field: 'swordType', lookup: swordType, cellStyle: textCellStyle },
-    { title: '刀装数', field: 'slotNumber', lookup: { 1: 1, 2: 2, 3: 3 }, cellStyle: { ...numberCellStyle, background: 'lavenderblush' } },
-    { title: '英気', field: 'fatigue', filtering: false, cellStyle: numberCellStyle },
-    { title: '男子Lv', field: 'level', filtering: false, cellStyle: numberCellStyle },
-    { title: '乱舞Lv', field: 'ranbu_level', filtering: false, cellStyle: numberCellStyle },
-    { title: '生存', field: 'hp_max', filtering: false, cellStyle: numberCellStyle },
-    { title: '打撃', field: 'atk', filtering: false, cellStyle: numberCellStyle },
-    { title: '統率', field: 'def', filtering: false, cellStyle: numberCellStyle },
-    { title: '機動', field: 'mobile', filtering: false, cellStyle: numberCellStyle },
-    { title: '衝力', field: 'back', filtering: false, cellStyle: numberCellStyle },
-    { title: '必殺', field: 'loyalties', filtering: false, cellStyle: numberCellStyle },
-    { title: '偵察', field: 'scout', filtering: false, cellStyle: numberCellStyle },
-    { title: '隠蔽', field: 'hide', filtering: false, cellStyle: numberCellStyle },
-  ];
+  const columns = generateColumns(
+    props.homeSwordsTable.columns,
+    props.homeSwordsTable.displayedStatus,
+  );
+
+  const handleColumnDrag = (sourceIndex: number, destinationIndex: number): void => {
+    const sourceColumn = columns[sourceIndex];
+    const destinationColumn = columns[destinationIndex];
+    columns[sourceIndex] = destinationColumn;
+    columns[destinationIndex] = sourceColumn;
+    props.setColumns(columns);
+  };
 
   const localization: Localization = {
     toolbar: {
@@ -71,6 +65,7 @@ const HomeSwordsTable: React.FC<HomeSwordsTableProps> = (props) => {
         columns={columns}
         data={data}
         title={'本丸男子一覧'}
+        onColumnDragged={handleColumnDrag}
         localization={localization}
       />
       <DrawerMenu menuOpen={menuOpen} menuClose={menuClose} />

@@ -1,13 +1,16 @@
+import { Column } from 'material-table';
 import { correctType } from '../../constants';
 import { Swords } from '../../content/states/responseJson/Sword';
-import { homeSwordsTableInitialState, HomeSwordsTableState } from '../states/HomeSwordsTable';
 import { fillUndefinedProps } from '../models/fillUndefinedProps';
+import { homeSwordsTableInitialState, HomeSwordsTableState } from '../states/HomeSwordsTable';
+import { HomeSwordsTableContents } from '../states/HomeSwordsTableContents';
 
 export enum homeSwordsTableActionType {
   UPDATE_HOMESWORDSTABLE = 'UPDATE_HOMESWORDSTABLE',
   SET_HOMESWORDS = 'SET_HOMESWORDS',
   SELECT_CORRECT = 'SELECT_CORRECT',
   SELECT_DISPLAYEDSTATUS = 'SELECT_DISPLAYEDSTATUS',
+  SET_COLUMNS = 'SET_COLUMNS',
 }
 
 export interface UpdateHomeSwordsTableAction {
@@ -28,6 +31,11 @@ export interface SelectCorrectAction {
 export interface SelectDisplayedStatusAction {
   type: homeSwordsTableActionType.SELECT_DISPLAYEDSTATUS;
   displayedStatus: boolean[];
+}
+
+export interface SetColumnsAction {
+  type: homeSwordsTableActionType.SET_COLUMNS;
+  columns: Array<Column<HomeSwordsTableContents>>;
 }
 
 export const updateHomeSwordsTable =
@@ -58,8 +66,15 @@ export const selectDisplayedStatus = (displayedStatus: boolean[]): SelectDisplay
       displayedStatus : homeSwordsTableInitialState.displayedStatus,
   });
 
+export const setColumns = (columns: Array<Column<HomeSwordsTableContents>>): SetColumnsAction =>
+  ({
+    type: homeSwordsTableActionType.SET_COLUMNS,
+    columns: (columns !== undefined) ? columns : homeSwordsTableInitialState.columns,
+  });
+
 export type HomeSwordsTableActions =
   UpdateHomeSwordsTableAction |
   SetHomeSwordsAction |
   SelectCorrectAction |
-  SelectDisplayedStatusAction;
+  SelectDisplayedStatusAction |
+  SetColumnsAction;

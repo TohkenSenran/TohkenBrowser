@@ -23,6 +23,11 @@ const homeSwordsTable: Reducer<HomeSwordsTableState, HomeSwordsTableActions> =
           ...state,
           displayedStatus: action.displayedStatus,
         };
+      case homeSwordsTableActionType.SET_COLUMNS:
+        return {
+          ...state,
+          columns: action.columns,
+        };
       default:
         return state;
     }

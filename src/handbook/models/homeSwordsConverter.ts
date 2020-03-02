@@ -1,13 +1,37 @@
-import { raritySlotNUmber, swordProps } from '../../constants';
+import { correctType, raritySlotNUmber, swordProps } from '../../constants';
+import { getFatigueCorrect, swordConverter } from '../../content/models/swordConverter';
 import { Swords } from '../../content/states/responseJson/Sword';
 import { HomeSwordsTableContents } from '../states/HomeSwordsTableContents';
-import { swordConverter } from '../../content/models/swordConverter';
 
-export const homeSwordsConverter = (homeSwords: Swords): HomeSwordsTableContents[] => {
+const getCorrectedState = (
+  state: number | string,
+  selectCorrect: correctType,
+  level: number | string,
+  fatigue: number = 49,
+): number => {
+  const numberState = parseInt(state.toString(), 10);
+  const numberLevel = parseInt(level.toString(), 10);
+
+  switch (selectCorrect) {
+    case correctType.none:
+      return numberState;
+    case correctType.normal:
+      return Math.floor(numberState * (1.0 + numberLevel * 0.04) * getFatigueCorrect(fatigue));
+    case correctType.stage7:
+      return Math.floor(numberState * (1.0 + numberLevel * 0.02) * getFatigueCorrect(fatigue));
+  }
+};
+
+export const homeSwordsConverter = (
+  homeSwords: Swords,
+  selectCorrect: correctType,
+): HomeSwordsTableContents[] => {
+  // console.log('homeSwords %o', homeSwords);
   const swords: Swords = (homeSwords !== undefined) ? homeSwords : {};
   const data: HomeSwordsTableContents[] = [];
   Object.entries(swords).forEach(([key, value]) => {
     if (value.protect.toString() === '1') {
+      const fatigue: number = swordConverter(swords, value.serial_id).fatigueValue;
       data.push({
         sword_id: parseInt(value.sword_id.toString(), 10),
         name: swordProps[value.sword_id].name,
@@ -20,15 +44,15 @@ export const homeSwordsConverter = (homeSwords: Swords): HomeSwordsTableContents
         ranbu_exp: parseInt(value.ranbu_exp.toString(), 10), // 乱舞経験値
         hp: parseInt(value.hp.toString(), 10),
         hp_max: parseInt(value.hp_max.toString(), 10), // 最大HP
-        atk: parseInt(value.atk.toString(), 10), // 打撃 *男子自身の値，刀装・馬の補正無し
-        def: parseInt(value.def.toString(), 10), // 統率 *男子自身の値，刀装・馬の補正無し
-        mobile: parseInt(value.mobile.toString(), 10), // 機動 *男子自身の値，刀装・馬の補正無し
-        back: parseInt(value.back.toString(), 10), // 衝力 *男子自身の値，刀装・馬の補正無し
-        scout: parseInt(value.scout.toString(), 10), // 偵察 *男子自身の値，刀装・馬の補正無し
-        hide: parseInt(value.hide.toString(), 10), // 隠蔽 *男子自身の値，刀装・馬の補正無し
+        atk: getCorrectedState(value.atk, selectCorrect, value.level, fatigue), // 打撃
+        def: getCorrectedState(value.def, selectCorrect, value.level, fatigue), // 統率
+        mobile: getCorrectedState(value.mobile, selectCorrect, value.level, fatigue), // 機動
+        back: getCorrectedState(value.back, selectCorrect, value.level, fatigue), // 衝力
+        scout: getCorrectedState(value.scout, selectCorrect, value.level, fatigue), // 偵察
+        hide: getCorrectedState(value.hide, selectCorrect, value.level, fatigue), // 隠蔽
         loyalties: parseInt(value.loyalties.toString(), 10), // 必殺
-        fatigue: swordConverter(swords, value.serial_id).fatigueValue,
-        created_at: value.created_at.toString(), // 入手日時});
+        fatigue,
+        created_at: value.created_at.toString().slice(0, 10), // 入手日時});
       });
     }
   });

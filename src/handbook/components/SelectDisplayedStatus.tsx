@@ -22,13 +22,17 @@ const SelectDisplayedStatus: React.FC<SelectDisplayedStatusProps> = (props) => {
   };
 
   Object.entries(statusType).forEach(([key, value]) => {
-    if ((typeof value === 'number') && value > 0) {
+    if (
+      (typeof value === 'number') &&
+      (value !== statusType.none) &&
+      (value !== statusType.amulet)
+    ) {
       // const onChange = () => { handleChange(value, viewStatus[value]); };
       checks.push(<Box>
         <FormControlLabel
           checked={viewStatus[value]}
           control={<Checkbox size="small" />}
-          label={statusLabel[key]}
+          label={statusLabel[statusType[value]]}
           onChange={handleChange(value)}
         />
       </Box>);

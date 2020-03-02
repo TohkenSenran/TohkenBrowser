@@ -148,7 +148,7 @@ export const getEquipSwordStatus =
   };
 
 // 桜・疲労の補正
-const getFatigueCorrect = (fatigueValue: number): number => {
+export const getFatigueCorrect = (fatigueValue: number): number => {
   if (fatigueValue < 10) { // 疲労困憊
     return 0.6;
   }
