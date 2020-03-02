@@ -11,6 +11,6 @@ export const middleware: Middleware = (store: Store<HandbookState>) =>
     const handbookState: HandbookState = store.getState();
 
     // Stateの保存
-    console.log('save ', handbookInitialState);
+    // console.log('save ', handbookInitialState);
     chrome.storage.local.set({ handbookState });
   };

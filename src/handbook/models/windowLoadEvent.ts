@@ -6,7 +6,7 @@ import { HandbookState } from '../states';
 
 export const windowLoadEvent = () => {
   // Load時に過去の設定値を再読み込み
-  console.log('onLoadEvent');
+  // console.log('onLoadEvent');
   chrome.storage.local.get('handbookState', (response) => {
     const handbookState: HandbookState = store.getState();
     const storageState: HandbookState = response.handbookState ?
