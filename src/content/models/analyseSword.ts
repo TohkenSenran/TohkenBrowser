@@ -37,6 +37,7 @@ export const analyseSword = (
       // console.log('after oldSword obj: %O', sword);
       break;
     // 一部の刀剣男子のみの情報
+    case 'repair':
     case 'party/get_sally_party_info':
     case 'party/get_wait_party_info':
     case 'sally':
