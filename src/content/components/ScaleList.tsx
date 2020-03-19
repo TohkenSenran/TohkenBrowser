@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { FormLabel, InputLabel } from '@material-ui/core';
+import { InputLabel } from '@material-ui/core';
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
 
@@ -11,16 +11,17 @@ const ScaleList: React.FC<ScaleListProps> = (props) => {
     scale: props.browserSetting.scale,
   });
 
-  function handleChange(event: React.ChangeEvent<{ name?: string; value: number }>) {
+  const handleChange = (event: React.ChangeEvent<{ name?: string; value: unknown }>) => {
     if (typeof event.target.value !== 'undefined') {
       setValues(oldValues => ({
         ...oldValues,
         [event.target.name as string]: event.target.value,
       }));
       // console.log('GetValue: ' + event.target.value);
-      props.onChange(event.target.value);
+      props.onChange(event.target.value as number);
     }
-  }
+  };
+
   return (
     <>
       <InputLabel htmlFor="scale-list">{'描画倍率'}</InputLabel>

@@ -36,7 +36,7 @@ const mapDispatchToProps = (
     },
   });
 
-export default connect<StateToProps, DispatchToProps>(
+export default connect(
   mapStateToProps,
   mapDispatchToProps,
 )(StatusView);

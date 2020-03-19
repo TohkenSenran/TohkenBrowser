@@ -15,6 +15,7 @@ import ReloadButton from './ReloadButton';
 import DrawerMenu from './DrawerMenu';
 import HandbookButton from './HandbookButton';
 import Title from './Title';
+import JsonLogger from './JsonLogger';
 
 const HeaderMenu: React.FC = () => (
   <React.Fragment>
@@ -34,6 +35,7 @@ const HeaderMenu: React.FC = () => (
         <span style={{ marginLeft: 'auto', marginRight: -15 }}>
           <HandbookButton />
           <IconFontButton iconName="history" tooltipText="履歴" />
+          <JsonLogger />
           <DrawerMenu />
         </span>
       </Toolbar>

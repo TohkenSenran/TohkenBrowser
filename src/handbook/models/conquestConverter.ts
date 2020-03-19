@@ -10,7 +10,7 @@ export const conquestConverter = (seasonReword?: Items): ConquestTableContents[]
   const getRequireSwords = (swordTypeList: SwordTypeList): string => {
     let require: string = '';
     Object.entries(swordTypeList).forEach(([key, value]) => {
-      require += value ? `${swordType[key]},\n` : '';
+      require += value ? `${swordType[key as keyof typeof swordType]},\n` : '';
     });
     return require = (require === '') ? '-' : require.slice(0, -2);
   };

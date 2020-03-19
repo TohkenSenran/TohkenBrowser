@@ -1,8 +1,8 @@
-import { Action, Dispatch, Middleware, Store } from 'redux';
+import { Action, Dispatch, Middleware, Store, MiddlewareAPI } from 'redux';
 
 import { handbookInitialState, HandbookState } from './states';
 
-export const middleware: Middleware = (store: Store<HandbookState>) =>
+export const middleware: Middleware<{}, HandbookState> = (store: MiddlewareAPI) =>
   (next: Dispatch<Action>) => (action: Action) => {
     // before
 

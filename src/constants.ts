@@ -41,7 +41,7 @@ export enum correctType {
   stage7 = 'stage7',
 }
 
-export const statusLabel = {
+export const statusLabel: { [index: string]: string } = {
   none: '',
   hp_max: '生存',
   atk: '打撃',
@@ -55,7 +55,7 @@ export const statusLabel = {
   amulet: '御守',
 };
 
-export const forgeColorName = {
+export const forgeColorName: { [index: string]: string } = {
   20: 'navy',
   25: 'darkgreen',
   30: 'olive',
@@ -70,7 +70,19 @@ export const forgeColorName = {
   601: 'purple',
 };
 
-export const equipStatus = {
+type equipStatus = {
+  [key: string]: string | number;
+  name: string;
+  soldier: number;
+  atk: number;
+  def: number;
+  mobile: number;
+  back: number;
+  scout: number;
+  hide: number;
+}
+
+export const equipsStatus: { [index: string]: equipStatus } = {
   0: {
     name: '不明',
     soldier: 0,
@@ -564,18 +576,18 @@ export const equipStatus = {
   },
 };
 
-export const swordType = {
-  tanto: '短刀',
-  wakizashi: '脇差',
-  uchigatana: '打刀',
-  tachi: '太刀',
-  odachi: '大太刀',
-  yari: '槍',
-  naginata: '薙刀',
-  tsurugi: '剣',
+export enum swordType {
+  tanto = '短刀',
+  wakizashi = '脇差',
+  uchigatana = '打刀',
+  tachi = '太刀',
+  odachi = '大太刀',
+  yari = '槍',
+  naginata = '薙刀',
+  tsurugi = '剣',
 };
 
-export const raritySlotNUmber = {
+export const raritySlotNUmber: { [index: string]: number } = {
   1: 1,
   2: 2,
   3: 2,
@@ -583,723 +595,728 @@ export const raritySlotNUmber = {
   5: 3,
 };
 
-export const swordProps = {
+export type SwordProps = {
+  name: string;
+  type: swordType;
+};
+
+export const swordsProps: { [index: string]: SwordProps } = {
   0: {
     name: '不明',
-    type: 'tanto',
+    type: swordType.tanto,
   },
   3: {
     name: '三日月宗近',
-    type: 'tachi',
+    type: swordType.tachi,
   },
   4: {
     name: '三日月宗近・極',
-    type: 'tachi',
+    type: swordType.tachi,
   },
   5: {
     name: '小狐丸',
-    type: 'tachi',
+    type: swordType.tachi,
   },
   6: {
     name: '小狐丸・極',
-    type: 'tachi',
+    type: swordType.tachi,
   },
   7: {
     name: '石切丸',
-    type: 'odachi',
+    type: swordType.odachi,
   },
   8: {
     name: '石切丸・極',
-    type: 'odachi',
+    type: swordType.odachi,
   },
   9: {
     name: '岩融',
-    type: 'naginata',
+    type: swordType.naginata,
   },
   10: {
     name: '岩融・極',
-    type: 'naginata',
+    type: swordType.naginata,
   },
   11: {
     name: '今剣',
-    type: 'tanto',
+    type: swordType.tanto,
   },
   12: {
     name: '今剣・極',
-    type: 'tanto',
+    type: swordType.tanto,
   },
   13: {
     name: '大典太光世',
-    type: 'tachi',
+    type: swordType.tachi,
   },
   14: {
     name: '大典太光世・極',
-    type: 'tachi',
+    type: swordType.tachi,
   },
   15: {
     name: 'ソハヤノツルキ',
-    type: 'tachi',
+    type: swordType.tachi,
   },
   16: {
     name: 'ソハヤノツルキ・極',
-    type: 'tachi',
+    type: swordType.tachi,
   },
   17: {
     name: '数珠丸恒次',
-    type: 'tachi',
+    type: swordType.tachi,
   },
   18: {
     name: '数珠丸恒次・極',
-    type: 'tachi',
+    type: swordType.tachi,
   },
   19: {
     name: 'にっかり青江',
-    type: 'wakizashi',
+    type: swordType.wakizashi,
   },
   20: {
     name: 'にっかり青江・極',
-    type: 'wakizashi',
+    type: swordType.wakizashi,
   },
   21: {
     name: '鬼丸国綱',
-    type: 'tachi',
+    type: swordType.tachi,
   },
   22: {
     name: '鬼丸国綱・極',
-    type: 'tachi',
+    type: swordType.tachi,
   },
   23: {
     name: '鳴狐',
-    type: 'uchigatana',
+    type: swordType.uchigatana,
   },
   24: {
     name: '鳴狐・極',
-    type: 'uchigatana',
+    type: swordType.uchigatana,
   },
   25: {
     name: '一期一振',
-    type: 'tachi',
+    type: swordType.tachi,
   },
   26: {
     name: '一期一振・極',
-    type: 'tachi',
+    type: swordType.tachi,
   },
   27: {
     name: '鯰尾藤四郎',
-    type: 'wakizashi',
+    type: swordType.wakizashi,
   },
   28: {
     name: '鯰尾藤四郎・極',
-    type: 'wakizashi',
+    type: swordType.wakizashi,
   },
   29: {
     name: '骨喰藤四郎',
-    type: 'wakizashi',
+    type: swordType.wakizashi,
   },
   30: {
     name: '骨喰藤四郎・極',
-    type: 'wakizashi',
+    type: swordType.wakizashi,
   },
   31: {
     name: '平野藤四郎',
-    type: 'tanto',
+    type: swordType.tanto,
   },
   32: {
     name: '平野藤四郎・極 ',
-    type: 'tanto',
+    type: swordType.tanto,
   },
   33: {
     name: '厚藤四郎',
-    type: 'tanto',
+    type: swordType.tanto,
   },
   34: {
     name: '厚藤四郎・極 ',
-    type: 'tanto',
+    type: swordType.tanto,
   },
   35: {
     name: '後藤藤四郎',
-    type: 'tanto',
+    type: swordType.tanto,
   },
   36: {
     name: '後藤藤四郎・極',
-    type: 'tanto',
+    type: swordType.tanto,
   },
   37: {
     name: '信濃藤四郎',
-    type: 'tanto',
+    type: swordType.tanto,
   },
   38: {
     name: '信濃藤四郎・極',
-    type: 'tanto',
+    type: swordType.tanto,
   },
   39: {
     name: '前田藤四郎',
-    type: 'tanto',
+    type: swordType.tanto,
   },
   40: {
     name: '前田藤四郎・極',
-    type: 'tanto',
+    type: swordType.tanto,
   },
   41: {
     name: '秋田藤四郎',
-    type: 'tanto',
+    type: swordType.tanto,
   },
   42: {
     name: '秋田藤四郎・極',
-    type: 'tanto',
+    type: swordType.tanto,
   },
   43: {
     name: '博多藤四郎',
-    type: 'tanto',
+    type: swordType.tanto,
   },
   44: {
     name: '博多藤四郎・極',
-    type: 'tanto',
+    type: swordType.tanto,
   },
   45: {
     name: '乱藤四郎',
-    type: 'tanto',
+    type: swordType.tanto,
   },
   46: {
     name: '乱藤四郎・極',
-    type: 'tanto',
+    type: swordType.tanto,
   },
   47: {
     name: '五虎退',
-    type: 'tanto',
+    type: swordType.tanto,
   },
   48: {
     name: '五虎退・極',
-    type: 'tanto',
+    type: swordType.tanto,
   },
   49: {
     name: '薬研藤四郎',
-    type: 'tanto',
+    type: swordType.tanto,
   },
   50: {
     name: '薬研藤四郎・極',
-    type: 'tanto',
+    type: swordType.tanto,
   },
   51: {
     name: '包丁藤四郎',
-    type: 'tanto',
+    type: swordType.tanto,
   },
   52: {
     name: '包丁藤四郎・極',
-    type: 'tanto',
+    type: swordType.tanto,
   },
   53: {
     name: '大包平',
-    type: 'tachi',
+    type: swordType.tachi,
   },
   54: {
     name: '大包平・極',
-    type: 'tachi',
+    type: swordType.tachi,
   },
   55: {
     name: '鶯丸',
-    type: 'tachi',
+    type: swordType.tachi,
   },
   56: {
     name: '鶯丸・極',
-    type: 'tachi',
+    type: swordType.tachi,
   },
   57: {
     name: '明石国行',
-    type: 'tachi',
+    type: swordType.tachi,
   },
   58: {
     name: '明石国行・極',
-    type: 'tachi',
+    type: swordType.tachi,
   },
   59: {
     name: '蛍丸',
-    type: 'odachi',
+    type: swordType.odachi,
   },
   60: {
     name: '蛍丸・極',
-    type: 'odachi',
+    type: swordType.odachi,
   },
   61: {
     name: '愛染国俊',
-    type: 'tanto',
+    type: swordType.tanto,
   },
   62: {
     name: '愛染国俊・極',
-    type: 'tanto',
+    type: swordType.tanto,
   },
   63: {
     name: '千子村正',
-    type: 'uchigatana',
+    type: swordType.uchigatana,
   },
   64: {
     name: '千子村正・極',
-    type: 'uchigatana',
+    type: swordType.uchigatana,
   },
   65: {
     name: '蜻蛉切',
-    type: 'yari',
+    type: swordType.yari,
   },
   66: {
     name: '蜻蛉切・極',
-    type: 'yari',
+    type: swordType.yari,
   },
   67: {
     name: '物吉貞宗',
-    type: 'wakizashi',
+    type: swordType.wakizashi,
   },
   68: {
     name: '物吉貞宗・極',
-    type: 'wakizashi',
+    type: swordType.wakizashi,
   },
   69: {
     name: '太鼓鐘貞宗',
-    type: 'tanto',
+    type: swordType.tanto,
   },
   70: {
     name: '太鼓鐘貞宗・極',
-    type: 'tanto',
+    type: swordType.tanto,
   },
   71: {
     name: '亀甲貞宗',
-    type: 'uchigatana',
+    type: swordType.uchigatana,
   },
   72: {
     name: '亀甲貞宗・極',
-    type: 'uchigatana',
+    type: swordType.uchigatana,
   },
   73: {
     name: '燭台切光忠',
-    type: 'tachi',
+    type: swordType.tachi,
   },
   74: {
     name: '燭台切光忠・極',
-    type: 'tachi',
+    type: swordType.tachi,
   },
   75: {
     name: '大般若長光',
-    type: 'tachi',
+    type: swordType.tachi,
   },
   76: {
     name: '大般若長光・極',
-    type: 'tachi',
+    type: swordType.tachi,
   },
   77: {
     name: '小竜景光',
-    type: 'tachi',
+    type: swordType.tachi,
   },
   78: {
     name: '小竜景光・極',
-    type: 'tachi',
+    type: swordType.tachi,
   },
   79: {
     name: '江雪左文字',
-    type: 'tachi',
+    type: swordType.tachi,
   },
   80: {
     name: '江雪左文字・極',
-    type: 'tachi',
+    type: swordType.tachi,
   },
   81: {
     name: '宗三左文字',
-    type: 'uchigatana',
+    type: swordType.uchigatana,
   },
   82: {
     name: '宗三左文字・極',
-    type: 'uchigatana',
+    type: swordType.uchigatana,
   },
   83: {
     name: '小夜左文字',
-    type: 'tanto',
+    type: swordType.tanto,
   },
   84: {
     name: '小夜左文字・極',
-    type: 'tanto',
+    type: swordType.tanto,
   },
   85: {
     name: '加州清光',
-    type: 'uchigatana',
+    type: swordType.uchigatana,
   },
   86: {
     name: '加州清光・極',
-    type: 'uchigatana',
+    type: swordType.uchigatana,
   },
   87: {
     name: '大和守安定',
-    type: 'uchigatana',
+    type: swordType.uchigatana,
   },
   88: {
     name: '大和守安定・極',
-    type: 'uchigatana',
+    type: swordType.uchigatana,
   },
   89: {
     name: '歌仙兼定',
-    type: 'uchigatana',
+    type: swordType.uchigatana,
   },
   90: {
     name: '歌仙兼定・極',
-    type: 'uchigatana',
+    type: swordType.uchigatana,
   },
   91: {
     name: '和泉守兼定',
-    type: 'uchigatana',
+    type: swordType.uchigatana,
   },
   92: {
     name: '和泉守兼定・極',
-    type: 'uchigatana',
+    type: swordType.uchigatana,
   },
   93: {
     name: '陸奥守吉行',
-    type: 'uchigatana',
+    type: swordType.uchigatana,
   },
   94: {
     name: '陸奥守吉行・極',
-    type: 'uchigatana',
+    type: swordType.uchigatana,
   },
   95: {
     name: '山姥切国広',
-    type: 'uchigatana',
+    type: swordType.uchigatana,
   },
   96: {
     name: '山姥切国広・極',
-    type: 'uchigatana',
+    type: swordType.uchigatana,
   },
   97: {
     name: '山伏国広',
-    type: 'tachi',
+    type: swordType.tachi,
   },
   98: {
     name: '山伏国広・極',
-    type: 'tachi',
+    type: swordType.tachi,
   },
   99: {
     name: '堀川国広',
-    type: 'wakizashi',
+    type: swordType.wakizashi,
   },
   100: {
     name: '堀川国広・極',
-    type: 'wakizashi',
+    type: swordType.wakizashi,
   },
   101: {
     name: '蜂須賀虎徹',
-    type: 'uchigatana',
+    type: swordType.uchigatana,
   },
   102: {
     name: '蜂須賀虎徹・極',
-    type: 'uchigatana',
+    type: swordType.uchigatana,
   },
   103: {
     name: '浦島虎徹',
-    type: 'wakizashi',
+    type: swordType.wakizashi,
   },
   104: {
     name: '浦島虎徹・極',
-    type: 'wakizashi',
+    type: swordType.wakizashi,
   },
   105: {
     name: '長曽祢虎徹',
-    type: 'uchigatana',
+    type: swordType.uchigatana,
   },
   106: {
     name: '長曽祢虎徹・極',
-    type: 'uchigatana',
+    type: swordType.uchigatana,
   },
   107: {
     name: '髭切',
-    type: 'tachi',
+    type: swordType.tachi,
   },
   108: {
     name: '髭切・特一',
-    type: 'tachi',
+    type: swordType.tachi,
   },
   109: {
     name: '髭切・特二',
-    type: 'tachi',
+    type: swordType.tachi,
   },
   110: {
     name: '髭切・特三',
-    type: 'tachi',
+    type: swordType.tachi,
   },
   111: {
     name: '髭切・極',
-    type: 'tachi',
+    type: swordType.tachi,
   },
   112: {
     name: '膝丸',
-    type: 'tachi',
+    type: swordType.tachi,
   },
   113: {
     name: '膝丸・特一',
-    type: 'tachi',
+    type: swordType.tachi,
   },
   114: {
     name: '膝丸・特二',
-    type: 'tachi',
+    type: swordType.tachi,
   },
   115: {
     name: '膝丸・極',
-    type: 'tachi',
+    type: swordType.tachi,
   },
   116: {
     name: '大倶利伽羅',
-    type: 'uchigatana',
+    type: swordType.uchigatana,
   },
   117: {
     name: '大倶利伽羅・極',
-    type: 'uchigatana',
+    type: swordType.uchigatana,
   },
   118: {
     name: 'へし切長谷部',
-    type: 'uchigatana',
+    type: swordType.uchigatana,
   },
   119: {
     name: 'へし切長谷部・極',
-    type: 'uchigatana',
+    type: swordType.uchigatana,
   },
   120: {
     name: '不動行光',
-    type: 'tanto',
+    type: swordType.tanto,
   },
   121: {
     name: '不動行光・極',
-    type: 'tanto',
+    type: swordType.tanto,
   },
   122: {
     name: '獅子王',
-    type: 'tachi',
+    type: swordType.tachi,
   },
   123: {
     name: '獅子王・極',
-    type: 'tachi',
+    type: swordType.tachi,
   },
   124: {
     name: '小烏丸',
-    type: 'tachi',
+    type: swordType.tachi,
   },
   125: {
     name: '小烏丸・極',
-    type: 'tachi',
+    type: swordType.tachi,
   },
   128: {
     name: '同田貫正国',
-    type: 'uchigatana',
+    type: swordType.uchigatana,
   },
   129: {
     name: '同田貫正国・極',
-    type: 'uchigatana',
+    type: swordType.uchigatana,
   },
   130: {
     name: '鶴丸国永',
-    type: 'tachi',
+    type: swordType.tachi,
   },
   131: {
     name: '鶴丸国永・極',
-    type: 'tachi',
+    type: swordType.tachi,
   },
   132: {
     name: '太郎太刀',
-    type: 'odachi',
+    type: swordType.odachi,
   },
   133: {
     name: '太郎太刀・極',
-    type: 'odachi',
+    type: swordType.odachi,
   },
   134: {
     name: '次郎太刀',
-    type: 'odachi',
+    type: swordType.odachi,
   },
   135: {
     name: '次郎太刀・極',
-    type: 'odachi',
+    type: swordType.odachi,
   },
   136: {
     name: '日本号',
-    type: 'yari',
+    type: swordType.yari,
   },
   137: {
     name: '日本号・極',
-    type: 'yari',
+    type: swordType.yari,
   },
   138: {
     name: '御手杵',
-    type: 'yari',
+    type: swordType.yari,
   },
   139: {
     name: '御手杵・極',
-    type: 'yari',
+    type: swordType.yari,
   },
   140: {
     name: '巴形薙刀',
-    type: 'naginata',
+    type: swordType.naginata,
   },
   141: {
     name: '巴形薙刀・極',
-    type: 'naginata',
+    type: swordType.naginata,
   },
   142: {
     name: '毛利藤四郎',
-    type: 'tanto',
+    type: swordType.tanto,
   },
   143: {
     name: '毛利藤四郎・極',
-    type: 'tanto',
+    type: swordType.tanto,
   },
   144: {
     name: '篭手切江',
-    type: 'wakizashi',
+    type: swordType.wakizashi,
   },
   145: {
     name: '篭手切江・極',
-    type: 'wakizashi',
+    type: swordType.wakizashi,
   },
   146: {
     name: '謙信景光',
-    type: 'tanto',
+    type: swordType.tanto,
   },
   147: {
     name: '謙信景光・極',
-    type: 'tanto',
+    type: swordType.tanto,
   },
   148: {
     name: '小豆長光',
-    type: 'tachi',
+    type: swordType.tachi,
   },
   149: {
     name: '小豆長光・極',
-    type: 'tachi',
+    type: swordType.tachi,
   },
   150: {
     name: '日向正宗',
-    type: 'tanto',
+    type: swordType.tanto,
   },
   151: {
     name: '日向正宗・極',
-    type: 'tanto',
+    type: swordType.tanto,
   },
   152: {
     name: '静形薙刀',
-    type: 'naginata',
+    type: swordType.naginata,
   },
   153: {
     name: '静形薙刀・極',
-    type: 'naginata',
+    type: swordType.naginata,
   },
   154: {
     name: '南泉一文字',
-    type: 'uchigatana',
+    type: swordType.uchigatana,
   },
   155: {
     name: '南泉一文字・極',
-    type: 'uchigatana',
+    type: swordType.uchigatana,
   },
   156: {
     name: '千代金丸',
-    type: 'tachi',
+    type: swordType.tachi,
   },
   157: {
     name: '千代金丸・極',
-    type: 'tachi',
+    type: swordType.tachi,
   },
   158: {
     name: '山姥切長義',
-    type: 'uchigatana',
+    type: swordType.uchigatana,
   },
   159: {
     name: '山姥切長義・極',
-    type: 'uchigatana',
+    type: swordType.uchigatana,
   },
   160: {
     name: '豊前江',
-    type: 'uchigatana',
+    type: swordType.uchigatana,
   },
   161: {
     name: '豊前江・極',
-    type: 'uchigatana',
+    type: swordType.uchigatana,
   },
   162: {
     name: '祢々切丸',
-    type: 'odachi',
+    type: swordType.odachi,
   },
   163: {
     name: '祢々切丸・極',
-    type: 'odachi',
+    type: swordType.odachi,
   },
   164: {
     name: '白山吉光',
-    type: 'tsurugi',
+    type: swordType.tsurugi,
   },
   165: {
     name: '白山吉光・極',
-    type: 'tsurugi',
+    type: swordType.tsurugi,
   },
   166: {
     name: '南海太郎朝尊',
-    type: 'uchigatana',
+    type: swordType.uchigatana,
   },
   167: {
     name: '南海太郎朝尊・極',
-    type: 'uchigatana',
+    type: swordType.uchigatana,
   },
   168: {
     name: '肥前忠広',
-    type: 'wakizashi',
+    type: swordType.wakizashi,
   },
   169: {
     name: '肥前忠広・極',
-    type: 'wakizashi',
+    type: swordType.wakizashi,
   },
   170: {
     name: '北谷菜切',
-    type: 'tanto',
+    type: swordType.tanto,
   },
   171: {
     name: '北谷菜切・極',
-    type: 'tanto',
+    type: swordType.tanto,
   },
   172: {
     name: '桑名江',
-    type: 'uchigatana',
+    type: swordType.uchigatana,
   },
   173: {
     name: '桑名江・極',
-    type: 'uchigatana',
+    type: swordType.uchigatana,
   },
   174: {
     name: '水心子正秀',
-    type: 'uchigatana',
+    type: swordType.uchigatana,
   },
   175: {
     name: '水心子正秀・極',
-    type: 'uchigatana',
+    type: swordType.uchigatana,
   },
   176: {
     name: '源清麿',
-    type: 'uchigatana',
+    type: swordType.uchigatana,
   },
   177: {
     name: '源清麿・極',
-    type: 'uchigatana',
+    type: swordType.uchigatana,
   },
   178: {
     name: '松井江',
-    type: 'uchigatana',
+    type: swordType.uchigatana,
   },
   179: {
     name: '松井江・極',
-    type: 'uchigatana',
+    type: swordType.uchigatana,
   },
   180: {
     name: '山鳥毛',
-    type: 'tachi',
+    type: swordType.tachi,
   },
   181: {
     name: '山鳥毛・極',
-    type: 'tachi',
+    type: swordType.tachi,
   },
 };
 
 // 抜けている番号は情報不足のためフォロー必須
-export const itemName = {
+export const itemName: { [index1: string]: { [index2: string]: string } } = {
   1: {
     1: 'お守り',
     3: '仙人団子',

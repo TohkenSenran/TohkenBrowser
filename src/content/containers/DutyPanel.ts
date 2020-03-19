@@ -20,6 +20,6 @@ const mapStateToProps = (state: RootState): StateToProps =>
     sword: state.responseJson.sword,
   });
 
-export default connect<StateToProps>(
+export default connect(
   mapStateToProps,
 )(DutyPanel);

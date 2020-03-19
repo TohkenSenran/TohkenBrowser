@@ -1,4 +1,4 @@
-import { Action, Dispatch, Middleware, Store } from 'redux';
+import { Action, Dispatch, Middleware, MiddlewareAPI, Store } from 'redux';
 
 import { requestType } from '../background/states/requestType';
 import { browserSettingActionType } from './actions/browserSetting';
@@ -7,7 +7,7 @@ import { sendMessageToBackground } from './models/sendMessageToBackground';
 import { windowTransform } from './models/windowTransform';
 import { RootState } from './states';
 
-export const middleware: Middleware = (store: Store<RootState>) =>
+export const middleware: Middleware<{}, RootState> = (store: MiddlewareAPI) =>
   (next: Dispatch<Action>) => (action: Action) => {
     // before
     // console.log('before action: %O', action);

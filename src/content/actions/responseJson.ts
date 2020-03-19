@@ -18,12 +18,12 @@ export interface UpdateDateAction {
 // まとめてデータ更新
 export const updateJsonState = (responseJson: ResponseJsonState): UpdateJsonStateAction => {
   // 新規追加の設定値をstoreからロードすると，新しい設定値がundefinedになる
-  Object.keys(responseJsonInitialState).forEach((key: string) => {
-    if (responseJson[key] === undefined) {
-      // console.log('undefinedkey', key);
-      responseJson[key] = responseJsonInitialState[key];
-    }
-  });
+  responseJson = Object.assign(responseJson, ...(Object.keys(responseJsonInitialState) as (keyof ResponseJsonState)[]).map(
+    (key: keyof ResponseJsonState) => ({
+      [key]: (typeof responseJson[key] !== 'undefined') ? responseJson[key] : responseJsonInitialState[key]
+    })
+  ));
+
   return ({
     type: responseJsonActionType.UPDATE_JSONSTATE,
     responseJson,

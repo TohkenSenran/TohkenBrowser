@@ -12,6 +12,7 @@ import Content from './components/Content';
 import { setWindowTitle } from './models/setWindowTitle';
 import { windowBeforeUnloadEvent } from './models/windowBeforeUnloadEvent';
 import { windowLoadEvent } from './models/windowLoadEvent';
+import { getHomeSwords } from './models/getHomeSwords';
 
 // 終了直前の処理
 window.onbeforeunload = () => {
@@ -19,7 +20,7 @@ window.onbeforeunload = () => {
 };
 
 // storageの変更取得
-chrome.storage.onChanged.addListener((changes) => {
+chrome.storage.onChanged.addListener(async (changes) => {
   // console.log('changed Obj %o', changes);
   if ((changes.handbookState) && (changes.handbookState.newValue)) {
     // console.log('changed Obj %o', changes.handbookState.newValue);
@@ -52,18 +53,14 @@ chrome.storage.onChanged.addListener((changes) => {
     ) {
       // console.log('in changes.rootState.newValue.responseJson');
       const newHomeSwords: Swords = changes.rootState.newValue.responseJson.sword;
-      const oldHomeSwords: Swords =
-        (
-          (changes.rootState.oldValue) &&
-          (changes.rootState.oldValue.responseJson) &&
-          (changes.rootState.oldValue.responseJson.sword)
-        ) ? changes.rootState.oldValue.responseJson.sword : {};
-      // console.log('changed Obj %o', newHomeSwords);
+      const oldHomeSwords: Swords = await getHomeSwords();
+      console.log('new changed Obj %o', newHomeSwords);
+      console.log('old changed Obj %o', oldHomeSwords);
       // console.log('newHomeSwords', JSON.stringify(newHomeSwords));
       // console.log('oldHomeSwords', JSON.stringify(oldHomeSwords));
 
       if (JSON.stringify(newHomeSwords) !== JSON.stringify(oldHomeSwords)) {
-        // console.log('homeSwords更新');
+        // 9console.log('homeSwords更新');
         store.dispatch(setHomeSwords(newHomeSwords ? newHomeSwords : {}));
       }
     }

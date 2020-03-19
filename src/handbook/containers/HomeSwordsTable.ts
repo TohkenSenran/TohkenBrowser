@@ -5,7 +5,7 @@ import { Column } from 'material-table';
 
 import { HomeSwordsTableActions, setColumns } from '../actions/homeSwordsTable';
 import HomeSwordsTable from '../components/HomeSwordsTable';
-import { HomeSwordsTableState } from '../states/homeSwordsTable';
+import { HomeSwordsTableState } from '../states/HomeSwordsTable';
 import { HomeSwordsTableContents } from '../states/HomeSwordsTableContents';
 import { HandbookState } from '../states/index';
 
@@ -31,7 +31,7 @@ const mapDispatchToProps = (dispatch: Dispatch<HomeSwordsTableActions>): Dispatc
     },
   });
 
-export default connect<StateToProps, DispatchToProps>(
+export default connect(
   mapStateToProps,
   mapDispatchToProps,
 )(HomeSwordsTable);

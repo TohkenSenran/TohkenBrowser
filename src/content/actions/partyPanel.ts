@@ -44,12 +44,12 @@ export const loadPartyPanelState = (
   partyPanelState: PartyPanelState,
 ): LoadPartyPanelStateAction => {
   // 新規追加の設定値をstoreからロードすると，新しい設定値がundefinedになる
-  Object.keys(partyPanelInitialState).forEach((key: string) => {
-    if (partyPanelState[key] === undefined) {
-      // console.log('undefinedkey', key);
-      partyPanelState[key] = partyPanelInitialState[key];
-    }
-  });
+  partyPanelState = Object.assign(partyPanelState, ...(Object.keys(partyPanelInitialState) as (keyof PartyPanelState)[]).map(
+    (key: keyof PartyPanelState) => ({
+      [key]: (typeof partyPanelState[key] !== 'undefined') ? partyPanelState[key] : partyPanelInitialState[key]
+    })
+  ));
+
   return ({
     type: partyPanelActionType.LOAD_PARTYPANELSTATE,
     partyPanelState,

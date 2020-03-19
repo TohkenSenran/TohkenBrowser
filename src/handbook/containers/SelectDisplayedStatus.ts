@@ -25,7 +25,7 @@ const mapDispatchToProps = (dispatch: Dispatch<HomeSwordsTableActions>): Dispatc
     },
   });
 
-export default connect<StateToProps, DispatchToProps>(
+export default connect(
   mapStateToProps,
   mapDispatchToProps,
 )(SelectDisplayedStatus);

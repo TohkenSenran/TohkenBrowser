@@ -1,7 +1,7 @@
 import { Reducer } from 'redux';
 
 import { ConquestTableActions, conquestTableActionType } from '../actions/conquestTable';
-import { conquestTableInitialState, ConquestTableState } from '../states/conquestTable';
+import { conquestTableInitialState, ConquestTableState } from '../states/ConquestTable';
 
 const conquestTable: Reducer<ConquestTableState, ConquestTableActions> =
   (state = conquestTableInitialState, action) => {

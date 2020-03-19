@@ -17,6 +17,6 @@ const mapStateToProps = (state: RootState): StateToProps =>
     responseJson: state.responseJson,
   });
 
-export default connect<StateToProps>(
+export default connect(
   mapStateToProps,
 )(ToastNotification);

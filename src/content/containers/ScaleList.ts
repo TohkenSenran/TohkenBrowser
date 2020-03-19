@@ -29,7 +29,7 @@ const mapDispatchToProps = (dispatch: Dispatch<BrowserSettingActions>): Dispatch
     },
   });
 
-export default connect<StateToProps, DispatchToProps>(
+export default connect(
   mapStateToProps,
   mapDispatchToProps,
 )(ScaleList);

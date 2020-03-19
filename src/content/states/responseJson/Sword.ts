@@ -1,4 +1,5 @@
-export interface Sword {
+export type Sword = {
+  [key: string]: string | number | null;
   serial_id: string | number; // 男子個別のID
   sword_id: string | number; // 刀剣の種類 *極は別ID
   symbol: string | number; // 極の判定 *通常1，極2

@@ -1,7 +1,7 @@
 import { Reducer } from 'redux';
 
 import { HomeSwordsTableActions, homeSwordsTableActionType } from '../actions/homeSwordsTable';
-import { homeSwordsTableInitialState, HomeSwordsTableState } from '../states/homeSwordsTable';
+import { homeSwordsTableInitialState, HomeSwordsTableState } from '../states/HomeSwordsTable';
 
 const homeSwordsTable: Reducer<HomeSwordsTableState, HomeSwordsTableActions> =
   (state = homeSwordsTableInitialState, action) => {

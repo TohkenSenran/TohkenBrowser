@@ -10,9 +10,7 @@ export const popupWindow = {
     windowName: string,
     loadUrl: string,
   ) => {
-
     const windowState: WindowState = await getWindowState(windowName);
-
     // 重複起動チェック
     const windowId: number = await getWindowId(`${windowName}Id`);
     if (windowId) {
@@ -33,15 +31,12 @@ export const popupWindow = {
       }
     }
     // idが未定義 or 存在しない場合，ウィンドウを作成
-    const obj = {};
-    obj[`${windowName}Id`] = 0;
     createWindow(
       (windowState !== undefined) ? windowState : initialWindowState,
       loadUrl,
-      (newWindow: chrome.windows.Window) => {
+      (newWindow: chrome.windows.Window | undefined) => {
         if ((newWindow) && (newWindow.tabs)) {
-          obj[`${windowName}Id`] = newWindow.id;
-          chrome.storage.local.set(obj);
+          chrome.storage.local.set({ [`${windowName}Id`]: newWindow.id });
         }
       },
     );
@@ -50,10 +45,8 @@ export const popupWindow = {
   saveState: async (windowName: string, windowState: WindowState) => {
     const setBrowserWindow: (key: string, window: WindowState) => Promise<void> =
       (key: string, window: WindowState) => new Promise(() => {
-        const obj = {};
-        obj[key] = window;
         // console.log('objWS %o', obj);
-        chrome.storage.local.set(obj);
+        chrome.storage.local.set({ [key]: window });
       });
 
     setBrowserWindow(windowName, windowState);

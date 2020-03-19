@@ -27,7 +27,7 @@ const mapDispatchToProps = (dispatch: Dispatch<PartyPanelActions>): DispatchToPr
     },
   });
 
-export default connect<StateToProps, DispatchToProps>(
+export default connect(
   mapStateToProps,
   mapDispatchToProps,
 )(CheckHorseDisable);

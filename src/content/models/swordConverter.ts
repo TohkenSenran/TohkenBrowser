@@ -1,4 +1,4 @@
-import { correctType, equipStatus, statusLabel, statusType } from '../../constants';
+import { correctType, equipsStatus, statusLabel, statusType } from '../../constants';
 import { Equip, Equips } from '../states/responseJson/Equip';
 import { Sword, swordInitialState, Swords } from '../states/responseJson/Sword';
 
@@ -112,8 +112,7 @@ export const getEquipSwordStatus =
     // console.log('horseDisable: ', horseDisable);
     let equip1Id: string = '0';
     let equip2Id: string = '0';
-    let equip3Id: string
-      = '0';
+    let equip3Id: string = '0';
     let horseId: string = '0';
     // equip, horseの種類（equip_id）取得
     if ((sword.equip_serial_id1 !== null) && (sword.equip_serial_id1.toString() in equips)) {
@@ -136,13 +135,17 @@ export const getEquipSwordStatus =
       const equipH: Equip = equips[sword.horse_serial_id.toString()];
       horseId = equipH.equip_id.toString();
     }
-    const status: number = parseInt(sword[statusType[selectTextType]], 10) +
+
+    let status: number = 0
+
+    const key: keyof Sword = statusType[selectTextType] as keyof Sword;
+    status = parseInt((sword[key] ?? '0').toString(), 10) +
       (
-        statusType[selectTextType] in equipStatus[0] ? (
-          parseInt(equipStatus[equip1Id][statusType[selectTextType]], 10) +
-          parseInt(equipStatus[equip2Id][statusType[selectTextType]], 10) +
-          parseInt(equipStatus[equip3Id][statusType[selectTextType]], 10) +
-          parseInt(equipStatus[horseId][statusType[selectTextType]], 10)) : 0
+        statusType[selectTextType] in equipsStatus[0] ? (
+          parseInt(equipsStatus[equip1Id][key].toString(), 10) +
+          parseInt(equipsStatus[equip2Id][key].toString(), 10) +
+          parseInt(equipsStatus[equip3Id][key].toString(), 10) +
+          parseInt(equipsStatus[horseId][key].toString(), 10)) : 0
       );
     return status;
   };

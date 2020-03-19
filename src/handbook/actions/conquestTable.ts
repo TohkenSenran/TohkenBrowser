@@ -1,6 +1,6 @@
 import { Items } from '../../content/states/responseJson/Item';
 import { fillUndefinedProps } from '../models/fillUndefinedProps';
-import { conquestTableInitialState, ConquestTableState } from '../states/conquestTable';
+import { conquestTableInitialState, ConquestTableState } from '../states/ConquestTable';
 
 export enum conquestTableActionType {
   UPDATE_CONQUESTTABLE = 'UPDATE_CONQUESTTABLE',

@@ -17,6 +17,6 @@ const mapStateToProps = (state: RootState): StateToProps =>
     addCopyright: state.browserSetting.addCopyright,
   });
 
-export default connect<StateToProps>(
+export default connect(
   mapStateToProps,
 )(ScreenshotButton);

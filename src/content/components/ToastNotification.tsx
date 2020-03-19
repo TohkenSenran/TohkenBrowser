@@ -1,7 +1,7 @@
 import * as React from 'react';
 import toastedNotes from 'toasted-notes';
 
-import { forgeNo, repairNo, swordProps } from '../../constants';
+import { forgeNo, repairNo, swordsProps } from '../../constants';
 import { ToastNotificationProps } from '../containers/ToastNotification';
 import NotificationCard from './NotificationCard';
 
@@ -51,7 +51,7 @@ const ToastNotification: React.FC<ToastNotificationProps> = (props) => {
               let notifyText = `${i + 1}番部屋\n鍛刀完了`;
               let notifyImagePath = chrome.extension.getURL('icon/TohkenBrowser-128.png');
               if (swordId) {
-                notifyText = `${swordProps[swordId.toString()].name}\n鍛刀完了`;
+                notifyText = `${swordsProps[swordId.toString()].name}\n鍛刀完了`;
                 notifyImagePath = chrome.extension.getURL(`img/Setting/Swords/${swordId.toString()}/Normal.png`);
               }
               toastNotify(notifyText, notifyImagePath);
@@ -76,7 +76,7 @@ const ToastNotification: React.FC<ToastNotificationProps> = (props) => {
               if ((serialId) && (props.responseJson.sword)) {
                 const swordId = props.responseJson.sword[serialId].sword_id;
                 toastNotify(
-                  `${swordProps[swordId.toString()].name}\n手入完了`,
+                  `${swordsProps[swordId.toString()].name}\n手入完了`,
                   chrome.extension.getURL(`img/Setting/Swords/${swordId.toString()}/Repair.png`),
                 );
               }

@@ -1,7 +1,7 @@
 import { gameRatio, headerMenuHeight } from '../../constants';
 
 const saveScreenshot = (dataUrl: string, addCopyright: boolean) => {
-  const dateFormat = require('dateformat');
+  const dateFormat = require('dataformat');
   // console.log('inSaveScreenshot');
   const image = new Image();
   image.onload = () => {

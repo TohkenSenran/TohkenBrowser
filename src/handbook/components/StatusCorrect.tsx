@@ -11,7 +11,8 @@ export const StatusCoorect: React.FC<StatusCorrectProps> = (props) => {
   const handleRadioChange = (event: React.ChangeEvent<unknown>) => {
     setValue((event.target as HTMLInputElement).value);
     // console.log(`check selectSpeed ${(event.target as HTMLInputElement).value}`);
-    props.selectCorrect(correctType[(event.target as HTMLInputElement).value]);
+    const key: keyof typeof correctType = (event.target as HTMLInputElement).value as keyof typeof correctType;
+    props.selectCorrect(correctType[key]);
     // console.log(`check selectSpeed ${props.correct1}`);
   };
 

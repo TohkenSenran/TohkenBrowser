@@ -33,7 +33,7 @@ const SelectDisplayedStatus: React.FC<SelectDisplayedStatusProps> = (props) => {
           checked={viewStatus[value]}
           control={<Checkbox size="small" />}
           label={statusLabel[statusType[value]]}
-          onChange={handleChange(value)}
+        // onChange={handleChange(value)}
         />
       </Box>);
     }

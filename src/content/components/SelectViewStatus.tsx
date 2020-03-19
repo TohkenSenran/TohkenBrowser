@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Box, Checkbox, FormControlLabel } from '@material-ui/core';
+import { Box, Checkbox, FormControlLabel, RadioGroup } from '@material-ui/core';
 
 import { statusLabel, statusType } from '../../constants';
 import { SelectViewStatusProps } from '../containers/SelectViewStatus';
@@ -29,16 +29,17 @@ const SelectViewStatus: React.FC<SelectViewStatusProps> = (props) => {
           checked={viewStatus[value]}
           control={<Checkbox size="small" />}
           label={statusLabel[key]}
-          onChange={handleChange(value)}
         />
       </Box>);
     }
   });
 
   return (
-    <Box display="flex" flexWrap="wrap" justifyContent="center" width="150px">
-      {checks}
-    </Box>
+    <RadioGroup aria-label="position" >
+      <Box display="flex" flexWrap="wrap" justifyContent="center" width="150px">
+        {checks}
+      </Box>
+    </RadioGroup>
   );
 };
 

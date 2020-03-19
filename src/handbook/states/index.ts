@@ -1,4 +1,4 @@
-import { conquestTableInitialState, ConquestTableState } from './conquestTable';
+import { conquestTableInitialState, ConquestTableState } from './ConquestTable';
 import { homeSwordsTableInitialState, HomeSwordsTableState } from './HomeSwordsTable';
 
 export interface HandbookState {
