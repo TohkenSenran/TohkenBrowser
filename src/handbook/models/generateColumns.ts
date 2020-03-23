@@ -1,6 +1,6 @@
 import { Column } from 'material-table';
 
-import { statusType, swordType, statusLabel } from '../../constants';
+import { statusType, swordType, statusLabel, swordTypeLabel1, swordTypeLabel2, swordTypeLabel3, swordTypeLabel4 } from '../../constants';
 import { HomeSwordsTableContents } from '../states/HomeSwordsTableContents';
 import { homeSwordsTableInitialState } from '../states/HomeSwordsTable';
 
@@ -26,10 +26,18 @@ const setStatusColumn = (selectType: statusType): Column<HomeSwordsTableContents
 
 // デザイン要素を1か所に集約するため初期値の設定をここに用意
 export const initialColumns = (): Array<Column<HomeSwordsTableContents>> => {
+
+  const swordTypeLabel: { [key: string]: string } = {};
+  Object.values(swordType).forEach(value => {
+    swordTypeLabel[value] = value;
+  });
+
+  // console.log('sowrdTypeLabel', swordTypeLabel);
+
   const columns: Array<Column<HomeSwordsTableContents>> = [
     { title: 'No', field: 'sword_id', filtering: false, cellStyle: { ...numberCellStyle, background: 'ivory' } },
     { title: '刀名', field: 'name', cellStyle: textCellStyle },
-    { title: '刀種', field: 'swordType', lookup: swordType, cellStyle: { ...textCellStyle, background: 'aliceblue' } },
+    { title: '刀種', field: 'swordType', lookup: swordTypeLabel, cellStyle: { ...textCellStyle, background: 'aliceblue' } },
     { title: '刀装数', field: 'slotNumber', lookup: { 1: 1, 2: 2, 3: 3 }, cellStyle: { ...numberCellStyle, background: 'aliceblue' } },
     { title: '男子Lv', field: 'level', filtering: false, cellStyle: { ...numberCellStyle, background: 'lavenderblush' } },
     { title: '乱舞Lv', field: 'ranbu_level', filtering: false, cellStyle: { ...numberCellStyle, background: 'lavenderblush' } },

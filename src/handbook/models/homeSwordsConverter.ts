@@ -1,4 +1,4 @@
-import { correctType, raritySlotNUmber, swordsProps } from '../../constants';
+import { correctType, raritySlotNUmber, swordsProps, swordType } from '../../constants';
 import { getFatigueCorrect, swordConverter } from '../../content/models/swordConverter';
 import { Swords } from '../../content/states/responseJson/Sword';
 import { HomeSwordsTableContents } from '../states/HomeSwordsTableContents';
@@ -35,8 +35,8 @@ export const homeSwordsConverter = (
       const fatigue: number = swordConverter(swords, value.serial_id).fatigueValue;
       data.push({
         sword_id: parseInt(value.sword_id.toString(), 10),
-        name: swordsProps[value.sword_id].name,
-        swordType: swordsProps[value.sword_id].type,
+        name: swordsProps[value.sword_id.toString()].name,
+        swordType: swordsProps[value.sword_id.toString()].type,
         slotNumber: raritySlotNUmber[value.rarity],
         rarity: parseInt(value.rarity.toString(), 10), // レアリティ
         level: parseInt(value.level.toString(), 10), // レベル

@@ -35,7 +35,6 @@ const HeaderMenu: React.FC = () => (
         <span style={{ marginLeft: 'auto', marginRight: -15 }}>
           <HandbookButton />
           <IconFontButton iconName="history" tooltipText="履歴" />
-          <JsonLogger />
           <DrawerMenu />
         </span>
       </Toolbar>

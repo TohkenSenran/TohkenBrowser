@@ -587,6 +587,63 @@ export enum swordType {
   tsurugi = '剣',
 };
 
+export const swordTypeLabel1: { [key: string]: string } = {
+  tanto: '短刀',
+  wakizashi: '脇差',
+  uchigatana: '打刀',
+  tachi: '太刀',
+  odachi: '大太刀',
+  yari: '槍',
+  naginata: '薙刀',
+  tsurugi: '剣',
+};
+
+
+export const swordTypeLabel2: { [key: string]: string } = {
+  0: '短刀',
+  1: '脇差',
+  2: '打刀',
+  3: '太刀',
+  4: '大太刀',
+  5: '槍',
+  6: '薙刀',
+  7: '剣',
+};
+
+export const swordTypeLabel3: { [key: string]: swordType } = {
+  0: swordType.tanto,
+  1: swordType.wakizashi,
+  2: swordType.uchigatana,
+  3: swordType.tanto,
+  4: swordType.odachi,
+  5: swordType.yari,
+  6: swordType.naginata,
+  7: swordType.tsurugi,
+};
+
+export const swordTypeLabel4: { [key: string]: string } = {
+  1: '短刀',
+  2: '脇差',
+  3: '打刀',
+  4: '太刀',
+  5: '大太刀',
+  6: '槍',
+  7: '薙刀',
+  8: '剣',
+};
+
+export const swordTypeLabel5: { [key: string]: swordType } = {
+  1: swordType.tanto,
+  2: swordType.wakizashi,
+  3: swordType.uchigatana,
+  4: swordType.tanto,
+  5: swordType.odachi,
+  6: swordType.yari,
+  7: swordType.naginata,
+  8: swordType.tsurugi,
+};
+
+
 export const raritySlotNUmber: { [index: string]: number } = {
   1: 1,
   2: 2,

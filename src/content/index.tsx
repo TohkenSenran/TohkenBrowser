@@ -41,6 +41,7 @@ chrome.storage.onChanged.addListener((changes, areaName) => {
   console.log('onChangeEve %O', changes);
 });
 */
+
 const startReactDom = async () => {
   const browserId: number = await getWindowId('browserWindowId');
   // console.log(`browserId from strage ${browserId}`);

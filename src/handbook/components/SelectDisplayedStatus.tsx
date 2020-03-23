@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Box, Checkbox, FormControlLabel } from '@material-ui/core';
+import { Box, Checkbox, FormControlLabel, FormGroup } from '@material-ui/core';
 
 import { statusLabel, statusType } from '../../constants';
 import { SelectDisplayedStatusProps } from '../containers/SelectDisplayedStatus';
@@ -28,20 +28,21 @@ const SelectDisplayedStatus: React.FC<SelectDisplayedStatusProps> = (props) => {
       (value !== statusType.amulet)
     ) {
       // const onChange = () => { handleChange(value, viewStatus[value]); };
-      checks.push(<Box>
+      checks.push(
         <FormControlLabel
           checked={viewStatus[value]}
-          control={<Checkbox size="small" />}
+          control={<Checkbox size="small" onChange={handleChange(value)} />}
           label={statusLabel[statusType[value]]}
-        // onChange={handleChange(value)}
-        />
-      </Box>);
+
+        />);
     }
   });
 
   return (
-    <Box display="flex" flexWrap="wrap" justifyContent="center" width="150px">
-      {checks}
+    <Box width="150px">
+      <FormGroup row>
+        {checks}
+      </FormGroup>
     </Box>
   );
 };

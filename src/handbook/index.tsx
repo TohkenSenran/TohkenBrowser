@@ -54,13 +54,13 @@ chrome.storage.onChanged.addListener(async (changes) => {
       // console.log('in changes.rootState.newValue.responseJson');
       const newHomeSwords: Swords = changes.rootState.newValue.responseJson.sword;
       const oldHomeSwords: Swords = await getHomeSwords();
-      console.log('new changed Obj %o', newHomeSwords);
-      console.log('old changed Obj %o', oldHomeSwords);
+      // console.log('new changed Obj %o', newHomeSwords);
+      // console.log('old changed Obj %o', oldHomeSwords);
       // console.log('newHomeSwords', JSON.stringify(newHomeSwords));
       // console.log('oldHomeSwords', JSON.stringify(oldHomeSwords));
 
       if (JSON.stringify(newHomeSwords) !== JSON.stringify(oldHomeSwords)) {
-        // 9console.log('homeSwords更新');
+        // console.log('homeSwords更新');
         store.dispatch(setHomeSwords(newHomeSwords ? newHomeSwords : {}));
       }
     }
