@@ -18,6 +18,9 @@ import { analyseOptions } from './analyseOptions';
 import { analyseParty } from './analyseParty';
 import { analyseRepair } from './analyseRepair';
 import { analyseSword } from './analyseSword';
+import { Resource } from '../states/responseJson/Resource';
+import { analyseResource } from './analyseResource';
+import { analyseHistory } from './analyseHistory';
 
 export const analyseJson = (json: any, oldJson: ResponseJsonState): void => {
   if (json.targetPageUrl) {
@@ -27,7 +30,7 @@ export const analyseJson = (json: any, oldJson: ResponseJsonState): void => {
   }
 
   if (json) {
-    const page: string = json.page ? json.page : 'notfound';
+    const page: string = json.page ? json.page : 'NotFound';
     console.log('page:', page);
 
     const sword: Swords = analyseSword(json, json.page, oldJson.sword, oldJson.repair);
@@ -55,7 +58,12 @@ export const analyseJson = (json: any, oldJson: ResponseJsonState): void => {
     // console.log(`duty ${Object.keys(duty).length}`);
     // store.dispatch(updateJsonDuty(duty));
 
+    const resource: Resource = analyseResource(json, json.page, oldJson.resource);
+    // console.log('resource %o', { resource });
+
     analyseOptions(json, json.page);
+
+    analyseHistory(json, json.page, sword, party, equip, forge, repair, duty, resource);
 
     store.dispatch(updateJsonState(
       {
@@ -66,6 +74,7 @@ export const analyseJson = (json: any, oldJson: ResponseJsonState): void => {
         forge,
         repair,
         duty,
+        resource,
         newDate: Date.now(),
         oldDate: oldJson.newDate,
       },

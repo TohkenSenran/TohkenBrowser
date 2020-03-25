@@ -4,6 +4,7 @@ import { Forges } from './responseJson/Forge';
 import { Parties, partiesInitialState } from './responseJson/Party';
 import { Repairs } from './responseJson/Repair';
 import { Swords } from './responseJson/Sword';
+import { Resource, resourceInitialState } from './responseJson/Resource';
 
 export interface ResponseJsonState {
   page: string;
@@ -13,6 +14,7 @@ export interface ResponseJsonState {
   forge: Forges;
   repair: Repairs;
   duty: Duty;
+  resource: Resource;
   newDate: number;
   oldDate: number;
 }
@@ -25,6 +27,7 @@ export const responseJsonInitialState: ResponseJsonState = {
   forge: {},
   repair: {},
   duty: dutyInitialState,
+  resource: resourceInitialState,
   newDate: Date.now(),
   oldDate: 0,
 };

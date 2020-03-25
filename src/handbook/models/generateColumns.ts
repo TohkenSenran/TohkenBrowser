@@ -1,6 +1,6 @@
 import { Column } from 'material-table';
 
-import { statusType, swordType, statusLabel, swordTypeLabel1, swordTypeLabel2, swordTypeLabel3, swordTypeLabel4 } from '../../constants';
+import { statusType, swordType, statusLabel } from '../../constants';
 import { HomeSwordsTableContents } from '../states/HomeSwordsTableContents';
 import { homeSwordsTableInitialState } from '../states/HomeSwordsTable';
 

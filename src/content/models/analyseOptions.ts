@@ -1,5 +1,5 @@
 import { handbookInitialState, HandbookState } from '../../handbook/states';
-import { Item, Items } from '../states/responseJson/Item';
+import { Items } from '../states/responseJson/Item';
 
 export const analyseOptions = (jsonValue: any, page: string): void => {
   let items: Items = {};
