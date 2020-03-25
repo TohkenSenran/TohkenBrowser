@@ -141,11 +141,18 @@ export const getEquipSwordStatus =
     const key: keyof Sword = statusType[selectTextType] as keyof Sword;
     status = parseInt((sword[key] ?? '0').toString(), 10) +
       (
-        statusType[selectTextType] in equipsStatus[0] ? (
-          parseInt(equipsStatus[equip1Id][key].toString(), 10) +
-          parseInt(equipsStatus[equip2Id][key].toString(), 10) +
-          parseInt(equipsStatus[equip3Id][key].toString(), 10) +
-          parseInt(equipsStatus[horseId][key].toString(), 10)) : 0
+        (
+          (statusType[selectTextType] in equipsStatus[0]) &&
+          (equip1Id in equipsStatus) &&
+          (equip2Id in equipsStatus) &&
+          (equip3Id in equipsStatus) &&
+          (horseId in equipsStatus)
+        ) ? (
+            parseInt(equipsStatus[equip1Id][key].toString(), 10) +
+            parseInt(equipsStatus[equip2Id][key].toString(), 10) +
+            parseInt(equipsStatus[equip3Id][key].toString(), 10) +
+            parseInt(equipsStatus[horseId][key].toString(), 10)
+          ) : 0
       );
     return status;
   };
