@@ -20,6 +20,7 @@
     "alarms",
     "contextMenus",
     "storage",
+    "unlimitedStorage",
     "tabs",
     "notifications",
     "<all_urls>"
@@ -44,6 +45,6 @@
     "icon/*",
     "img/*"
   ],
-  "minimum_chrome_version": "53",
+  "minimum_chrome_version": "73",
   "manifest_version": 2
 }
