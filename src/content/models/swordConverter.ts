@@ -91,7 +91,9 @@ export const swordConverter = (
   let singleSword = swordInitialState;
   // console.log(`id check ${serialId} ${serialId ? serialId in sword : 'null'}`)
   singleSword =
-    serialId && serialId.toString() in sword ? sword[serialId.toString()] : swordInitialState;
+    serialId && serialId !== null && serialId.toString() in sword
+      ? sword[serialId]
+      : swordInitialState;
 
   // ダメージによる画像変更
   let damageState = 'Normal';
@@ -124,7 +126,7 @@ export const swordConverter = (
   // 表示ステータス
   let selectStatus = '';
   let correctedValue = 0;
-  if (serialId !== null && serialId.toString() in sword) {
+  if (serialId && serialId !== null && serialId.toString() in sword) {
     switch (selectTextType) {
       case statusType.none:
         break;
