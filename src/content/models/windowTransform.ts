@@ -13,15 +13,14 @@ export const windowTransform = (scale: number, mode: windowMode): void => {
     gameFlame.style.transform = `scale(${scale})`;
     gameFlame.style.transformOrigin = 'top center';
 
-    const posX: number =
-      Math.ceil(gameFlame.getBoundingClientRect().left) +
-      window.pageXOffset;
+    const posX: number = Math.ceil(gameFlame.getBoundingClientRect().left) + window.pageXOffset;
     const posY: number =
-      Math.ceil(gameFlame.getBoundingClientRect().top) +
-      window.pageYOffset - headerMenuHeight;
+      Math.ceil(gameFlame.getBoundingClientRect().top) + window.pageYOffset - headerMenuHeight;
     window.scrollTo(0, posY);
     // setTimeoutを使わないと100%から別の倍率に行った際にposXの処理に失敗する
-    setTimeout(() => { window.scrollBy(posX, 0); }, 100);
+    setTimeout(() => {
+      window.scrollBy(posX, 0);
+    }, 100);
 
     const gameWidth: number = gameFlame.getBoundingClientRect().width;
     const gameHeight = gameRatio * gameWidth;

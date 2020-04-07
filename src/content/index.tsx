@@ -16,7 +16,7 @@ import { windowLoadEvent } from './models/windowLoadEvent';
 import { contentRequest } from './states/contentRequest';
 
 // 終了直前の処理
-window.onbeforeunload = () => {
+window.onbeforeunload = (): void => {
   windowBeforeUnloadEvent();
 };
 
@@ -26,7 +26,7 @@ chrome.runtime.onMessage.addListener(({ type, payload }) => {
   // console.log('forgeState before anlyse %O', store.getState().responseJson.forge);
   switch (type) {
     case contentRequest.requestJson:
-      analyseJson(payload, (store.getState()).responseJson);
+      analyseJson(payload, store.getState().responseJson);
       break;
     case contentRequest.disconnected:
       store.dispatch(checkDevConnect(false));
@@ -42,7 +42,7 @@ chrome.storage.onChanged.addListener((changes, areaName) => {
 });
 */
 
-const startReactDom = async () => {
+const startReactDom = async (): Promise<void> => {
   const browserId: number = await getWindowId('browserWindowId');
   // console.log(`browserId from strage ${browserId}`);
   const currentWindowId: number = await getCurrentWindowId();
@@ -50,7 +50,12 @@ const startReactDom = async () => {
     setWindowTitle(document);
     const app = document.createElement('div');
     document.body.appendChild(app);
-    ReactDOM.render(<Provider store={store}><Content /></Provider>, app);
+    ReactDOM.render(
+      <Provider store={store}>
+        <Content />
+      </Provider>,
+      app,
+    );
     // 過去の値を反映
     windowLoadEvent();
   } else {

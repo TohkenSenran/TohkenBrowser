@@ -19,19 +19,14 @@ interface DispatchToProps {
 
 export type HomeSwordsTableProps = StateToProps & DispatchToProps;
 
-const mapStateToProps = (state: HandbookState): StateToProps =>
-  ({
-    homeSwordsTable: state.homeSwordsTable,
-  });
+const mapStateToProps = (state: HandbookState): StateToProps => ({
+  homeSwordsTable: state.homeSwordsTable,
+});
 
-const mapDispatchToProps = (dispatch: Dispatch<HomeSwordsTableActions>): DispatchToProps =>
-  ({
-    setColumns: (columns: Array<Column<HomeSwordsTableContents>>) => {
-      dispatch(setColumns(columns));
-    },
-  });
+const mapDispatchToProps = (dispatch: Dispatch<HomeSwordsTableActions>): DispatchToProps => ({
+  setColumns: (columns: Array<Column<HomeSwordsTableContents>>): void => {
+    dispatch(setColumns(columns));
+  },
+});
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(HomeSwordsTable);
+export default connect(mapStateToProps, mapDispatchToProps)(HomeSwordsTable);

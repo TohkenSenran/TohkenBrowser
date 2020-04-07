@@ -1,6 +1,6 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import { ConfigurationFactory } from 'webpack';
 import path from 'path';
-import CopyWebpackPlugin from 'copy-webpack-plugin';
 
 const config: ConfigurationFactory = () => ({
   mode: 'production',
@@ -20,13 +20,13 @@ const config: ConfigurationFactory = () => ({
       {
         test: /\.tsx?$/,
         use: 'ts-loader',
-        exclude: '/node_modules/'
+        exclude: '/node_modules/',
       },
     ],
   },
   resolve: {
-    extensions: [".ts", '.tsx', '.js'],
-  }
+    extensions: ['.ts', '.tsx', '.js'],
+  },
 });
 
 export default config;

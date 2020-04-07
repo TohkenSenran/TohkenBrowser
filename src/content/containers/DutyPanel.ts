@@ -13,13 +13,10 @@ interface StateToProps {
 
 export type DutyPanelProps = StateToProps;
 
-const mapStateToProps = (state: RootState): StateToProps =>
-  ({
-    date: state.responseJson.newDate,
-    duty: state.responseJson.duty,
-    sword: state.responseJson.sword,
-  });
+const mapStateToProps = (state: RootState): StateToProps => ({
+  date: state.responseJson.newDate,
+  duty: state.responseJson.duty,
+  sword: state.responseJson.sword,
+});
 
-export default connect(
-  mapStateToProps,
-)(DutyPanel);
+export default connect(mapStateToProps)(DutyPanel);

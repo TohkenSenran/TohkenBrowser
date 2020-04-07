@@ -19,24 +19,19 @@ interface DispatchToProps {
 
 export type StatusExtendView = StateToProps & DispatchToProps;
 
-const mapStateToProps = (state: RootState): StateToProps =>
-  ({
-    browserSetting: state.browserSetting,
-  });
+const mapStateToProps = (state: RootState): StateToProps => ({
+  browserSetting: state.browserSetting,
+});
 
 const mapDispatchToProps = (
   dispatch: Dispatch<BrowserSettingActions | ResponseJsonActions>,
-): DispatchToProps =>
-  ({
-    onClick: (mode: windowMode) => {
-      dispatch(changeViewMode(mode));
-    },
-    updateDate: (date: number) => {
-      dispatch(updateDate(date));
-    },
-  });
+): DispatchToProps => ({
+  onClick: (mode: windowMode): void => {
+    dispatch(changeViewMode(mode));
+  },
+  updateDate: (date: number): void => {
+    dispatch(updateDate(date));
+  },
+});
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(StatusView);
+export default connect(mapStateToProps, mapDispatchToProps)(StatusView);

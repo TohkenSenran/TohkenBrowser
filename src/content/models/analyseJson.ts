@@ -22,51 +22,51 @@ import { Resource } from '../states/responseJson/Resource';
 import { analyseResource } from './analyseResource';
 import { analyseHistory } from './analyseHistory';
 
-export const analyseJson = (json: any, oldJson: ResponseJsonState): void => {
+export const analyseJson = (json: any, oldState: ResponseJsonState): void => {
   if (json.targetPageUrl) {
     // console.log('connecting? :', json.targetPageUrl);
     // console.log(`devTargetUrl ${(json.targetPageUrl === gameURL)}`);
-    store.dispatch(checkDevConnect((json.targetPageUrl === gameURL)));
+    store.dispatch(checkDevConnect(json.targetPageUrl === gameURL));
   }
 
   if (json) {
     const page: string = json.page ? json.page : 'NotFound';
     console.log('page:', page);
 
-    const sword: Swords = analyseSword(json, json.page, oldJson.sword, oldJson.repair);
+    const sword: Swords = analyseSword(json, json.page, oldState.sword, oldState.repair);
     // console.log(`swords ${Object.keys(sword).length}`);
     // store.dispatch(updateJsonSword(sword));
     // console.log('sword dispatched');
 
-    const party: Parties = analyseParty(json, json.page, oldJson.party);
+    const party: Parties = analyseParty(json, json.page, oldState.party);
     // console.log(`parties ${Object.keys(party).length}`);
     // store.dispatch(updateJsonParty(party));
 
-    const equip: Equips = analyseEquip(json, json.page, oldJson.equip);
+    const equip: Equips = analyseEquip(json, json.page, oldState.equip);
     // console.log(`equips ${Object.keys(equip).length}`);
     // store.dispatch(updateJsonEquip(equip));
 
-    const forge: Forges = analyseForge(json, json.page, oldJson.forge);
+    const forge: Forges = analyseForge(json, json.page, oldState.forge);
     // console.log(`forges ${Object.keys(forge).length}`);
     // store.dispatch(updateJsonForge(forge));
 
-    const repair: Repairs = analyseRepair(json, json.page, oldJson.repair, sword);
+    const repair: Repairs = analyseRepair(json, json.page, oldState.repair, sword);
     // console.log(`repairs ${Object.keys(repair).length}`);
     // store.dispatch(updateJsonRepair(repair));
 
-    const duty: Duty = analyseDuty(json, json.page, oldJson.duty);
+    const duty: Duty = analyseDuty(json, json.page, oldState.duty);
     // console.log(`duty ${Object.keys(duty).length}`);
     // store.dispatch(updateJsonDuty(duty));
 
-    const resource: Resource = analyseResource(json, json.page, oldJson.resource);
+    const resource: Resource = analyseResource(json, json.page, oldState.resource);
     // console.log('resource %o', { resource });
 
     analyseOptions(json, json.page);
 
-    analyseHistory(json, json.page, sword, party, equip, forge, repair, duty, resource);
+    analyseHistory(json, json.page, sword, party, equip, forge, repair, duty, resource, oldState);
 
-    store.dispatch(updateJsonState(
-      {
+    store.dispatch(
+      updateJsonState({
         page,
         sword,
         party,
@@ -76,8 +76,8 @@ export const analyseJson = (json: any, oldJson: ResponseJsonState): void => {
         duty,
         resource,
         newDate: Date.now(),
-        oldDate: oldJson.newDate,
-      },
-    ));
+        oldDate: oldState.newDate,
+      }),
+    );
   }
 };

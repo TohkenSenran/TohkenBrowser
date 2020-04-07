@@ -16,19 +16,14 @@ interface DispatchToProps {
 
 export type StatusCorrectProps = StateToProps & DispatchToProps;
 
-const mapStateToProps = (state: HandbookState): StateToProps =>
-  ({
-    correct: state.homeSwordsTable.correct,
-  });
+const mapStateToProps = (state: HandbookState): StateToProps => ({
+  correct: state.homeSwordsTable.correct,
+});
 
-const mapDispatchToProps = (dispatch: Dispatch<HomeSwordsTableActions>): DispatchToProps =>
-  ({
-    selectCorrect: (correct: correctType) => {
-      dispatch(selectCorrect(correct));
-    },
-  });
+const mapDispatchToProps = (dispatch: Dispatch<HomeSwordsTableActions>): DispatchToProps => ({
+  selectCorrect: (correct: correctType): void => {
+    dispatch(selectCorrect(correct));
+  },
+});
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(StatusCorrect);
+export default connect(mapStateToProps, mapDispatchToProps)(StatusCorrect);

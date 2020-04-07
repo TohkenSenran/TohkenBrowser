@@ -1,10 +1,11 @@
+import moment from 'moment';
 import { gameRatio, headerMenuHeight } from '../../constants';
 
-const saveScreenshot = (dataUrl: string, addCopyright: boolean) => {
-  const dateFormat = require('dataformat');
+const saveScreenshot = (dataUrl: string, addCopyright: boolean): void => {
+  // const dateFormat = require('dataformat');
   // console.log('inSaveScreenshot');
   const image = new Image();
-  image.onload = () => {
+  image.onload = (): void => {
     const canvas = document.createElement('canvas');
     canvas.width = image.width;
     canvas.height = gameRatio * image.width;
@@ -13,7 +14,7 @@ const saveScreenshot = (dataUrl: string, addCopyright: boolean) => {
       context.drawImage(image, 0, -headerMenuHeight);
       if (addCopyright) {
         const copyright = '©2015-2020 DMM GAMES/Nitroplus';
-        const textPos: { x: number, y: number } = { x: canvas.width - 6, y: canvas.height - 6 };
+        const textPos: { x: number; y: number } = { x: canvas.width - 6, y: canvas.height - 6 };
         context.font = 'bold 16px serif';
         context.strokeStyle = '#fff';
         context.lineWidth = 3;
@@ -24,7 +25,7 @@ const saveScreenshot = (dataUrl: string, addCopyright: boolean) => {
       }
       // save the image
       const link = document.createElement('a');
-      link.download = `Tohken_${dateFormat(new Date(), 'yyyymmddHHMMss')}.png`;
+      link.download = `Tohken_${moment().format('yyyymmddHHMMss')}.png`;
       link.href = canvas.toDataURL('image/png');
       link.click();
       link.remove();
@@ -34,19 +35,15 @@ const saveScreenshot = (dataUrl: string, addCopyright: boolean) => {
   // console.log('saved image');
 };
 
-export const screenshot = (sender: chrome.runtime.MessageSender, addCopyright: boolean) => {
-  if ((sender) && (sender.tab) && (sender.tab.windowId)) {
-    chrome.tabs.captureVisibleTab(
-      sender.tab.windowId,
-      { format: 'png' },
-      (dataUrl: string) => {
-        // console.log('scrennshotting');
-        saveScreenshot(dataUrl, addCopyright);
-        if ((sender) && (sender.tab) && (sender.tab.id)) {
-          // console.log('scrennshotted');
-          // sendMessageToWindow(sender.tab.id, contentRequest.screenshot);
-        }
-      },
-    );
+export const screenshot = (sender: chrome.runtime.MessageSender, addCopyright: boolean): void => {
+  if (sender && sender.tab && sender.tab.windowId) {
+    chrome.tabs.captureVisibleTab(sender.tab.windowId, { format: 'png' }, (dataUrl: string) => {
+      // console.log('scrennshotting');
+      saveScreenshot(dataUrl, addCopyright);
+      if (sender && sender.tab && sender.tab.id) {
+        // console.log('scrennshotted');
+        // sendMessageToWindow(sender.tab.id, contentRequest.screenshot);
+      }
+    });
   }
 };

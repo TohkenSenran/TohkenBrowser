@@ -1,15 +1,15 @@
 import { popupWindow } from '../../background/models/popupWindow';
 import { requestType } from '../../background/states/requestType';
 import { WindowState } from '../../background/states/WindowState';
-import { browserWindow } from '../../constants';
+import { windowName } from '../../constants';
 import { sendMessageToBackground } from './sendMessageToBackground';
 
-export const windowBeforeUnloadEvent = async () => {
+export const windowBeforeUnloadEvent = async (): Promise<void> => {
   const browserWindowState: WindowState = {
     position: { x: window.screenX, y: window.screenY },
     size: { height: window.outerHeight, width: window.outerWidth },
   };
-  popupWindow.saveState(browserWindow, browserWindowState);
+  popupWindow.saveState(windowName.browserWindow, browserWindowState);
 
   // 便利帳を一緒に消す
   sendMessageToBackground(requestType.closeHandbookWindow);

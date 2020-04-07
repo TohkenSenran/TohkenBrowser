@@ -15,17 +15,14 @@ interface DispatchToProps {
 
 export type SelectDisplayedStatusProps = StateToProps & DispatchToProps;
 
-const mapStateToProps = (state: HandbookState): StateToProps =>
-  ({ displayedStatus: state.homeSwordsTable.displayedStatus });
+const mapStateToProps = (state: HandbookState): StateToProps => ({
+  displayedStatus: state.homeSwordsTable.displayedStatus,
+});
 
-const mapDispatchToProps = (dispatch: Dispatch<HomeSwordsTableActions>): DispatchToProps =>
-  ({
-    selectDisplayedStatus: (displayedStatus: boolean[]) => {
-      dispatch(selectDisplayedStatus(displayedStatus));
-    },
-  });
+const mapDispatchToProps = (dispatch: Dispatch<HomeSwordsTableActions>): DispatchToProps => ({
+  selectDisplayedStatus: (displayedStatus: boolean[]): void => {
+    dispatch(selectDisplayedStatus(displayedStatus));
+  },
+});
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(SelectDisplayedStatus);
+export default connect(mapStateToProps, mapDispatchToProps)(SelectDisplayedStatus);

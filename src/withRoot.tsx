@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import * as React from 'react';
 
 // 任意の Theme Colors
@@ -33,12 +34,15 @@ const theme: Theme = createMuiTheme({
   },
 });
 
-function withRoot<P>(Component: React.ComponentType<P>) {
-  function WithRoot(props: P) {
+export default function withRoot<P>(Component: React.ComponentType<P>): (props: P) => JSX.Element {
+  function WithRoot(props: P): JSX.Element {
     return (
       <MuiThemeProvider theme={theme}>
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
-        <link href="https://fonts.googleapis.com/css?family=Noto+Serif+JP:600&display=swap" rel="stylesheet" />
+        <link
+          href="https://fonts.googleapis.com/css?family=Noto+Serif+JP:600&display=swap"
+          rel="stylesheet"
+        />
         <CssBaseline />
         <Component {...props} />
       </MuiThemeProvider>
@@ -46,5 +50,3 @@ function withRoot<P>(Component: React.ComponentType<P>) {
   }
   return WithRoot;
 }
-
-export default withRoot;

@@ -4,8 +4,10 @@
     "plugin:@typescript-eslint/eslint-recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:prettier/recommended",
-    "prettier/@typescript-eslint",
-    "airbnb"
+    "prettier/react",
+    "prettier/standard",
+    "airbnb",
+    "prettier/@typescript-eslint"
   ],
   "plugins": [
     "@typescript-eslint",
@@ -13,6 +15,7 @@
   ],
   "env": {
     "browser": true,
+    "webextensions": true,
     "node": true,
     "es6": true
   },
@@ -25,12 +28,31 @@
     "project": "./tsconfig.json",
     "useJSXTextNode": true
   },
+  "settings": {
+    "import/extensions": [
+      ".js",
+      ".jsx",
+      ".ts",
+      ".tsx"
+    ],
+    "import/resolver": {
+      "webpack": {
+        "config": "./webpack.config.ts"
+      },
+      "node": {
+        "extensions": [
+          ".js",
+          ".jsx",
+          ".ts",
+          ".tsx"
+        ]
+      }
+    }
+  },
   "rules": {
-    "prettier/prettier": "error",
-    "max-len": [
+    "prettier/prettier": [
       "error",
       {
-        "code": 100,
         "endOfLine": "auto",
         "printWidth": 100,
         "trailingComma": "all",
@@ -39,6 +61,44 @@
         "singleQuote": true
       }
     ],
+    "max-len": [
+      "error",
+      {
+        "code": 100
+      }
+    ],
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "js": "never",
+        "mjs": "never",
+        "jsx": "never",
+        "ts": "never",
+        "tsx": "never"
+      }
+    ],
+    "import/prefer-default-export": "off",
+    "import/no-cycle": "off",
+    "implicit-arrow-linebreak": "off",
+    "array-callback-return": "off",
+    "function-paren-newline": "off",
+    "object-curly-newline": "off",
+    "operator-linebreak": [
+      "error",
+      "after",
+      {
+        "overrides": {
+          "?": "ignore",
+          ":": "ignore"
+        }
+      }
+    ],
+    "linebreak-style": [
+      "error",
+      "windows"
+    ],
+    "import/no-unresolved": "off",
     "prefer-promise-reject-errors": [
       "off"
     ],

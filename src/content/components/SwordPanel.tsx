@@ -16,7 +16,6 @@ const SwordPanel: React.FC<{
   stateText?: string;
   equips?: Equips;
 }> = ({ swords, serialId, selectCorrect, selectTextType, horseDisable, stateText, equips }) => {
-
   const swordState = swordConverter(
     swords,
     serialId,
@@ -31,20 +30,18 @@ const SwordPanel: React.FC<{
     position: 'absolute',
     left: '50%',
     top: '98%',
-    letterSpacing: (swordState.selectStatus.indexOf('残り') === -1) ? '0em' : '-0.05em',
+    letterSpacing: swordState.selectStatus.indexOf('残り') === -1 ? '0em' : '-0.05em',
     transform: 'translateX(-50%) translateY(-95%)',
     whiteSpace: 'nowrap',
     color: 'black',
-    textShadow: '1px 1px 0 #FFF, -1px -1px 0 #FFF,' +
+    textShadow:
+      '1px 1px 0 #FFF, -1px -1px 0 #FFF,' +
       ' -1px 1px 0 #FFF, 1px -1px 0 #FFF,' +
       '  0px 1px 0 #FFF, 0px -1px 0 #FFF,' +
       ' -1px 0px 0 #FFF, 1px  0px 0 #FFF',
   };
-  switch (swordState.selectStatus) {
-    case '御守: 有':
-    case '完了':
-      textStyle = { ...textStyle, color: 'crimson' };
-      break;
+  if (swordState.selectStatus === '御守: 有' || swordState.selectStatus === '完了') {
+    textStyle = { ...textStyle, color: 'crimson' };
   }
 
   let boxStyle: React.CSSProperties = {
@@ -63,7 +60,7 @@ const SwordPanel: React.FC<{
 
   return (
     <Box style={boxStyle}>
-      <img height="60" width="60" style={{ margin: 3 }} src={swordState.imageURL} />
+      <img height="60" width="60" style={{ margin: 3 }} src={swordState.imageURL} alt="" />
       <p style={textStyle}>{swordState.selectStatus}</p>
     </Box>
   );

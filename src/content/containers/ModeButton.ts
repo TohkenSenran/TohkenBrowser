@@ -16,19 +16,14 @@ type DispatchToProps = {
 
 export type ModeButtonProps = StateToProps & DispatchToProps;
 
-const mapStateToProps = (state: RootState): StateToProps =>
-  ({
-    browserSetting: state.browserSetting,
-  });
+const mapStateToProps = (state: RootState): StateToProps => ({
+  browserSetting: state.browserSetting,
+});
 
-const mapDispatchToProps = (dispatch: Dispatch<BrowserSettingActions>): DispatchToProps =>
-  ({
-    onClick: (mode: windowMode) => {
-      dispatch(changeViewMode(mode));
-    },
-  });
+const mapDispatchToProps = (dispatch: Dispatch<BrowserSettingActions>): DispatchToProps => ({
+  onClick: (mode: windowMode): void => {
+    dispatch(changeViewMode(mode));
+  },
+});
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(ModeButton);
+export default connect(mapStateToProps, mapDispatchToProps)(ModeButton);

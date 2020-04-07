@@ -25,24 +25,19 @@ interface DispatchToProps {
 
 export type PartyPanelProps = StateToProps & DispatchToProps;
 
-const mapStateToProps = (state: RootState): StateToProps =>
-  ({
-    partyPanel: state.partyPanel,
-    date: state.responseJson.newDate,
-    party: state.responseJson.party,
-    sword: state.responseJson.sword,
-    equip: state.responseJson.equip,
-    page: state.responseJson.page,
-  });
+const mapStateToProps = (state: RootState): StateToProps => ({
+  partyPanel: state.partyPanel,
+  date: state.responseJson.newDate,
+  party: state.responseJson.party,
+  sword: state.responseJson.sword,
+  equip: state.responseJson.equip,
+  page: state.responseJson.page,
+});
 
-const mapDispatchToProps = (dispatch: Dispatch<PartyPanelActions>): DispatchToProps =>
-  ({
-    selectText: (selectTextType: statusType, displayedStatus: boolean[]) => {
-      dispatch(selectDisplayText(selectTextType, displayedStatus));
-    },
-  });
+const mapDispatchToProps = (dispatch: Dispatch<PartyPanelActions>): DispatchToProps => ({
+  selectText: (selectTextType: statusType, displayedStatus: boolean[]): void => {
+    dispatch(selectDisplayText(selectTextType, displayedStatus));
+  },
+});
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(PartyPanel);
+export default connect(mapStateToProps, mapDispatchToProps)(PartyPanel);

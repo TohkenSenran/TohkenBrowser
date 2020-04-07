@@ -11,6 +11,10 @@ export const analyseSword = (
   // イミュータブルな操作が必要
   let sword: Swords = oldSword ? { ...oldSword } : {}; // Object.assign({}, oldSword);
   let targetSwordId: string | number | null = '0';
+  let singleSword: Sword = swordInitialState;
+  let partialSword: Swords = {};
+  let tempRepair: Repairs = {};
+  let targetSlot = '0';
   switch (page) {
     case 'album/list':
     case 'album/checknew':
@@ -24,11 +28,11 @@ export const analyseSword = (
     case 'equip/setitem':
     case 'equip/removeitem':
     case 'home/back':
-    case 'home/leave':// 未確認
+    case 'home/leave': // 未確認
     case 'composition/compose':
     case 'composition/union':
     case 'item/add_exp':
-      const singleSword: Sword = jsonValue.sword ? jsonValue.sword : swordInitialState;
+      singleSword = jsonValue.sword ? jsonValue.sword : swordInitialState;
       // console.log(`get single sword: ${singleSword.serial_id}`);
       // console.log('before oldSword obj: %O', sword);
       // console.log(`sword equip: ${sword[singleSword.serial_id].equip_serial_id1}`);
@@ -49,33 +53,31 @@ export const analyseSword = (
     case 'practice/offer':
     case 'duty/complete':
     case 'item/sally_recover':
-      const partialSword: Swords = jsonValue.sword ? jsonValue.sword : {};
+      partialSword = jsonValue.sword ? jsonValue.sword : {};
       // console.log('get partial swords: %O', partialSword);
       // console.log(Object.keys(partialSword).length);
-      Object.keys(partialSword).forEach(
-        (key: string) => {
-          // console.log(`partialSword ${partialSword[key].serial_id}`);
-          sword[partialSword[key].serial_id] = partialSword[key];
-        },
-      );
+      Object.keys(partialSword).forEach((key: string) => {
+        // console.log(`partialSword ${partialSword[key].serial_id}`);
+        sword[partialSword[key].serial_id] = partialSword[key];
+      });
       break;
     case 'repair/repair':
       // 修理時にswordデータを変更
-      const tempRepair: Repairs = jsonValue.repair;
+      tempRepair = jsonValue.repair;
       Object.keys(tempRepair).forEach((value: string) => {
         targetSwordId = tempRepair[value].sword_serial_id;
-        if (targetSwordId) {
-          sword[targetSwordId.toString()].status = '1';
+        if (targetSwordId && targetSwordId in sword) {
+          sword[targetSwordId].status = '1';
         }
       });
       break;
     case 'repair/complete':
     case 'repair/fast':
-      const targetSlot: string | number = jsonValue.slot_no;
-      if (targetSlot.toString() in oldRepair) {
-        targetSwordId = oldRepair[targetSlot.toString()].sword_serial_id;
-        if (targetSwordId) {
-          sword[targetSwordId.toString()].status = '0';
+      targetSlot = jsonValue.slot_no.toString();
+      if (targetSlot in oldRepair) {
+        targetSwordId = oldRepair[targetSlot].sword_serial_id;
+        if (targetSwordId && targetSwordId in sword) {
+          sword[targetSwordId].status = '0';
         }
       }
       break;

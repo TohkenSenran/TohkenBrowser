@@ -15,19 +15,14 @@ interface DispatchToProps {
 
 export type AddCopyrightProps = StateToProps & DispatchToProps;
 
-const mapStateToProps = (state: RootState): StateToProps =>
-  ({
-    addCopyright: state.browserSetting.addCopyright,
-  });
+const mapStateToProps = (state: RootState): StateToProps => ({
+  addCopyright: state.browserSetting.addCopyright,
+});
 
-const mapDispatchToProps = (dispatch: Dispatch<BrowserSettingActions>): DispatchToProps =>
-  ({
-    onChange: (copyright: boolean) => {
-      dispatch(addCopyright(copyright));
-    },
-  });
+const mapDispatchToProps = (dispatch: Dispatch<BrowserSettingActions>): DispatchToProps => ({
+  onChange: (copyright: boolean): void => {
+    dispatch(addCopyright(copyright));
+  },
+});
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(AddCopyright);
+export default connect(mapStateToProps, mapDispatchToProps)(AddCopyright);

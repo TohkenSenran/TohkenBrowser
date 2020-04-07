@@ -4,15 +4,14 @@ import { repairNo } from '../../constants';
 import { RepairPanelProps } from '../containers/RepairPanel';
 import { repairConverter } from '../models/repairConverter';
 import { repairInitialState } from '../states/responseJson/Repair';
-import { Swords } from '../states/responseJson/Sword';
 import SwordPanel from './SwordPanel';
 
 const RepairPanel: React.FC<RepairPanelProps> = (props) => {
-  const swordData: Swords = props.sword;
+  const { sword } = props;
   const repairs: JSX.Element[] = [];
   // console.log('Update Duty');
 
-  for (let i: number = 0; i < repairNo; i += 1) {
+  for (let i = 0; i < repairNo; i += 1) {
     let repairState = repairConverter(repairInitialState, props.date);
     // console.log(`check repairKey ${(props.repair[i + 1])}`);
     if (props.repair[i + 1]) {
@@ -24,7 +23,7 @@ const RepairPanel: React.FC<RepairPanelProps> = (props) => {
     repairs.push(
       <div style={{ display: 'inline-block' }}>
         <SwordPanel
-          swords={swordData}
+          swords={sword}
           serialId={repairState.serialId}
           stateText={repairState.remainingTime}
         />

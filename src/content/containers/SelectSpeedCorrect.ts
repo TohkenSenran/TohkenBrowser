@@ -18,23 +18,18 @@ interface DispatchToProps {
 
 export type SelectSpeedCorrectProps = StateToProps & DispatchToProps;
 
-const mapStateToProps = (state: RootState): StateToProps =>
-  ({
-    correct: state.partyPanel.correct,
-    horseDisable: state.partyPanel.horseDisable,
-  });
+const mapStateToProps = (state: RootState): StateToProps => ({
+  correct: state.partyPanel.correct,
+  horseDisable: state.partyPanel.horseDisable,
+});
 
-const mapDispatchToProps = (dispatch: Dispatch<PartyPanelActions>): DispatchToProps =>
-  ({
-    selectCorrect: (correct: correctType) => {
-      dispatch(selectCorrect(correct));
-    },
-    checkHorseDisable: (horseDisable: boolean) => {
-      dispatch(checkHorseDisable(horseDisable));
-    },
-  });
+const mapDispatchToProps = (dispatch: Dispatch<PartyPanelActions>): DispatchToProps => ({
+  selectCorrect: (correct: correctType) => {
+    dispatch(selectCorrect(correct));
+  },
+  checkHorseDisable: (horseDisable: boolean) => {
+    dispatch(checkHorseDisable(horseDisable));
+  },
+});
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(SelectSpeedCorrect);
+export default connect(mapStateToProps, mapDispatchToProps)(SelectSpeedCorrect);

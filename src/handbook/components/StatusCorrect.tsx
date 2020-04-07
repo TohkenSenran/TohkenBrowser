@@ -7,21 +7,19 @@ import { correctType } from '../../constants';
 import { StatusCorrectProps } from '../containers/StatusCorrect';
 
 export const StatusCoorect: React.FC<StatusCorrectProps> = (props) => {
-  const [value, setValue] = React.useState(props.correct.toString());
-  const handleRadioChange = (event: React.ChangeEvent<unknown>) => {
+  const { correct } = props;
+  const [value, setValue] = React.useState(correct.toString());
+  const handleRadioChange = (event: React.ChangeEvent<unknown>): void => {
     setValue((event.target as HTMLInputElement).value);
     // console.log(`check selectSpeed ${(event.target as HTMLInputElement).value}`);
-    const key: keyof typeof correctType = (event.target as HTMLInputElement).value as keyof typeof correctType;
+    const key: keyof typeof correctType = (event.target as HTMLInputElement)
+      .value as keyof typeof correctType;
     props.selectCorrect(correctType[key]);
     // console.log(`check selectSpeed ${props.correct1}`);
   };
 
   return (
-    <RadioGroup
-      aria-label="correctType"
-      value={value}
-      onChange={handleRadioChange}
-    >
+    <RadioGroup aria-label="correctType" value={value} onChange={handleRadioChange}>
       <FormControlLabel
         value={correctType.none}
         control={<Radio size="small" />}

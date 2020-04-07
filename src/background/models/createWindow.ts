@@ -5,15 +5,16 @@ export const createWindow = (
   url: string,
   callback?: (window?: chrome.windows.Window) => void,
 ): void => {
-  chrome.windows.create({
-    focused: true,
-    type: 'popup',
-    url,
-    width: window.size.width,
-    height: window.size.height,
-    top: window.position.y,
-    left: window.position.x,
-  },
+  chrome.windows.create(
+    {
+      focused: true,
+      type: 'popup',
+      url,
+      width: window.size.width,
+      height: window.size.height,
+      top: window.position.y,
+      left: window.position.x,
+    },
     callback,
   );
 };

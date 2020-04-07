@@ -3,28 +3,31 @@ import * as React from 'react';
 import { Card, CardContent } from '@material-ui/core';
 
 import { PartyPanelProps } from '../containers/PartyPanel';
-import { Equips } from '../states/responseJson/Equip';
-import { Parties } from '../states/responseJson/Party';
-import { Swords } from '../states/responseJson/Sword';
 import PartyPanelContents from './PartyPanelContents';
 
 const PartyPanel: React.FC<PartyPanelProps> = (props) => {
-  const handleClick = () => {
+  const handleClick = (): void => {
     // console.log(`PartyPanel Click! ${props.partyPanel.statusType.toString()}`);
     props.selectText(props.partyPanel.statusType, props.partyPanel.displayedStatus);
   };
+  const { page } = props;
+  const { date } = props;
+  const { party } = props;
+  const { sword } = props;
+  const { equip } = props;
 
-  const partyData: Parties = props.party;
-  const swordData: Swords = props.sword;
-  const equipData: Equips = props.equip;
+  const { partyPanel } = props;
   // console.log('Update Party');
   // console.log(`updatePartyPanel ${props.partyPanel.correct}`);
 
   // 結成の時に表示切替
-  let extendView: boolean = false;
-  if ((props.partyPanel.enableExtendView) && (props.page) &&
-    (((props.page.indexOf('party/') > -1) && (props.page !== 'party/get_sally_party_info')) ||
-      ((props.page.indexOf('equip/') > -1) && (props.page !== 'equip/destroy')))) {
+  let extendView = false;
+  if (
+    partyPanel.enableExtendView &&
+    page &&
+    ((page.indexOf('party/') > -1 && page !== 'party/get_sally_party_info') ||
+      (page.indexOf('equip/') > -1 && page !== 'equip/destroy'))
+  ) {
     // console.log('in party', props.partyPanel.extendView);
     /*
     if (!props.partyPanel.extendView) {
@@ -33,18 +36,13 @@ const PartyPanel: React.FC<PartyPanelProps> = (props) => {
     */
     // console.log('in party', extendView);
 
-    if (!extendView) { extendView = true; }
-  } else {
-    // console.log('not party', props.partyPanel.extendView);
-    /*
-    if (props.partyPanel.extendView) {
-      props.clickPartyProps(true);
+    if (!extendView) {
+      extendView = true;
     }
-    */
-    if (extendView) { extendView = false; }
-    // console.log('not party', extendView);
-
+  } else if (extendView) {
+    extendView = false;
   }
+  // console.log('not party', extendView);
 
   const panelStyle = {
     extend: {
@@ -64,12 +62,12 @@ const PartyPanel: React.FC<PartyPanelProps> = (props) => {
     <Card style={partyPanelStyle}>
       <CardContent style={{ padding: 0, margin: 6 }}>
         <PartyPanelContents
-          partyData={partyData}
-          swordData={swordData}
-          equipData={equipData}
+          partyData={party}
+          swordData={sword}
+          equipData={equip}
           extendView={extendView}
-          partyPanel={props.partyPanel}
-          date={props.date}
+          partyPanel={partyPanel}
+          date={date}
           onClick={handleClick}
         />
       </CardContent>

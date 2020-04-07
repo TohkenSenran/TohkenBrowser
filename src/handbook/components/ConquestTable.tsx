@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 // tslint:disable-next-line: import-name
-import MaterialTable, { Action, Column, Localization, Options } from 'material-table';
+import MaterialTable, { Column, Localization, Options } from 'material-table';
 
 import { Box } from '@material-ui/core';
 
@@ -13,20 +13,37 @@ import DrawerMenu from './DrawerMenu';
 const ConquestTable: React.FC<ConquestTableProps> = (props) => {
   // console.log('in ConquestTable %o', props.conquestTable.seasonRewardItems);
   const [menuOpen, setMenuOpen] = React.useState(false);
-  const menuClick = () => { setMenuOpen(true); };
-  const menuClose = () => { setMenuOpen(false); };
-
-  const data: ConquestTableContents[] = conquestConverter(props.conquestTable.seasonRewardItems);
+  const menuClose = (): void => {
+    setMenuOpen(false);
+  };
+  const { conquestTable } = props;
+  const data: ConquestTableContents[] = conquestConverter(conquestTable.seasonRewardItems);
   // console.log('data: %o', data);
-  const textCellStyle: React.CSSProperties = { padding: '12px 6px', textAlign: 'center', whiteSpace: 'pre' };
+  const textCellStyle: React.CSSProperties = {
+    padding: '12px 6px',
+    textAlign: 'center',
+    whiteSpace: 'pre',
+  };
   const numberCellStyle: React.CSSProperties = { padding: 6, textAlign: 'right' };
 
   const columns: Array<Column<ConquestTableContents>> = [
     { title: '遠征先', field: 'destination', cellStyle: textCellStyle },
-    { title: '必要Lv', field: 'totalLv', cellStyle: { ...numberCellStyle, background: 'lavenderblush' } },
-    { title: '必要時間', field: 'time', cellStyle: { ...numberCellStyle, background: 'lavenderblush' } },
+    {
+      title: '必要Lv',
+      field: 'totalLv',
+      cellStyle: { ...numberCellStyle, background: 'lavenderblush' },
+    },
+    {
+      title: '必要時間',
+      field: 'time',
+      cellStyle: { ...numberCellStyle, background: 'lavenderblush' },
+    },
     { title: '刀種', field: 'requireSwords', cellStyle: textCellStyle },
-    { title: '基礎Exp', field: 'swordExp', cellStyle: { ...numberCellStyle, background: 'aliceblue' } },
+    {
+      title: '基礎Exp',
+      field: 'swordExp',
+      cellStyle: { ...numberCellStyle, background: 'aliceblue' },
+    },
     { title: '木炭', field: 'charcoal', cellStyle: { ...textCellStyle, background: 'ivory' } },
     { title: '玉鋼', field: 'steel', cellStyle: { ...textCellStyle, background: 'ivory' } },
     { title: '冷却材', field: 'coolant', cellStyle: { ...textCellStyle, background: 'ivory' } },
@@ -46,9 +63,8 @@ const ConquestTable: React.FC<ConquestTableProps> = (props) => {
     headerStyle: { textAlign: 'center' },
     paging: false,
     sorting: false,
-
   };
-
+  /*
   const actions: Array<Action<ConquestTableContents>> = [
     {
       icon: 'menu',
@@ -57,14 +73,14 @@ const ConquestTable: React.FC<ConquestTableProps> = (props) => {
       tooltip: '設定',
     },
   ];
-
+  */
   return (
     <Box width="100%">
       <MaterialTable
         options={options}
         columns={columns}
         data={data}
-        title={'遠征情報一覧'}
+        title="遠征情報一覧"
         localization={localization}
       />
       <DrawerMenu menuOpen={menuOpen} menuClose={menuClose} />

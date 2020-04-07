@@ -8,7 +8,8 @@ import { forgeInitialState } from '../states/responseJson/Forge';
 const boxStyle: React.CSSProperties = {
   background: '#E6E6E6',
   display: 'inline-block',
-  height: 24, width: 66,
+  height: 24,
+  width: 66,
 };
 
 const textStyle: React.CSSProperties = {
@@ -19,8 +20,10 @@ const textStyle: React.CSSProperties = {
   transform: 'translateX(-50%) translateY(-100%)',
   whiteSpace: 'nowrap',
   color: 'black',
-  textShadow: '1px 1px 0 #FFF, -1px -1px 0 #FFF,' +
-    ' -1px 1px 0 #FFF, 1px -1px 0 #FFF,' + '  0px 1px 0 #FFF, 0px -1px 0 #FFF,' +
+  textShadow:
+    '1px 1px 0 #FFF, -1px -1px 0 #FFF,' +
+    ' -1px 1px 0 #FFF, 1px -1px 0 #FFF,' +
+    '  0px 1px 0 #FFF, 0px -1px 0 #FFF,' +
     ' -1px 0px 0 #FFF, 1px  0px 0 #FFF',
 };
 
@@ -29,11 +32,11 @@ const ForgePanel: React.FC<ForgePanelProps> = (props) => {
   // console.log('Update Forge');
   // console.log('forge: %O', props.forge);
   // console.log('date: ', props.date);
-  for (let i: number = 0; i < forgeNo; i += 1) {
-    // console.log('forge: %O', props.forge[(i + 1).toString()]);
+  for (let i = 0; i < forgeNo; i += 1) {
+    // console.log('forge: %O', props.forge[i + 1]);
     // console.log('initForge: %O', forgeInitialState);
     const forgeState = forgeConverter(
-      props.forge[(i + 1).toString()] ? props.forge[(i + 1).toString()] : forgeInitialState,
+      props.forge[i + 1] ? props.forge[i + 1] : forgeInitialState,
       props.date,
     );
 
@@ -41,17 +44,20 @@ const ForgePanel: React.FC<ForgePanelProps> = (props) => {
     const colorStyle: React.CSSProperties = {
       background: color,
       position: 'relative',
-      height: 18, width: 60,
+      height: 18,
+      width: 60,
       margin: 3,
     };
     // console.log(`forgeNo. ${i + 1} remainingTime: ${forgeState.remainingTime}`);
-    forges.push(<div style={boxStyle}>
-      <Tooltip title={forgeState.swordName}>
-        <div style={colorStyle}>
-          <p style={textStyle}>{forgeState.remainingTime}</p>
-        </div>
-      </Tooltip>
-    </div>);
+    forges.push(
+      <div style={boxStyle}>
+        <Tooltip title={forgeState.swordName}>
+          <div style={colorStyle}>
+            <p style={textStyle}>{forgeState.remainingTime}</p>
+          </div>
+        </Tooltip>
+      </div>,
+    );
   }
   return (
     <div style={{ height: 42 }}>

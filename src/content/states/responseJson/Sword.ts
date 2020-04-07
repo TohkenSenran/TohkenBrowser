@@ -1,3 +1,5 @@
+/* eslint-disable camelcase */
+/* eslint-disable @typescript-eslint/camelcase */
 export type Sword = {
   [key: string]: string | number | null;
   serial_id: string | number; // 男子個別のID
@@ -32,11 +34,11 @@ export type Sword = {
   equip_serial_id3: string | number | null; // 刀装ID3
   horse_serial_id: string | number | null; // 馬ID
   item_id: string | number | null; // お守りID
-  protect: string | number;　// 保護の有無
+  protect: string | number; // 保護の有無
   status: string | number; // 状態 *0:通常状態、1:手入れ状態
   recovered_at: string | number; // 最終更新日時
   created_at: string | number; // 入手日時
-}
+};
 
 export const swordInitialState: Sword = {
   serial_id: '0',

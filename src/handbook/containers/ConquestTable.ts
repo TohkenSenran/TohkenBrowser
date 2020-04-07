@@ -10,11 +10,8 @@ interface StateToProps {
 
 export type ConquestTableProps = StateToProps;
 
-const mapStateToProps = (state: HandbookState): StateToProps =>
-  ({
-    conquestTable: state.conquestTable,
-  });
+const mapStateToProps = (state: HandbookState): StateToProps => ({
+  conquestTable: state.conquestTable,
+});
 
-export default connect(
-  mapStateToProps,
-)(ConquestTable);
+export default connect(mapStateToProps)(ConquestTable);

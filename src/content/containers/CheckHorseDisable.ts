@@ -15,19 +15,14 @@ interface DispatchToProps {
 
 export type CheckHorseDisableProps = StateToProps & DispatchToProps;
 
-const mapStateToProps = (state: RootState): StateToProps =>
-  ({
-    horseDisable: state.partyPanel.horseDisable,
-  });
+const mapStateToProps = (state: RootState): StateToProps => ({
+  horseDisable: state.partyPanel.horseDisable,
+});
 
-const mapDispatchToProps = (dispatch: Dispatch<PartyPanelActions>): DispatchToProps =>
-  ({
-    checkHorseDisable: (horseDisable: boolean) => {
-      dispatch(checkHorseDisable(horseDisable));
-    },
-  });
+const mapDispatchToProps = (dispatch: Dispatch<PartyPanelActions>): DispatchToProps => ({
+  checkHorseDisable: (horseDisable: boolean): void => {
+    dispatch(checkHorseDisable(horseDisable));
+  },
+});
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(CheckHorseDisable);
+export default connect(mapStateToProps, mapDispatchToProps)(CheckHorseDisable);

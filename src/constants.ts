@@ -1,20 +1,25 @@
+/* eslint-disable camelcase */
+import { Item } from './content/states/responseJson/Item';
+
 // 刀剣専覧関連
-export const twitterURL: string = 'https://twitter.com/TohkenBrowser';
+export const twitterURL = 'https://twitter.com/TohkenBrowser';
 
 // ブラウザ側設定
-export const gameURL: string = 'http://pc-play.games.dmm.com/play/tohken/';
-export const gameTitle: string = `刀剣専覧 ${chrome.runtime.getManifest().version} -刀剣乱舞専用ブラウザ-`;
-export const gameSize: any = { width: 1030, height: 580 };
+export const gameURL = 'http://pc-play.games.dmm.com/play/tohken/';
+export const gameTitle = `刀剣専覧 ${chrome.runtime.getManifest().version} -刀剣乱舞専用ブラウザ-`;
+export const gameSize: { width: number; height: number } = { width: 1030, height: 580 };
 export const gameRatio: number = gameSize.height / gameSize.width;
-export const handbookTitle: string = `便利帳 ${gameTitle}`;
+export const handbookTitle = `便利帳 ${gameTitle}`;
 
 // 表示系設定
-export const headerMenuHeight: number = 65;
-export const statusViewHeight: number = 300;
+export const headerMenuHeight = 65;
+export const statusViewHeight = 300;
 
 // ゲーム内定数
-export const browserWindow = 'browserWindow';
-export const handbookWindow = 'handbookWindow';
+export enum windowName {
+  browserWindow = 'browserWindow',
+  handbookWindow = 'handbookWindow',
+}
 
 export const partyNo = 4;
 export const partyMemberNo = 6;
@@ -80,7 +85,7 @@ type equipStatus = {
   back: number;
   scout: number;
   hide: number;
-}
+};
 
 export const equipsStatus: { [index: string]: equipStatus } = {
   0: {
@@ -133,8 +138,7 @@ export const equipsStatus: { [index: string]: equipStatus } = {
     scout: 0,
     hide: 0,
   },
-  5:
-  {
+  5: {
     name: '槍兵・上',
     soldier: 7,
     atk: 0,
@@ -636,7 +640,7 @@ export enum swordType {
   yari = '槍',
   naginata = '薙刀',
   tsurugi = '剣',
-};
+}
 
 export const raritySlotNUmber: { [index: string]: number } = {
   1: 1,
@@ -1431,7 +1435,131 @@ export const resourceId = {
   file: 5,
 };
 
-export const conquestData = {
+// 出陣先名
+export const battleFieldName: { [episodeId: string]: { [fieldId: string]: string } } = {
+  0: {
+    0: '不明',
+    1: '易',
+    2: '並',
+    3: '難',
+    4: '超難',
+  },
+  1: {
+    name: '維新の記憶',
+    1: '函館',
+    2: '会津',
+    3: '宇都宮',
+    4: '鳥羽',
+  },
+  2: {
+    name: '江戸の記憶',
+    1: '鳥羽',
+    2: '江戸',
+    3: '江戸（元禄）',
+    4: '大阪（大阪冬の陣）',
+  },
+  3: {
+    name: '織豊の記憶',
+    1: '関ケ原',
+    2: '本能寺',
+    3: '越前',
+    4: '安土',
+  },
+  4: {
+    name: '戦国の記憶',
+    1: '長篠',
+    2: '三方ヶ原',
+    3: '桶狭間',
+    4: '京都（椿寺）',
+  },
+  5: {
+    name: '武家の記憶',
+    1: '鎌倉（元弘の乱）',
+    2: '元寇（博多湾）',
+    3: '墨俣（承久の乱）',
+    4: '阿津賀志山（厚樫山）',
+  },
+  6: {
+    name: '池田屋の記憶',
+    1: '市中',
+    2: '三条大橋',
+    3: '池田屋二階',
+    4: '池田屋一階',
+  },
+  7: {
+    name: '延享の記憶',
+    1: '江戸（新橋）',
+    2: '江戸（白金台）',
+    3: '江戸城下',
+    4: '江戸城下',
+  },
+  8: {
+    name: '青野原の記憶',
+    1: '阿弥陀ヶ峰',
+    2: '阿弥陀ヶ峰',
+    3: '三番地',
+    4: '四番地',
+  },
+};
+// 遠征先情報
+type ConquestData = {
+  age: string;
+  destination: string;
+  require: {
+    time: number;
+    totalLv: number;
+    swordTypeList: {
+      tanto: boolean;
+      wakizashi: boolean;
+      uchigatana: boolean;
+      tachi: boolean;
+      odachi: boolean;
+      yari: boolean;
+      naginata: boolean;
+      tsurugi: boolean;
+    };
+  };
+  reward: {
+    normal: {
+      sword_exp: number;
+      user_exp: number;
+      item: Item[];
+    };
+    greatAdd: {
+      item: Item[];
+    };
+  };
+};
+
+export const conquestData: { [fieldId: string]: ConquestData } = {
+  0: {
+    age: '不明',
+    destination: '不明',
+    require: {
+      time: 0,
+      totalLv: 0,
+      swordTypeList: {
+        tanto: false,
+        wakizashi: false,
+        uchigatana: false,
+        tachi: false,
+        odachi: false,
+        yari: false,
+        naginata: false,
+        tsurugi: false,
+      },
+    },
+    reward: {
+      normal: {
+        sword_exp: 0,
+        user_exp: 0,
+        item: [],
+      },
+      greatAdd: {
+        item: [],
+      },
+    },
+  },
   1: {
     age: '維新の記憶',
     destination: '鳥羽・伏見の戦い',
@@ -2358,7 +2486,6 @@ export const conquestData = {
       },
     },
   },
-
 };
 
 // リソースの漢字名

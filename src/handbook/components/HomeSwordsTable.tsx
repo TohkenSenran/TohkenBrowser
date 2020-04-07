@@ -14,17 +14,22 @@ import DrawerMenu from './DrawerMenu';
 const HomeSwordsTable: React.FC<HomeSwordsTableProps> = (props) => {
   // console.log('in HomeSwordsTable %o', props.homeSwordTable.seasonRewardItems);
   const [menuOpen, setMenuOpen] = React.useState(false);
-  const menuClick = () => { setMenuOpen(true); };
-  const menuClose = () => { setMenuOpen(false); };
+  const menuClick = (): void => {
+    setMenuOpen(true);
+  };
+  const menuClose = (): void => {
+    setMenuOpen(false);
+  };
 
-  const data: HomeSwordsTableContents[] =
-    homeSwordsConverter(props.homeSwordsTable.homeSwords, props.homeSwordsTable.correct);
+  const { homeSwordsTable } = props;
+
+  const data: HomeSwordsTableContents[] = homeSwordsConverter(
+    homeSwordsTable.homeSwords,
+    homeSwordsTable.correct,
+  );
   // console.log('data: %o', data);
 
-  const columns = generateColumns(
-    props.homeSwordsTable.columns,
-    props.homeSwordsTable.displayedStatus,
-  );
+  const columns = generateColumns(homeSwordsTable.columns, homeSwordsTable.displayedStatus);
 
   const handleColumnDrag = (sourceIndex: number, destinationIndex: number): void => {
     const sourceColumn = columns[sourceIndex];
@@ -64,7 +69,7 @@ const HomeSwordsTable: React.FC<HomeSwordsTableProps> = (props) => {
         options={options}
         columns={columns}
         data={data}
-        title={'本丸男子一覧'}
+        title="本丸男子一覧"
         onColumnDragged={handleColumnDrag}
         localization={localization}
       />

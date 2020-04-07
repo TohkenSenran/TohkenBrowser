@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 
@@ -17,19 +16,14 @@ type DispatchToProps = {
 
 export type ScaleListProps = StateToProps & DispatchToProps;
 
-const mapStateToProps = (state: RootState): StateToProps =>
-  ({
-    browserSetting: state.browserSetting,
-  });
+const mapStateToProps = (state: RootState): StateToProps => ({
+  browserSetting: state.browserSetting,
+});
 
-const mapDispatchToProps = (dispatch: Dispatch<BrowserSettingActions>): DispatchToProps =>
-  ({
-    onChange: (scale: number) => {
-      dispatch(selectScale(scale));
-    },
-  });
+const mapDispatchToProps = (dispatch: Dispatch<BrowserSettingActions>): DispatchToProps => ({
+  onChange: (scale: number): void => {
+    dispatch(selectScale(scale));
+  },
+});
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(ScaleList);
+export default connect(mapStateToProps, mapDispatchToProps)(ScaleList);

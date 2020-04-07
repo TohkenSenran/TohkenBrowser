@@ -11,7 +11,7 @@ export const analyseDuty = (jsonValue: any, page: string, oldDuty: Duty): Duty =
       break;
     default:
       // 上記以外のページでは，dutyの内容が数値でない場合oldDutyを返して更新しない
-      if ((jsonValue) && (jsonValue.duty)) {
+      if (jsonValue && jsonValue.duty) {
         // console.log('jsonValue: %O', jsonValue);
         // console.log('jsonValueSt:', jsonValue.toString());
         if (jsonValue.duty.toString() === '') {

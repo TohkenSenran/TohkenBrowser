@@ -11,12 +11,9 @@ interface StateToProps {
 
 export type ToastNotificationProps = StateToProps;
 
-const mapStateToProps = (state: RootState): StateToProps =>
-  ({
-    enableNotify: state.browserSetting.enableNotify,
-    responseJson: state.responseJson,
-  });
+const mapStateToProps = (state: RootState): StateToProps => ({
+  enableNotify: state.browserSetting.enableNotify,
+  responseJson: state.responseJson,
+});
 
-export default connect(
-  mapStateToProps,
-)(ToastNotification);
+export default connect(mapStateToProps)(ToastNotification);

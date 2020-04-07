@@ -1,7 +1,14 @@
 import * as React from 'react';
 
-import { Box, Drawer, FormControl, Icon, IconButton, Tooltip, Typography } from '@material-ui/core';
-import { ExpansionPanel, ExpansionPanelSummary } from '@material-ui/core';
+import {
+  Box,
+  Drawer,
+  FormControl,
+  Tooltip,
+  Typography,
+  ExpansionPanel,
+  ExpansionPanelSummary,
+} from '@material-ui/core';
 
 import { createStyles, makeStyles } from '@material-ui/core/styles';
 import ExpandMore from '@material-ui/icons/ExpandMore';
@@ -20,7 +27,6 @@ const DrawerMenu: React.FC<{
   menuOpen: boolean;
   menuClose: () => void;
 }> = ({ menuOpen, menuClose }) => {
-
   const classes = useStyles();
 
   const expansionStyle: React.CSSProperties = {
@@ -32,9 +38,9 @@ const DrawerMenu: React.FC<{
     boxShadow: 'none',
   };
   return (
-    <Drawer anchor="right" open={menuOpen} onClose={menuClose} >
+    <Drawer anchor="right" open={menuOpen} onClose={menuClose}>
       <Box margin="15px" style={{ userSelect: 'none' }}>
-        <Typography variant="h6">{'設定'}</Typography>
+        <Typography variant="h6">設定</Typography>
         <FormControl>
           <ExpansionPanel style={expansionStyle}>
             <Tooltip
@@ -45,7 +51,7 @@ const DrawerMenu: React.FC<{
                 style={{ padding: 0, fontSize: 16 }}
                 expandIcon={<ExpandMore />}
               >
-                {'機動補正選択'}
+                機動補正選択
               </ExpansionPanelSummary>
             </Tooltip>
             <StatusCorrect />
@@ -59,7 +65,7 @@ const DrawerMenu: React.FC<{
                 style={{ padding: 0, fontSize: 16 }}
                 expandIcon={<ExpandMore />}
               >
-                {'能力表示選択'}
+                能力表示選択
               </ExpansionPanelSummary>
             </Tooltip>
             <SelectDisplayedStatus />

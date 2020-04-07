@@ -17,20 +17,19 @@ export interface SetSeasonItemsAction {
   seasonRewardItems: Items;
 }
 
-export const updateConquestTable = (conquestTable: ConquestTableState): UpdateConquestTableAction =>
-  ({
-    type: conquestTableActionType.UPDATE_CONQUESTTABLE,
-    conquestTable: (conquestTable !== undefined) ?
-      fillUndefinedProps<ConquestTableState>(conquestTable, conquestTableInitialState) :
-      conquestTableInitialState,
-  });
+export const updateConquestTable = (
+  conquestTable: ConquestTableState,
+): UpdateConquestTableAction => ({
+  type: conquestTableActionType.UPDATE_CONQUESTTABLE,
+  conquestTable:
+    conquestTable !== undefined
+      ? fillUndefinedProps<ConquestTableState>(conquestTable, conquestTableInitialState)
+      : conquestTableInitialState,
+});
 
-export const setSeasonItems = (seasonRewardItems: Items): SetSeasonItemsAction =>
-  ({
-    type: conquestTableActionType.SET_SEASONITEMS,
-    seasonRewardItems: (seasonRewardItems !== undefined) ? seasonRewardItems : {},
-  });
+export const setSeasonItems = (seasonRewardItems: Items): SetSeasonItemsAction => ({
+  type: conquestTableActionType.SET_SEASONITEMS,
+  seasonRewardItems: seasonRewardItems !== undefined ? seasonRewardItems : {},
+});
 
-export type ConquestTableActions =
-  UpdateConquestTableAction |
-  SetSeasonItemsAction;
+export type ConquestTableActions = UpdateConquestTableAction | SetSeasonItemsAction;

@@ -5,7 +5,7 @@ export const getRemainingTime = (timeString: string | null, nowDate: number): st
       const allMin: number = Math.ceil(timeSpan / (1000 * 60));
       const hour: number = Math.floor(allMin / 60);
       const min: number = allMin - hour * 60;
-      return `残り ${('0' + hour).slice(-2)}:${('0' + min).slice(-2)}`;
+      return `残り ${`0${hour}`.slice(-2)}:${`0${min}`.slice(-2)}`;
     }
     return '完了';
   }

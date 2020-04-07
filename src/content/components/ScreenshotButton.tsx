@@ -1,3 +1,4 @@
+/* eslint-disable object-curly-newline */
 import * as React from 'react';
 
 import { Box, Icon, IconButton, Tooltip } from '@material-ui/core';
@@ -10,15 +11,15 @@ const ScreenshotButton: React.FC<ScreenshotButtonProps> = (props) => {
   const [open, setOpen] = React.useState(false);
   const [onShot, setOnShot] = React.useState(false);
 
-  const handleClick = () => {
+  const handleClick = (): void => {
     setOpen(false);
     setOnShot(true);
   };
-  const handleTooltipClose = () => {
+  const handleTooltipClose = (): void => {
     // console.log('tooltipClose');
     setOpen(false);
   };
-  const handleTooltipOpen = () => {
+  const handleTooltipOpen = (): void => {
     setOpen(true);
   };
 
@@ -37,16 +38,18 @@ const ScreenshotButton: React.FC<ScreenshotButtonProps> = (props) => {
   return (
     <Box>
       <Tooltip
-        title={'撮影'}
+        title="撮影"
         open={open}
         onClose={handleTooltipClose}
         onOpen={handleTooltipOpen}
-        PopperProps={{ popperOptions: { modifiers: { offset: { enabled: true, offset: '0,-90' } } } }}
+        PopperProps={{
+          popperOptions: { modifiers: { offset: { enabled: true, offset: '0,-90' } } },
+        }}
       >
         <IconButton onClick={handleClick}>
-          <Icon>{'camera_alt'}</Icon>
+          <Icon>camera_alt</Icon>
         </IconButton>
-      </Tooltip >
+      </Tooltip>
     </Box>
   );
 };

@@ -5,15 +5,17 @@ import { EnableMemberStateExtendView } from '../containers/EnableExtendView';
 
 const EnableExtendView: React.FC<EnableMemberStateExtendView> = (props) => {
   // console.log('switch状態', props.EnableExtendView);
-  const handleChange = () => (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = () => (event: React.ChangeEvent<HTMLInputElement>): void => {
     // console.log('switch切替', event.target.checked);
     props.onChange(event.target.checked);
   };
-
+  const { enableExtendView } = props;
   return (
     <FormControlLabel
-      control={<Switch checked={props.enableExtendView} onChange={handleChange()} value="enableExtendView" />}
-      label={'結成表示'}
+      control={
+        <Switch checked={enableExtendView} onChange={handleChange()} value="enableExtendView" />
+      }
+      label="結成表示"
     />
   );
 };

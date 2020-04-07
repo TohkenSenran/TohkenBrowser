@@ -1,7 +1,9 @@
+/* eslint-disable camelcase */
+/* eslint-disable @typescript-eslint/camelcase */
 export type Item = {
-  item_type: number | string,
-  item_id: number | string,
-  item_num: number | string,
+  item_type: number | string;
+  item_id: number | string;
+  item_num: number | string;
 };
 
 export const itemInitialState: Item = {

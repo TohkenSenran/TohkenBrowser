@@ -13,18 +13,20 @@ enum tabType {
 
 const TabMenu: React.FC = () => {
   const [value, setValue] = React.useState(tabType.conquest);
-  const handleChange = (event: React.ChangeEvent<{}>, newValue: tabType) => {
+  const handleChange = (event: React.ChangeEvent<{}>, newValue: tabType): void => {
     setValue(newValue);
   };
 
-  const TabPanels: React.FC<{ tabValue: tabType; }> = ({ tabValue }) => {
-    let tabPanel: JSX.Element = (<React.Fragment />);
+  const TabPanels: React.FC<{ tabValue: tabType }> = ({ tabValue }) => {
+    let tabPanel: JSX.Element = <></>;
     switch (tabValue) {
       case tabType.conquest:
-        tabPanel = (<ConquestTable />);
+        tabPanel = <ConquestTable />;
         break;
       case tabType.homeSwords:
-        tabPanel = (<HomeSwordsTable />);
+        tabPanel = <HomeSwordsTable />;
+        break;
+      default:
         break;
     }
     return tabPanel;

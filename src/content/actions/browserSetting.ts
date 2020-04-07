@@ -1,4 +1,9 @@
-import { browserSettingInitialState, BrowserSettingState, windowMode } from '../states/BrowserSettingState';
+/* eslint-disable no-shadow */
+import {
+  browserSettingInitialState,
+  BrowserSettingState,
+  windowMode,
+} from '../states/BrowserSettingState';
 
 export enum browserSettingActionType {
   SELECT_BROWSERSCALE = 'SELECT_BROWSERSCALE',
@@ -49,11 +54,10 @@ export interface AddCopyrightAction {
   addCopyright: boolean;
 }
 
-export const selectScale = (scale: number): SelectBrowserScaleAction =>
-  ({
-    type: browserSettingActionType.SELECT_BROWSERSCALE,
-    scale,
-  });
+export const selectScale = (scale: number): SelectBrowserScaleAction => ({
+  type: browserSettingActionType.SELECT_BROWSERSCALE,
+  scale,
+});
 
 export const changeViewMode = (mode: windowMode): ChangeViewModeAction => {
   let nextMode: windowMode = windowMode.SEN;
@@ -71,56 +75,53 @@ export const changeViewMode = (mode: windowMode): ChangeViewModeAction => {
       nextMode = mode;
       break;
   }
-  return ({
+  return {
     type: browserSettingActionType.CHANGE_VIEWMODE,
     mode: nextMode,
-  });
+  };
 };
 
-export const changeMute = (mute: boolean): ChangeMuteAction =>
-  ({
-    type: browserSettingActionType.CHANGE_MUTE,
-    mute: !mute,
-  });
+export const changeMute = (mute: boolean): ChangeMuteAction => ({
+  type: browserSettingActionType.CHANGE_MUTE,
+  mute: !mute,
+});
 
-export const loadBrowserState = (browserSetting: BrowserSettingState): LoadBrowserStateAction =>
-  ({
-    type: browserSettingActionType.LOAD_BROWSERSTATE,
-    scale: (browserSetting.scale !== undefined) ?
-      browserSetting.scale : browserSettingInitialState.scale,
-    mode: (browserSetting.mode !== undefined) ?
-      browserSetting.mode : browserSettingInitialState.mode,
-    mute: (browserSetting.mute !== undefined) ?
-      browserSetting.mute : browserSettingInitialState.mute,
-    enableNotify: (browserSetting.enableNotify !== undefined) ?
-      browserSetting.enableNotify : browserSettingInitialState.enableNotify,
-    addCopyright: (browserSetting.addCopyright !== undefined) ?
-      browserSetting.addCopyright : browserSettingInitialState.addCopyright,
-  });
+export const loadBrowserState = (browserSetting: BrowserSettingState): LoadBrowserStateAction => ({
+  type: browserSettingActionType.LOAD_BROWSERSTATE,
+  scale:
+    browserSetting.scale !== undefined ? browserSetting.scale : browserSettingInitialState.scale,
+  mode: browserSetting.mode !== undefined ? browserSetting.mode : browserSettingInitialState.mode,
+  mute: browserSetting.mute !== undefined ? browserSetting.mute : browserSettingInitialState.mute,
+  enableNotify:
+    browserSetting.enableNotify !== undefined
+      ? browserSetting.enableNotify
+      : browserSettingInitialState.enableNotify,
+  addCopyright:
+    browserSetting.addCopyright !== undefined
+      ? browserSetting.addCopyright
+      : browserSettingInitialState.addCopyright,
+});
 
-export const checkDevConnect = (devConnect: boolean): CheckDevConnectAction =>
-  ({
-    type: browserSettingActionType.CHECK_DEVCONNECT,
-    devConnect,
-  });
+export const checkDevConnect = (devConnect: boolean): CheckDevConnectAction => ({
+  type: browserSettingActionType.CHECK_DEVCONNECT,
+  devConnect,
+});
 
-export const setEnableNotify = (enableNotify: boolean): SetEnableNotifyAction =>
-  ({
-    type: browserSettingActionType.SET_ENABLENOTIFY,
-    enableNotify,
-  });
+export const setEnableNotify = (enableNotify: boolean): SetEnableNotifyAction => ({
+  type: browserSettingActionType.SET_ENABLENOTIFY,
+  enableNotify,
+});
 
-export const addCopyright = (addCopyright: boolean): AddCopyrightAction =>
-  ({
-    type: browserSettingActionType.ADD_COPYRIGHT,
-    addCopyright,
-  });
+export const addCopyright = (addCopyright: boolean): AddCopyrightAction => ({
+  type: browserSettingActionType.ADD_COPYRIGHT,
+  addCopyright,
+});
 
 export type BrowserSettingActions =
-  SelectBrowserScaleAction |
-  ChangeViewModeAction |
-  ChangeMuteAction |
-  LoadBrowserStateAction |
-  CheckDevConnectAction |
-  SetEnableNotifyAction |
-  AddCopyrightAction;
+  | SelectBrowserScaleAction
+  | ChangeViewModeAction
+  | ChangeMuteAction
+  | LoadBrowserStateAction
+  | CheckDevConnectAction
+  | SetEnableNotifyAction
+  | AddCopyrightAction;

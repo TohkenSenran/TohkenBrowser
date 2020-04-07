@@ -1,6 +1,6 @@
 import { requestType } from './states/requestType';
 
-import { browserWindow, gameTitle, gameURL, handbookWindow } from '../constants';
+import { gameTitle, gameURL, windowName } from '../constants';
 import { contentRequest } from '../content/states/contentRequest';
 import { clickExtensionButton } from './models/clickExtensionButton';
 import { getWindowId } from './models/getWindowId';
@@ -13,6 +13,8 @@ import { removeWindowId } from './models/removeWindowId';
 import { screenshot } from './models/screenshot';
 import { sendMessageToWindow } from './models/sendMessageToWindow';
 import { Request } from './states/request';
+
+let devConnected = false;
 
 // ブラウザアイコンクリック時の動作
 chrome.browserAction.onClicked.addListener(clickExtensionButton);
@@ -30,21 +32,20 @@ chrome.contextMenus.create({
 // ブラウザウィンドウの削除検出
 chrome.windows.onRemoved.addListener(async (windowId: number) => {
   // console.log('onClosingId', windowId);
-  const browserId: number = await getWindowId(`${browserWindow}Id`);
-  const handbookId: number = await getWindowId(`${handbookWindow}Id`);
+  const browserId: number = await getWindowId(`${windowName.browserWindow}Id`);
+  const handbookId: number = await getWindowId(`${windowName.handbookWindow}Id`);
   // console.log('browser', browserId);
   // console.log('handbook', handbookId);
   if (windowId === browserId) {
     devConnected = false;
-    removeWindowId(`${browserWindow}Id`);
+    removeWindowId(`${windowName.browserWindow}Id`);
     // console.log(`remove browser? ${await removeBrowserId()}`);
   } else if (windowId === handbookId) {
-    removeWindowId(`${handbookWindow}Id`);
+    removeWindowId(`${windowName.handbookWindow}Id`);
   }
 });
 
 // DevToolsを介してブラウザの通信内容取得
-let devConnected: boolean = false;
 chrome.runtime.onConnect.addListener((port: chrome.runtime.Port) => {
   if (port.name !== 'devtools') return;
   // console.log('Connected with devtools!');
@@ -57,7 +58,7 @@ chrome.runtime.onConnect.addListener((port: chrome.runtime.Port) => {
     // 接続状態の確認
     if (responseJson.targetPageUrl) {
       // console.log('targetURL in bg ', responseJson.targetPageUrl);
-      devConnected = (responseJson.targetPageUrl === gameURL);
+      devConnected = responseJson.targetPageUrl === gameURL;
     }
     // 通信内容をJson形式で送信
     sendMessageToWindow(await getWindowTabId(gameTitle), contentRequest.requestJson, responseJson);
@@ -91,7 +92,7 @@ chrome.runtime.onMessage.addListener(async (request: Request, sender, sendRespon
       }
       break;
     case requestType.responseBody:
-    // console.log('message from devtool');
+    // eslint-disable-next-line no-fallthrough
     case requestType.openLinkOnTab:
       if (sender.tab) {
         openLinkOnTab(sender.tab.windowId, request.payload);
@@ -100,13 +101,13 @@ chrome.runtime.onMessage.addListener(async (request: Request, sender, sendRespon
     case requestType.createHandbookWindow:
       // createHandbookWindow();
       popupWindow.createWindow(
-        handbookWindow,
+        windowName.handbookWindow,
         chrome.extension.getURL('html/handbook.html'),
       );
       break;
     case requestType.closeHandbookWindow:
       // console.log('hdWindow: ', await getWindowId(`${handbookWindow}Id`));
-      removeWindow(await getWindowId(`${handbookWindow}Id`));
+      removeWindow(await getWindowId(`${windowName.handbookWindow}Id`));
       break;
     default:
       break;

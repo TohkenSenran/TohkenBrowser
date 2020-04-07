@@ -1,6 +1,6 @@
 export interface WindowState {
-  position: { x: number, y: number };
-  size: { height: number, width: number };
+  position: { x: number; y: number };
+  size: { height: number; width: number };
 }
 
 export const initialWindowState: WindowState = {

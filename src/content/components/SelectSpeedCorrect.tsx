@@ -9,25 +9,23 @@ import { correctType } from '../../constants';
 import { SelectSpeedCorrectProps } from '../containers/SelectSpeedCorrect';
 import { getSpeedCorrect } from '../states/PartyPanelState';
 
-export const SelectSpeedCorrect: React.FC<SelectSpeedCorrectProps> = (props) => {
-  const [value, setValue] = React.useState(props.correct.toString());
-  const handleRadioChange = (event: React.ChangeEvent<unknown>) => {
+const SelectSpeedCorrect: React.FC<SelectSpeedCorrectProps> = (props) => {
+  const { correct } = props;
+  const { horseDisable } = props;
+  const [value, setValue] = React.useState(correct.toString());
+  const handleRadioChange = (event: React.ChangeEvent<unknown>): void => {
     setValue((event.target as HTMLInputElement).value);
     // console.log(`check selectSpeed ${(event.target as HTMLInputElement).value}`);
     props.selectCorrect(getSpeedCorrect((event.target as HTMLInputElement).value));
-    // console.log(`check selectSpeed ${props.correct1}`);
+    // console.log(`check selectSpeed ${correct1}`);
   };
-  const handleCheckChange = () => {
+  const handleCheckChange = (): void => {
     props.checkHorseDisable(props.horseDisable);
   };
 
   return (
-    <React.Fragment>
-      <RadioGroup
-        aria-label="correctType"
-        value={value}
-        onChange={handleRadioChange}
-      >
+    <>
+      <RadioGroup aria-label="correctType" value={value} onChange={handleRadioChange}>
         <FormControlLabel
           value={correctType.none}
           control={<Radio size="small" />}
@@ -47,15 +45,11 @@ export const SelectSpeedCorrect: React.FC<SelectSpeedCorrectProps> = (props) => 
       <Divider />
       <Tooltip title="馬の有効/無効を切替">
         <FormControlLabel
-          control={<Checkbox
-            checked={props.horseDisable}
-            onChange={handleCheckChange}
-            size="small"
-          />}
+          control={<Checkbox checked={horseDisable} onChange={handleCheckChange} size="small" />}
           label="市街/屋内戦"
         />
       </Tooltip>
-    </React.Fragment>
+    </>
   );
 };
 

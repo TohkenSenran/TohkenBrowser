@@ -1,18 +1,18 @@
 export type ConquestTableContents = {
-  age: string,
-  destination: string,
-  time: string,
-  totalLv: number,
-  requireSwords: string,
-  swordExp: number,
-  userExp: string,
-  charcoal: string,
-  steel: string,
-  coolant: string,
-  file: string,
-  item: string,
-  greatAdd: string,
-  seasonReward: string,
+  age: string;
+  destination: string;
+  time: string;
+  totalLv: number;
+  requireSwords: string;
+  swordExp: number;
+  userExp: string;
+  charcoal: string;
+  steel: string;
+  coolant: string;
+  file: string;
+  item: string;
+  greatAdd: string;
+  seasonReward: string;
 };
 
 export const conquestTableContentsInitialState: ConquestTableContents = {

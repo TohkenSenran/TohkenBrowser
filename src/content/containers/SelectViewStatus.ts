@@ -6,7 +6,7 @@ import SelectViewStatus from '../components/SelectViewStatus';
 import { RootState } from '../states/index';
 
 interface StateToProps {
-  displayedStatus: boolean[],
+  displayedStatus: boolean[];
 }
 
 interface DispatchToProps {
@@ -15,17 +15,14 @@ interface DispatchToProps {
 
 export type SelectViewStatusProps = StateToProps & DispatchToProps;
 
-const mapStateToProps = (state: RootState): StateToProps =>
-  ({ displayedStatus: state.partyPanel.displayedStatus });
+const mapStateToProps = (state: RootState): StateToProps => ({
+  displayedStatus: state.partyPanel.displayedStatus,
+});
 
-const mapDispatchToProps = (dispatch: Dispatch<PartyPanelActions>): DispatchToProps =>
-  ({
-    setSelectViewStatus: (displayedStatus: boolean[]) => {
-      dispatch(setSelectViewStatus(displayedStatus));
-    },
-  });
+const mapDispatchToProps = (dispatch: Dispatch<PartyPanelActions>): DispatchToProps => ({
+  setSelectViewStatus: (displayedStatus: boolean[]): void => {
+    dispatch(setSelectViewStatus(displayedStatus));
+  },
+});
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(SelectViewStatus);
+export default connect(mapStateToProps, mapDispatchToProps)(SelectViewStatus);

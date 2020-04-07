@@ -16,7 +16,7 @@ const IconFontButton: React.FC<{
     <IconButton onClick={onClick}>
       <Icon>{iconName}</Icon>
     </IconButton>
-  </Tooltip >
+  </Tooltip>
 );
 
 export default IconFontButton;

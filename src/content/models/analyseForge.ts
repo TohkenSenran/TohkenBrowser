@@ -1,17 +1,19 @@
+/* eslint-disable @typescript-eslint/camelcase */
 import { forgeNo } from '../../constants';
 import { Forge, forgeInitialState, Forges } from '../states/responseJson/Forge';
 
 export const analyseForge = (jsonValue: any, page: string, oldForge: Forges): Forges => {
   // console.log(`analyseForge ${page}`);
   let forge: Forges = oldForge ? { ...oldForge } : {};
+  let singleForge: Forge = forgeInitialState;
   switch (page) {
     case 'home':
       // forgeの残数が返されるため無視する
-      forge = oldForge ? oldForge : {};
+      forge = oldForge ?? {};
       break;
     case 'forge/start':
       // 鍛刀情報がforgeに括られていない
-      const singleForge: Forge = {
+      singleForge = {
         ...forgeInitialState,
         slot_no: jsonValue.slot_no,
         sword_id: jsonValue.sword_id,
@@ -20,20 +22,20 @@ export const analyseForge = (jsonValue: any, page: string, oldForge: Forges): Fo
         creating_at: jsonValue.now,
       };
       // 鍛刀後の情報（sword_id）がある場合は手伝い札を使用しているため登録不要
-      if (!(singleForge.sword_id)) {
-        forge[jsonValue.slot_no.toString()] = singleForge;
+      if (!singleForge.sword_id) {
+        forge[jsonValue.slot_no] = singleForge;
       }
       break;
     case 'forge/complete':
     case 'forge/fast':
       // console.log('in forge comp or fast');
       // 鍛刀の完了情報（特定は不完全，特に鍛刀を開きなおしてsword_idを取得していないと不可）
-      for (let i: number = 0; i < forgeNo; i += 1) {
-        if (forge[(i + 1).toString()]) {
-          // const targetForge: Forge = forge[(i + 1).toString()];
+      for (let i = 0; i < forgeNo; i += 1) {
+        if (forge[i + 1]) {
+          // const targetForge: Forge = forge[i + 1];
           // console.log('targetForge: %O', targetForge);
-          if (forge[(i + 1).toString()].sword_id === jsonValue.sword_id) {
-            delete forge[(i + 1).toString()];
+          if (forge[i + 1].sword_id === jsonValue.sword_id) {
+            delete forge[i + 1];
             break;
           }
         }
@@ -45,17 +47,14 @@ export const analyseForge = (jsonValue: any, page: string, oldForge: Forges): Fo
         // console.log('JsonValue: %O', jsonValue);
         // console.log('find forge!: %O', jsonValue.forge);
         forge = {};
-        for (let i: number = 0; i < forgeNo; i += 1) {
-          if (jsonValue.forge[(i + 1).toString()]) {
+        for (let i = 0; i < forgeNo; i += 1) {
+          if (jsonValue.forge[i + 1]) {
             // console.log(`check forge No ${(i + 1).toString()}`);
-            forge[(i + 1).toString()] = jsonValue.forge[(i + 1).toString()];
-            if ((oldForge) &&
-              (oldForge[(i + 1).toString()]) &&
-              oldForge[(i + 1).toString()].creating_at) {
-              forge[(i + 1).toString()].creating_at =
-                oldForge[(i + 1).toString()].creating_at;
+            forge[i + 1] = jsonValue.forge[i + 1];
+            if (oldForge && oldForge[i + 1] && oldForge[i + 1].creating_at) {
+              forge[i + 1].creating_at = oldForge[i + 1].creating_at;
             } else {
-              forge[(i + 1).toString()].creating_at = null;
+              forge[i + 1].creating_at = null;
             }
           }
         }

@@ -1,3 +1,5 @@
+/* eslint-disable camelcase */
+/* eslint-disable @typescript-eslint/camelcase */
 interface Slot {
   serial_id: string | number | null;
 }
@@ -7,7 +9,7 @@ export interface Party {
   status: string | number; // 部隊の状態 *1:待機中、2:遠征中、3:出陣中
   party_name: string | null; // 部隊名
   finished_at: string | null; // 帰還時刻（遠征時のみ）
-  slot: { [key: string]: Slot; };
+  slot: { [key: string]: Slot };
 }
 
 const partyInitialState: Party = {

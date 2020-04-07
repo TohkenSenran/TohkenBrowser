@@ -10,7 +10,7 @@ export const analyseResource = (jsonValue: any, page: string, oldResource: Resou
       break;
     default:
       // 上記以外のページでは，resourceの内容が数値でない場合oldResourceを返して更新しない
-      if ((jsonValue) && (jsonValue.resource)) {
+      if (jsonValue && jsonValue.resource) {
         // console.log('jsonValue: %O', jsonValue);
         // console.log('jsonValueSt:', jsonValue.toString());
         if (jsonValue.resource.toString() === '') {

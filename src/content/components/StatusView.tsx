@@ -11,29 +11,28 @@ import { windowMode } from '../states/BrowserSettingState';
 import HomePanel from './HomePanel';
 
 const StatusView: React.FC<StatusExtendView> = (props) => {
+  const { browserSetting } = props;
+
   // console.log('View Update');
   React.useEffect(() => {
     // 10秒ごとに更新
-    const intervalId: number = window.setInterval(
-      () => {
-        props.updateDate(Date.now());
-        // console.log(`interval: ${props.browserSetting.date}`);
-      },
-      10000,
-    );
-    return () => clearInterval(intervalId); // console.log('unmounting StatusView');
+    const intervalId: number = window.setInterval(() => {
+      props.updateDate(Date.now());
+      // console.log(`interval: ${browserSetting.date}`);
+    }, 10000);
+    return (): void => clearInterval(intervalId); // console.log('unmounting StatusView');
   });
 
-  const topPos = headerMenuHeight + props.browserSetting.scale * gameSize.height;
+  const topPos = headerMenuHeight + browserSetting.scale * gameSize.height;
   // Fadeでの表示変更はimportしたものには効かない可能性あり
-  if (props.browserSetting.mode === windowMode.SHOU) {
+  if (browserSetting.mode === windowMode.SHOU) {
     return (
       <Box
         bgcolor="background.paper"
         style={{ position: 'fixed', top: topPos, width: '100%', height: '100%' }}
       >
         <div style={{ position: 'relative' }}>
-          <Fade in={!props.browserSetting.devConnect}>
+          <Fade in={!browserSetting.devConnect}>
             <Box
               display="flex"
               alignItems="center"
@@ -43,19 +42,19 @@ const StatusView: React.FC<StatusExtendView> = (props) => {
             >
               <Box>
                 <Typography variant="h5">
-                  <div>{'[Ctrl + Shift + I] もしくは [F12]'}</div>
-                  <div>{'または右クリックから [検証(I)]'}</div>
+                  <div>[Ctrl + Shift + I] もしくは [F12]</div>
+                  <div>または右クリックから [検証(I)]</div>
                 </Typography>
                 <Box padding={1}>
                   <Typography>
-                    <div>{'上記の方法でデベロッパーツールを起動してください。'}</div>
-                    <div>{'刀剣男子などの情報表示の更新に必要です。'}</div>
+                    <div>上記の方法でデベロッパーツールを起動してください。</div>
+                    <div>刀剣男子などの情報表示の更新に必要です。</div>
                   </Typography>
                 </Box>
               </Box>
             </Box>
           </Fade>
-          <Fade in={props.browserSetting.devConnect}>
+          <Fade in={browserSetting.devConnect}>
             <Box display="flex" flexWrap="wrap" style={{ position: 'absolute', top: 0, left: 0 }}>
               <Box style={{ margin: '6px' }}>
                 <PartyPanel />
@@ -69,7 +68,7 @@ const StatusView: React.FC<StatusExtendView> = (props) => {
       </Box>
     );
   }
-  return (<React.Fragment />);
+  return <></>;
 };
 
 export default StatusView;

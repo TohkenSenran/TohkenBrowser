@@ -33,7 +33,10 @@ interface FileSystemRemoveOptions {
 
 interface FileSystemDirectoryHandle extends FileSystemHandle {
   getFile(name: string, options?: FileSystemGetFileOptions): Promise<FileSystemFileHandle>;
-  getDirectory(name: string, options?: FileSystemGetDirectoryOptions): Promise<FileSystemDirectoryHandle>;
+  getDirectory(
+    name: string,
+    options?: FileSystemGetDirectoryOptions,
+  ): Promise<FileSystemDirectoryHandle>;
   getEntries(): AsyncIterableIterator<FileSystemHandle>;
   removeEntry(name: string, options?: FileSystemRemoveOptions): Promise<void>;
 }
@@ -61,9 +64,15 @@ interface ChooseFileSystemEntriesOptions {
 
 interface Window {
   chooseFileSystemEntries(options?: ChooseFileSystemEntriesOptions): Promise<FileSystemFileHandle>;
-  chooseFileSystemEntries(options?: ChooseFileSystemEntriesOptions): Promise<FileSystemFileHandle[]>;
-  chooseFileSystemEntries(options?: ChooseFileSystemEntriesOptions): Promise<FileSystemDirectoryHandle>;
-  chooseFileSystemEntries(options?: ChooseFileSystemEntriesOptions): Promise<FileSystemDirectoryHandle[]>;
+  chooseFileSystemEntries(
+    options?: ChooseFileSystemEntriesOptions,
+  ): Promise<FileSystemFileHandle[]>;
+  chooseFileSystemEntries(
+    options?: ChooseFileSystemEntriesOptions,
+  ): Promise<FileSystemDirectoryHandle>;
+  chooseFileSystemEntries(
+    options?: ChooseFileSystemEntriesOptions,
+  ): Promise<FileSystemDirectoryHandle[]>;
 }
 
 type SystemDirectoryType = 'sandbox';
@@ -76,4 +85,4 @@ interface FileSystemDirectoryHandleConstructor {
   getSystemDirectory(options: GetSystemDirectoryOptions): Promise<FileSystemDirectoryHandle>;
 }
 
-declare var FileSystemDirectoryHandle: FileSystemDirectoryHandleConstructor;
+declare let FileSystemDirectoryHandle: FileSystemDirectoryHandleConstructor;

@@ -9,15 +9,11 @@ import TabMenu from './TabMenu';
 
 // styles を定義
 const styles = (): StyleRules =>
-  createStyles(
-    {
-      root: {},
-    },
-  );
+  createStyles({
+    root: {},
+  });
 
-const Content: React.FC = () => (
-  <TabMenu />
-);
+const Content: React.FC = () => <TabMenu />;
 
 // withRoot で export
 export default withRoot(withStyles(styles)(Content));

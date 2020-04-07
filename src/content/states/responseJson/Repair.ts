@@ -1,8 +1,10 @@
+/* eslint-disable camelcase */
+/* eslint-disable @typescript-eslint/camelcase */
 export type Repair = {
-  slot_no: string | number,
-  sword_serial_id: string | number | null,
-  push_serial_id: string | null,
-  finished_at: string,
+  slot_no: string | number;
+  sword_serial_id: string | number | null;
+  push_serial_id: string | null;
+  finished_at: string;
 };
 
 export const repairInitialState: Repair = {

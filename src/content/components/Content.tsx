@@ -11,14 +11,9 @@ import store from '../store';
 import HeaderMenu from './HeaderMenu';
 
 // styles を定義
-const styles = (): StyleRules =>
-  createStyles(
-    {
-      root: {},
-    },
-  );
+const styles = (): StyleRules => createStyles({ root: {} });
 
-class Content extends React.Component {
+class Content extends React.PureComponent {
   /*
   public componentDidMount() {
     console.log('in DidMount');
@@ -27,9 +22,9 @@ class Content extends React.Component {
     console.log('in WillUnmount');
   }
   */
-  public render() {
+  public render(): JSX.Element {
     // console.log('Start Content!');
-    const devConnectChecker = async () => {
+    const devConnectChecker = async (): Promise<void> => {
       const devConnected: boolean = await getDevConnectState();
       // console.log('get devConnected :', devConnected);
       store.dispatch(checkDevConnect(devConnected));

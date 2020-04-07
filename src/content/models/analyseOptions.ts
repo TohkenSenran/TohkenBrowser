@@ -6,16 +6,16 @@ export const analyseOptions = (jsonValue: any, page: string): void => {
   switch (page) {
     case 'conquest':
       if (
-        (jsonValue) &&
-        (jsonValue.season_reward_list) &&
-        (jsonValue.season_reward_list.toString() !== '')
+        jsonValue &&
+        jsonValue.season_reward_list &&
+        jsonValue.season_reward_list.toString() !== ''
       ) {
         // console.log('find empty duty');
         items = jsonValue.season_reward_list;
         // console.log('seasonItems: %O', items);
         chrome.storage.local.get('handbookState', (response) => {
           let handbookState: HandbookState = handbookInitialState;
-          if ((response) && (response.handbookState)) {
+          if (response && response.handbookState) {
             handbookState = response.handbookState;
           }
           // 季節報酬を上書き（余計な書き換えを行わないか要注意！）

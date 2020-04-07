@@ -13,13 +13,10 @@ interface StateToProps {
 
 export type ForgePanelProps = StateToProps;
 
-const mapStateToProps = (state: RootState): StateToProps =>
-  ({
-    date: state.responseJson.newDate,
-    forge: state.responseJson.forge,
-    sword: state.responseJson.sword,
-  });
+const mapStateToProps = (state: RootState): StateToProps => ({
+  date: state.responseJson.newDate,
+  forge: state.responseJson.forge,
+  sword: state.responseJson.sword,
+});
 
-export default connect(
-  mapStateToProps,
-)(ForgePanel);
+export default connect(mapStateToProps)(ForgePanel);

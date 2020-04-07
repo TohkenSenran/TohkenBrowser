@@ -15,18 +15,12 @@ import ReloadButton from './ReloadButton';
 import DrawerMenu from './DrawerMenu';
 import HandbookButton from './HandbookButton';
 import Title from './Title';
-import JsonLogger from './JsonLogger';
 
 const HeaderMenu: React.FC = () => (
-  <React.Fragment>
-    <AppBar
-      position="fixed"
-      style={{ boxShadow: 'none', height: headerMenuHeight }}
-    >
+  <>
+    <AppBar position="fixed" style={{ boxShadow: 'none', height: headerMenuHeight }}>
       <Toolbar>
-        <Box>
-          {Title}
-        </Box>
+        <Box>{Title}</Box>
         <ReloadButton />
         <ScreenshotButton />
         <MuteButton />
@@ -39,7 +33,7 @@ const HeaderMenu: React.FC = () => (
         </span>
       </Toolbar>
     </AppBar>
-  </React.Fragment >
+  </>
 );
 
 export default HeaderMenu;

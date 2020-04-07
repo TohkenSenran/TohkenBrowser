@@ -15,19 +15,14 @@ type DispatchToProps = {
 
 export type EnableMemberStateExtendView = StateToProps & DispatchToProps;
 
-const mapStateToProps = (state: RootState): StateToProps =>
-  ({
-    enableExtendView: state.partyPanel.enableExtendView,
-  });
+const mapStateToProps = (state: RootState): StateToProps => ({
+  enableExtendView: state.partyPanel.enableExtendView,
+});
 
-const mapDispatchToProps = (dispatch: Dispatch<PartyPanelActions>): DispatchToProps =>
-  ({
-    onChange: (enableExtendView: boolean) => {
-      dispatch(setEnableExtendView(enableExtendView));
-    },
-  });
+const mapDispatchToProps = (dispatch: Dispatch<PartyPanelActions>): DispatchToProps => ({
+  onChange: (enableExtendView: boolean): void => {
+    dispatch(setEnableExtendView(enableExtendView));
+  },
+});
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(EnableExtendView);
+export default connect(mapStateToProps, mapDispatchToProps)(EnableExtendView);

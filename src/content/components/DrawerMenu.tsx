@@ -1,8 +1,15 @@
 import * as React from 'react';
 
-import { Box, Drawer, Tooltip, Typography } from '@material-ui/core';
-import { ExpansionPanel, ExpansionPanelSummary } from '@material-ui/core';
-import { FormControl, FormLabel } from '@material-ui/core';
+import {
+  ExpansionPanel,
+  ExpansionPanelSummary,
+  Box,
+  Drawer,
+  Tooltip,
+  Typography,
+  FormControl,
+  FormLabel,
+} from '@material-ui/core';
 import { createStyles, makeStyles } from '@material-ui/core/styles';
 import ExpandMore from '@material-ui/icons/ExpandMore';
 
@@ -26,8 +33,12 @@ const DrawerMenu: React.FC = () => {
   const classes = useStyles();
 
   const [open, setOpen] = React.useState(false);
-  const handleClick = () => { setOpen(true); };
-  const handleClose = () => { setOpen(false); };
+  const handleClick = (): void => {
+    setOpen(true);
+  };
+  const handleClose = (): void => {
+    setOpen(false);
+  };
 
   const expansionStyle: React.CSSProperties = {
     marginTop: '3px',
@@ -38,27 +49,33 @@ const DrawerMenu: React.FC = () => {
     boxShadow: 'none',
   };
   return (
-    <React.Fragment>
+    <>
       <IconFontButton iconName="menu" tooltipText="設定" onClick={handleClick} />
 
-      <Drawer anchor="right" open={open} onClose={handleClose} >
+      <Drawer anchor="right" open={open} onClose={handleClose}>
         <Box margin="15px" style={{ userSelect: 'none' }}>
-          <Typography variant="h6">{'設定'}</Typography>
+          <Typography variant="h6">設定</Typography>
           <FormControl>
             <ScaleList />
             <Box marginTop="12px">
-              <FormLabel style={{ fontSize: 12 }}>{'各種設定切替'}</FormLabel>
+              <FormLabel style={{ fontSize: 12 }}>各種設定切替</FormLabel>
               <Tooltip title="鍛刀・手入の完了を通知" classes={{ tooltip: classes.customWidth }}>
                 <Box>
                   <EnableNotify />
                 </Box>
               </Tooltip>
-              <Tooltip title="スクリーンショット撮影時にCopyrightを追加" classes={{ tooltip: classes.customWidth }}>
+              <Tooltip
+                title="スクリーンショット撮影時にCopyrightを追加"
+                classes={{ tooltip: classes.customWidth }}
+              >
                 <Box>
                   <AddCopyright />
                 </Box>
               </Tooltip>
-              <Tooltip title="結成画面表示時に補助情報を表示" classes={{ tooltip: classes.customWidth }}>
+              <Tooltip
+                title="結成画面表示時に補助情報を表示"
+                classes={{ tooltip: classes.customWidth }}
+              >
                 <Box>
                   <EnableExtendView />
                 </Box>
@@ -74,7 +91,7 @@ const DrawerMenu: React.FC = () => {
                     style={{ padding: 0, fontSize: 16 }}
                     expandIcon={<ExpandMore />}
                   >
-                    {'機動補正選択'}
+                    機動補正選択
                   </ExpansionPanelSummary>
                 </Tooltip>
                 <SelectSpeedCorrect />
@@ -88,16 +105,16 @@ const DrawerMenu: React.FC = () => {
                     style={{ padding: 0, fontSize: 16 }}
                     expandIcon={<ExpandMore />}
                   >
-                    {'能力表示選択'}
+                    能力表示選択
                   </ExpansionPanelSummary>
                 </Tooltip>
                 <SelectViewStatus />
               </ExpansionPanel>
             </Box>
-          </ FormControl>
+          </FormControl>
         </Box>
       </Drawer>
-    </React.Fragment >
+    </>
   );
 };
 

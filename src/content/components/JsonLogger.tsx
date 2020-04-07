@@ -2,7 +2,7 @@ import * as React from 'react';
 import IconFontButton from './IconFontButton';
 // import { FileSystemFileHandle } from '../../../types/native-file-system';
 
-if (typeof self.chooseFileSystemEntries !== 'undefined') {
+if (typeof window.chooseFileSystemEntries !== 'undefined') {
   alert('NFS is allowed!');
   /*
   const fileHandle: FileSystemFileHandle = await window.chooseFileSystemEntries({
@@ -22,14 +22,11 @@ if (typeof self.chooseFileSystemEntries !== 'undefined') {
 }
 
 const JsonLogger: React.FC = () => {
-
   const handleClick = async () => {
     console.log('in logger handleClick', window.chooseFileSystemEntries);
   };
 
-  return (
-    <IconFontButton iconName="list" tooltipText="JsonLogger" onClick={handleClick} />
-  );
+  return <IconFontButton iconName="list" tooltipText="JsonLogger" onClick={handleClick} />;
 };
 
 export default JsonLogger;

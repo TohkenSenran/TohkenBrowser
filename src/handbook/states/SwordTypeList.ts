@@ -1,12 +1,12 @@
 export type SwordTypeList = {
-  tanto: boolean,
-  wakizashi: boolean,
-  uchigatana: boolean,
-  tachi: boolean,
-  odachi: boolean,
-  yari: boolean,
-  naginata: boolean,
-  tsurugi: boolean,
+  tanto: boolean;
+  wakizashi: boolean;
+  uchigatana: boolean;
+  tachi: boolean;
+  odachi: boolean;
+  yari: boolean;
+  naginata: boolean;
+  tsurugi: boolean;
 };
 
 export const initialSwordTypeList = {

@@ -23,7 +23,7 @@ export type PartyPanelState = {
 
 const initialDisplayedStatus = (): boolean[] => {
   const viewStatus: boolean[] = [];
-  Object.entries(statusType).forEach(([key, value]) => {
+  Object.values(statusType).forEach((value) => {
     if (typeof value === 'number') {
       viewStatus.push(true);
     }

@@ -1,4 +1,5 @@
-import { correctType, raritySlotNUmber, swordsProps, swordType } from '../../constants';
+/* eslint-disable @typescript-eslint/camelcase */
+import { correctType, raritySlotNUmber, swordsProps } from '../../constants';
 import { getFatigueCorrect, swordConverter } from '../../content/models/swordConverter';
 import { Swords } from '../../content/states/responseJson/Sword';
 import { HomeSwordsTableContents } from '../states/HomeSwordsTableContents';
@@ -7,7 +8,7 @@ const getCorrectedState = (
   state: number | string,
   selectCorrect: correctType,
   level: number | string,
-  fatigue: number = 49,
+  fatigue = 49,
 ): number => {
   const numberState = parseInt(state.toString(), 10);
   const numberLevel = parseInt(level.toString(), 10);
@@ -19,6 +20,8 @@ const getCorrectedState = (
       return Math.floor(numberState * (1.0 + numberLevel * 0.04) * getFatigueCorrect(fatigue));
     case correctType.stage7:
       return Math.floor(numberState * (1.0 + numberLevel * 0.02) * getFatigueCorrect(fatigue));
+    default:
+      return 0;
   }
 };
 
@@ -27,10 +30,10 @@ export const homeSwordsConverter = (
   selectCorrect: correctType,
 ): HomeSwordsTableContents[] => {
   // console.log('homeSwords %o', homeSwords);
-  const swords: Swords = (homeSwords !== undefined) ? homeSwords : {};
+  const swords: Swords = homeSwords !== undefined ? homeSwords : {};
   const data: HomeSwordsTableContents[] = [];
 
-  Object.entries(swords).forEach(([key, value]) => {
+  Object.values(swords).forEach((value) => {
     if (value.protect.toString() === '1') {
       const fatigue: number = swordConverter(swords, value.serial_id).fatigueValue;
       data.push({

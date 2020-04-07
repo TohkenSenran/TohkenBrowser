@@ -13,13 +13,10 @@ interface StateToProps {
 
 export type RepairPanelProps = StateToProps;
 
-const mapStateToProps = (state: RootState): StateToProps =>
-  ({
-    date: state.responseJson.newDate,
-    repair: state.responseJson.repair,
-    sword: state.responseJson.sword,
-  });
+const mapStateToProps = (state: RootState): StateToProps => ({
+  date: state.responseJson.newDate,
+  repair: state.responseJson.repair,
+  sword: state.responseJson.sword,
+});
 
-export default connect(
-  mapStateToProps,
-)(RepairPanel);
+export default connect(mapStateToProps)(RepairPanel);

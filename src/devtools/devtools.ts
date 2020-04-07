@@ -1,6 +1,6 @@
 const port: chrome.runtime.Port = chrome.runtime.connect({ name: 'devtools' });
 
-// 刀剣のページから実行される
+// 刀剣のページから実行されるかをチェック
 chrome.devtools.inspectedWindow.eval(
   'document.baseURI',
   (targetPageUrl: string) => {
@@ -17,6 +17,7 @@ chrome.devtools.network.onRequestFinished.addListener(
         request.getContent((content: string, encoding: string) => {
           const json = JSON.parse(content);
           json.page = getPage(url);
+          json.requestData = request.request.postData.params;
           port.postMessage(json);
         });
       }
