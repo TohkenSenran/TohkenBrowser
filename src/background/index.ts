@@ -1,5 +1,6 @@
-import { requestType } from './states/requestType';
+import { browser } from 'webextension-polyfill-ts';
 
+import { requestType } from './states/requestType';
 import { gameTitle, gameURL, windowName } from '../constants';
 import { contentRequest } from '../content/states/contentRequest';
 import { clickExtensionButton } from './models/clickExtensionButton';
@@ -13,21 +14,36 @@ import { removeWindowId } from './models/removeWindowId';
 import { screenshot } from './models/screenshot';
 import { sendMessageToWindow } from './models/sendMessageToWindow';
 import { Request } from './states/request';
+import { storageInitialState } from './states/StorageState';
 
 let devConnected = false;
 
 // ブラウザアイコンクリック時の動作
 chrome.browserAction.onClicked.addListener(clickExtensionButton);
 
+browser.contextMenus.create({
+  title: '刀剣専覧初期化',
+  contexts: ['browser_action'],
+  onclick: async () => {
+    if (window.confirm('刀剣専覧の設定をリセットしますか？\n＊ゲームへの影響はありません。')) {
+      browser.storage.local.remove(Object.keys(storageInitialState));
+    }
+  },
+});
+
+/*
 chrome.contextMenus.create({
   title: '刀剣専覧初期化',
   contexts: ['browser_action'],
   onclick: () => {
-    chrome.storage.local.clear(() => {
-      alert('刀剣乱舞専用ブラウザをリセットしました。\n＊ゲームへの影響はありません。');
-    });
+    if (window.confirm('刀剣専覧の設定をリセットしますか？\n＊ゲームへの影響はありません。')) {
+      chrome.storage.local.clear(() => {
+        window.alert('刀剣専覧の設定をリセットしました。');
+      });
+    }
   },
 });
+*/
 
 // ブラウザウィンドウの削除検出
 chrome.windows.onRemoved.addListener(async (windowId: number) => {
