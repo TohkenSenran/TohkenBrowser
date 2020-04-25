@@ -1,3 +1,9 @@
+import { browser } from 'webextension-polyfill-ts';
+
+import {
+  HistoryTableContents,
+  historyTableContentsInitialState,
+} from '../../handbook/states/HistoryTableContents';
 import { Parties, Party } from '../states/responseJson/Party';
 import { Swords } from '../states/responseJson/Sword';
 import { Equip, Equips } from '../states/responseJson/Equip';
@@ -20,9 +26,16 @@ import { getSwordName } from './getSwordName';
 import { RequestProps } from '../states/responseJson/RequestProps';
 import { requestConverter } from './requestConverter';
 
-const setRecode = (recode: string[]): void => {
+const setRecode = (recode: string[], recodeTime: string): void => {
   if (recode.length > 1) {
-    console.log('recode %o', recode);
+    // console.log('recode %o', recode);
+    const historyRecode: HistoryTableContents = { ...historyTableContentsInitialState };
+    for (let i = 0; i < recode.length; i += 1) {
+      const key = `value${i}`;
+      historyRecode[key as keyof HistoryTableContents] = recode[i];
+    }
+    browser.storage.local.set({ [recodeTime]: historyRecode });
+    // console.log('recode %o', recode);
   }
 };
 
@@ -96,7 +109,7 @@ export const analyseHistory = (
   if (jsonValue && jsonValue.now) {
     // console.log('history page: ', page);
     // console.log('jsonValueSt:', jsonValue.toString());
-
+    const recodeTime: string = Date.now().toString();
     const requestProps: RequestProps = requestConverter(jsonValue.requestData);
 
     recode.push(jsonValue.now);
@@ -118,7 +131,6 @@ export const analyseHistory = (
         );
         recode.push('手伝い札');
         recode.push(requestProps.useAssist ? '有' : '無');
-        recode = setUseResource(recode, resource, oldState);
         // 鍛刀情報
         if (jsonValue.sword_id === null) {
           recode.push('鍛刀時間');
@@ -127,13 +139,12 @@ export const analyseHistory = (
           recode.push('鍛刀男子');
           recode.push(getSwordName(undefined, undefined, jsonValue.sword_id));
         }
+        recode = setUseResource(recode, resource, oldState);
         break;
       case 'produce/start':
         // console.log('home in history');
         // console.log('recode %o', recode);
-        // 札の使用情報は来ない ><
-        console.log('requestData', jsonValue.requestData);
-
+        // console.log('requestData', jsonValue.requestData);
         recode.push('刀装作成');
         recode = setKinji(recode, party, sword);
         recode = setUseResource(recode, resource, oldState);
@@ -150,10 +161,8 @@ export const analyseHistory = (
       case 'produce/continue':
         // console.log('home in history');
         // console.log('recode %o', recode);
-        // 札の使用情報は来ない ><
-        console.log('requestData', jsonValue.requestData);
 
-        recode.push('刀装十連作成');
+        recode.push('刀装十連');
         recode = setKinji(recode, party, sword);
         recode = setUseResource(recode, resource, oldState);
         // 刀装結果
@@ -171,10 +180,9 @@ export const analyseHistory = (
         break;
       case 'repair/repair':
         // console.log('in repair/repair');
-        console.log('requestData', jsonValue.requestData);
+        // console.log('requestData', jsonValue.requestData);
 
         recode.push('手入');
-        recode = setUseResource(recode, resource, oldState);
         recode.push('対象男子');
         // console.log('repair', repair);
         // console.log('oldRepair', oldState.repair);
@@ -188,9 +196,10 @@ export const analyseHistory = (
             );
           }
         }
+        recode = setUseResource(recode, resource, oldState);
         break;
       case 'duty/start':
-        console.log('requestData', jsonValue.requestData);
+        // console.log('requestData', jsonValue.requestData);
 
         break;
       case 'home':
@@ -209,29 +218,31 @@ export const analyseHistory = (
         break;
       case 'sally/sally':
       case 'sally/eventsally':
-        // bconsole.log('requestData: ', jsonValue.requestData);
+        // console.log('requestData: ', jsonValue.requestData);
         // request情報から出陣関連情報取得
         recode.push('出陣');
         // console.log('requestProps ', requestProps);
         if (page === 'sally/sally') {
           recode.push(`${requestProps.episodeId}-${requestProps.fieldId}`);
-        } else if (Object.keys(jsonValue.gimmick).length > 0) {
+        } else if (jsonValue.gimmick !== null) {
           recode.push('秘宝の里');
-        } else if (Object.keys(jsonValue.allout).length > 0) {
+        } else if (jsonValue.allout !== null) {
           recode.push('連隊戦');
-        } else if (Object.keys(jsonValue.freesearch).length > 0) {
+        } else if (jsonValue.freesearch !== null) {
           recode.push('江戸城');
-        } else if (Object.keys(jsonValue.tsukimi).length > 0) {
+        } else if (jsonValue.tsukimi !== null) {
           recode.push('月見');
-        } else if (Object.keys(jsonValue.setsubun).length > 0) {
+        } else if (jsonValue.setsubun !== null) {
           recode.push('節分');
-        } else if (Object.keys(jsonValue.koban).length > 0) {
+        } else if (jsonValue.koban !== null) {
           recode.push('大阪城');
-        } else if (Object.keys(jsonValue.research).length > 0) {
+        } else if (jsonValue.research !== null) {
           recode.push('特命調査');
         } else {
-          recode.push('不明');
-        } // 要対応：戦力拡充計画
+          // console.log(recode);
+          recode.push('戦力拡充計画');
+        } // 要対応：戦力拡充計画だけ？
+        // console.log(recode);
         if (
           requestProps.episodeId in battleFieldName &&
           requestProps.fieldId in battleFieldName[requestProps.episodeId]
@@ -268,27 +279,28 @@ export const analyseHistory = (
       default:
         break;
     }
-    setRecode(recode);
+    setRecode(recode, recodeTime);
 
     // 在庫情報は随時更新
     // console.log('nowRecode', resource);
     // console.log('oldRecode', oldState.resource);
 
     recode = []; // リセット
+    recode.push(jsonValue.now);
     if (
       resource.charcoal !== oldState.resource.charcoal ||
       resource.coolant !== oldState.resource.coolant ||
       resource.file !== oldState.resource.file ||
       resource.steel !== oldState.resource.steel
     ) {
-      recode.push('在庫資材');
+      recode.push('資材在庫');
       resourceKeys = Object.keys(resourceType);
       // console.log('resouceKeys %o', resourceKeys);
       for (let i = 0; i < resourceKeys.length; i += 1) {
         recode.push(resourceType[resourceKeys[i] as keyof typeof resourceType]);
         recode.push(resource[resourceKeys[i] as keyof Resource].toString());
       }
-      setRecode(recode);
+      setRecode(recode, (parseInt(recodeTime, 10) + 1).toString());
     }
   }
 };
