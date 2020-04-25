@@ -1,9 +1,9 @@
-import { Items } from '../../content/states/responseJson/Item';
+import { SeasonItem } from '../../content/states/responseJson/SeasonItem';
 
 export type ConquestTableState = {
-  seasonRewardItems: Items;
+  seasonRewardItems: SeasonItem[];
 };
 
 export const conquestTableInitialState: ConquestTableState = {
-  seasonRewardItems: {},
+  seasonRewardItems: [],
 };

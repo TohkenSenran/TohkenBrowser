@@ -1,8 +1,8 @@
 import { handbookInitialState, HandbookState } from '../../handbook/states';
-import { Items } from '../states/responseJson/Item';
+import { SeasonItem } from '../states/responseJson/SeasonItem';
 
 export const analyseOptions = (jsonValue: any, page: string): void => {
-  let items: Items = {};
+  let seasonItems: SeasonItem[] = [];
   switch (page) {
     case 'conquest':
       if (
@@ -11,7 +11,7 @@ export const analyseOptions = (jsonValue: any, page: string): void => {
         jsonValue.season_reward_list.toString() !== ''
       ) {
         // console.log('find empty duty');
-        items = jsonValue.season_reward_list;
+        seasonItems = jsonValue.season_reward_list;
         // console.log('seasonItems: %O', items);
         chrome.storage.local.get('handbookState', (response) => {
           let handbookState: HandbookState = handbookInitialState;
@@ -19,7 +19,7 @@ export const analyseOptions = (jsonValue: any, page: string): void => {
             handbookState = response.handbookState;
           }
           // 季節報酬を上書き（余計な書き換えを行わないか要注意！）
-          handbookState.conquestTable.seasonRewardItems = items;
+          handbookState.conquestTable.seasonRewardItems = seasonItems;
           // console.log('handbookState, %o', handbookState);
           // console.log('seasonItems, %o', handbookState.conquestTable.season_reward_list);
           chrome.storage.local.set({ handbookState });

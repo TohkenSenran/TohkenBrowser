@@ -1,7 +1,7 @@
-import { Items } from '../../content/states/responseJson/Item';
+import { SeasonItem } from '../../content/states/responseJson/SeasonItem';
 
-export const getSeasonReward: () => Promise<Items> = () =>
-  new Promise((resolve: (value: Items) => void) => {
+export const getSeasonReward: () => Promise<SeasonItem[]> = () =>
+  new Promise((resolve: (value: SeasonItem[]) => void) => {
     chrome.storage.local.get('handbookState', (items) => {
       if (
         items &&
@@ -13,7 +13,7 @@ export const getSeasonReward: () => Promise<Items> = () =>
         resolve(items.handbookState.conquestTable.seasonRewardItems);
       } else {
         // 狙いのものがなければ空を吐く
-        resolve({});
+        resolve([]);
       }
     });
   });

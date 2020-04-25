@@ -1,6 +1,6 @@
-import { Items } from '../../content/states/responseJson/Item';
 import { fillUndefinedProps } from '../models/fillUndefinedProps';
 import { conquestTableInitialState, ConquestTableState } from '../states/ConquestTable';
+import { SeasonItem } from '../../content/states/responseJson/SeasonItem';
 
 export enum conquestTableActionType {
   UPDATE_CONQUESTTABLE = 'UPDATE_CONQUESTTABLE',
@@ -14,7 +14,7 @@ export interface UpdateConquestTableAction {
 
 export interface SetSeasonItemsAction {
   type: conquestTableActionType.SET_SEASONITEMS;
-  seasonRewardItems: Items;
+  seasonRewardItems: SeasonItem[];
 }
 
 export const updateConquestTable = (
@@ -27,9 +27,9 @@ export const updateConquestTable = (
       : conquestTableInitialState,
 });
 
-export const setSeasonItems = (seasonRewardItems: Items): SetSeasonItemsAction => ({
+export const setSeasonItems = (seasonRewardItems: SeasonItem[]): SetSeasonItemsAction => ({
   type: conquestTableActionType.SET_SEASONITEMS,
-  seasonRewardItems: seasonRewardItems !== undefined ? seasonRewardItems : {},
+  seasonRewardItems: typeof seasonRewardItems !== 'undefined' ? seasonRewardItems : [],
 });
 
 export type ConquestTableActions = UpdateConquestTableAction | SetSeasonItemsAction;
