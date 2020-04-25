@@ -1,5 +1,5 @@
 /* eslint-disable implicit-arrow-linebreak */
-import { initialWindowState, WindowState } from '../states/WindowState';
+import { windowInitialState, WindowState } from '../states/WindowState';
 import { createWindow } from './createWindow';
 import { getWindowId } from './getWindowId';
 import { getWindowsInfo } from './getWindowsInfo';
@@ -27,7 +27,7 @@ export const popupWindow = {
     }
     // idが未定義 or 存在しない場合，ウィンドウを作成
     createWindow(
-      windowState !== undefined ? windowState : initialWindowState,
+      typeof windowState !== 'undefined' ? windowState : windowInitialState,
       loadUrl,
       (newWindow: chrome.windows.Window | undefined) => {
         if (newWindow && newWindow.tabs) {

@@ -9,7 +9,6 @@ import ModeButton from '../containers/ModeButton';
 import MuteButton from '../containers/MuteButton';
 import ScreenshotButton from '../containers/ScreenshotButton';
 import ToastNotification from '../containers/ToastNotification';
-import IconFontButton from './IconFontButton';
 import ReloadButton from './ReloadButton';
 
 import DrawerMenu from './DrawerMenu';
@@ -28,7 +27,6 @@ const HeaderMenu: React.FC = () => (
         <ToastNotification />
         <span style={{ marginLeft: 'auto', marginRight: -15 }}>
           <HandbookButton />
-          <IconFontButton iconName="history" tooltipText="履歴" />
           <DrawerMenu />
         </span>
       </Toolbar>

@@ -30,9 +30,10 @@ export const analyseJson = (json: any, oldState: ResponseJsonState): void => {
   }
 
   if (json) {
-    const page: string = json.page ? json.page : 'NotFound';
+    const page: string = json.page ?? 'notfound';
     console.log('page:', page);
-
+    // console.log('requestData', json.requestData);
+    // console.log('requestProps', requestConverter(json.requestData));
     const sword: Swords = analyseSword(json, json.page, oldState.sword, oldState.repair);
     // console.log(`swords ${Object.keys(sword).length}`);
     // store.dispatch(updateJsonSword(sword));

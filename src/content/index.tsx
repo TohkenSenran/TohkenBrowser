@@ -35,12 +35,6 @@ chrome.runtime.onMessage.addListener(({ type, payload }) => {
       break;
   }
 });
-/*
-// storage変更情報取得
-chrome.storage.onChanged.addListener((changes, areaName) => {
-  console.log('onChangeEve %O', changes);
-});
-*/
 
 const startReactDom = async (): Promise<void> => {
   const browserId: number = await getWindowId('browserWindowId');

@@ -11,6 +11,7 @@ const conquestTable: Reducer<ConquestTableState, ConquestTableActions> = (
     case conquestTableActionType.UPDATE_CONQUESTTABLE:
       return action.conquestTable;
     case conquestTableActionType.SET_SEASONITEMS:
+      // console.log('in reducer %o', action.seasonRewardItems);
       return {
         ...state,
         seasonRewardItems: action.seasonRewardItems,

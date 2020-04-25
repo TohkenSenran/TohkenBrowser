@@ -3,7 +3,7 @@ export interface WindowState {
   size: { height: number; width: number };
 }
 
-export const initialWindowState: WindowState = {
+export const windowInitialState: WindowState = {
   position: { x: 100, y: 100 },
   size: { height: 600, width: 800 },
 };

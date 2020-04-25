@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/camelcase */
 /* eslint-disable camelcase */
 import { Item } from './content/states/responseJson/Item';
 
@@ -1501,6 +1502,7 @@ export const battleFieldName: { [episodeId: string]: { [fieldId: string]: string
     4: '四番地',
   },
 };
+
 // 遠征先情報
 type ConquestData = {
   age: string;
@@ -2494,4 +2496,11 @@ export enum resourceType {
   steel = '玉鋼',
   coolant = '冷却材',
   file = '砥石',
+}
+
+// handbookのタブ情報
+export enum tabType {
+  homeSwords = 'homeSwords',
+  conquest = 'conquest',
+  history = 'history',
 }

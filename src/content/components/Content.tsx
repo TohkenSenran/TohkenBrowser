@@ -14,14 +14,6 @@ import HeaderMenu from './HeaderMenu';
 const styles = (): StyleRules => createStyles({ root: {} });
 
 class Content extends React.PureComponent {
-  /*
-  public componentDidMount() {
-    console.log('in DidMount');
-  }
-  public componentWillUnmount() {
-    console.log('in WillUnmount');
-  }
-  */
   public render(): JSX.Element {
     // console.log('Start Content!');
     const devConnectChecker = async (): Promise<void> => {
