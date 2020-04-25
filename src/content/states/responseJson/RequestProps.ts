@@ -10,6 +10,7 @@ export type RequestProps = {
   file: number;
   consumableId: string;
   useAssist: boolean;
+  serialId: string;
 };
 
 export const requestPropsInitialState: RequestProps = {
@@ -23,4 +24,5 @@ export const requestPropsInitialState: RequestProps = {
   file: 0,
   consumableId: '0',
   useAssist: false,
+  serialId: '0',
 };

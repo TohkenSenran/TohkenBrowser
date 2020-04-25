@@ -1,5 +1,7 @@
 import { Repairs } from '../states/responseJson/Repair';
 import { Sword, swordInitialState, Swords } from '../states/responseJson/Sword';
+import { requestConverter } from './requestConverter';
+import { RequestProps } from '../states/responseJson/RequestProps';
 
 export const analyseSword = (
   jsonValue: any,
@@ -15,6 +17,9 @@ export const analyseSword = (
   let partialSword: Swords = {};
   let tempRepair: Repairs = {};
   let targetSlot = '0';
+
+  const requestProps: RequestProps = requestConverter(jsonValue.requestData);
+
   switch (page) {
     case 'album/list':
     case 'album/checknew':
@@ -79,6 +84,14 @@ export const analyseSword = (
         if (targetSwordId && targetSwordId in sword) {
           sword[targetSwordId].status = '0';
         }
+      }
+      break;
+    case 'sword/protect':
+      // 刀剣男子の保護状態の変更
+      // console.log('protect check');
+      if (requestProps.serialId in sword) {
+        sword[requestProps.serialId].protect =
+          sword[requestProps.serialId].protect.toString() === '0' ? '1' : '0';
       }
       break;
     default:

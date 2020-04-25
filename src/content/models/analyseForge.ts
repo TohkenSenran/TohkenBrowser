@@ -1,11 +1,14 @@
 /* eslint-disable @typescript-eslint/camelcase */
 import { forgeNo } from '../../constants';
 import { Forge, forgeInitialState, Forges } from '../states/responseJson/Forge';
+import { RequestProps } from '../states/responseJson/RequestProps';
+import { requestConverter } from './requestConverter';
 
 export const analyseForge = (jsonValue: any, page: string, oldForge: Forges): Forges => {
   // console.log(`analyseForge ${page}`);
   let forge: Forges = oldForge ? { ...oldForge } : {};
   let singleForge: Forge = forgeInitialState;
+  const requestProps: RequestProps = requestConverter(jsonValue.requestData);
   switch (page) {
     case 'home':
       // forgeの残数が返されるため無視する
@@ -29,16 +32,8 @@ export const analyseForge = (jsonValue: any, page: string, oldForge: Forges): Fo
     case 'forge/complete':
     case 'forge/fast':
       // console.log('in forge comp or fast');
-      // 鍛刀の完了情報（特定は不完全，特に鍛刀を開きなおしてsword_idを取得していないと不可）
-      for (let i = 0; i < forgeNo; i += 1) {
-        if (forge[i + 1]) {
-          // const targetForge: Forge = forge[i + 1];
-          // console.log('targetForge: %O', targetForge);
-          if (forge[i + 1].sword_id === jsonValue.sword_id) {
-            delete forge[i + 1];
-            break;
-          }
-        }
+      if (requestProps.slotId in forge) {
+        delete forge[requestProps.slotId];
       }
       break;
     default:

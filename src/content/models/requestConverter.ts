@@ -3,6 +3,10 @@ import { RequestProps, requestPropsInitialState } from '../states/responseJson/R
 // requestから情報取得
 export const requestConverter = (requestData: any): RequestProps => {
   const requestProps: RequestProps = { ...requestPropsInitialState };
+  if (typeof requestData === 'undefined') {
+    return requestProps;
+  }
+
   Object.values(requestData).forEach((value: any) => {
     if (value.name === 'party_no') {
       requestProps.partyId = value.value;
@@ -33,6 +37,9 @@ export const requestConverter = (requestData: any): RequestProps => {
     }
     if (value.name === 'use_assist') {
       requestProps.useAssist = Boolean(parseInt(value.value, 10));
+    }
+    if (value.name === 'serial_id') {
+      requestProps.serialId = value.value;
     }
   });
   // partyId: () => { return partyId };
