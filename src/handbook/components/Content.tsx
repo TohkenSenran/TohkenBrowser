@@ -5,7 +5,7 @@ import createStyles from '@material-ui/core/styles/createStyles';
 import withStyles, { StyleRules } from '@material-ui/core/styles/withStyles';
 
 import withRoot from '../../withRoot';
-import TabMenu from './TabMenu';
+import TabMenu from '../containers/TabMenu';
 
 // styles を定義
 const styles = (): StyleRules =>
