@@ -12,7 +12,7 @@ import { setWindowTitle } from './models/setWindowTitle';
 import { windowBeforeUnloadEvent } from './models/windowBeforeUnloadEvent';
 import { windowLoadEvent } from './models/windowLoadEvent';
 import { HistoryTableContents } from './states/HistoryTableContents';
-import { pushHistory } from './actions/historyTable';
+import { pushHistory, removeHistory } from './actions/historyTable';
 
 // 終了直前の処理
 window.onbeforeunload = (): void => {
@@ -25,7 +25,7 @@ let loopCount = 0;
 chrome.storage.onChanged.addListener(async (changes) => {
   // console.log('changes %o', changes);
   // console.log('changeKeysLength ', Object.keys(changes).length);
-  Object.keys(changes).forEach((key) => {
+  Object.keys(changes).forEach((key: string) => {
     switch (key) {
       case 'rootState':
         // console.log('in rootState');
@@ -81,12 +81,17 @@ chrome.storage.onChanged.addListener(async (changes) => {
         }
         break;
       default:
-        // console.log('in default');
+        console.log('in default');
         // 履歴情報の更新
         if (parseInt(key, 10).toString() === key) {
-          // console.log('on historyRecode');
-          // console.log('historyRecode %o', changes[key].newValue as HistoryTableContents);
-          store.dispatch(pushHistory(changes[key].newValue as HistoryTableContents));
+          console.log('on historyRecode');
+          if (changes[key].newValue) {
+            console.log('pussing historyRecode %o', changes[key].newValue as HistoryTableContents);
+            store.dispatch(pushHistory(changes[key].newValue as HistoryTableContents));
+          } else {
+            console.log('removing historyRecode', changes[key].oldValue.value0);
+            store.dispatch(removeHistory(changes[key].oldValue.value0));
+          }
         }
         break;
     }

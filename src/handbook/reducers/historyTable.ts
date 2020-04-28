@@ -22,6 +22,14 @@ const historyTable: Reducer<HistoryTableState, HistoryTableActions> = (
         ...state,
         history: sortHistory(history),
       };
+    case historyTableActionType.REMOVE_HISTORY:
+      if (action.headValue) {
+        return {
+          ...state,
+          history: history.filter((value) => value.value0 !== action.headValue),
+        };
+      }
+      return state;
     default:
       return state;
   }

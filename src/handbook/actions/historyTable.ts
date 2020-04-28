@@ -6,6 +6,7 @@ import {
 export enum historyTableActionType {
   UPDATE_HISTORYTABLE = 'UPDATE_HISTORYTABLE',
   PUSH_HISTORY = 'PUSH_HISTORY',
+  REMOVE_HISTORY = 'REMOVE_HISTORY',
 }
 
 export interface UpdateHistoryTableAction {
@@ -15,6 +16,10 @@ export interface UpdateHistoryTableAction {
 export interface PushHistoryAction {
   type: historyTableActionType.PUSH_HISTORY;
   singleHistory: HistoryTableContents;
+}
+export interface RemoveHistoryAction {
+  type: historyTableActionType.REMOVE_HISTORY;
+  headValue: string;
 }
 
 export const updateHistoryTable = (history: HistoryTableContents[]): UpdateHistoryTableAction => ({
@@ -26,5 +31,12 @@ export const pushHistory = (singleHistory: HistoryTableContents): PushHistoryAct
   singleHistory:
     typeof singleHistory !== 'undefined' ? singleHistory : historyTableContentsInitialState,
 });
+export const removeHistory = (headValue: string): RemoveHistoryAction => ({
+  type: historyTableActionType.REMOVE_HISTORY,
+  headValue,
+});
 
-export type HistoryTableActions = UpdateHistoryTableAction | PushHistoryAction;
+export type HistoryTableActions =
+  | UpdateHistoryTableAction
+  | PushHistoryAction
+  | RemoveHistoryAction;
