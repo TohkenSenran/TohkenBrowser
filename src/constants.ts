@@ -1369,6 +1369,22 @@ export const swordsProps: { [index: string]: SwordProps } = {
     name: '山鳥毛・極',
     type: swordType.tachi,
   },
+  182: {
+    name: '古今伝授の太刀',
+    type: swordType.tachi,
+  },
+  183: {
+    name: '古今伝授の太刀・極',
+    type: swordType.tachi,
+  },
+  184: {
+    name: '地蔵行平',
+    type: swordType.uchigatana,
+  },
+  185: {
+    name: '地蔵行平・極',
+    type: swordType.uchigatana,
+  },
 };
 
 // 抜けている番号は情報不足のためフォロー必須
