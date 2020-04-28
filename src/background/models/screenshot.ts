@@ -25,7 +25,7 @@ const saveScreenshot = (dataUrl: string, addCopyright: boolean): void => {
       }
       // save the image
       const link = document.createElement('a');
-      link.download = `Tohken_${moment().format('yyyymmddHHMMss')}.png`;
+      link.download = `Tohken_${moment().format('YYYYMMDDhhmmss')}.png`;
       link.href = canvas.toDataURL('image/png');
       link.click();
       link.remove();
