@@ -17,12 +17,10 @@
   },
   "permissions": [
     "activeTab",
-    "alarms",
     "contextMenus",
     "storage",
     "unlimitedStorage",
     "tabs",
-    "notifications",
     "<all_urls>"
   ],
   "icons": {
