@@ -224,20 +224,22 @@ export const analyseHistory = (
         // console.log('requestProps ', requestProps);
         if (page === 'sally/sally') {
           recode.push(`${requestProps.episodeId}-${requestProps.fieldId}`);
-        } else if (jsonValue.gimmick !== null) {
+        } else if (jsonValue.gimmick) {
           recode.push('秘宝の里');
-        } else if (jsonValue.allout !== null) {
+        } else if (jsonValue.allout) {
           recode.push('連隊戦');
-        } else if (jsonValue.freesearch !== null) {
+        } else if (jsonValue.freesearch) {
           recode.push('江戸城');
-        } else if (jsonValue.tsukimi !== null) {
+        } else if (jsonValue.tsukimi) {
           recode.push('月見');
-        } else if (jsonValue.setsubun !== null) {
+        } else if (jsonValue.setsubun) {
           recode.push('節分');
-        } else if (jsonValue.koban !== null) {
+        } else if (jsonValue.koban) {
           recode.push('大阪城');
-        } else if (jsonValue.research !== null) {
+        } else if (jsonValue.research) {
           recode.push('特命調査');
+        } else if (jsonValue.kumamoto) {
+          recode.push('特命調査-慶長熊本');
         } else {
           // console.log(recode);
           recode.push('戦力拡充計画');
