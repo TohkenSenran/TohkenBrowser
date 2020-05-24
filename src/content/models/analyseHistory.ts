@@ -56,6 +56,20 @@ const setCurrentParty = (recode: string[], currentParty: Party, sword: Swords): 
   return recode;
 };
 
+// イベント出陣難易度
+const setEventDifficultyLevel = (
+  recode: string[],
+  episodeId: string,
+  fieldId: string,
+): string[] => {
+  if (episodeId in battleFieldName && fieldId in battleFieldName[episodeId]) {
+    recode.push(battleFieldName[episodeId][fieldId]);
+  } else {
+    recode.push(battleFieldName['0']['0']);
+  }
+  return recode;
+};
+
 // 近侍
 const setKinji = (recode: string[], party: Parties, sword: Swords): string[] => {
   recode.push('近侍');
@@ -226,16 +240,27 @@ export const analyseHistory = (
           recode.push(`${requestProps.episodeId}-${requestProps.fieldId}`);
         } else if (jsonValue.gimmick) {
           recode.push('秘宝の里');
+          recode = setEventDifficultyLevel(recode, requestProps.episodeId, requestProps.fieldId);
         } else if (jsonValue.allout) {
           recode.push('連隊戦');
+          recode = setEventDifficultyLevel(recode, requestProps.episodeId, requestProps.fieldId);
+          // 要対応：難易度・乱への対応
         } else if (jsonValue.freesearch) {
           recode.push('江戸城');
+          recode = setEventDifficultyLevel(recode, requestProps.episodeId, requestProps.fieldId);
         } else if (jsonValue.tsukimi) {
           recode.push('月見');
+          recode = setEventDifficultyLevel(recode, requestProps.episodeId, requestProps.fieldId);
         } else if (jsonValue.setsubun) {
           recode.push('節分');
+          recode = setEventDifficultyLevel(recode, requestProps.episodeId, requestProps.fieldId);
         } else if (jsonValue.koban) {
           recode.push('大阪城');
+          if (requestProps.eventLayerId !== '0') {
+            recode.push(`${requestProps.eventLayerId}階`);
+          } else {
+            recode.push('階数不明');
+          }
         } else if (jsonValue.research) {
           recode.push('特命調査');
         } else if (jsonValue.kumamoto) {
@@ -244,18 +269,9 @@ export const analyseHistory = (
           // console.log(recode);
           recode.push('戦力拡充計画');
         } // 要対応：戦力拡充計画だけ？
-        // console.log(recode);
-        if (
-          requestProps.episodeId in battleFieldName &&
-          requestProps.fieldId in battleFieldName[requestProps.episodeId]
-        ) {
-          recode.push(battleFieldName[requestProps.episodeId][requestProps.fieldId]);
-        } else {
-          recode.push(battleFieldName['0']['0']);
-        }
 
-        if (requestProps.partyId !== '0' && party && party[requestProps.partyId]) {
-          recode = setCurrentParty(recode, party[requestProps.partyId], sword);
+        if (requestProps.partyNo !== '0' && party && party[requestProps.partyNo]) {
+          recode = setCurrentParty(recode, party[requestProps.partyNo], sword);
         }
         break;
       case 'conquest/start':
@@ -266,16 +282,16 @@ export const analyseHistory = (
           conquestData[requestProps.fieldId in conquestData ? requestProps.fieldId : '0']
             .destination,
         );
-        if (requestProps.partyId !== '0' && party && party[requestProps.partyId]) {
-          recode = setCurrentParty(recode, party[requestProps.partyId], sword);
+        if (requestProps.partyNo !== '0' && party && party[requestProps.partyNo]) {
+          recode = setCurrentParty(recode, party[requestProps.partyNo], sword);
         }
         break;
       case 'battle/practicescout':
         // console.log('requestData', jsonValue.requestData);
 
         recode.push('演練');
-        if (requestProps.partyId !== '0' && party && party[requestProps.partyId]) {
-          recode = setCurrentParty(recode, party[requestProps.partyId], sword);
+        if (requestProps.partyNo !== '0' && party && party[requestProps.partyNo]) {
+          recode = setCurrentParty(recode, party[requestProps.partyNo], sword);
         }
         break;
       default:

@@ -32,8 +32,8 @@ export const analyseForge = (jsonValue: any, page: string, oldForge: Forges): Fo
     case 'forge/complete':
     case 'forge/fast':
       // console.log('in forge comp or fast');
-      if (requestProps.slotId in forge) {
-        delete forge[requestProps.slotId];
+      if (requestProps.slotNo in forge) {
+        delete forge[requestProps.slotNo];
       }
       break;
     default:

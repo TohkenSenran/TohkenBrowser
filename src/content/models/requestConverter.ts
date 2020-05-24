@@ -8,38 +8,46 @@ export const requestConverter = (requestData: any): RequestProps => {
   }
 
   Object.values(requestData).forEach((value: any) => {
-    if (value.name === 'party_no') {
-      requestProps.partyId = value.value;
-    }
-    if (value.name === 'episode_id') {
-      requestProps.episodeId = value.value;
-    }
-    if (value.name === 'field_id' || value.name === 'event_field_id') {
-      requestProps.fieldId = value.value;
-    }
-    if (value.name === 'slot_no') {
-      requestProps.slotId = value.value;
-    }
-    if (value.name === 'charcoal') {
-      requestProps.charcoal = parseInt(value.value, 10);
-    }
-    if (value.name === 'steel') {
-      requestProps.steel = parseInt(value.value, 10);
-    }
-    if (value.name === 'coolant') {
-      requestProps.coolant = parseInt(value.value, 10);
-    }
-    if (value.name === 'file') {
-      requestProps.file = parseInt(value.value, 10);
-    }
-    if (value.name === 'consumable_id') {
-      requestProps.consumableId = value.value;
-    }
-    if (value.name === 'use_assist') {
-      requestProps.useAssist = Boolean(parseInt(value.value, 10));
-    }
-    if (value.name === 'serial_id') {
-      requestProps.serialId = value.value;
+    switch (value.name) {
+      case 'party_no':
+        requestProps.partyNo = value.value;
+        break;
+      case 'episode_id':
+        requestProps.episodeId = value.value;
+        break;
+      case 'field_id':
+      case 'event_field_id':
+        requestProps.fieldId = value.value;
+        break;
+      case 'slot_no':
+        requestProps.slotNo = value.value;
+        break;
+      case 'charcoal':
+        requestProps.charcoal = parseInt(value.value, 10);
+        break;
+      case 'steel':
+        requestProps.steel = parseInt(value.value, 10);
+        break;
+      case 'coolant':
+        requestProps.coolant = parseInt(value.value, 10);
+        break;
+      case 'file':
+        requestProps.file = parseInt(value.value, 10);
+        break;
+      case 'consumable_id':
+        requestProps.consumableId = value.value;
+        break;
+      case 'use_assist':
+        requestProps.useAssist = Boolean(parseInt(value.value, 10));
+        break;
+      case 'serial_id':
+        requestProps.serialId = value.value;
+        break;
+      case 'event_layer_id':
+        requestProps.eventLayerId = value.value;
+        break;
+      default:
+        break;
     }
   });
   // partyId: () => { return partyId };

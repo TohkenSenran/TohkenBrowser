@@ -1,9 +1,9 @@
 // 取得可能性のあるRequestのプロパティ
 export type RequestProps = {
-  partyId: string;
+  partyNo: string;
   episodeId: string;
   fieldId: string;
-  slotId: string;
+  slotNo: string;
   charcoal: number;
   steel: number;
   coolant: number;
@@ -11,13 +11,14 @@ export type RequestProps = {
   consumableId: string;
   useAssist: boolean;
   serialId: string;
+  eventLayerId: string;
 };
 
 export const requestPropsInitialState: RequestProps = {
-  partyId: '0',
+  partyNo: '0',
   episodeId: '0',
   fieldId: '0',
-  slotId: '0',
+  slotNo: '0',
   charcoal: 0,
   steel: 0,
   coolant: 0,
@@ -25,4 +26,5 @@ export const requestPropsInitialState: RequestProps = {
   consumableId: '0',
   useAssist: false,
   serialId: '0',
+  eventLayerId: '0',
 };
