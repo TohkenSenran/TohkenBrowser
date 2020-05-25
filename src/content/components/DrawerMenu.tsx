@@ -84,7 +84,7 @@ const DrawerMenu: React.FC = () => {
             <Box marginTop="9px">
               <ExpansionPanel style={expansionStyle}>
                 <Tooltip
-                  title="各男子の機動値について，レベルや疲労を考慮した値に補正"
+                  title="各男士の機動値について，レベルや疲労を考慮した値に補正"
                   classes={{ tooltip: classes.customWidth }}
                 >
                   <ExpansionPanelSummary

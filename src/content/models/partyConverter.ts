@@ -44,7 +44,7 @@ const getMemberProps = (
   }
   return {
     fatigue: `英気値\n平均：${Math.round((totalFatigue / member) * 10) / 10}\n `,
-    lv: `男子Lv\n合計：${totalLv}\n平均：${Math.round((totalLv / member) * 10) / 10}`,
+    lv: `男士Lv\n合計：${totalLv}\n平均：${Math.round((totalLv / member) * 10) / 10}`,
     scout: `偵察値\n合計：${totalScout}\n `,
   };
 };

@@ -28,7 +28,7 @@ export const windowLoadEvent = async (): Promise<void> => {
   store.dispatch(updateTabMenu(storageState.tabMenu ?? tabMenuInitialState));
 
   store.dispatch(updateConquestTable(storageState.conquestTable ?? handbookState.conquestTable));
-  // 刀剣男子情報だけrootStateから引っ張ってくる
+  // 刀剣男士情報だけrootStateから引っ張ってくる
   const swords: Swords =
     response.rootState && response.rootState.responseJson && response.rootState.responseJson.sword
       ? response.rootState.responseJson.sword

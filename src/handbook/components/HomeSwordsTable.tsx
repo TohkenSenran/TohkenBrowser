@@ -69,7 +69,7 @@ const HomeSwordsTable: React.FC<HomeSwordsTableProps> = (props) => {
         options={options}
         columns={columns}
         data={data}
-        title="本丸男子一覧"
+        title="本丸男士一覧"
         onColumnDragged={handleColumnDrag}
         localization={localization}
       />

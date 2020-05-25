@@ -48,7 +48,7 @@ const StatusView: React.FC<StatusExtendView> = (props) => {
                 <Box padding={1}>
                   <Typography>
                     <div>上記の方法でデベロッパーツールを起動してください。</div>
-                    <div>刀剣男子などの情報表示の更新に必要です。</div>
+                    <div>刀剣男士などの情報表示の更新に必要です。</div>
                   </Typography>
                 </Box>
               </Box>

@@ -29,7 +29,7 @@ chrome.storage.onChanged.addListener(async (changes) => {
     switch (key) {
       case 'rootState':
         // console.log('in rootState');
-        // 刀剣男子情報の更新
+        // 刀剣男士情報の更新
         if (
           changes.rootState.newValue.responseJson &&
           changes.rootState.newValue.responseJson.sword
@@ -39,8 +39,8 @@ chrome.storage.onChanged.addListener(async (changes) => {
           const newSwords: Swords = changes.rootState.newValue.responseJson.sword;
           const oldSwords: Swords =
             changes.rootState.oldValue &&
-            changes.rootState.oldValue.responseJson &&
-            changes.rootState.oldValue.responseJson.sword
+              changes.rootState.oldValue.responseJson &&
+              changes.rootState.oldValue.responseJson.sword
               ? changes.rootState.oldValue.responseJson.sword
               : {};
           if (JSON.stringify(newSwords) !== JSON.stringify(oldSwords)) {
@@ -62,8 +62,8 @@ chrome.storage.onChanged.addListener(async (changes) => {
           // console.log('newSRI %o', newSeasonRewardItems);
           const oldSeasonRewardItems: SeasonItem[] =
             changes.handbookState.oldValue &&
-            changes.handbookState.oldValue.conquestTable &&
-            changes.handbookState.oldValue.conquestTable.seasonRewardItems
+              changes.handbookState.oldValue.conquestTable &&
+              changes.handbookState.oldValue.conquestTable.seasonRewardItems
               ? changes.handbookState.oldValue.conquestTable.seasonRewardItems
               : [];
           // console.log('oldSRI %o', oldSeasonRewardItems);

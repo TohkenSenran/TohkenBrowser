@@ -150,7 +150,7 @@ export const analyseHistory = (
           recode.push('鍛刀時間');
           recode.push(getRemainingTime(jsonValue.finished_at, Date.parse(jsonValue.now)).slice(-5));
         } else {
-          recode.push('鍛刀男子');
+          recode.push('鍛刀男士');
           recode.push(getSwordName(undefined, undefined, jsonValue.sword_id));
         }
         recode = setUseResource(recode, resource, oldState);
@@ -197,7 +197,7 @@ export const analyseHistory = (
         // console.log('requestData', jsonValue.requestData);
 
         recode.push('手入');
-        recode.push('対象男子');
+        recode.push('対象男士');
         // console.log('repair', repair);
         // console.log('oldRepair', oldState.repair);
         for (let i = 0; i < forgeNo; i += 1) {

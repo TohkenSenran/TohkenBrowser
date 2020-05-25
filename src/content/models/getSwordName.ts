@@ -1,7 +1,7 @@
 import { Swords } from '../states/responseJson/Sword';
 import { swordsProps } from '../../constants';
 
-// シリアルIDと刀種IDが存在しない場合に対応した刀剣男子名取得
+// シリアルIDと刀種IDが存在しない場合に対応した刀剣男士名取得
 export const getSwordName = (
   serialId: string | number | null = '0',
   sword: Swords = {},

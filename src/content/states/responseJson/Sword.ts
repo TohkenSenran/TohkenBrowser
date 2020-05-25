@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/camelcase */
 export type Sword = {
   [key: string]: string | number | null;
-  serial_id: string | number; // 男子個別のID
+  serial_id: string | number; // 男士個別のID
   sword_id: string | number; // 刀剣の種類 *極は別ID
   symbol: string | number; // 極の判定 *通常1，極2
   rarity: string | number; // レアリティ
@@ -14,12 +14,12 @@ export type Sword = {
   evol_num: string | number; // 特の段階：極は別種類扱い, 髭切，膝丸は絵が変わるため別扱いで変化後0
   hp: string | number; // 現在のHP
   hp_max: string | number; // 最大HP
-  atk: string | number; // 打撃 *男子自身の値，刀装・馬の補正無し
-  def: string | number; // 統率 *男子自身の値，刀装・馬の補正無し
-  mobile: string | number; // 機動 *男子自身の値，刀装・馬の補正無し
-  back: string | number; // 衝力 *男子自身の値，刀装・馬の補正無し
-  scout: string | number; // 偵察 *男子自身の値，刀装・馬の補正無し
-  hide: string | number; // 隠蔽 *男子自身の値，刀装・馬の補正無し
+  atk: string | number; // 打撃 *男士自身の値，刀装・馬の補正無し
+  def: string | number; // 統率 *男士自身の値，刀装・馬の補正無し
+  mobile: string | number; // 機動 *男士自身の値，刀装・馬の補正無し
+  back: string | number; // 衝力 *男士自身の値，刀装・馬の補正無し
+  scout: string | number; // 偵察 *男士自身の値，刀装・馬の補正無し
+  hide: string | number; // 隠蔽 *男士自身の値，刀装・馬の補正無し
   hp_up: string | number; // HPの伸びしろ
   atk_up: string | number; // 打撃の伸びしろ
   def_up: string | number; // 統率の伸びしろ

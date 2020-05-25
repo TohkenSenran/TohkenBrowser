@@ -51,7 +51,7 @@ const ToastNotification: React.FC<ToastNotificationProps> = (props) => {
             ) {
               const swordId = responseJson.forge[i + 1].sword_id;
               // console.log('swordId', swordId);
-              // 鍛刀が完了した刀剣男子のIdが不明な場合の処理
+              // 鍛刀が完了した刀剣男士のIdが不明な場合の処理
               let notifyText = `${i + 1}番部屋\n鍛刀完了`;
               let notifyImagePath = chrome.extension.getURL('icon/TohkenBrowser-128.png');
               if (swordId) {

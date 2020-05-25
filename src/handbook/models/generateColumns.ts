@@ -58,7 +58,7 @@ export const initialColumns = (): Array<Column<HomeSwordsTableContents>> => {
       cellStyle: { ...numberCellStyle, background: 'aliceblue' },
     },
     {
-      title: '男子Lv',
+      title: '男士Lv',
       field: 'level',
       filtering: false,
       cellStyle: { ...numberCellStyle, background: 'lavenderblush' },

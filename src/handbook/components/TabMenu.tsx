@@ -48,7 +48,7 @@ const TabMenu: React.FC<TabMenuProps> = (props) => {
     <div style={{ userSelect: 'none' }}>
       <AppBar position="sticky" style={{ boxShadow: 'none', borderBottom: 'solid 1px #E6E6E6' }}>
         <Tabs value={value} onChange={handleChange}>
-          <Tab value={tabType.homeSwords} label="本丸男子" />
+          <Tab value={tabType.homeSwords} label="本丸男士" />
           <Tab value={tabType.conquest} label="遠征情報" />
           <Tab value={tabType.history} label="活動記録" />
         </Tabs>

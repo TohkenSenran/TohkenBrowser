@@ -26,7 +26,7 @@ export const analyseSword = (
       // 想定外のswordが供給されるため無視
       sword = oldSword;
       break;
-    // 刀剣男子1人のみの情報
+    // 刀剣男士1人のみの情報
     case 'equip/setequip':
     case 'equip/removeequip':
     case 'equip/removeall':
@@ -45,7 +45,7 @@ export const analyseSword = (
       // console.log(`sword equip: ${sword[singleSword.serial_id].equip_serial_id1}`);
       // console.log('after oldSword obj: %O', sword);
       break;
-    // 一部の刀剣男子のみの情報
+    // 一部の刀剣男士のみの情報
     case 'repair':
     case 'party/get_sally_party_info':
     case 'party/get_wait_party_info':
@@ -87,7 +87,7 @@ export const analyseSword = (
       }
       break;
     case 'sword/protect':
-      // 刀剣男子の保護状態の変更
+      // 刀剣男士の保護状態の変更
       // console.log('protect check');
       if (requestProps.serialId in sword) {
         sword[requestProps.serialId].protect =
