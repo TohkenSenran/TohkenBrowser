@@ -39,8 +39,8 @@ chrome.storage.onChanged.addListener(async (changes) => {
           const newSwords: Swords = changes.rootState.newValue.responseJson.sword;
           const oldSwords: Swords =
             changes.rootState.oldValue &&
-              changes.rootState.oldValue.responseJson &&
-              changes.rootState.oldValue.responseJson.sword
+            changes.rootState.oldValue.responseJson &&
+            changes.rootState.oldValue.responseJson.sword
               ? changes.rootState.oldValue.responseJson.sword
               : {};
           if (JSON.stringify(newSwords) !== JSON.stringify(oldSwords)) {
@@ -62,8 +62,8 @@ chrome.storage.onChanged.addListener(async (changes) => {
           // console.log('newSRI %o', newSeasonRewardItems);
           const oldSeasonRewardItems: SeasonItem[] =
             changes.handbookState.oldValue &&
-              changes.handbookState.oldValue.conquestTable &&
-              changes.handbookState.oldValue.conquestTable.seasonRewardItems
+            changes.handbookState.oldValue.conquestTable &&
+            changes.handbookState.oldValue.conquestTable.seasonRewardItems
               ? changes.handbookState.oldValue.conquestTable.seasonRewardItems
               : [];
           // console.log('oldSRI %o', oldSeasonRewardItems);
