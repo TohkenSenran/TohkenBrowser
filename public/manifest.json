@@ -19,8 +19,8 @@
     "activeTab",
     "contextMenus",
     "storage",
-    "unlimitedStorage",
     "tabs",
+    "unlimitedStorage",
     "<all_urls>"
   ],
   "icons": {
