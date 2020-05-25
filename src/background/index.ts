@@ -15,6 +15,7 @@ import { screenshot } from './models/screenshot';
 import { sendMessageToWindow } from './models/sendMessageToWindow';
 import { Request } from './states/request';
 import { storageInitialState } from './states/StorageState';
+import { captureVideo } from './models/captureVideo';
 
 let devConnected = false;
 
@@ -30,20 +31,6 @@ browser.contextMenus.create({
     }
   },
 });
-
-/*
-chrome.contextMenus.create({
-  title: '刀剣専覧初期化',
-  contexts: ['browser_action'],
-  onclick: () => {
-    if (window.confirm('刀剣専覧の設定をリセットしますか？\n＊ゲームへの影響はありません。')) {
-      chrome.storage.local.clear(() => {
-        window.alert('刀剣専覧の設定をリセットしました。');
-      });
-    }
-  },
-});
-*/
 
 // ブラウザウィンドウの削除検出
 chrome.windows.onRemoved.addListener(async (windowId: number) => {
@@ -124,6 +111,10 @@ chrome.runtime.onMessage.addListener(async (request: Request, sender, sendRespon
     case requestType.closeHandbookWindow:
       // console.log('hdWindow: ', await getWindowId(`${handbookWindow}Id`));
       removeWindow(await getWindowId(`${windowName.handbookWindow}Id`));
+      break;
+    case requestType.recode:
+      console.log('calling desktopCapture');
+      captureVideo();
       break;
     default:
       break;
