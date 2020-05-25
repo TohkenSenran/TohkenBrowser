@@ -111,6 +111,15 @@ export const generateColumns = (
       }
     }
   });
+  // 男士を男子と間違えていた時の修正
+  const tempColumns = columns.map((value) => {
+    const tempValue = { ...value };
+    if (value.title === '男子Lv') {
+      tempValue.title = '男士Lv';
+      return tempValue;
+    }
+    return value;
+  });
 
-  return columns;
+  return tempColumns;
 };
