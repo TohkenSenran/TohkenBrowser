@@ -14,6 +14,7 @@ import ReloadButton from './ReloadButton';
 import DrawerMenu from './DrawerMenu';
 import HandbookButton from './HandbookButton';
 import Title from './Title';
+import RecodeButton from './RecodeButton';
 
 const HeaderMenu: React.FC = () => (
   <>
@@ -22,6 +23,7 @@ const HeaderMenu: React.FC = () => (
         <Box>{Title}</Box>
         <ReloadButton />
         <ScreenshotButton />
+        <RecodeButton />
         <MuteButton />
         <ModeButton />
         <ToastNotification />
