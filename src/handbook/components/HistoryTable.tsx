@@ -58,7 +58,7 @@ const HistoryTable: React.FC<HistoryTableProps> = (props) => {
     sorting: false,
     exportButton: true,
     exportAllData: true,
-    exportFileName: 'TohkenRecodes',
+    exportFileName: 'TohkenRecords',
     pageSize: 10,
     pageSizeOptions: [10, 50, 100],
     rowStyle: { borderStyle: 'solid', borderWidth: '1px 1px', borderColor: 'lightgray' },

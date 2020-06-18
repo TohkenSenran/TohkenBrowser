@@ -1,8 +1,8 @@
 // 送信内容のインターフェース設定
 export enum requestType {
-  muteChange = 'muteChage',
+  muteChange = 'muteChange',
   screenshot = 'screenshot',
-  recode = 'recode',
+  record = 'record',
   getCurrentWindowId = 'getCurrentWindowId',
   getDevConnectState = 'getDevConnectState',
   responseBody = 'responseBody',
