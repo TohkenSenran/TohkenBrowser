@@ -15,7 +15,6 @@ import { screenshot } from './models/screenshot';
 import { sendMessageToWindow } from './models/sendMessageToWindow';
 import { Request } from './states/request';
 import { storageInitialState } from './states/StorageState';
-import { captureVideo } from './models/captureVideo';
 
 let devConnected = false;
 
@@ -76,6 +75,7 @@ chrome.runtime.onConnect.addListener((port: chrome.runtime.Port) => {
 
 // ContentScriptからのメッセージ取得
 chrome.runtime.onMessage.addListener(async (request: Request, sender, sendResponse) => {
+  // console.log('get request:', request.type);
   switch (request.type) {
     case requestType.muteChange:
       muteWindow(request.payload);
@@ -112,9 +112,9 @@ chrome.runtime.onMessage.addListener(async (request: Request, sender, sendRespon
       // console.log('hdWindow: ', await getWindowId(`${handbookWindow}Id`));
       removeWindow(await getWindowId(`${windowName.handbookWindow}Id`));
       break;
-    case requestType.recode:
+    case requestType.record:
       console.log('calling desktopCapture');
-      captureVideo();
+      // captureVideo();
       break;
     default:
       break;

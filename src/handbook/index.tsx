@@ -39,8 +39,8 @@ chrome.storage.onChanged.addListener(async (changes) => {
           const newSwords: Swords = changes.rootState.newValue.responseJson.sword;
           const oldSwords: Swords =
             changes.rootState.oldValue &&
-            changes.rootState.oldValue.responseJson &&
-            changes.rootState.oldValue.responseJson.sword
+              changes.rootState.oldValue.responseJson &&
+              changes.rootState.oldValue.responseJson.sword
               ? changes.rootState.oldValue.responseJson.sword
               : {};
           if (JSON.stringify(newSwords) !== JSON.stringify(oldSwords)) {
@@ -62,8 +62,8 @@ chrome.storage.onChanged.addListener(async (changes) => {
           // console.log('newSRI %o', newSeasonRewardItems);
           const oldSeasonRewardItems: SeasonItem[] =
             changes.handbookState.oldValue &&
-            changes.handbookState.oldValue.conquestTable &&
-            changes.handbookState.oldValue.conquestTable.seasonRewardItems
+              changes.handbookState.oldValue.conquestTable &&
+              changes.handbookState.oldValue.conquestTable.seasonRewardItems
               ? changes.handbookState.oldValue.conquestTable.seasonRewardItems
               : [];
           // console.log('oldSRI %o', oldSeasonRewardItems);
@@ -84,12 +84,12 @@ chrome.storage.onChanged.addListener(async (changes) => {
         console.log('in default');
         // 履歴情報の更新
         if (parseInt(key, 10).toString() === key) {
-          console.log('on historyRecode');
+          console.log('on historyRecord');
           if (changes[key].newValue) {
-            console.log('pussing historyRecode %o', changes[key].newValue as HistoryTableContents);
+            console.log('pussing historyRecord %o', changes[key].newValue as HistoryTableContents);
             store.dispatch(pushHistory(changes[key].newValue as HistoryTableContents));
           } else {
-            console.log('removing historyRecode', changes[key].oldValue.value0);
+            console.log('removing historyRecord', changes[key].oldValue.value0);
             store.dispatch(removeHistory(changes[key].oldValue.value0));
           }
         }
