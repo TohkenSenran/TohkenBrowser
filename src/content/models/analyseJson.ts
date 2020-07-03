@@ -34,37 +34,37 @@ export const analyseJson = (json: any, oldState: ResponseJsonState): void => {
     console.log('page:', page);
     // console.log('requestData', json.requestData);
     // console.log('requestProps', requestConverter(json.requestData));
-    const sword: Swords = analyseSword(json, page, oldState.sword, oldState.repair);
+    const sword: Swords = analyseSword(json, json.page, oldState.sword, oldState.repair);
     // console.log(`swords ${Object.keys(sword).length}`);
     // store.dispatch(updateJsonSword(sword));
     // console.log('sword dispatched');
 
-    const party: Parties = analyseParty(json, page, oldState.party);
+    const party: Parties = analyseParty(json, json.page, oldState.party);
     // console.log(`parties ${Object.keys(party).length}`);
     // store.dispatch(updateJsonParty(party));
 
-    const equip: Equips = analyseEquip(json, page, oldState.equip);
+    const equip: Equips = analyseEquip(json, json.page, oldState.equip);
     // console.log(`equips ${Object.keys(equip).length}`);
     // store.dispatch(updateJsonEquip(equip));
 
-    const forge: Forges = analyseForge(json, page, oldState.forge);
+    const forge: Forges = analyseForge(json, json.page, oldState.forge);
     // console.log(`forges ${Object.keys(forge).length}`);
     // store.dispatch(updateJsonForge(forge));
 
-    const repair: Repairs = analyseRepair(json, page, oldState.repair, sword);
+    const repair: Repairs = analyseRepair(json, json.page, oldState.repair, sword);
     // console.log(`repairs ${Object.keys(repair).length}`);
     // store.dispatch(updateJsonRepair(repair));
 
-    const duty: Duty = analyseDuty(json, page, oldState.duty);
+    const duty: Duty = analyseDuty(json, json.page, oldState.duty);
     // console.log(`duty ${Object.keys(duty).length}`);
     // store.dispatch(updateJsonDuty(duty));
 
-    const resource: Resource = analyseResource(json, page, oldState.resource);
+    const resource: Resource = analyseResource(json, json.page, oldState.resource);
     // console.log('resource %o', { resource });
 
-    analyseOptions(json, page);
+    analyseOptions(json, json.page);
 
-    analyseHistory(json, page, sword, party, equip, forge, repair, duty, resource, oldState);
+    analyseHistory(json, json.page, sword, party, equip, forge, repair, duty, resource, oldState);
 
     store.dispatch(
       updateJsonState({
