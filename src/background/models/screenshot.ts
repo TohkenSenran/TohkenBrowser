@@ -1,5 +1,5 @@
 import moment from 'moment';
-import { gameRatio, headerMenuHeight } from '../../constants';
+import { gameRatio, headerMenuHeight, copyright } from '../../constants';
 
 const saveScreenshot = (dataUrl: string, addCopyright: boolean): void => {
   // const dateFormat = require('dataformat');
@@ -13,7 +13,6 @@ const saveScreenshot = (dataUrl: string, addCopyright: boolean): void => {
     if (context) {
       context.drawImage(image, 0, -headerMenuHeight);
       if (addCopyright) {
-        const copyright = '©2015-2020 DMM GAMES/Nitroplus';
         const textPos: { x: number; y: number } = { x: canvas.width - 6, y: canvas.height - 6 };
         context.font = 'bold 16px serif';
         context.strokeStyle = '#fff';

@@ -11,6 +11,7 @@ export const gameTitle = `刀剣専覧 ${chrome.runtime.getManifest().version} -
 export const gameSize: { width: number; height: number } = { width: 1030, height: 580 };
 export const gameRatio: number = gameSize.height / gameSize.width;
 export const handbookTitle = `便利帳 ${gameTitle}`;
+export const copyright = '©2015 EXNOA LLC/ Nitroplus';
 
 // 表示系設定
 export const headerMenuHeight = 65;
@@ -2523,4 +2524,5 @@ export enum tabType {
   homeSwords = 'homeSwords',
   conquest = 'conquest',
   history = 'history',
+  thanks = 'thanks',
 }
