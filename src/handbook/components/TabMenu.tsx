@@ -8,6 +8,7 @@ import HomeSwordsTable from '../containers/HomeSwordsTable';
 import HistoryTable from '../containers/HistoryTable';
 import { tabType } from '../../constants';
 import { TabMenuProps } from '../containers/TabMenu';
+import { SpecialThank } from './SpecialThanks';
 
 const TabMenu: React.FC<TabMenuProps> = (props) => {
   const { tabMenu } = props;
@@ -38,6 +39,9 @@ const TabMenu: React.FC<TabMenuProps> = (props) => {
       case tabType.history:
         tabPanel = <HistoryTable />;
         break;
+      case tabType.thanks:
+        tabPanel = <SpecialThank />;
+        break;
       default:
         break;
     }
@@ -51,6 +55,7 @@ const TabMenu: React.FC<TabMenuProps> = (props) => {
           <Tab value={tabType.homeSwords} label="本丸男士" />
           <Tab value={tabType.conquest} label="遠征情報" />
           <Tab value={tabType.history} label="活動記録" />
+          <Tab value={tabType.thanks} label="謝辞" />
         </Tabs>
       </AppBar>
       <TabPanels tabValue={value} />
