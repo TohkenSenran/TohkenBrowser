@@ -14,9 +14,7 @@ export const SpecialThank: React.FC = () => (
         <Typography>Library Licenses</Typography>
       </AccordionSummary>
       <AccordionDetails>
-        <object data="../html/licenses.txt" type="text/plain" width="100%" height="360">
-          {}
-        </object>
+        <iframe src="../html/licenses.html" title="licenses" />
       </AccordionDetails>
     </Accordion>
   </Box>
