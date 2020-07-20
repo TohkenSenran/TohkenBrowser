@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/camelcase */
 /* eslint-disable camelcase */
 import { Item } from './content/states/responseJson/Item';
 
@@ -1385,6 +1384,14 @@ export const swordsProps: { [index: string]: SwordProps } = {
   185: {
     name: '地蔵行平・極',
     type: swordType.uchigatana,
+  },
+  186: {
+    name: '治金丸',
+    type: swordType.wakizashi,
+  },
+  187: {
+    name: '治金丸・極',
+    type: swordType.wakizashi,
   },
 };
 
