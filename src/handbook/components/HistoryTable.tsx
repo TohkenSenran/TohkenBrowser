@@ -53,7 +53,7 @@ const HistoryTable: React.FC<HistoryTableProps> = (props) => {
     },
   };
 
-  const options: Options = {
+  const options: Options<HistoryTableContents> = {
     header: false,
     sorting: false,
     exportButton: true,

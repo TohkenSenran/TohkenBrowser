@@ -46,7 +46,7 @@ const HomeSwordsTable: React.FC<HomeSwordsTableProps> = (props) => {
     },
   };
 
-  const options: Options = {
+  const options: Options<HomeSwordsTableContents> = {
     filtering: true,
     headerStyle: { textAlign: 'center' },
     paging: false,

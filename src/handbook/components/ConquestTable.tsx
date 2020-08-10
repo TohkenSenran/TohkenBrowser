@@ -59,7 +59,7 @@ const ConquestTable: React.FC<ConquestTableProps> = (props) => {
     },
   };
 
-  const options: Options = {
+  const options: Options<ConquestTableContents> = {
     headerStyle: { textAlign: 'center' },
     paging: false,
     sorting: false,
