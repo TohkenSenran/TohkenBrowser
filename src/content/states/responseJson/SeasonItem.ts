@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/camelcase */
 /* eslint-disable camelcase */
 import { Item, itemInitialState } from './Item';
 

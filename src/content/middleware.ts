@@ -7,6 +7,7 @@ import { sendMessageToBackground } from './models/sendMessageToBackground';
 import { windowTransform } from './models/windowTransform';
 import { RootState } from './states';
 
+// eslint-disable-next-line @typescript-eslint/ban-types
 export const middleware: Middleware<{}, RootState> = (store: MiddlewareAPI) => (
   next: Dispatch<Action>,
 ) => (action: Action): void => {

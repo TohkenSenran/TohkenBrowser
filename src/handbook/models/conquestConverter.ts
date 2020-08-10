@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/camelcase */
 import { conquestData, itemName, resourceId, swordType } from '../../constants';
 
 import { Item, Items } from '../../content/states/responseJson/Item';
