@@ -1423,6 +1423,14 @@ export const swordsProps: { [index: string]: SwordProps } = {
     name: '治金丸・極',
     type: swordType.wakizashi,
   },
+  188: {
+    name: '日光一文字',
+    type: swordType.tachi,
+  },
+  189: {
+    name: '日光一文字・極',
+    type: swordType.tachi,
+  },
 };
 
 // 抜けている番号は情報不足のためフォロー必須
@@ -1469,6 +1477,10 @@ export const itemName: { [index1: string]: { [index2: string]: string } } = {
     124: '枇杷',
     125: '百合',
     126: '栄螺',
+    127: '南瓜',
+    128: '無花果',
+    129: '竜胆',
+    130: '秋刀魚',
     1001: '根兵糖',
   },
   2: {},
