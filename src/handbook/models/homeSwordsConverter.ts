@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/camelcase */
 import { correctType, raritySlotNUmber, swordsProps } from '../../constants';
 import { getFatigueCorrect, swordConverter } from '../../content/models/swordConverter';
 import { Swords } from '../../content/states/responseJson/Sword';

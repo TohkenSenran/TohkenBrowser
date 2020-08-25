@@ -254,6 +254,8 @@ export const analyseHistory = (
         } else if (jsonValue.setsubun) {
           record.push('節分');
           record = setEventDifficultyLevel(record, requestProps.episodeId, requestProps.fieldId);
+        } else if (jsonValue.hanabi) {
+          record.push('夜花奪還作戦');
         } else if (jsonValue.koban) {
           record.push('大阪城');
           if (requestProps.eventLayerId !== '0') {
