@@ -155,6 +155,18 @@ export const analyseHistory = (
         }
         record = setUseResource(record, resource, oldState);
         break;
+      case 'forge/fast':
+      case 'forge/complete':
+        // console.log('requestData', jsonValue.requestData);
+        record.push('鍛刀完了');
+        record.push('鍛刀男士');
+        if (jsonValue.sword_id) {
+          record.push(getSwordName(undefined, undefined, jsonValue.sword_id));
+        } else {
+          record.push('取得失敗');
+        }
+        break;
+
       case 'produce/start':
         // console.log('home in history');
         // console.log('record %o', record);
