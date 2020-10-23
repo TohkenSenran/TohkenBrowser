@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import ConquestTable from '../components/ConquestTable';
+import { ConquestTable } from '../components/ConquestTable';
 import { ConquestTableState } from '../states/ConquestTable';
 import { HandbookState } from '../states/index';
 

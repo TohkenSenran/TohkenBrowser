@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import HistoryTable from '../components/HistoryTable';
+import { HistoryTable } from '../components/HistoryTable';
 import { HandbookState } from '../states';
 import { HistoryTableState } from '../states/HistoryTable';
 

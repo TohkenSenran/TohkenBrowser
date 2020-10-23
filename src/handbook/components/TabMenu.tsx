@@ -21,6 +21,7 @@ const TabMenu: React.FC<TabMenuProps> = (props) => {
     setValue(tabMenu.tabType);
   }, [tabMenu]);
 
+  // eslint-disable-next-line @typescript-eslint/ban-types
   const handleChange = (event: React.ChangeEvent<{}>, newValue: tabType): void => {
     // console.log(`set TabMenu ${newValue}`);
     props.setTabMenu(newValue);

@@ -3,14 +3,14 @@ import * as React from 'react';
 // tslint:disable-next-line: import-name
 import MaterialTable, { Column, Localization, Options } from 'material-table';
 
-import { Box } from '@material-ui/core';
+import Box from '@material-ui/core/Box';
 
 import { ConquestTableProps } from '../containers/ConquestTable';
 import { conquestConverter } from '../models/conquestConverter';
 import { ConquestTableContents } from '../states/ConquestTableContents';
-import DrawerMenu from './DrawerMenu';
+import { DrawerMenu } from './DrawerMenu';
 
-const ConquestTable: React.FC<ConquestTableProps> = (props) => {
+export const ConquestTable: React.FC<ConquestTableProps> = (props) => {
   // console.log('in ConquestTable %o', props.conquestTable.seasonRewardItems);
   const [menuOpen, setMenuOpen] = React.useState(false);
   const menuClose = (): void => {
@@ -87,5 +87,3 @@ const ConquestTable: React.FC<ConquestTableProps> = (props) => {
     </Box>
   );
 };
-
-export default ConquestTable;

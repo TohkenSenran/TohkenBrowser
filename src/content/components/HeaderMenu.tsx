@@ -11,11 +11,11 @@ import ScreenshotButton from '../containers/ScreenshotButton';
 import ToastNotification from '../containers/ToastNotification';
 import ReloadButton from './ReloadButton';
 
-import DrawerMenu from './DrawerMenu';
+import { DrawerMenu } from './DrawerMenu';
 import HandbookButton from './HandbookButton';
 import Title from './Title';
 
-const HeaderMenu: React.FC = () => (
+export const HeaderMenu: React.FC = () => (
   <>
     <AppBar position="fixed" style={{ boxShadow: 'none', height: headerMenuHeight }}>
       <Toolbar>
@@ -33,5 +33,3 @@ const HeaderMenu: React.FC = () => (
     </AppBar>
   </>
 );
-
-export default HeaderMenu;

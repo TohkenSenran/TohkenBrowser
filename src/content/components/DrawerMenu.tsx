@@ -7,9 +7,9 @@ import {
   Drawer,
   Tooltip,
   Typography,
-  FormControl,
   FormLabel,
 } from '@material-ui/core';
+import FormControl from '@material-ui/core/FormControl';
 import { createStyles, makeStyles } from '@material-ui/core/styles';
 import ExpandMore from '@material-ui/icons/ExpandMore';
 
@@ -29,7 +29,7 @@ const useStyles = makeStyles(() =>
   }),
 );
 
-const DrawerMenu: React.FC = () => {
+export const DrawerMenu: React.FC = () => {
   const classes = useStyles();
 
   const [open, setOpen] = React.useState(false);
@@ -117,5 +117,3 @@ const DrawerMenu: React.FC = () => {
     </>
   );
 };
-
-export default DrawerMenu;

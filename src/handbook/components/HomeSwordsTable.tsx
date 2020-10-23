@@ -3,15 +3,15 @@ import * as React from 'react';
 // tslint:disable-next-line: import-name
 import MaterialTable, { Action, Localization, Options } from 'material-table';
 
-import { Box } from '@material-ui/core';
+import Box from '@material-ui/core/Box';
 
 import { HomeSwordsTableProps } from '../containers/HomeSwordsTable';
 import { generateColumns } from '../models/generateColumns';
 import { homeSwordsConverter } from '../models/homeSwordsConverter';
 import { HomeSwordsTableContents } from '../states/HomeSwordsTableContents';
-import DrawerMenu from './DrawerMenu';
+import { DrawerMenu } from './DrawerMenu';
 
-const HomeSwordsTable: React.FC<HomeSwordsTableProps> = (props) => {
+export const HomeSwordsTable: React.FC<HomeSwordsTableProps> = (props) => {
   // console.log('in HomeSwordsTable %o', props.homeSwordTable.seasonRewardItems);
   const [menuOpen, setMenuOpen] = React.useState(false);
   const menuClick = (): void => {
@@ -77,5 +77,3 @@ const HomeSwordsTable: React.FC<HomeSwordsTableProps> = (props) => {
     </Box>
   );
 };
-
-export default HomeSwordsTable;

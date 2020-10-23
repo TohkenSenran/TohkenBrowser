@@ -1,7 +1,7 @@
 import * as React from 'react';
 // tslint:disable-next-line: import-name
 import MaterialTable, { Action, Column, Localization, Options } from 'material-table';
-import { Box } from '@material-ui/core';
+import Box from '@material-ui/core/Box';
 import { browser } from 'webextension-polyfill-ts';
 
 import { HistoryTableProps } from '../containers/HistoryTable';
@@ -11,7 +11,7 @@ import {
 } from '../states/HistoryTableContents';
 import { storageInitialState } from '../../background/states/StorageState';
 
-const HistoryTable: React.FC<HistoryTableProps> = (props) => {
+export const HistoryTable: React.FC<HistoryTableProps> = (props) => {
   const { historyTable } = props;
   // console.log('in HistoryTable %o', historyTable.history);
   const data: HistoryTableContents[] = historyTable.history;
@@ -85,5 +85,3 @@ const HistoryTable: React.FC<HistoryTableProps> = (props) => {
     </Box>
   );
 };
-
-export default HistoryTable;

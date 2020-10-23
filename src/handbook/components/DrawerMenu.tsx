@@ -3,12 +3,12 @@ import * as React from 'react';
 import {
   Box,
   Drawer,
-  FormControl,
-  Tooltip,
-  Typography,
   ExpansionPanel,
   ExpansionPanelSummary,
+  Tooltip,
+  Typography,
 } from '@material-ui/core';
+import FormControl from '@material-ui/core/FormControl';
 
 import { createStyles, makeStyles } from '@material-ui/core/styles';
 import ExpandMore from '@material-ui/icons/ExpandMore';
@@ -23,7 +23,7 @@ const useStyles = makeStyles(() =>
   }),
 );
 
-const DrawerMenu: React.FC<{
+export const DrawerMenu: React.FC<{
   menuOpen: boolean;
   menuClose: () => void;
 }> = ({ menuOpen, menuClose }) => {
@@ -75,5 +75,3 @@ const DrawerMenu: React.FC<{
     </Drawer>
   );
 };
-
-export default DrawerMenu;

@@ -4,7 +4,7 @@ import { Dispatch } from 'redux';
 import { Column } from 'material-table';
 
 import { HomeSwordsTableActions, setColumns } from '../actions/homeSwordsTable';
-import HomeSwordsTable from '../components/HomeSwordsTable';
+import { HomeSwordsTable } from '../components/HomeSwordsTable';
 import { HomeSwordsTableState } from '../states/HomeSwordsTable';
 import { HomeSwordsTableContents } from '../states/HomeSwordsTableContents';
 import { HandbookState } from '../states/index';

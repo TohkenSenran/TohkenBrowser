@@ -1,8 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import { ConfigurationFactory } from 'webpack';
 import path from 'path';
 
-const config: ConfigurationFactory = () => ({
+const config = () => ({
   mode: 'production',
   entry: {
     background: path.join(__dirname, 'src', 'background', 'index.ts'),

@@ -3,12 +3,13 @@ import * as React from 'react';
 import createStyles from '@material-ui/core/styles/createStyles';
 import withStyles, { StyleRules } from '@material-ui/core/styles/withStyles';
 
+import store from '../store';
+
 import withRoot from '../../withRoot';
 import { checkDevConnect } from '../actions/browserSetting';
 import StatusView from '../containers/StatusView';
 import { getDevConnectState } from '../models/getDevConnectState';
-import store from '../store';
-import HeaderMenu from './HeaderMenu';
+import { HeaderMenu } from './HeaderMenu';
 
 // styles を定義
 const styles = (): StyleRules => createStyles({ root: {} });
