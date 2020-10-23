@@ -1431,6 +1431,14 @@ export const swordsProps: { [index: string]: SwordProps } = {
     name: '日光一文字・極',
     type: swordType.tachi,
   },
+  190: {
+    name: '太閤左文字',
+    type: swordType.tanto,
+  },
+  191: {
+    name: '太閤左文字・極',
+    type: swordType.tanto,
+  },
 };
 
 // 抜けている番号は情報不足のためフォロー必須
