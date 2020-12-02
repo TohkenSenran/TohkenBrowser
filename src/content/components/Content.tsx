@@ -1,3 +1,5 @@
+/* eslint-disable no-use-before-define */
+/* eslint-disable no-undef */
 import * as React from 'react';
 
 import createStyles from '@material-ui/core/styles/createStyles';

@@ -48,7 +48,7 @@ export const HistoryTable: React.FC<HistoryTableProps> = (props) => {
     toolbar: {
       searchPlaceholder: '検索',
       searchTooltip: '検索',
-      exportName: 'CSV出力',
+      exportCSVName: 'CSV出力',
       exportTitle: '保存',
     },
   };

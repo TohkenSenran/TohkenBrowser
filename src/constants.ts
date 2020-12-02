@@ -1439,6 +1439,14 @@ export const swordsProps: { [index: string]: SwordProps } = {
     name: '太閤左文字・極',
     type: swordType.tanto,
   },
+  192: {
+    name: '五月雨江',
+    type: swordType.uchigatana,
+  },
+  193: {
+    name: '五月雨江・極',
+    type: swordType.uchigatana,
+  },
 };
 
 // 抜けている番号は情報不足のためフォロー必須
