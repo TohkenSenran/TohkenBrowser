@@ -8,12 +8,13 @@ const IconFontButton: React.FC<{
   iconName: string;
   tooltipText: string;
   onClick?: () => void;
-}> = ({ iconName, tooltipText, onClick }) => (
+  disabled?: boolean;
+}> = ({ iconName, tooltipText, onClick, disabled = false }) => (
   <Tooltip
     title={tooltipText}
     PopperProps={{ popperOptions: { modifiers: { offset: { enabled: true, offset: '0,-90' } } } }}
   >
-    <IconButton onClick={onClick}>
+    <IconButton onClick={onClick} disabled={disabled}>
       <Icon>{iconName}</Icon>
     </IconButton>
   </Tooltip>
