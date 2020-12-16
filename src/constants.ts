@@ -1447,6 +1447,14 @@ export const swordsProps: { [index: string]: SwordProps } = {
     name: '五月雨江・極',
     type: swordType.uchigatana,
   },
+  194: {
+    name: '大千鳥十文字槍',
+    type: swordType.yari,
+  },
+  195: {
+    name: '大千鳥十文字槍・極',
+    type: swordType.yari,
+  },
 };
 
 // 抜けている番号は情報不足のためフォロー必須
