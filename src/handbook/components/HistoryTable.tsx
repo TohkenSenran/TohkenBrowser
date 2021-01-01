@@ -1,18 +1,21 @@
 import * as React from 'react';
-// tslint:disable-next-line: import-name
-import MaterialTable, { Action, Column, Localization, Options } from 'material-table';
-import Box from '@material-ui/core/Box';
+import { useSelector } from 'react-redux';
+
+import MaterialTable, { Action, Column, Localization, Options } from '@material-table/core';
+import { Box } from '@material-ui/core';
 import { browser } from 'webextension-polyfill-ts';
 
-import { HistoryTableProps } from '../containers/HistoryTable';
+import { HandbookState } from '../states';
+import { HistoryTableState } from '../states/HistoryTable';
 import {
   HistoryTableContents,
   historyTableContentsInitialState,
 } from '../states/HistoryTableContents';
 import { storageInitialState } from '../../background/states/StorageState';
 
-export const HistoryTable: React.FC<HistoryTableProps> = (props) => {
-  const { historyTable } = props;
+export const HistoryTable: React.FC = () => {
+  const historyTable = useSelector<HandbookState, HistoryTableState>((state) => state.historyTable);
+
   // console.log('in HistoryTable %o', historyTable.history);
   const data: HistoryTableContents[] = historyTable.history;
   // console.log('data: %o', data);
@@ -22,6 +25,7 @@ export const HistoryTable: React.FC<HistoryTableProps> = (props) => {
     whiteSpace: 'pre',
   };
   const deleteClick = async (): Promise<void> => {
+    // eslint-disable-next-line no-alert
     if (window.confirm('刀剣専覧の履歴をリセットしますか？\n＊ゲームへの影響はありません。')) {
       const storage = await browser.storage.local.get();
       // console.log('storage %o', Object.keys(storage));

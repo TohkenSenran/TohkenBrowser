@@ -1,22 +1,18 @@
 import * as React from 'react';
+import { useSelector } from 'react-redux';
 
-// tslint:disable-next-line: import-name
-import MaterialTable, { Column, Localization, Options } from 'material-table';
+import MaterialTable, { Column, Localization, Options } from '@material-table/core';
+import { Box } from '@material-ui/core';
 
-import Box from '@material-ui/core/Box';
-
-import { ConquestTableProps } from '../containers/ConquestTable';
+import { ConquestTableState } from '../states/ConquestTable';
+import { HandbookState } from '../states/index';
 import { conquestConverter } from '../models/conquestConverter';
 import { ConquestTableContents } from '../states/ConquestTableContents';
-import { DrawerMenu } from './DrawerMenu';
 
-export const ConquestTable: React.FC<ConquestTableProps> = (props) => {
-  // console.log('in ConquestTable %o', props.conquestTable.seasonRewardItems);
-  const [menuOpen, setMenuOpen] = React.useState(false);
-  const menuClose = (): void => {
-    setMenuOpen(false);
-  };
-  const { conquestTable } = props;
+export const ConquestTable: React.FC = () => {
+  const conquestTable = useSelector<HandbookState, ConquestTableState>(
+    (state) => state.conquestTable,
+  );
   const data: ConquestTableContents[] = conquestConverter(conquestTable.seasonRewardItems);
   // console.log('data: %o', data);
   const textCellStyle: React.CSSProperties = {
@@ -64,16 +60,7 @@ export const ConquestTable: React.FC<ConquestTableProps> = (props) => {
     paging: false,
     sorting: false,
   };
-  /*
-  const actions: Array<Action<ConquestTableContents>> = [
-    {
-      icon: 'menu',
-      isFreeAction: true,
-      onClick: menuClick,
-      tooltip: '設定',
-    },
-  ];
-  */
+
   return (
     <Box width="100%">
       <MaterialTable
@@ -83,7 +70,6 @@ export const ConquestTable: React.FC<ConquestTableProps> = (props) => {
         title="遠征情報一覧"
         localization={localization}
       />
-      <DrawerMenu menuOpen={menuOpen} menuClose={menuClose} />
     </Box>
   );
 };

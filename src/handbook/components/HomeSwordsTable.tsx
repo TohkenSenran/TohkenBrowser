@@ -1,17 +1,26 @@
 import * as React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Dispatch } from 'redux';
 
-// tslint:disable-next-line: import-name
-import MaterialTable, { Action, Localization, Options } from 'material-table';
+import MaterialTable, { Action, Localization, Options } from '@material-table/core';
 
-import Box from '@material-ui/core/Box';
+import { Box } from '@material-ui/core';
+import { HomeSwordsTableActions, setColumns } from '../actions/homeSwordsTable';
+import { HomeSwordsTableState } from '../states/HomeSwordsTable';
+import { HomeSwordsTableContents } from '../states/HomeSwordsTableContents';
+import { HandbookState } from '../states/index';
 
-import { HomeSwordsTableProps } from '../containers/HomeSwordsTable';
 import { generateColumns } from '../models/generateColumns';
 import { homeSwordsConverter } from '../models/homeSwordsConverter';
-import { HomeSwordsTableContents } from '../states/HomeSwordsTableContents';
+
 import { DrawerMenu } from './DrawerMenu';
 
-export const HomeSwordsTable: React.FC<HomeSwordsTableProps> = (props) => {
+export const HomeSwordsTable: React.FC = () => {
+  const dispatch = useDispatch<Dispatch<HomeSwordsTableActions>>();
+  const homeSwordsTable = useSelector<HandbookState, HomeSwordsTableState>(
+    (state) => state.homeSwordsTable,
+  );
+
   // console.log('in HomeSwordsTable %o', props.homeSwordTable.seasonRewardItems);
   const [menuOpen, setMenuOpen] = React.useState(false);
   const menuClick = (): void => {
@@ -20,8 +29,6 @@ export const HomeSwordsTable: React.FC<HomeSwordsTableProps> = (props) => {
   const menuClose = (): void => {
     setMenuOpen(false);
   };
-
-  const { homeSwordsTable } = props;
 
   const data: HomeSwordsTableContents[] = homeSwordsConverter(
     homeSwordsTable.homeSwords,
@@ -36,7 +43,7 @@ export const HomeSwordsTable: React.FC<HomeSwordsTableProps> = (props) => {
     const destinationColumn = columns[destinationIndex];
     columns[sourceIndex] = destinationColumn;
     columns[destinationIndex] = sourceColumn;
-    props.setColumns(columns);
+    dispatch(setColumns(columns));
   };
 
   const localization: Localization = {
