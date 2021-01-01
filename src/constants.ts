@@ -681,11 +681,11 @@ export const raritySlotNUmber: { [index: string]: number } = {
   5: 3,
 };
 
+// 刀剣男士情報
 export type SwordProps = {
   name: string;
   type: swordType;
 };
-
 export const swordsProps: { [index: string]: SwordProps } = {
   0: {
     name: '不明',
@@ -1455,6 +1455,14 @@ export const swordsProps: { [index: string]: SwordProps } = {
     name: '大千鳥十文字槍・極',
     type: swordType.yari,
   },
+  196: {
+    name: '泛塵',
+    type: swordType.wakizashi,
+  },
+  197: {
+    name: '泛塵・極',
+    type: swordType.wakizashi,
+  },
 };
 
 // 抜けている番号は情報不足のためフォロー必須
@@ -1505,6 +1513,10 @@ export const itemName: { [index1: string]: { [index2: string]: string } } = {
     128: '無花果',
     129: '竜胆',
     130: '秋刀魚',
+    143: '長葱',
+    144: '洋梨',
+    145: '山茶花',
+    146: '赤貝',
     1001: '根兵糖',
   },
   2: {},
@@ -1626,7 +1638,6 @@ type ConquestData = {
     };
   };
 };
-
 export const conquestData: { [fieldId: string]: ConquestData } = {
   0: {
     age: '不明',
