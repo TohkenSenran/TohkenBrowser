@@ -1,17 +1,23 @@
 // tslint:disable-next-line: import-name
 import * as React from 'react';
 
+import { useDispatch, useSelector } from 'react-redux';
+import { Dispatch } from 'redux';
+
 import { AppBar, Tab, Tabs } from '@material-ui/core';
 
-import ConquestTable from '../containers/ConquestTable';
-import HomeSwordsTable from '../containers/HomeSwordsTable';
-import HistoryTable from '../containers/HistoryTable';
+import { HandbookState } from '../states';
+import { TabMenuState } from '../states/TabMenu';
+import { TabMenuActions, setTabMenuType } from '../actions/tabMenu';
+import { ConquestTable } from './ConquestTable';
+import { HomeSwordsTable } from './HomeSwordsTable';
+import { HistoryTable } from './HistoryTable';
 import { tabType } from '../../constants';
-import { TabMenuProps } from '../containers/TabMenu';
 import { SpecialThank } from './SpecialThanks';
 
-const TabMenu: React.FC<TabMenuProps> = (props) => {
-  const { tabMenu } = props;
+export const TabMenu: React.FC = () => {
+  const dispatch = useDispatch<Dispatch<TabMenuActions>>();
+  const tabMenu = useSelector<HandbookState, TabMenuState>((state) => state.tabMenu);
   // const initialTabType = tabType[tabMenu.tabType.toString() as keyof typeof tabType];
   const [value, setValue] = React.useState<tabType>(tabMenu.tabType);
 
@@ -24,11 +30,12 @@ const TabMenu: React.FC<TabMenuProps> = (props) => {
   // eslint-disable-next-line @typescript-eslint/ban-types
   const handleChange = (event: React.ChangeEvent<{}>, newValue: tabType): void => {
     // console.log(`set TabMenu ${newValue}`);
-    props.setTabMenu(newValue);
+    dispatch(setTabMenuType(newValue));
     // setValue(newValue);
   };
 
   const TabPanels: React.FC<{ tabValue: tabType }> = ({ tabValue }) => {
+    // eslint-disable-next-line no-undef
     let tabPanel: JSX.Element = <></>;
     switch (tabValue) {
       case tabType.homeSwords:
@@ -63,5 +70,3 @@ const TabMenu: React.FC<TabMenuProps> = (props) => {
     </div>
   );
 };
-
-export default TabMenu;

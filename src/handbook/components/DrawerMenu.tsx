@@ -5,15 +5,15 @@ import {
   Drawer,
   ExpansionPanel,
   ExpansionPanelSummary,
+  FormControl,
   Tooltip,
   Typography,
 } from '@material-ui/core';
-import FormControl from '@material-ui/core/FormControl';
-
 import { createStyles, makeStyles } from '@material-ui/core/styles';
-import ExpandMore from '@material-ui/icons/ExpandMore';
-import SelectDisplayedStatus from '../containers/SelectDisplayedStatus';
-import StatusCorrect from '../containers/StatusCorrect';
+import { ExpandMore } from '@material-ui/icons';
+
+import { SelectDisplayedStatus } from './SelectDisplayedStatus';
+import { StatusCorrect } from './StatusCorrect';
 
 const useStyles = makeStyles(() =>
   createStyles({

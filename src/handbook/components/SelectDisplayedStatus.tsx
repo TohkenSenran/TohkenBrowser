@@ -1,13 +1,20 @@
 import * as React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Dispatch } from 'redux';
 
 import { Box, Checkbox, FormControlLabel, FormGroup } from '@material-ui/core';
 
+import { HomeSwordsTableActions, selectDisplayedStatus } from '../actions/homeSwordsTable';
+import { HandbookState } from '../states/index';
 import { statusLabel, statusType } from '../../constants';
-import { SelectDisplayedStatusProps } from '../containers/SelectDisplayedStatus';
 
-const SelectDisplayedStatus: React.FC<SelectDisplayedStatusProps> = (props) => {
+export const SelectDisplayedStatus: React.FC = () => {
+  const dispatch = useDispatch<Dispatch<HomeSwordsTableActions>>();
+  const displayedStatus = useSelector<HandbookState, boolean[]>(
+    (state) => state.homeSwordsTable.displayedStatus,
+  );
+  // eslint-disable-next-line no-undef
   const checks: JSX.Element[] = [];
-  const { displayedStatus } = props;
   const [viewStatus, setDisplayedStatus] = React.useState(displayedStatus);
 
   const handleChange = (target: number) => (event: React.ChangeEvent<HTMLInputElement>): void => {
@@ -16,7 +23,7 @@ const SelectDisplayedStatus: React.FC<SelectDisplayedStatusProps> = (props) => {
     tempDisplayedStatus[target] = event.target.checked;
     // console.log('viewStatus: %o', viewStatus);
     setDisplayedStatus(tempDisplayedStatus);
-    props.selectDisplayedStatus(tempDisplayedStatus);
+    dispatch(selectDisplayedStatus(tempDisplayedStatus));
     // console.log('viewStatus: %o', viewStatus);
   };
 
@@ -39,5 +46,3 @@ const SelectDisplayedStatus: React.FC<SelectDisplayedStatusProps> = (props) => {
     </Box>
   );
 };
-
-export default SelectDisplayedStatus;

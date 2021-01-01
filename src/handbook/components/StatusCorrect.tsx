@@ -1,20 +1,24 @@
 import * as React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Dispatch } from 'redux';
 
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Radio from '@material-ui/core/Radio';
-import RadioGroup from '@material-ui/core/RadioGroup';
+import { FormControlLabel, Radio, RadioGroup } from '@material-ui/core';
+
 import { correctType } from '../../constants';
-import { StatusCorrectProps } from '../containers/StatusCorrect';
+import { HomeSwordsTableActions, selectCorrect } from '../actions/homeSwordsTable';
+import { HandbookState } from '../states/index';
 
-export const StatusCoorect: React.FC<StatusCorrectProps> = (props) => {
-  const { correct } = props;
+export const StatusCorrect: React.FC = () => {
+  const dispatch = useDispatch<Dispatch<HomeSwordsTableActions>>();
+  const correct = useSelector<HandbookState, correctType>((state) => state.homeSwordsTable.correct);
+
   const [value, setValue] = React.useState(correct.toString());
   const handleRadioChange = (event: React.ChangeEvent<unknown>): void => {
     setValue((event.target as HTMLInputElement).value);
     // console.log(`check selectSpeed ${(event.target as HTMLInputElement).value}`);
     const key: keyof typeof correctType = (event.target as HTMLInputElement)
       .value as keyof typeof correctType;
-    props.selectCorrect(correctType[key]);
+    dispatch(selectCorrect(correctType[key]));
     // console.log(`check selectSpeed ${props.correct1}`);
   };
 
@@ -38,5 +42,3 @@ export const StatusCoorect: React.FC<StatusCorrectProps> = (props) => {
     </RadioGroup>
   );
 };
-
-export default StatusCoorect;

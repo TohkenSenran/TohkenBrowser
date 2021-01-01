@@ -7,7 +7,7 @@ import withStyles, { StyleRules } from '@material-ui/core/styles/withStyles';
 
 import store from '../store';
 
-import withRoot from '../../withRoot';
+import { withRoot } from '../../withRoot';
 import { checkDevConnect } from '../actions/browserSetting';
 import StatusView from '../containers/StatusView';
 import { getDevConnectState } from '../models/getDevConnectState';
