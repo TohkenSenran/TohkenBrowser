@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/camelcase */
 /* eslint-disable camelcase */
 export type HomeSwordsTableContents = {
   sword_id: number; // 刀剣の種類 *極は別ID

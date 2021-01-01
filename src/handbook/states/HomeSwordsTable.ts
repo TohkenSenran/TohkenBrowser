@@ -1,4 +1,4 @@
-import { Column } from 'material-table';
+import { Column } from '@material-table/core';
 
 import { correctType, statusType } from '../../constants';
 import { Swords } from '../../content/states/responseJson/Sword';

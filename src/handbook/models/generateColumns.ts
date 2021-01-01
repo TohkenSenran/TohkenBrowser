@@ -1,4 +1,6 @@
-import { Column } from 'material-table';
+import * as React from 'react';
+
+import { Column } from '@material-table/core';
 
 import { statusType, swordType, statusLabel } from '../../constants';
 import { HomeSwordsTableContents } from '../states/HomeSwordsTableContents';
