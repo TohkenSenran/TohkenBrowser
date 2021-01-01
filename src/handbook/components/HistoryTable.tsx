@@ -60,7 +60,7 @@ export const HistoryTable: React.FC = () => {
   const options: Options<HistoryTableContents> = {
     header: false,
     sorting: false,
-    exportButton: true,
+    exportButton: { csv: true, pdf: false },
     exportAllData: true,
     exportFileName: 'TohkenRecords',
     pageSize: 10,
