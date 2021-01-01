@@ -34,7 +34,8 @@ const theme: Theme = createMuiTheme({
   },
 });
 
-export default function withRoot<P>(Component: React.ComponentType<P>): (props: P) => JSX.Element {
+export function withRoot<P>(Component: React.ComponentType<P>): (props: P) => JSX.Element {
+  // eslint-disable-next-line no-undef
   function WithRoot(props: P): JSX.Element {
     return (
       <MuiThemeProvider theme={theme}>
