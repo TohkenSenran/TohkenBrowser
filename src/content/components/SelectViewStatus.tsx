@@ -1,14 +1,20 @@
 import * as React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Dispatch } from 'redux';
 
 import { Box, Checkbox, FormControlLabel, FormGroup } from '@material-ui/core';
 
+import { PartyPanelActions, setSelectViewStatus } from '../actions/partyPanel';
+import { RootState } from '../states/index';
 import { statusLabel, statusType } from '../../constants';
-import { SelectViewStatusProps } from '../containers/SelectViewStatus';
 
-const SelectViewStatus: React.FC<SelectViewStatusProps> = (props) => {
-  const { displayedStatus } = props;
+export const SelectViewStatus: React.FC = () => {
+  const dispatch = useDispatch<Dispatch<PartyPanelActions>>();
+  const displayedStatus = useSelector<RootState, boolean[]>(
+    (state) => state.partyPanel.displayedStatus,
+  );
 
-  const checks: JSX.Element[] = [];
+  const checks: React.ReactElement[] = [];
   const [viewStatus, setViewStatus] = React.useState(displayedStatus);
 
   const handleChange = (target: number) => (event: React.ChangeEvent<HTMLInputElement>): void => {
@@ -17,7 +23,7 @@ const SelectViewStatus: React.FC<SelectViewStatusProps> = (props) => {
     tempViewStatus[target] = event.target.checked;
     // console.log('viewStatus: %o', viewStatus);
     setViewStatus(tempViewStatus);
-    props.setSelectViewStatus(tempViewStatus);
+    dispatch(setSelectViewStatus(tempViewStatus));
     // console.log('viewStatus: %o', viewStatus);
   };
 
@@ -40,5 +46,3 @@ const SelectViewStatus: React.FC<SelectViewStatusProps> = (props) => {
     </Box>
   );
 };
-
-export default SelectViewStatus;

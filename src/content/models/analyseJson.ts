@@ -1,4 +1,4 @@
-import store from '../store';
+import { store } from '../store';
 
 import { Duty } from '../states/responseJson/Duty';
 import { Equips } from '../states/responseJson/Equip';

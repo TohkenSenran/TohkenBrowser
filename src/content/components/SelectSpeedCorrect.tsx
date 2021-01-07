@@ -1,26 +1,29 @@
 import * as React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Dispatch } from 'redux';
 
-import { Checkbox, Divider, Tooltip } from '@material-ui/core';
+import { Checkbox, Divider, Tooltip, Radio, RadioGroup } from '@material-ui/core';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Radio from '@material-ui/core/Radio';
-import RadioGroup from '@material-ui/core/RadioGroup';
 
 import { correctType } from '../../constants';
-import { SelectSpeedCorrectProps } from '../containers/SelectSpeedCorrect';
+import { checkHorseDisable, PartyPanelActions, selectCorrect } from '../actions/partyPanel';
+import { RootState } from '../states/index';
 import { getSpeedCorrect } from '../states/PartyPanelState';
 
-const SelectSpeedCorrect: React.FC<SelectSpeedCorrectProps> = (props) => {
-  const { correct } = props;
-  const { horseDisable } = props;
+export const SelectSpeedCorrect: React.FC = () => {
+  const dispatch = useDispatch<Dispatch<PartyPanelActions>>();
+  const correct = useSelector<RootState, correctType>((state) => state.partyPanel.correct);
+  const horseDisable = useSelector<RootState, boolean>((state) => state.partyPanel.horseDisable);
+
   const [value, setValue] = React.useState(correct.toString());
   const handleRadioChange = (event: React.ChangeEvent<unknown>): void => {
     setValue((event.target as HTMLInputElement).value);
     // console.log(`check selectSpeed ${(event.target as HTMLInputElement).value}`);
-    props.selectCorrect(getSpeedCorrect((event.target as HTMLInputElement).value));
+    dispatch(selectCorrect(getSpeedCorrect((event.target as HTMLInputElement).value)));
     // console.log(`check selectSpeed ${correct1}`);
   };
   const handleCheckChange = (): void => {
-    props.checkHorseDisable(props.horseDisable);
+    dispatch(checkHorseDisable(horseDisable));
   };
 
   return (
@@ -52,5 +55,3 @@ const SelectSpeedCorrect: React.FC<SelectSpeedCorrectProps> = (props) => {
     </>
   );
 };
-
-export default SelectSpeedCorrect;

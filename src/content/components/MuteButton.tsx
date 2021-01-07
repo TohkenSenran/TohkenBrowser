@@ -1,17 +1,22 @@
 import * as React from 'react';
-import IconFontButton from './IconFontButton';
+import { useDispatch, useSelector } from 'react-redux';
+import { Dispatch } from 'redux';
 
-import { MuteButtonProps } from '../containers/MuteButton';
+import { BrowserSettingActions, changeMute } from '../actions/browserSetting';
+import { RootState } from '../states/index';
+import { IconFontButton } from './IconFontButton';
 
-const MuteButton: React.FC<MuteButtonProps> = (props) => {
+export const MuteButton: React.FC = () => {
+  const dispatch = useDispatch<Dispatch<BrowserSettingActions>>();
+  const mute = useSelector<RootState, boolean>((state) => state.browserSetting.mute);
   const handleClick = (): void => {
-    props.onClick(props.browserSetting.mute);
+    dispatch(changeMute(mute));
   };
-  const { browserSetting } = props;
-  if (browserSetting.mute) {
-    return <IconFontButton iconName="volume_off" tooltipText="音声無し" onClick={handleClick} />;
-  }
-  return <IconFontButton iconName="volume_up" tooltipText="音声有り" onClick={handleClick} />;
+  return (
+    <IconFontButton
+      iconName={mute ? 'volume_off' : 'volume_up'}
+      tooltipText={mute ? '音声無し' : '音声有り'}
+      onClick={handleClick}
+    />
+  );
 };
-
-export default MuteButton;

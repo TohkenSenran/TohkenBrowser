@@ -1,5 +1,5 @@
 import { browser } from 'webextension-polyfill-ts';
-import store from '../store';
+import { store } from '../store';
 
 import { updateConquestTable } from '../actions/conquestTable';
 import { updateHomeSwordsTable } from '../actions/homeSwordsTable';

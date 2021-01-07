@@ -3,11 +3,11 @@ import * as ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 
 import { SeasonItem } from '../content/states/responseJson/SeasonItem';
-import store from './store';
+import { store } from './store';
 import { Swords } from '../content/states/responseJson/Sword';
 import { setSeasonItems } from './actions/conquestTable';
 import { setHomeSwords } from './actions/homeSwordsTable';
-import Content from './components/Content';
+import { Content } from './components/Content';
 import { setWindowTitle } from './models/setWindowTitle';
 import { windowBeforeUnloadEvent } from './models/windowBeforeUnloadEvent';
 import { windowLoadEvent } from './models/windowLoadEvent';
@@ -39,8 +39,8 @@ chrome.storage.onChanged.addListener(async (changes) => {
           const newSwords: Swords = changes.rootState.newValue.responseJson.sword;
           const oldSwords: Swords =
             changes.rootState.oldValue &&
-              changes.rootState.oldValue.responseJson &&
-              changes.rootState.oldValue.responseJson.sword
+            changes.rootState.oldValue.responseJson &&
+            changes.rootState.oldValue.responseJson.sword
               ? changes.rootState.oldValue.responseJson.sword
               : {};
           if (JSON.stringify(newSwords) !== JSON.stringify(oldSwords)) {
@@ -62,8 +62,8 @@ chrome.storage.onChanged.addListener(async (changes) => {
           // console.log('newSRI %o', newSeasonRewardItems);
           const oldSeasonRewardItems: SeasonItem[] =
             changes.handbookState.oldValue &&
-              changes.handbookState.oldValue.conquestTable &&
-              changes.handbookState.oldValue.conquestTable.seasonRewardItems
+            changes.handbookState.oldValue.conquestTable &&
+            changes.handbookState.oldValue.conquestTable.seasonRewardItems
               ? changes.handbookState.oldValue.conquestTable.seasonRewardItems
               : [];
           // console.log('oldSRI %o', oldSeasonRewardItems);

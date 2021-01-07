@@ -1,23 +1,27 @@
 import * as React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Dispatch } from 'redux';
 
-import Box from '@material-ui/core/Box';
-import Fade from '@material-ui/core/Fade';
-import Typography from '@material-ui/core/Typography';
+import { Box, Fade, Typography } from '@material-ui/core';
 
+import { ResponseJsonActions, updateDate } from '../actions/responseJson';
+import { BrowserSettingState, windowMode } from '../states/BrowserSettingState';
+import { RootState } from '../states/index';
 import { gameSize, headerMenuHeight, statusViewHeight } from '../../constants';
-import PartyPanel from '../containers/PartyPanel';
-import { StatusExtendView } from '../containers/StatusView';
-import { windowMode } from '../states/BrowserSettingState';
-import HomePanel from './HomePanel';
+import { PartyPanel } from './PartyPanel';
+import { HomePanel } from './HomePanel';
 
-const StatusView: React.FC<StatusExtendView> = (props) => {
-  const { browserSetting } = props;
+export const StatusView: React.FC = () => {
+  const dispatch = useDispatch<Dispatch<ResponseJsonActions>>();
+  const browserSetting = useSelector<RootState, BrowserSettingState>(
+    (state: RootState) => state.browserSetting,
+  );
 
   // console.log('View Update');
   React.useEffect(() => {
     // 10秒ごとに更新
     const intervalId: number = window.setInterval(() => {
-      props.updateDate(Date.now());
+      dispatch(updateDate(Date.now()));
       // console.log(`interval: ${browserSetting.date}`);
     }, 10000);
     return (): void => clearInterval(intervalId); // console.log('unmounting StatusView');
@@ -70,5 +74,3 @@ const StatusView: React.FC<StatusExtendView> = (props) => {
   }
   return <></>;
 };
-
-export default StatusView;

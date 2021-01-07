@@ -1,15 +1,20 @@
 import * as React from 'react';
-import IconTextButton from './IconTextButton';
+import { useDispatch, useSelector } from 'react-redux';
+import { Dispatch } from 'redux';
 
-import { ModeButtonProps } from '../containers/ModeButton';
+import { BrowserSettingActions, changeViewMode } from '../actions/browserSetting';
 import { windowMode } from '../states/BrowserSettingState';
+import { RootState } from '../states/index';
+import { IconTextButton } from './IconTextButton';
 
-const ModeButton: React.FC<ModeButtonProps> = (props) => {
+export const ModeButton: React.FC = () => {
+  const dispatch = useDispatch<Dispatch<BrowserSettingActions>>();
+  const mode = useSelector<RootState, windowMode>((state) => state.browserSetting.mode);
   const handleClick = (): void => {
-    props.onClick(props.browserSetting.mode);
+    dispatch(changeViewMode(mode));
   };
 
-  switch (props.browserSetting.mode) {
+  switch (mode) {
     case windowMode.SEN:
       return <IconTextButton iconText="専" tooltipText="専用" onClick={handleClick} />;
     case windowMode.SHOU:
@@ -20,5 +25,3 @@ const ModeButton: React.FC<ModeButtonProps> = (props) => {
       return <IconTextButton iconText="専" tooltipText="専用" onClick={handleClick} />;
   }
 };
-
-export default ModeButton;

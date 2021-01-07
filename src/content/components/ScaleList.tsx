@@ -1,16 +1,18 @@
 import * as React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Dispatch } from 'redux';
 
-import { InputLabel } from '@material-ui/core';
-import MenuItem from '@material-ui/core/MenuItem';
-import Select from '@material-ui/core/Select';
+import { InputLabel, MenuItem, Select } from '@material-ui/core';
 
-import { ScaleListProps } from '../containers/ScaleList';
+import { BrowserSettingActions, selectScale } from '../actions/browserSetting';
+import { RootState } from '../states/index';
 
-const ScaleList: React.FC<ScaleListProps> = (props) => {
-  const { browserSetting } = props;
+export const ScaleList: React.FC = () => {
+  const dispatch = useDispatch<Dispatch<BrowserSettingActions>>();
+  const scale = useSelector<RootState, number>((state) => state.browserSetting.scale);
 
   const [values, setValues] = React.useState({
-    scale: browserSetting.scale,
+    scale,
   });
 
   const handleChange = (event: React.ChangeEvent<{ name?: string; value: unknown }>): void => {
@@ -20,7 +22,7 @@ const ScaleList: React.FC<ScaleListProps> = (props) => {
         [event.target.name as string]: event.target.value,
       }));
       // console.log('GetValue: ' + event.target.value);
-      props.onChange(event.target.value as number);
+      dispatch(selectScale(event.target.value as number));
     }
   };
 
@@ -41,5 +43,3 @@ const ScaleList: React.FC<ScaleListProps> = (props) => {
     </>
   );
 };
-
-export default ScaleList;

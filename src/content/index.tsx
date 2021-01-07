@@ -2,8 +2,8 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 
-import Content from './components/Content';
-import store from './store';
+import { Content } from './components/Content';
+import { store } from './store';
 
 import { getWindowId } from '../background/models/getWindowId';
 

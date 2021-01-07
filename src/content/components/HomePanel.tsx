@@ -1,11 +1,12 @@
 import * as React from 'react';
 
 import { Card, CardContent } from '@material-ui/core';
-import DutyPanel from '../containers/DutyPanel';
-import ForgePanel from '../containers/ForgePanel';
-import RepairPanel from '../containers/RepairPanel';
 
-const HomePanel: React.FC = () => (
+import { DutyPanel } from './DutyPanel';
+import { ForgePanel } from './ForgePanel';
+import { RepairPanel } from './RepairPanel';
+
+export const HomePanel: React.FC = () => (
   <Card style={{ height: 288, width: 276 }}>
     <CardContent style={{ padding: 0, margin: 6 }}>
       <ForgePanel />
@@ -14,5 +15,3 @@ const HomePanel: React.FC = () => (
     </CardContent>
   </Card>
 );
-
-export default HomePanel;

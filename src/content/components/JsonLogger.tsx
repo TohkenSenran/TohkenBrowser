@@ -1,5 +1,5 @@
 import * as React from 'react';
-import IconFontButton from './IconFontButton';
+import { IconFontButton } from './IconFontButton';
 // import { FileSystemFileHandle } from '../../../types/native-file-system';
 
 if (typeof window.chooseFileSystemEntries !== 'undefined') {

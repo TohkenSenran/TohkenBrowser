@@ -13,7 +13,5 @@ const styles = (): StyleRules =>
     root: {},
   });
 
-const Content: React.FC = () => <TabMenu />;
-
 // withRoot で export
-export default withRoot(withStyles(styles)(Content));
+export const Content = withRoot(withStyles(styles)(() => <TabMenu />));

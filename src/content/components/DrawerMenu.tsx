@@ -8,18 +8,19 @@ import {
   Tooltip,
   Typography,
   FormLabel,
+  FormControl,
 } from '@material-ui/core';
-import FormControl from '@material-ui/core/FormControl';
-import { createStyles, makeStyles } from '@material-ui/core/styles';
-import ExpandMore from '@material-ui/icons/ExpandMore';
 
-import AddCopyright from '../containers/AddCopyright';
-import EnableExtendView from '../containers/EnableExtendView';
-import EnableNotify from '../containers/EnableNotify';
-import ScaleList from '../containers/ScaleList';
-import SelectSpeedCorrect from '../containers/SelectSpeedCorrect';
-import SelectViewStatus from '../containers/SelectViewStatus';
-import IconFontButton from './IconFontButton';
+import { createStyles, makeStyles } from '@material-ui/core/styles';
+import { ExpandMore } from '@material-ui/icons';
+
+import { AddCopyright } from './AddCopyright';
+import { EnableExtendView } from './EnableExtendView';
+import { EnableNotify } from './EnableNotify';
+import { ScaleList } from './ScaleList';
+import { SelectSpeedCorrect } from './SelectSpeedCorrect';
+import { SelectViewStatus } from './SelectViewStatus';
+import { IconFontButton } from './IconFontButton';
 
 const useStyles = makeStyles(() =>
   createStyles({

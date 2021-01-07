@@ -1,19 +1,16 @@
 import * as React from 'react';
 
-import { Box } from '@material-ui/core';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
+import { Box, AppBar, Toolbar } from '@material-ui/core';
 
 import { headerMenuHeight } from '../../constants';
-import ModeButton from '../containers/ModeButton';
-import MuteButton from '../containers/MuteButton';
-import ScreenshotButton from '../containers/ScreenshotButton';
-import ToastNotification from '../containers/ToastNotification';
-import ReloadButton from './ReloadButton';
-
+import { ModeButton } from './ModeButton';
+import { MuteButton } from './MuteButton';
+import { ScreenshotButton } from './ScreenshotButton';
+import { ToastNotification } from './ToastNotification';
+import { ReloadButton } from './ReloadButton';
 import { DrawerMenu } from './DrawerMenu';
-import HandbookButton from './HandbookButton';
-import Title from './Title';
+import { HandbookButton } from './HandbookButton';
+import { Title } from './Title';
 
 export const HeaderMenu: React.FC = () => (
   <>

@@ -1,13 +1,17 @@
-/* eslint-disable object-curly-newline */
 import * as React from 'react';
+import { useSelector } from 'react-redux';
 
 import { Box, Icon, IconButton, Tooltip } from '@material-ui/core';
 
+import { RootState } from '../states/index';
 import { requestType } from '../../background/states/requestType';
-import { ScreenshotButtonProps } from '../containers/ScreenshotButton';
 import { sendMessageToBackground } from '../models/sendMessageToBackground';
 
-const ScreenshotButton: React.FC<ScreenshotButtonProps> = (props) => {
+export const ScreenshotButton: React.FC = () => {
+  const showCopyright = useSelector<RootState, boolean>(
+    (state) => state.browserSetting.showCopyright,
+  );
+
   const [open, setOpen] = React.useState(false);
   const [onShot, setOnShot] = React.useState(false);
 
@@ -29,7 +33,7 @@ const ScreenshotButton: React.FC<ScreenshotButtonProps> = (props) => {
       // setTimeoutを使わないとスクリーンショットにtooltipが映り込む
       // スクリーンショットのタイミングがずれるため暫定処理
       setTimeout(() => {
-        sendMessageToBackground(requestType.screenshot, props.addCopyright);
+        sendMessageToBackground(requestType.screenshot, showCopyright);
         setOnShot(false);
       }, 500);
     }
@@ -53,5 +57,3 @@ const ScreenshotButton: React.FC<ScreenshotButtonProps> = (props) => {
     </Box>
   );
 };
-
-export default ScreenshotButton;

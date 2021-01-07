@@ -7,7 +7,7 @@ import { swordConverter } from '../models/swordConverter';
 import { Equips } from '../states/responseJson/Equip';
 import { Swords } from '../states/responseJson/Sword';
 
-const SwordPanel: React.FC<{
+export const SwordPanel: React.FC<{
   swords: Swords;
   serialId: string | number | null;
   selectCorrect?: correctType;
@@ -65,5 +65,3 @@ const SwordPanel: React.FC<{
     </Box>
   );
 };
-
-export default SwordPanel;

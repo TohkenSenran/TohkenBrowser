@@ -1,9 +1,12 @@
-import { Tooltip } from '@material-ui/core';
 import * as React from 'react';
+import { useSelector } from 'react-redux';
+
+import { Tooltip } from '@material-ui/core';
+
+import { RootState } from '../states/index';
+import { Forges, forgeInitialState } from '../states/responseJson/Forge';
 import { forgeNo } from '../../constants';
-import { ForgePanelProps } from '../containers/ForgePanel';
 import { forgeConverter } from '../models/forgeConverter';
-import { forgeInitialState } from '../states/responseJson/Forge';
 
 const boxStyle: React.CSSProperties = {
   background: '#E6E6E6',
@@ -27,18 +30,18 @@ const textStyle: React.CSSProperties = {
     ' -1px 0px 0 #FFF, 1px  0px 0 #FFF',
 };
 
-const ForgePanel: React.FC<ForgePanelProps> = (props) => {
-  const forges: JSX.Element[] = [];
+export const ForgePanel: React.FC = () => {
+  const date = useSelector<RootState, number>((state) => state.responseJson.newDate);
+  const forge = useSelector<RootState, Forges>((state) => state.responseJson.forge);
+
+  const forges: React.ReactElement[] = [];
   // console.log('Update Forge');
   // console.log('forge: %O', props.forge);
   // console.log('date: ', props.date);
   for (let i = 0; i < forgeNo; i += 1) {
     // console.log('forge: %O', props.forge[i + 1]);
     // console.log('initForge: %O', forgeInitialState);
-    const forgeState = forgeConverter(
-      props.forge[i + 1] ? props.forge[i + 1] : forgeInitialState,
-      props.date,
-    );
+    const forgeState = forgeConverter(forge[i + 1] ? forge[i + 1] : forgeInitialState, date);
 
     const color: string = forgeState.forgeColor;
     const colorStyle: React.CSSProperties = {
@@ -66,5 +69,3 @@ const ForgePanel: React.FC<ForgePanelProps> = (props) => {
     </div>
   );
 };
-
-export default ForgePanel;

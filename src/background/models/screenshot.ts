@@ -1,7 +1,7 @@
 import moment from 'moment';
 import { gameRatio, headerMenuHeight, copyright } from '../../constants';
 
-const saveScreenshot = (dataUrl: string, addCopyright: boolean): void => {
+const saveScreenshot = (dataUrl: string, showCopyright: boolean): void => {
   // const dateFormat = require('dataformat');
   // console.log('inSaveScreenshot');
   const image = new Image();
@@ -12,7 +12,7 @@ const saveScreenshot = (dataUrl: string, addCopyright: boolean): void => {
     const context = canvas.getContext('2d');
     if (context) {
       context.drawImage(image, 0, -headerMenuHeight);
-      if (addCopyright) {
+      if (showCopyright) {
         const textPos: { x: number; y: number } = { x: canvas.width - 6, y: canvas.height - 6 };
         context.font = 'bold 16px serif';
         context.strokeStyle = '#fff';
@@ -34,11 +34,11 @@ const saveScreenshot = (dataUrl: string, addCopyright: boolean): void => {
   // console.log('saved image');
 };
 
-export const screenshot = (sender: chrome.runtime.MessageSender, addCopyright: boolean): void => {
+export const screenshot = (sender: chrome.runtime.MessageSender, showCopyright: boolean): void => {
   if (sender && sender.tab && sender.tab.windowId) {
     chrome.tabs.captureVisibleTab(sender.tab.windowId, { format: 'png' }, (dataUrl: string) => {
       // console.log('scrennshotting');
-      saveScreenshot(dataUrl, addCopyright);
+      saveScreenshot(dataUrl, showCopyright);
       if (sender && sender.tab && sender.tab.id) {
         // console.log('scrennshotted');
         // sendMessageToWindow(sender.tab.id, contentRequest.screenshot);

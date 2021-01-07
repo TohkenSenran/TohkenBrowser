@@ -1,13 +1,18 @@
 import * as React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Dispatch } from 'redux';
 
 import { Checkbox, FormControlLabel } from '@material-ui/core/';
-import { CheckHorseDisableProps } from '../containers/CheckHorseDisable';
+import { checkHorseDisable, PartyPanelActions } from '../actions/partyPanel';
+import { RootState } from '../states/index';
 
-const CheckHorseDisable: React.FC<CheckHorseDisableProps> = (props) => {
+export const CheckHorseDisable: React.FC = () => {
+  const dispatch = useDispatch<Dispatch<PartyPanelActions>>();
+  const horseDisable = useSelector<RootState, boolean>((state) => state.partyPanel.horseDisable);
   const handleChange = (): void => {
-    props.checkHorseDisable(props.horseDisable);
+    dispatch(checkHorseDisable(horseDisable));
   };
-  const { horseDisable } = props;
+
   return (
     <FormControlLabel
       control={<Checkbox checked={horseDisable} onChange={handleChange} />}
@@ -15,5 +20,3 @@ const CheckHorseDisable: React.FC<CheckHorseDisableProps> = (props) => {
     />
   );
 };
-
-export default CheckHorseDisable;

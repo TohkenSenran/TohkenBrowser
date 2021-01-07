@@ -5,7 +5,7 @@ import IconButton from '@material-ui/core/IconButton';
 import Tooltip from '@material-ui/core/Tooltip';
 import Typography from '@material-ui/core/Typography';
 
-const IconTextButton: React.FC<{
+export const IconTextButton: React.FC<{
   iconText: string;
   tooltipText: string;
   onClick?: () => void;
@@ -34,5 +34,3 @@ const IconTextButton: React.FC<{
     </IconButton>
   </Tooltip>
 );
-
-export default IconTextButton;

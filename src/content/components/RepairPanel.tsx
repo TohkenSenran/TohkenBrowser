@@ -1,22 +1,28 @@
 import * as React from 'react';
+import { useSelector } from 'react-redux';
 
 import { repairNo } from '../../constants';
-import { RepairPanelProps } from '../containers/RepairPanel';
+import { RootState } from '../states/index';
+import { Repairs, repairInitialState } from '../states/responseJson/Repair';
+import { Swords } from '../states/responseJson/Sword';
 import { repairConverter } from '../models/repairConverter';
-import { repairInitialState } from '../states/responseJson/Repair';
-import SwordPanel from './SwordPanel';
 
-const RepairPanel: React.FC<RepairPanelProps> = (props) => {
-  const { sword } = props;
-  const repairs: JSX.Element[] = [];
+import { SwordPanel } from './SwordPanel';
+
+export const RepairPanel: React.FC = () => {
+  const date = useSelector<RootState, number>((state) => state.responseJson.newDate);
+  const repair = useSelector<RootState, Repairs>((state) => state.responseJson.repair);
+  const sword = useSelector<RootState, Swords>((state) => state.responseJson.sword);
+
+  const repairs: React.ReactElement[] = [];
   // console.log('Update Duty');
 
   for (let i = 0; i < repairNo; i += 1) {
-    let repairState = repairConverter(repairInitialState, props.date);
+    let repairState = repairConverter(repairInitialState, date);
     // console.log(`check repairKey ${(props.repair[i + 1])}`);
-    if (props.repair[i + 1]) {
+    if (repair[i + 1]) {
       // console.log('in Repair rewrite');
-      repairState = repairConverter(props.repair[i + 1], props.date);
+      repairState = repairConverter(repair[i + 1], date);
     }
     // console.log('out Repair rewrite');
 
@@ -37,5 +43,3 @@ const RepairPanel: React.FC<RepairPanelProps> = (props) => {
     </>
   );
 };
-
-export default RepairPanel;

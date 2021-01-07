@@ -2,11 +2,11 @@ import * as React from 'react';
 
 import { Box, Card, CardContent } from '@material-ui/core';
 
-const NotificationCard: React.FC<{ onClick: () => void; imagePath: string; text: string }> = ({
-  onClick,
-  imagePath,
-  text,
-}) => {
+export const NotificationCard: React.FC<{
+  onClick: () => void;
+  imagePath: string;
+  text: string;
+}> = ({ onClick, imagePath, text }) => {
   const cardStyle: React.CSSProperties = {
     position: 'relative',
     overflow: 'hidden',
@@ -36,5 +36,3 @@ const NotificationCard: React.FC<{ onClick: () => void; imagePath: string; text:
     </Card>
   );
 };
-
-export default NotificationCard;

@@ -1,14 +1,18 @@
 import * as React from 'react';
+import { useSelector } from 'react-redux';
 
 import { Box } from '@material-ui/core';
-import { DutyPanelProps } from '../containers/DutyPanel';
-import { getRemainingTime } from '../models/getRemainingTime';
-import SwordPanel from './SwordPanel';
 
-const DutyPanel: React.FC<DutyPanelProps> = (props) => {
-  const { date } = props;
-  const { duty } = props;
-  const { sword } = props;
+import { RootState } from '../states/index';
+import { Duty } from '../states/responseJson/Duty';
+import { Swords } from '../states/responseJson/Sword';
+import { SwordPanel } from './SwordPanel';
+import { getRemainingTime } from '../models/getRemainingTime';
+
+export const DutyPanel: React.FC = () => {
+  const date = useSelector<RootState, number>((state) => state.responseJson.newDate);
+  const duty = useSelector<RootState, Duty>((state) => state.responseJson.duty);
+  const sword = useSelector<RootState, Swords>((state) => state.responseJson.sword);
   // console.log('Update Duty');
   return (
     <>
@@ -33,5 +37,3 @@ const DutyPanel: React.FC<DutyPanelProps> = (props) => {
     </>
   );
 };
-
-export default DutyPanel;

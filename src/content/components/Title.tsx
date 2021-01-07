@@ -6,7 +6,7 @@ import { requestType } from '../../background/states/requestType';
 import { twitterURL } from '../../constants';
 import { sendMessageToBackground } from '../models/sendMessageToBackground';
 
-const Title: React.FC = () => {
+export const Title: React.FC = () => {
   /*
   const onTohkenClick = (): void => {
     sendMessageToBackground(requestType.openLinkOnTab, gameURL);
@@ -37,4 +37,3 @@ const Title: React.FC = () => {
     </Box>
   );
 };
-export default Title;

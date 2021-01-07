@@ -1,23 +1,31 @@
 import * as React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Dispatch } from 'redux';
 
 import { Card, CardContent } from '@material-ui/core';
 
-import { PartyPanelProps } from '../containers/PartyPanel';
-import PartyPanelContents from './PartyPanelContents';
+import { PartyPanelActions, selectDisplayText } from '../actions/partyPanel';
+import { RootState } from '../states/index';
+import { PartyPanelState } from '../states/PartyPanelState';
+import { Equips } from '../states/responseJson/Equip';
+import { Parties } from '../states/responseJson/Party';
+import { Swords } from '../states/responseJson/Sword';
+import { PartyPanelContents } from './PartyPanelContents';
 
-const PartyPanel: React.FC<PartyPanelProps> = (props) => {
+export const PartyPanel: React.FC = () => {
+  const dispatch = useDispatch<Dispatch<PartyPanelActions>>();
+  const page = useSelector<RootState, string>((state) => state.responseJson.page);
+  const date = useSelector<RootState, number>((state) => state.responseJson.newDate);
+  const party = useSelector<RootState, Parties>((state) => state.responseJson.party);
+  const sword = useSelector<RootState, Swords>((state) => state.responseJson.sword);
+  const equip = useSelector<RootState, Equips>((state) => state.responseJson.equip);
+  const partyPanel = useSelector<RootState, PartyPanelState>((state) => state.partyPanel);
+
   const handleClick = (): void => {
     // console.log(`PartyPanel Click! ${props.partyPanel.statusType.toString()}`);
-    props.selectText(props.partyPanel.statusType, props.partyPanel.displayedStatus);
+    dispatch(selectDisplayText(partyPanel.statusType, partyPanel.displayedStatus));
   };
-  const { page } = props;
-  const { date } = props;
-  const { party } = props;
-  const { sword } = props;
-  const { equip } = props;
 
-  const { partyPanel } = props;
-  // console.log('Update Party');
   // console.log(`updatePartyPanel ${props.partyPanel.correct}`);
 
   // 結成の時に表示切替
@@ -28,14 +36,6 @@ const PartyPanel: React.FC<PartyPanelProps> = (props) => {
     ((page.indexOf('party/') > -1 && page !== 'party/get_sally_party_info') ||
       (page.indexOf('equip/') > -1 && page !== 'equip/destroy'))
   ) {
-    // console.log('in party', props.partyPanel.extendView);
-    /*
-    if (!props.partyPanel.extendView) {
-      props.clickPartyProps(false);
-    }
-    */
-    // console.log('in party', extendView);
-
     if (!extendView) {
       extendView = true;
     }
@@ -74,5 +74,3 @@ const PartyPanel: React.FC<PartyPanelProps> = (props) => {
     </Card>
   );
 };
-
-export default PartyPanel;

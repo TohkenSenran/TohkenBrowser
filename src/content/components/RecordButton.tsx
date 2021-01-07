@@ -5,7 +5,7 @@ import { Box, Icon, IconButton, Tooltip } from '@material-ui/core';
 import { requestType } from '../../background/states/requestType';
 import { sendMessageToBackground } from '../models/sendMessageToBackground';
 
-const RecordButton: React.FC = () => {
+export const RecordButton: React.FC = () => {
   const [open, setOpen] = React.useState(false);
   const [onShot, setOnShot] = React.useState(false);
 
@@ -53,5 +53,3 @@ const RecordButton: React.FC = () => {
     </Box>
   );
 };
-
-export default RecordButton;

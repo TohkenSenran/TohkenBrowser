@@ -10,7 +10,7 @@ export type BrowserSettingState = {
   scale: number;
   devConnect: boolean;
   enableNotify: boolean;
-  addCopyright: boolean;
+  showCopyright: boolean;
 };
 
 export const setBrowserSetting = (
@@ -19,14 +19,14 @@ export const setBrowserSetting = (
   mute = false,
   devConnect = false,
   enableNotify = true,
-  addCopyright = false,
+  showCopyright = false,
 ): BrowserSettingState => ({
   mode,
   mute,
   scale,
   devConnect,
   enableNotify,
-  addCopyright,
+  showCopyright,
 });
 
 export const browserSettingInitialState = setBrowserSetting();

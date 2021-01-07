@@ -1,13 +1,15 @@
 import * as React from 'react';
+import { useSelector } from 'react-redux';
 import toastedNotes from 'toasted-notes';
 
+import { RootState } from '../states/index';
+import { ResponseJsonState } from '../states/ResponseJsonState';
 import { forgeNo, repairNo } from '../../constants';
-import { ToastNotificationProps } from '../containers/ToastNotification';
-import NotificationCard from './NotificationCard';
+import { NotificationCard } from './NotificationCard';
 import { getSwordName } from '../models/getSwordName';
 
 // 通知の出力
-const toastNotify = (text: string, imagePath: string): void => {
+export const toastNotify = (text: string, imagePath: string): void => {
   toastedNotes.notify(
     ({ onClose }) => <NotificationCard onClick={onClose} text={text} imagePath={imagePath} />,
     { position: 'bottom-right', duration: 10000 },
@@ -15,9 +17,11 @@ const toastNotify = (text: string, imagePath: string): void => {
 };
 
 let firstLoad = true;
-const ToastNotification: React.FC<ToastNotificationProps> = (props) => {
-  const { enableNotify } = props;
-  const { responseJson } = props;
+export const ToastNotification: React.FC = () => {
+  const enableNotify = useSelector<RootState, boolean>(
+    (state) => state.browserSetting.enableNotify,
+  );
+  const responseJson = useSelector<RootState, ResponseJsonState>((state) => state.responseJson);
   // 過去の更新時刻との比較
   let oldUpdateTime = 0;
   let nowUpdateTime = 0;
@@ -94,8 +98,5 @@ const ToastNotification: React.FC<ToastNotificationProps> = (props) => {
       firstLoad = false;
     }
   }
-
   return <></>;
 };
-
-export default ToastNotification;

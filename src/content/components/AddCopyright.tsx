@@ -1,21 +1,25 @@
 import * as React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Dispatch } from 'redux';
 
 import { FormControlLabel, Switch } from '@material-ui/core';
-import { AddCopyrightProps } from '../containers/AddCopyright';
+import { addCopyright, BrowserSettingActions } from '../actions/browserSetting';
+import { RootState } from '../states/index';
 
-const AddCopyright: React.FC<AddCopyrightProps> = (props) => {
+export const AddCopyright: React.FC = () => {
+  const dispatch = useDispatch<Dispatch<BrowserSettingActions>>();
+  const showCopyright = useSelector<RootState, boolean>(
+    (state) => state.browserSetting.showCopyright,
+  );
   // console.log('switch状態', props.enableNotify);
   const handleChange = () => (event: React.ChangeEvent<HTMLInputElement>): void => {
     // console.log('switch切替', event.target.checked);
-    props.onChange(event.target.checked);
+    dispatch(addCopyright(event.target.checked));
   };
-  const { addCopyright } = props;
   return (
     <FormControlLabel
-      control={<Switch checked={addCopyright} onChange={handleChange()} />}
+      control={<Switch checked={showCopyright} onChange={handleChange()} />}
       label="版権表示"
     />
   );
 };
-
-export default AddCopyright;

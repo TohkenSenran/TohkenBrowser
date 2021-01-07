@@ -1,4 +1,4 @@
-import store from '../store';
+import { store } from '../store';
 
 import { loadBrowserState } from '../actions/browserSetting';
 import { loadPartyPanelState } from '../actions/partyPanel';

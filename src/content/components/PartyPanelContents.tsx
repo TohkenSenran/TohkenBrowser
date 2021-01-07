@@ -9,9 +9,9 @@ import { PartyPanelState } from '../states/PartyPanelState';
 import { Equips } from '../states/responseJson/Equip';
 import { Parties } from '../states/responseJson/Party';
 import { Swords } from '../states/responseJson/Sword';
-import SwordPanel from './SwordPanel';
+import { SwordPanel } from './SwordPanel';
 
-const PartyPanelContents: React.FC<{
+export const PartyPanelContents: React.FC<{
   partyData: Parties;
   swordData: Swords;
   equipData: Equips;
@@ -20,10 +20,10 @@ const PartyPanelContents: React.FC<{
   date: number;
   onClick: () => void;
 }> = ({ partyData, swordData, equipData, extendView, partyPanel, date, onClick }) => {
-  const parties: JSX.Element[] = [];
+  const parties: React.ReactElement[] = [];
 
   for (let i = 0; i < partyNo; i += 1) {
-    const party: JSX.Element[] = [];
+    const party: React.ReactElement[] = [];
     for (let j = 0; j < partyMemberNo; j += 1) {
       // console.log(`partyName ${partyData[i + 1].party_name}`);
       party.push(
@@ -60,7 +60,7 @@ const PartyPanelContents: React.FC<{
         break;
     }
 
-    const partyStateComponent: JSX.Element = (
+    const partyStateComponent: React.ReactElement = (
       <Box>
         <Box style={partyStateStyle}>{partyState.state}</Box>
         <Box style={remainingTimeStyle}>{partyState.remainingTime}</Box>
@@ -86,17 +86,17 @@ const PartyPanelContents: React.FC<{
       memberFatigueStyle = { ...memberFatigueStyle, color: 'deeppink' };
     }
 
-    const edoJoTips: JSX.Element = (
+    const edoJoTips: React.ReactElement = (
       <Box style={{ whiteSpace: 'pre' }}>
         {'江戸城内のマップ切替\n長距離：320未満\n中距離：500未満\n短距離：500以上'}
       </Box>
     );
-    const conquestTips: JSX.Element = (
+    const conquestTips: React.ReactElement = (
       <Box style={{ whiteSpace: 'pre' }}>
         {'英気（疲労度）の\n平均が遠征大成功\n確率（*未確定）'}
       </Box>
     );
-    const memberStateComponent: JSX.Element = (
+    const memberStateComponent: React.ReactElement = (
       <Box>
         <Divider />
         <Box display="flex" alignItems="center" height="66px">
@@ -123,7 +123,7 @@ const PartyPanelContents: React.FC<{
       ' -1px 1px 0 rgba(255,255,255,0.5),  1px -1px 0 rgba(255,255,255,0.5),' +
       '  0px 1px 0 rgba(255,255,255,0.5),  0px -1px 0 rgba(255,255,255,0.5),' +
       ' -1px 0px 0 rgba(255,255,255,0.5),  1px  0px 0 rgba(255,255,255,0.5)';
-    const memberStateCompactComp: JSX.Element = (
+    const memberStateCompactComp: React.ReactElement = (
       <Box>
         <Box display="flex" alignItems="center" height="66px">
           <Box width="72px" style={memberLvStyle}>
@@ -180,5 +180,3 @@ const PartyPanelContents: React.FC<{
 
   return <>{parties}</>;
 };
-
-export default PartyPanelContents;

@@ -1,6 +1,6 @@
 {
   "name": "刀剣専覧-刀剣乱舞専用ブラウザ",
-  "version": "0.1.11",
+  "version": "0.1.12",
   "description": "刀剣乱舞の専用ブラウザです。専用のゲーム画面を用意します。",
   "devtools_page": "html/devtools.html",
   "background": {

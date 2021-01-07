@@ -1,10 +1,8 @@
 import * as React from 'react';
 
-import Icon from '@material-ui/core/Icon';
-import IconButton from '@material-ui/core/IconButton';
-import Tooltip from '@material-ui/core/Tooltip';
+import { Icon, IconButton, Tooltip } from '@material-ui/core';
 
-const IconFontButton: React.FC<{
+export const IconFontButton: React.FC<{
   iconName: string;
   tooltipText: string;
   onClick?: () => void;
@@ -19,5 +17,3 @@ const IconFontButton: React.FC<{
     </IconButton>
   </Tooltip>
 );
-
-export default IconFontButton;
