@@ -3,6 +3,7 @@ import { browser } from 'webextension-polyfill-ts';
 
 import { HandbookState, handbookInitialState } from './states';
 
+// eslint-disable-next-line @typescript-eslint/ban-types
 export const middleware: Middleware<{}, HandbookState> = (store: MiddlewareAPI) => (
   next: Dispatch<Action>,
 ) => (action: Action): void => {

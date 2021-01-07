@@ -3,7 +3,7 @@ import { Reducer } from 'redux';
 import { BrowserSettingActions, browserSettingActionType } from '../actions/browserSetting';
 import { browserSettingInitialState, BrowserSettingState } from '../states/BrowserSettingState';
 
-const browserSetting: Reducer<BrowserSettingState, BrowserSettingActions> = (
+export const browserSetting: Reducer<BrowserSettingState, BrowserSettingActions> = (
   state = browserSettingInitialState,
   action,
 ) => {
@@ -53,5 +53,3 @@ const browserSetting: Reducer<BrowserSettingState, BrowserSettingActions> = (
       return state;
   }
 };
-
-export default browserSetting;

@@ -3,7 +3,7 @@ import { Reducer } from 'redux';
 import { ConquestTableActions, conquestTableActionType } from '../actions/conquestTable';
 import { conquestTableInitialState, ConquestTableState } from '../states/ConquestTable';
 
-const conquestTable: Reducer<ConquestTableState, ConquestTableActions> = (
+export const conquestTable: Reducer<ConquestTableState, ConquestTableActions> = (
   state = conquestTableInitialState,
   action,
 ) => {
@@ -20,5 +20,3 @@ const conquestTable: Reducer<ConquestTableState, ConquestTableActions> = (
       return state;
   }
 };
-
-export default conquestTable;

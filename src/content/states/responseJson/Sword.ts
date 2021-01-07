@@ -1,5 +1,4 @@
 /* eslint-disable camelcase */
-/* eslint-disable @typescript-eslint/camelcase */
 export type Sword = {
   [key: string]: string | number | null;
   serial_id: string | number; // 男士個別のID

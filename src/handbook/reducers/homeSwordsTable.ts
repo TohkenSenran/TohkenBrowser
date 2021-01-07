@@ -3,7 +3,7 @@ import { Reducer } from 'redux';
 import { HomeSwordsTableActions, homeSwordsTableActionType } from '../actions/homeSwordsTable';
 import { homeSwordsTableInitialState, HomeSwordsTableState } from '../states/HomeSwordsTable';
 
-const homeSwordsTable: Reducer<HomeSwordsTableState, HomeSwordsTableActions> = (
+export const homeSwordsTable: Reducer<HomeSwordsTableState, HomeSwordsTableActions> = (
   state = homeSwordsTableInitialState,
   action,
 ) => {
@@ -34,5 +34,3 @@ const homeSwordsTable: Reducer<HomeSwordsTableState, HomeSwordsTableActions> = (
       return state;
   }
 };
-
-export default homeSwordsTable;

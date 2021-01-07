@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/camelcase */
 /* eslint-disable camelcase */
 export type Duty = {
   horse_id1: string | number | null; // 馬当番

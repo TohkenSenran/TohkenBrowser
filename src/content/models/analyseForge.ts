@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/camelcase */
 import { forgeNo } from '../../constants';
 import { Forge, forgeInitialState, Forges } from '../states/responseJson/Forge';
 import { RequestProps } from '../states/responseJson/RequestProps';

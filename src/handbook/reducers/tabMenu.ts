@@ -2,7 +2,10 @@ import { Reducer } from 'redux';
 import { TabMenuState, tabMenuInitialState } from '../states/TabMenu';
 import { TabMenuActions, tabMenuActionType } from '../actions/tabMenu';
 
-const tabMenu: Reducer<TabMenuState, TabMenuActions> = (state = tabMenuInitialState, action) => {
+export const tabMenu: Reducer<TabMenuState, TabMenuActions> = (
+  state = tabMenuInitialState,
+  action,
+) => {
   switch (action.type) {
     case tabMenuActionType.UPDATE_TABMENU:
       // console.log('in Reducer %o', action.tabMenu);
@@ -13,5 +16,3 @@ const tabMenu: Reducer<TabMenuState, TabMenuActions> = (state = tabMenuInitialSt
       return state;
   }
 };
-
-export default tabMenu;

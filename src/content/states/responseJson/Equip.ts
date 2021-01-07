@@ -1,5 +1,4 @@
 /* eslint-disable camelcase */
-/* eslint-disable @typescript-eslint/camelcase */
 export type Equip = {
   serial_id: string | number; // 刀装固有のID
   equip_id: string | number; // 刀装・馬の種類

@@ -1,5 +1,4 @@
 /* eslint-disable camelcase */
-/* eslint-disable @typescript-eslint/camelcase */
 export type Resource = {
   bill: number; // 小判
   charcoal: number; // 木炭

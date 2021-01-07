@@ -3,7 +3,7 @@ import { Reducer } from 'redux';
 import { ResponseJsonActions, responseJsonActionType } from '../actions/responseJson';
 import { responseJsonInitialState, ResponseJsonState } from '../states/ResponseJsonState';
 
-const responseJson: Reducer<ResponseJsonState, ResponseJsonActions> = (
+export const responseJson: Reducer<ResponseJsonState, ResponseJsonActions> = (
   state = responseJsonInitialState,
   action,
 ) => {
@@ -26,5 +26,3 @@ const responseJson: Reducer<ResponseJsonState, ResponseJsonActions> = (
       return state;
   }
 };
-
-export default responseJson;

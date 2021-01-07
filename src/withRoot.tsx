@@ -34,6 +34,7 @@ const theme: Theme = createMuiTheme({
   },
 });
 
+// eslint-disable-next-line no-undef
 export function withRoot<P>(Component: React.ComponentType<P>): (props: P) => JSX.Element {
   // eslint-disable-next-line no-undef
   function WithRoot(props: P): JSX.Element {

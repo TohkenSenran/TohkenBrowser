@@ -3,7 +3,7 @@ import { Reducer } from 'redux';
 import { PartyPanelActions, partyPanelActionType } from '../actions/partyPanel';
 import { partyPanelInitialState, PartyPanelState } from '../states/PartyPanelState';
 
-const partyPanel: Reducer<PartyPanelState, PartyPanelActions> = (
+export const partyPanel: Reducer<PartyPanelState, PartyPanelActions> = (
   state = partyPanelInitialState,
   action,
 ) => {
@@ -40,5 +40,3 @@ const partyPanel: Reducer<PartyPanelState, PartyPanelActions> = (
       return state;
   }
 };
-
-export default partyPanel;

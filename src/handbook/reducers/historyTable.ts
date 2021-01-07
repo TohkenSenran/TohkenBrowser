@@ -4,7 +4,7 @@ import { HistoryTableActions, historyTableActionType } from '../actions/historyT
 import { historyTableInitialState, HistoryTableState } from '../states/HistoryTable';
 import { sortHistory } from '../models/getAllHistory';
 
-const historyTable: Reducer<HistoryTableState, HistoryTableActions> = (
+export const historyTable: Reducer<HistoryTableState, HistoryTableActions> = (
   state = historyTableInitialState,
   action,
 ) => {
@@ -34,5 +34,3 @@ const historyTable: Reducer<HistoryTableState, HistoryTableActions> = (
       return state;
   }
 };
-
-export default historyTable;

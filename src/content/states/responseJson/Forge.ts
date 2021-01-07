@@ -1,5 +1,4 @@
 /* eslint-disable camelcase */
-/* eslint-disable @typescript-eslint/camelcase */
 export interface Forge {
   slot_no: string | number; // 使用スロット
   sword_id: string | number | null; // 作成される刀剣種

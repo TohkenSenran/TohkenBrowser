@@ -1,5 +1,4 @@
 /* eslint-disable camelcase */
-/* eslint-disable @typescript-eslint/camelcase */
 export type Repair = {
   slot_no: string | number;
   sword_serial_id: string | number | null;
