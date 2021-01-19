@@ -1463,6 +1463,14 @@ export const swordsProps: { [index: string]: SwordProps } = {
     name: '泛塵・極',
     type: swordType.wakizashi,
   },
+  198: {
+    name: '一文字則宗',
+    type: swordType.tachi,
+  },
+  199: {
+    name: '一文字則宗・極',
+    type: swordType.tachi,
+  },
 };
 
 // 抜けている番号は情報不足のためフォロー必須
