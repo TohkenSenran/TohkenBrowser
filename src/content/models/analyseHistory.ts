@@ -279,6 +279,8 @@ export const analyseHistory = (
           record.push('特命調査');
         } else if (jsonValue.kumamoto) {
           record.push('特命調査-慶長熊本');
+        } else if (jsonValue.kofu) {
+          record.push('特命調査-慶応甲府');
         } else {
           // console.log(record);
           record.push('戦力拡充計画');
