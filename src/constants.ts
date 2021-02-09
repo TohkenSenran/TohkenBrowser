@@ -1465,10 +1465,18 @@ export const swordsProps: { [index: string]: SwordProps } = {
   },
   198: {
     name: '一文字則宗',
-    type: swordType.tachi,
+    type: swordType.uchigatana,
   },
   199: {
     name: '一文字則宗・極',
+    type: swordType.uchigatana,
+  },
+  200: {
+    name: '村雲江',
+    type: swordType.tachi,
+  },
+  201: {
+    name: '村雲江・極',
     type: swordType.tachi,
   },
 };
