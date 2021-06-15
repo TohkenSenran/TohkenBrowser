@@ -5,7 +5,7 @@ import { Item } from './content/states/responseJson/Item';
 export const twitterURL = 'https://twitter.com/TohkenBrowser';
 
 // ブラウザ側設定
-export const gameURL = 'http://pc-play.games.dmm.com/play/tohken/';
+export const gameURL = 'https://pc-play.games.dmm.com/play/tohken/';
 export const gameTitle = `刀剣専覧 ${chrome.runtime.getManifest().version} -刀剣乱舞専用ブラウザ-`;
 export const gameSize: { width: number; height: number } = { width: 1030, height: 580 };
 export const gameRatio: number = gameSize.height / gameSize.width;
