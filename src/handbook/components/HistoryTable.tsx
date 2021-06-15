@@ -2,6 +2,7 @@ import * as React from 'react';
 import { useSelector } from 'react-redux';
 
 import MaterialTable, { Action, Column, Localization, Options } from '@material-table/core';
+import { ExportCsv } from '@material-table/exporters';
 import { Box } from '@material-ui/core';
 import { browser } from 'webextension-polyfill-ts';
 
@@ -57,12 +58,25 @@ export const HistoryTable: React.FC = () => {
     },
   };
 
+  const date = new Date();
+  const dateString =
+    date.getFullYear() +
+    `0${date.getMonth() + 1}`.slice(-2) +
+    `0${date.getDate()}`.slice(-2) +
+    `0${date.getHours()}`.slice(-2) +
+    `0${date.getMinutes()}`.slice(-2) +
+    `0${date.getSeconds()}`.slice(-2);
+
   const options: Options<HistoryTableContents> = {
     header: false,
     sorting: false,
-    exportButton: { csv: true, pdf: false },
     exportAllData: true,
-    exportFileName: 'TohkenRecords',
+    exportMenu: [
+      {
+        label: 'CSV保存',
+        exportFunc: (cols, datas) => ExportCsv(cols, datas, `TohkenRecords-${dateString}`),
+      },
+    ],
     pageSize: 10,
     pageSizeOptions: [10, 50, 100],
     rowStyle: { borderStyle: 'solid', borderWidth: '1px 1px', borderColor: 'lightgray' },
