@@ -1479,6 +1479,14 @@ export const swordsProps: { [index: string]: SwordProps } = {
     name: '村雲江・極',
     type: swordType.tachi,
   },
+  202: {
+    name: '姫鶴一文字',
+    type: swordType.tachi,
+  },
+  203: {
+    name: '姫鶴一文字・極',
+    type: swordType.tachi,
+  },
 };
 
 // 抜けている番号は情報不足のためフォロー必須
