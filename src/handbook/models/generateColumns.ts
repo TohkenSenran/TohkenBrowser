@@ -31,51 +31,56 @@ const setStatusColumn = (selectType: statusType): Column<HomeSwordsTableContents
 };
 
 // デザイン要素を1か所に集約するため初期値の設定をここに用意
-export const initialColumns = (): Array<Column<HomeSwordsTableContents>> => {
+const initialColumns = (prefersDarkMode: boolean): Array<Column<HomeSwordsTableContents>> => {
   const swordTypeLabel: { [key: string]: string } = {};
   Object.values(swordType).forEach((value) => {
     swordTypeLabel[value] = value;
   });
 
   // console.log('sowrdTypeLabel', swordTypeLabel);
-
   const columns: Array<Column<HomeSwordsTableContents>> = [
     {
       title: 'No',
       field: 'sword_id',
       filtering: false,
-      cellStyle: { ...numberCellStyle, background: 'ivory' },
+      cellStyle: { ...numberCellStyle, background: prefersDarkMode ? '#4b4b46' : 'ivory' },
     },
     { title: '刀名', field: 'name', cellStyle: textCellStyle },
     {
       title: '刀種',
       field: 'swordType',
       lookup: swordTypeLabel,
-      cellStyle: { ...textCellStyle, background: 'aliceblue' },
+      cellStyle: { ...textCellStyle, background: prefersDarkMode ? '#46484b' : 'aliceblue' },
     },
     {
       title: '刀装数',
       field: 'slotNumber',
       lookup: { 1: 1, 2: 2, 3: 3 },
-      cellStyle: { ...numberCellStyle, background: 'aliceblue' },
+      cellStyle: { ...numberCellStyle, background: prefersDarkMode ? '#46484b' : 'aliceblue' },
     },
     {
       title: '男士Lv',
       field: 'level',
       filtering: false,
-      cellStyle: { ...numberCellStyle, background: 'lavenderblush' },
+      cellStyle: {
+        ...numberCellStyle,
+        background: prefersDarkMode ? '#4b4648' : 'lavenderblush',
+      },
     },
     {
       title: '乱舞Lv',
       field: 'ranbu_level',
       filtering: false,
-      cellStyle: { ...numberCellStyle, background: 'lavenderblush' },
+      cellStyle: {
+        ...numberCellStyle,
+        background: prefersDarkMode ? '#4b4648' : 'lavenderblush',
+      },
     },
     {
       title: '入手日',
       field: 'created_at',
       filtering: false,
-      cellStyle: { ...numberCellStyle, background: 'ivory' },
+      cellStyle: { ...numberCellStyle, background: prefersDarkMode ? '#4b4b46' : 'ivory' },
     },
   ];
   Object.values(statusType).forEach((value) => {
@@ -88,9 +93,18 @@ export const initialColumns = (): Array<Column<HomeSwordsTableContents>> => {
 };
 
 export const generateColumns = (
-  columns: Array<Column<HomeSwordsTableContents>> = initialColumns(),
+  columnsOrder: string[] = homeSwordsTableInitialState.columnsOrder,
   displayedStatus: boolean[] = homeSwordsTableInitialState.displayedStatus,
+  prefersDarkMode = false,
 ): Array<Column<HomeSwordsTableContents>> => {
+  // カラムの順番情報からカラムを生成
+  const columns: Array<Column<HomeSwordsTableContents>> = initialColumns(prefersDarkMode);
+  columns.sort(
+    (a, b) =>
+      columnsOrder.indexOf(a.field ?? homeSwordsTableInitialState.columnsOrder[0]) -
+      columnsOrder.indexOf(b.field ?? homeSwordsTableInitialState.columnsOrder[0]),
+  );
+
   // ステータスを有無を反映
   Object.values(statusType).forEach((value) => {
     if (typeof value === 'number' && value !== statusType.none && value !== statusType.amulet) {

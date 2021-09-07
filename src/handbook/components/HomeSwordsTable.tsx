@@ -1,12 +1,13 @@
-import * as React from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Dispatch } from 'redux';
 
+import { Box, useMediaQuery } from '@material-ui/core';
+
 import MaterialTable, { Action, Localization, Options } from '@material-table/core';
 
-import { Box } from '@material-ui/core';
-import { HomeSwordsTableActions, setColumns } from '../actions/homeSwordsTable';
-import { HomeSwordsTableState } from '../states/HomeSwordsTable';
+import { HomeSwordsTableActions, setColumnsOrder } from '../actions/homeSwordsTable';
+import { HomeSwordsTableState, initialColumnsOrder } from '../states/HomeSwordsTable';
 import { HomeSwordsTableContents } from '../states/HomeSwordsTableContents';
 import { HandbookState } from '../states/index';
 
@@ -34,16 +35,34 @@ export const HomeSwordsTable: React.FC = () => {
     homeSwordsTable.homeSwords,
     homeSwordsTable.correct,
   );
+
+  const prefersDarkMode: boolean = useMediaQuery('(prefers-color-scheme: dark)');
+
   // console.log('data: %o', data);
 
-  const columns = generateColumns(homeSwordsTable.columns, homeSwordsTable.displayedStatus);
+  const columns = generateColumns(
+    homeSwordsTable.columnsOrder,
+    homeSwordsTable.displayedStatus,
+    prefersDarkMode,
+  );
 
   const handleColumnDrag = (sourceIndex: number, destinationIndex: number): void => {
     const sourceColumn = columns[sourceIndex];
     const destinationColumn = columns[destinationIndex];
     columns[sourceIndex] = destinationColumn;
     columns[destinationIndex] = sourceColumn;
-    dispatch(setColumns(columns));
+
+    dispatch(
+      setColumnsOrder(
+        initialColumnsOrder.sort((a, b) => {
+          let aIndex = columns.map((x) => x.field).indexOf(a);
+          let bIndex = columns.map((x) => x.field).indexOf(b);
+          aIndex = aIndex !== -1 ? aIndex : initialColumnsOrder.length;
+          bIndex = bIndex !== -1 ? bIndex : initialColumnsOrder.length;
+          return aIndex - bIndex;
+        }),
+      ),
+    );
   };
 
   const localization: Localization = {

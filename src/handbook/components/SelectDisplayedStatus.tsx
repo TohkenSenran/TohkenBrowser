@@ -1,4 +1,5 @@
-import * as React from 'react';
+/* eslint-disable prettier/prettier */
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Dispatch } from 'redux';
 
@@ -17,15 +18,17 @@ export const SelectDisplayedStatus: React.FC = () => {
   const checks: JSX.Element[] = [];
   const [viewStatus, setDisplayedStatus] = React.useState(displayedStatus);
 
-  const handleChange = (target: number) => (event: React.ChangeEvent<HTMLInputElement>): void => {
-    // console.log('viewStatus: %o', viewStatus);
-    const tempDisplayedStatus: boolean[] = { ...viewStatus };
-    tempDisplayedStatus[target] = event.target.checked;
-    // console.log('viewStatus: %o', viewStatus);
-    setDisplayedStatus(tempDisplayedStatus);
-    dispatch(selectDisplayedStatus(tempDisplayedStatus));
-    // console.log('viewStatus: %o', viewStatus);
-  };
+  const handleChange =
+    (target: number) =>
+      (event: React.ChangeEvent<HTMLInputElement>): void => {
+      // console.log('viewStatus: %o', viewStatus);
+        const tempDisplayedStatus: boolean[] = { ...viewStatus };
+        tempDisplayedStatus[target] = event.target.checked;
+        // console.log('viewStatus: %o', viewStatus);
+        setDisplayedStatus(tempDisplayedStatus);
+        dispatch(selectDisplayedStatus(tempDisplayedStatus));
+      // console.log('viewStatus: %o', viewStatus);
+      };
 
   Object.values(statusType).forEach((value) => {
     if (typeof value === 'number' && value !== statusType.none && value !== statusType.amulet) {

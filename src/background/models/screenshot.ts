@@ -39,10 +39,11 @@ export const screenshot = (sender: chrome.runtime.MessageSender, showCopyright: 
     chrome.tabs.captureVisibleTab(sender.tab.windowId, { format: 'png' }, (dataUrl: string) => {
       // console.log('scrennshotting');
       saveScreenshot(dataUrl, showCopyright);
+      /*
       if (sender && sender.tab && sender.tab.id) {
-        // console.log('scrennshotted');
-        // sendMessageToWindow(sender.tab.id, contentRequest.screenshot);
+        console.log('scrennshotted');
       }
+      */
     });
   }
 };

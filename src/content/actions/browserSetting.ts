@@ -1,14 +1,12 @@
 /* eslint-disable no-shadow */
-import {
-  browserSettingInitialState,
-  BrowserSettingState,
-  windowMode,
-} from '../states/BrowserSettingState';
+import { colorMode, windowMode } from '../../constants';
+import { browserSettingInitialState, BrowserSettingState } from '../states/BrowserSettingState';
 
 export enum browserSettingActionType {
   SELECT_BROWSERSCALE = 'SELECT_BROWSERSCALE',
   CHANGE_VIEWMODE = 'CHANGE_VIEWMODE',
   CHANGE_MUTE = 'CHANGE_MUTE',
+  SELECT_COLORMODE = 'SELECT_COLORMODE',
   LOAD_BROWSERSTATE = 'LOAD_BROWSERSTATE',
   CHECK_DEVCONNECT = 'CHECK_DEVCONNECT',
   SET_ENABLENOTIFY = 'SET_ENABLENOTIFY',
@@ -30,11 +28,16 @@ export interface ChangeMuteAction {
   mute: boolean;
 }
 
+export interface SelectColorModeAction {
+  type: browserSettingActionType.SELECT_COLORMODE;
+  color: colorMode;
+}
 export interface LoadBrowserStateAction {
   type: browserSettingActionType.LOAD_BROWSERSTATE;
-  scale: number;
   mode: windowMode;
   mute: boolean;
+  scale: number;
+  color: colorMode;
   enableNotify: boolean;
   showCopyright: boolean;
 }
@@ -86,20 +89,19 @@ export const changeMute = (mute: boolean): ChangeMuteAction => ({
   mute: !mute,
 });
 
+export const selectColorMode = (color: colorMode): SelectColorModeAction => ({
+  type: browserSettingActionType.SELECT_COLORMODE,
+  color,
+});
+
 export const loadBrowserState = (browserSetting: BrowserSettingState): LoadBrowserStateAction => ({
   type: browserSettingActionType.LOAD_BROWSERSTATE,
-  scale:
-    browserSetting.scale !== undefined ? browserSetting.scale : browserSettingInitialState.scale,
-  mode: browserSetting.mode !== undefined ? browserSetting.mode : browserSettingInitialState.mode,
-  mute: browserSetting.mute !== undefined ? browserSetting.mute : browserSettingInitialState.mute,
-  enableNotify:
-    browserSetting.enableNotify !== undefined
-      ? browserSetting.enableNotify
-      : browserSettingInitialState.enableNotify,
-  showCopyright:
-    browserSetting.showCopyright !== undefined
-      ? browserSetting.showCopyright
-      : browserSettingInitialState.showCopyright,
+  mode: browserSetting.mode ?? browserSettingInitialState.mode,
+  mute: browserSetting.mute ?? browserSettingInitialState.mute,
+  scale: browserSetting.scale ?? browserSettingInitialState.scale,
+  color: browserSetting.color ?? browserSettingInitialState.color,
+  enableNotify: browserSetting.enableNotify ?? browserSettingInitialState.enableNotify,
+  showCopyright: browserSetting.showCopyright ?? browserSettingInitialState.showCopyright,
 });
 
 export const checkDevConnect = (devConnect: boolean): CheckDevConnectAction => ({
@@ -121,6 +123,7 @@ export type BrowserSettingActions =
   | SelectBrowserScaleAction
   | ChangeViewModeAction
   | ChangeMuteAction
+  | SelectColorModeAction
   | LoadBrowserStateAction
   | CheckDevConnectAction
   | SetEnableNotifyAction

@@ -15,6 +15,16 @@ export const copyright = '©2015 EXNOA LLC/ Nitroplus';
 // 表示系設定
 export const headerMenuHeight = 65;
 export const statusViewHeight = 300;
+export enum windowMode {
+  SEN = 'SEN',
+  SHOU = 'SHOU',
+  HYOU = 'HYOU',
+}
+export enum colorMode {
+  LIGHT = 'LIGHT',
+  DARK = 'DARK',
+  AUTO = 'AUTO',
+}
 
 // ゲーム内定数
 export enum windowName {

@@ -1,8 +1,8 @@
-import * as React from 'react';
+import React from 'react';
 import { useSelector } from 'react-redux';
 
 import MaterialTable, { Column, Localization, Options } from '@material-table/core';
-import { Box } from '@material-ui/core';
+import { Box, useMediaQuery } from '@material-ui/core';
 
 import { ConquestTableState } from '../states/ConquestTable';
 import { HandbookState } from '../states/index';
@@ -22,28 +22,46 @@ export const ConquestTable: React.FC = () => {
   };
   const numberCellStyle: React.CSSProperties = { padding: 6, textAlign: 'right' };
 
+  const prefersDarkMode: boolean = useMediaQuery('(prefers-color-scheme: dark)');
+
   const columns: Array<Column<ConquestTableContents>> = [
     { title: '遠征先', field: 'destination', cellStyle: textCellStyle },
     {
       title: '必要Lv',
       field: 'totalLv',
-      cellStyle: { ...numberCellStyle, background: 'lavenderblush' },
+      cellStyle: { ...numberCellStyle, background: prefersDarkMode ? '#4b4648' : 'lavenderblush' },
     },
     {
       title: '必要時間',
       field: 'time',
-      cellStyle: { ...numberCellStyle, background: 'lavenderblush' },
+      cellStyle: { ...numberCellStyle, background: prefersDarkMode ? '#4b4648' : 'lavenderblush' },
     },
     { title: '刀種', field: 'requireSwords', cellStyle: textCellStyle },
     {
       title: '基礎Exp',
       field: 'swordExp',
-      cellStyle: { ...numberCellStyle, background: 'aliceblue' },
+      cellStyle: { ...numberCellStyle, background: prefersDarkMode ? '#46484b' : 'aliceblue' },
     },
-    { title: '木炭', field: 'charcoal', cellStyle: { ...textCellStyle, background: 'ivory' } },
-    { title: '玉鋼', field: 'steel', cellStyle: { ...textCellStyle, background: 'ivory' } },
-    { title: '冷却材', field: 'coolant', cellStyle: { ...textCellStyle, background: 'ivory' } },
-    { title: '砥石', field: 'file', cellStyle: { ...textCellStyle, background: 'ivory' } },
+    {
+      title: '木炭',
+      field: 'charcoal',
+      cellStyle: { ...textCellStyle, background: prefersDarkMode ? '#4b4b46' : 'ivory' },
+    },
+    {
+      title: '玉鋼',
+      field: 'steel',
+      cellStyle: { ...textCellStyle, background: prefersDarkMode ? '#4b4b46' : 'ivory' },
+    },
+    {
+      title: '冷却材',
+      field: 'coolant',
+      cellStyle: { ...textCellStyle, background: prefersDarkMode ? '#4b4b46' : 'ivory' },
+    },
+    {
+      title: '砥石',
+      field: 'file',
+      cellStyle: { ...textCellStyle, background: prefersDarkMode ? '#4b4b46' : 'ivory' },
+    },
     { title: '季節報酬', field: 'seasonReward', cellStyle: { ...textCellStyle, color: 'crimson' } },
     { title: '大成功', field: 'greatAdd', cellStyle: textCellStyle },
   ];

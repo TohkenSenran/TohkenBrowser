@@ -1,9 +1,9 @@
-import * as React from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Dispatch } from 'redux';
+import { windowMode } from '../../constants';
 
 import { BrowserSettingActions, changeViewMode } from '../actions/browserSetting';
-import { windowMode } from '../states/BrowserSettingState';
 import { RootState } from '../states/index';
 import { IconTextButton } from './IconTextButton';
 

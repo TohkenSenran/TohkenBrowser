@@ -1,4 +1,5 @@
-import * as React from 'react';
+/* eslint-disable prettier/prettier */
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Dispatch } from 'redux';
 
@@ -17,15 +18,17 @@ export const SelectViewStatus: React.FC = () => {
   const checks: React.ReactElement[] = [];
   const [viewStatus, setViewStatus] = React.useState(displayedStatus);
 
-  const handleChange = (target: number) => (event: React.ChangeEvent<HTMLInputElement>): void => {
-    // console.log('viewStatus: %o', viewStatus);
-    const tempViewStatus: boolean[] = { ...viewStatus };
-    tempViewStatus[target] = event.target.checked;
-    // console.log('viewStatus: %o', viewStatus);
-    setViewStatus(tempViewStatus);
-    dispatch(setSelectViewStatus(tempViewStatus));
-    // console.log('viewStatus: %o', viewStatus);
-  };
+  const handleChange =
+    (target: number) =>
+      (event: React.ChangeEvent<HTMLInputElement>): void => {
+      // console.log('viewStatus: %o', viewStatus);
+        const tempViewStatus: boolean[] = { ...viewStatus };
+        tempViewStatus[target] = event.target.checked;
+        // console.log('viewStatus: %o', viewStatus);
+        setViewStatus(tempViewStatus);
+        dispatch(setSelectViewStatus(tempViewStatus));
+      // console.log('viewStatus: %o', viewStatus);
+      };
 
   Object.entries(statusType).forEach(([key, value]) => {
     if (typeof value === 'number' && value > 0) {

@@ -1,5 +1,5 @@
 // tslint:disable-next-line: import-name
-import * as React from 'react';
+import React from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { Dispatch } from 'redux';
@@ -58,7 +58,7 @@ export const TabMenu: React.FC = () => {
 
   return (
     <div style={{ userSelect: 'none' }}>
-      <AppBar position="sticky" style={{ boxShadow: 'none', borderBottom: 'solid 1px #E6E6E6' }}>
+      <AppBar position="sticky" style={{ boxShadow: 'none' }}>
         <Tabs value={value} onChange={handleChange}>
           <Tab value={tabType.homeSwords} label="本丸男士" />
           <Tab value={tabType.conquest} label="遠征情報" />

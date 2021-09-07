@@ -15,5 +15,5 @@ export const forgeConverter = (
     forgeColor:
       forge.creating_at && forge.finished_at
         ? forgeColorName[(Date.parse(forge.finished_at) - Date.parse(forge.creating_at)) / 60000]
-        : 'lightgray',
+        : 'rgba(0, 0, 0, 0.29)',
   });

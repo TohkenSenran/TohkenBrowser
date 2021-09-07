@@ -1,4 +1,5 @@
-import * as React from 'react';
+/* eslint-disable prettier/prettier */
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Dispatch } from 'redux';
 
@@ -14,10 +15,12 @@ export const EnableNotify: React.FC = () => {
   );
 
   // console.log('switch状態', props.enableNotify);
-  const handleChange = () => (event: React.ChangeEvent<HTMLInputElement>): void => {
-    // console.log('switch切替', event.target.checked);
-    dispatch(setEnableNotify(event.target.checked));
-  };
+  const handleChange =
+    () =>
+      (event: React.ChangeEvent<HTMLInputElement>): void => {
+      // console.log('switch切替', event.target.checked);
+        dispatch(setEnableNotify(event.target.checked));
+      };
   return (
     <FormControlLabel
       control={<Switch checked={enableNotify} onChange={handleChange()} value="enableNotify" />}

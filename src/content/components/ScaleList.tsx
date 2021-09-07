@@ -1,8 +1,8 @@
-import * as React from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Dispatch } from 'redux';
 
-import { InputLabel, MenuItem, Select } from '@material-ui/core';
+import { FormControl, InputLabel, MenuItem, Select } from '@material-ui/core';
 
 import { BrowserSettingActions, selectScale } from '../actions/browserSetting';
 import { RootState } from '../states/index';
@@ -27,7 +27,7 @@ export const ScaleList: React.FC = () => {
   };
 
   return (
-    <>
+    <FormControl style={{ marginTop: '6px' }}>
       <InputLabel htmlFor="scale-list">描画倍率</InputLabel>
       <Select
         value={values.scale}
@@ -40,6 +40,6 @@ export const ScaleList: React.FC = () => {
         <MenuItem value={0.6}> 60 %</MenuItem>
         <MenuItem value={0.5}> 50 %</MenuItem>
       </Select>
-    </>
+    </FormControl>
   );
 };

@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { IconFontButton } from './IconFontButton';
 
 export const ReloadButton: React.FC = () => {

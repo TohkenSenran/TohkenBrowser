@@ -1,13 +1,13 @@
-import * as React from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Dispatch } from 'redux';
 
 import { Box, Fade, Typography } from '@material-ui/core';
-
+import { gameSize, headerMenuHeight, statusViewHeight, windowMode } from '../../constants';
 import { ResponseJsonActions, updateDate } from '../actions/responseJson';
-import { BrowserSettingState, windowMode } from '../states/BrowserSettingState';
+import { BrowserSettingState } from '../states/BrowserSettingState';
 import { RootState } from '../states/index';
-import { gameSize, headerMenuHeight, statusViewHeight } from '../../constants';
+
 import { PartyPanel } from './PartyPanel';
 import { HomePanel } from './HomePanel';
 
@@ -32,7 +32,7 @@ export const StatusView: React.FC = () => {
   if (browserSetting.mode === windowMode.SHOU) {
     return (
       <Box
-        bgcolor="background.paper"
+        bgcolor="background.default"
         style={{ position: 'fixed', top: topPos, width: '100%', height: '100%' }}
       >
         <div style={{ position: 'relative' }}>

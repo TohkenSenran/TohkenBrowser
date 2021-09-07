@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 
 import {
   ExpansionPanel,
@@ -18,6 +18,7 @@ import { AddCopyright } from './AddCopyright';
 import { EnableExtendView } from './EnableExtendView';
 import { EnableNotify } from './EnableNotify';
 import { ScaleList } from './ScaleList';
+import { SelectColorMode } from './SelectColorMode';
 import { SelectSpeedCorrect } from './SelectSpeedCorrect';
 import { SelectViewStatus } from './SelectViewStatus';
 import { IconFontButton } from './IconFontButton';
@@ -58,6 +59,7 @@ export const DrawerMenu: React.FC = () => {
           <Typography variant="h6">設定</Typography>
           <FormControl>
             <ScaleList />
+            <SelectColorMode />
             <Box marginTop="12px">
               <FormLabel style={{ fontSize: 12 }}>各種設定切替</FormLabel>
               <Tooltip title="鍛刀・手入の完了を通知" classes={{ tooltip: classes.customWidth }}>

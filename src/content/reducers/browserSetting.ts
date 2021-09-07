@@ -23,12 +23,18 @@ export const browserSetting: Reducer<BrowserSettingState, BrowserSettingActions>
         ...state,
         mute: action.mute,
       };
+    case browserSettingActionType.SELECT_COLORMODE:
+      return {
+        ...state,
+        color: action.color,
+      };
     case browserSettingActionType.LOAD_BROWSERSTATE:
       return {
         ...state,
         scale: action.scale,
         mode: action.mode,
         mute: action.mute,
+        color: action.color,
         enableNotify: action.enableNotify,
         showCopyright: action.showCopyright,
       };

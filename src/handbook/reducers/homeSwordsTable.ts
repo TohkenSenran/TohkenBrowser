@@ -25,10 +25,10 @@ export const homeSwordsTable: Reducer<HomeSwordsTableState, HomeSwordsTableActio
         ...state,
         displayedStatus: action.displayedStatus,
       };
-    case homeSwordsTableActionType.SET_COLUMNS:
+    case homeSwordsTableActionType.SET_COLUMNSORDER:
       return {
         ...state,
-        columns: action.columns,
+        columnsOrder: action.columnsOrder,
       };
     default:
       return state;

@@ -1,16 +1,14 @@
-import { Column } from '@material-table/core';
 import { correctType } from '../../constants';
 import { Swords } from '../../content/states/responseJson/Sword';
 import { fillUndefinedProps } from '../models/fillUndefinedProps';
 import { homeSwordsTableInitialState, HomeSwordsTableState } from '../states/HomeSwordsTable';
-import { HomeSwordsTableContents } from '../states/HomeSwordsTableContents';
 
 export enum homeSwordsTableActionType {
   UPDATE_HOMESWORDSTABLE = 'UPDATE_HOMESWORDSTABLE',
   SET_HOMESWORDS = 'SET_HOMESWORDS',
   SELECT_CORRECT = 'SELECT_CORRECT',
   SELECT_DISPLAYEDSTATUS = 'SELECT_DISPLAYEDSTATUS',
-  SET_COLUMNS = 'SET_COLUMNS',
+  SET_COLUMNSORDER = 'SET_COLUMNSORDER',
 }
 
 export interface UpdateHomeSwordsTableAction {
@@ -33,9 +31,9 @@ export interface SelectDisplayedStatusAction {
   displayedStatus: boolean[];
 }
 
-export interface SetColumnsAction {
-  type: homeSwordsTableActionType.SET_COLUMNS;
-  columns: Array<Column<HomeSwordsTableContents>>;
+export interface SetColumnsOrderAction {
+  type: homeSwordsTableActionType.SET_COLUMNSORDER;
+  columnsOrder: string[];
 }
 
 export const updateHomeSwordsTable = (
@@ -64,9 +62,10 @@ export const selectDisplayedStatus = (displayedStatus: boolean[]): SelectDisplay
     displayedStatus !== undefined ? displayedStatus : homeSwordsTableInitialState.displayedStatus,
 });
 
-export const setColumns = (columns: Array<Column<HomeSwordsTableContents>>): SetColumnsAction => ({
-  type: homeSwordsTableActionType.SET_COLUMNS,
-  columns: columns !== undefined ? columns : homeSwordsTableInitialState.columns,
+export const setColumnsOrder = (columnsOrder: string[]): SetColumnsOrderAction => ({
+  type: homeSwordsTableActionType.SET_COLUMNSORDER,
+  columnsOrder:
+    columnsOrder !== undefined ? columnsOrder : homeSwordsTableInitialState.columnsOrder,
 });
 
 export type HomeSwordsTableActions =
@@ -74,4 +73,4 @@ export type HomeSwordsTableActions =
   | SetHomeSwordsAction
   | SelectCorrectAction
   | SelectDisplayedStatusAction
-  | SetColumnsAction;
+  | SetColumnsOrderAction;

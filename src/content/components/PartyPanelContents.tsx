@@ -1,5 +1,5 @@
 /* eslint-disable object-curly-newline */
-import * as React from 'react';
+import React from 'react';
 
 import { Box, Divider, Fade, Tooltip } from '@material-ui/core';
 
@@ -66,12 +66,11 @@ export const PartyPanelContents: React.FC<{
         <Box style={remainingTimeStyle}>{partyState.remainingTime}</Box>
       </Box>
     );
-
     const memberLvStyle: React.CSSProperties = { ...textStyle };
     let memberScoutStyle: React.CSSProperties = { ...textStyle, marginLeft: '6px' };
     const totalScout: number = parseInt(partyState.memberScout.replace(/[^0-9^\\.]/g, ''), 10);
     if (totalScout < 320) {
-      memberScoutStyle = { ...memberScoutStyle, color: 'navy' };
+      memberScoutStyle = { ...memberScoutStyle, color: 'royalblue' };
     } else if (totalScout < 500) {
       memberScoutStyle = { ...memberScoutStyle, color: 'darkorange' };
     } else {
@@ -96,6 +95,7 @@ export const PartyPanelContents: React.FC<{
         {'英気（疲労度）の\n平均が遠征大成功\n確率（*未確定）'}
       </Box>
     );
+
     const memberStateComponent: React.ReactElement = (
       <Box>
         <Divider />
@@ -119,10 +119,10 @@ export const PartyPanelContents: React.FC<{
     );
 
     const textShadow: string =
-      '  1px 1px 0 rgba(255,255,255,0.5), -1px -1px 0 rgba(255,255,255,0.5),' +
-      ' -1px 1px 0 rgba(255,255,255,0.5),  1px -1px 0 rgba(255,255,255,0.5),' +
-      '  0px 1px 0 rgba(255,255,255,0.5),  0px -1px 0 rgba(255,255,255,0.5),' +
-      ' -1px 0px 0 rgba(255,255,255,0.5),  1px  0px 0 rgba(255,255,255,0.5)';
+      '  1px 1px 0 rgba(255,255,255,0.75), -1px -1px 0 rgba(255,255,255,0.75),' +
+      ' -1px 1px 0 rgba(255,255,255,0.75),  1px -1px 0 rgba(255,255,255,0.75),' +
+      '  0px 1px 0 rgba(255,255,255,0.75),  0px -1px 0 rgba(255,255,255,0.75),' +
+      ' -1px 0px 0 rgba(255,255,255,0.75),  1px  0px 0 rgba(255,255,255,0.75)';
     const memberStateCompactComp: React.ReactElement = (
       <Box>
         <Box display="flex" alignItems="center" height="66px">

@@ -1,9 +1,6 @@
-import { Column } from '@material-table/core';
-
 import { correctType, statusType } from '../../constants';
 import { Swords } from '../../content/states/responseJson/Sword';
-import { initialColumns } from '../models/generateColumns';
-import { HomeSwordsTableContents } from './HomeSwordsTableContents';
+import { homeSwordsTableContentsInitialState } from './HomeSwordsTableContents';
 
 const initialDisplayedStatus = (): boolean[] => {
   const displayedStatus: boolean[] = [];
@@ -15,16 +12,18 @@ const initialDisplayedStatus = (): boolean[] => {
   return displayedStatus;
 };
 
+export const initialColumnsOrder: string[] = Object.keys(homeSwordsTableContentsInitialState);
+
 export interface HomeSwordsTableState {
   homeSwords: Swords;
   correct: correctType;
   displayedStatus: boolean[];
-  columns: Array<Column<HomeSwordsTableContents>>;
+  columnsOrder: string[];
 }
 
 export const homeSwordsTableInitialState: HomeSwordsTableState = {
   homeSwords: {},
   correct: correctType.none,
   displayedStatus: initialDisplayedStatus(),
-  columns: initialColumns(),
+  columnsOrder: initialColumnsOrder,
 };

@@ -1,5 +1,7 @@
-import * as React from 'react';
+import React from 'react';
 import { useSelector } from 'react-redux';
+
+import { Box } from '@material-ui/core';
 
 import { repairNo } from '../../constants';
 import { RootState } from '../states/index';
@@ -27,19 +29,19 @@ export const RepairPanel: React.FC = () => {
     // console.log('out Repair rewrite');
 
     repairs.push(
-      <div style={{ display: 'inline-block' }}>
-        <SwordPanel
-          swords={sword}
-          serialId={repairState.serialId}
-          stateText={repairState.remainingTime}
-        />
-      </div>,
+      <SwordPanel
+        swords={sword}
+        serialId={repairState.serialId}
+        stateText={repairState.remainingTime}
+      />,
     );
   }
   return (
     <>
       <div style={{ margin: '0px 3px', height: 18 }}>手入部屋</div>
-      {repairs}
+      <Box display="flex" flexDirection="row">
+        {repairs}
+      </Box>
     </>
   );
 };

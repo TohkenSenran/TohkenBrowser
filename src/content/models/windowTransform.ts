@@ -1,5 +1,4 @@
-import { gameRatio, headerMenuHeight, statusViewHeight } from '../../constants';
-import { windowMode } from '../states/BrowserSettingState';
+import { gameRatio, headerMenuHeight, statusViewHeight, windowMode } from '../../constants';
 
 export const windowTransform = (scale: number, mode: windowMode): void => {
   // ブラウザのアスペクト比(幅のみ取得可能)

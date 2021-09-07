@@ -1,5 +1,5 @@
 /* eslint-disable object-curly-newline */
-import * as React from 'react';
+import React from 'react';
 
 import { Box, Icon, IconButton, Tooltip } from '@material-ui/core';
 import { requestType } from '../../background/states/requestType';

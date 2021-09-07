@@ -50,6 +50,18 @@
       }
     }
   },
+  "globals": {
+    "React": true,
+    "google": true,
+    "mount": true,
+    "mountWithRouter": true,
+    "shallow": true,
+    "shallowWithRouter": true,
+    "context": true,
+    "expect": true,
+    "jsdom": true,
+    "JSX": true
+  },
   "rules": {
     "no-use-before-define": "off",
     "@typescript-eslint/no-use-before-define": [

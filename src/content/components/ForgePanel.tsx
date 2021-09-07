@@ -1,36 +1,42 @@
-import * as React from 'react';
+import React from 'react';
 import { useSelector } from 'react-redux';
 
 import { Tooltip } from '@material-ui/core';
+import { useTheme } from '@material-ui/core/styles';
 
+import { forgeNo } from '../../constants';
 import { RootState } from '../states/index';
 import { Forges, forgeInitialState } from '../states/responseJson/Forge';
-import { forgeNo } from '../../constants';
 import { forgeConverter } from '../models/forgeConverter';
 
-const boxStyle: React.CSSProperties = {
-  background: '#E6E6E6',
-  display: 'inline-block',
-  height: 24,
-  width: 66,
-};
-
-const textStyle: React.CSSProperties = {
-  position: 'absolute',
-  left: '50%',
-  top: '100%',
-  letterSpacing: '-0.05em',
-  transform: 'translateX(-50%) translateY(-100%)',
-  whiteSpace: 'nowrap',
-  color: 'black',
-  textShadow:
-    '1px 1px 0 #FFF, -1px -1px 0 #FFF,' +
-    ' -1px 1px 0 #FFF, 1px -1px 0 #FFF,' +
-    '  0px 1px 0 #FFF, 0px -1px 0 #FFF,' +
-    ' -1px 0px 0 #FFF, 1px  0px 0 #FFF',
-};
-
 export const ForgePanel: React.FC = () => {
+  const theme = useTheme();
+
+  const boxStyle: React.CSSProperties = {
+    background: 'rgba(127, 127, 127, 0.25)',
+    display: 'inline-block',
+    height: 24,
+    width: 66,
+  };
+
+  const textStyle: React.CSSProperties = {
+    position: 'absolute',
+    left: '50%',
+    top: '100%',
+    letterSpacing: '-0.05em',
+    transform: 'translateX(-50%) translateY(-100%)',
+    whiteSpace: 'nowrap',
+    textShadow:
+      ` 1px  1px 0 ${theme.palette.background.paper},` +
+      `-1px -1px 0 ${theme.palette.background.paper},` +
+      `-1px  1px 0 ${theme.palette.background.paper},` +
+      ` 1px -1px 0 ${theme.palette.background.paper},` +
+      ` 0px  1px 0 ${theme.palette.background.paper},` +
+      ` 0px -1px 0 ${theme.palette.background.paper},` +
+      `-1px  0px 0 ${theme.palette.background.paper},` +
+      ` 1px  0px 0 ${theme.palette.background.paper}`,
+  };
+
   const date = useSelector<RootState, number>((state) => state.responseJson.newDate);
   const forge = useSelector<RootState, Forges>((state) => state.responseJson.forge);
 
