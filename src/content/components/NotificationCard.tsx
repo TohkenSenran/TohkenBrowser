@@ -11,7 +11,6 @@ export const NotificationCard: React.FC<{
     position: 'relative',
     overflow: 'hidden',
     maxWidth: '240px',
-    margin: '0.3rem',
   };
 
   const boxStyle: React.CSSProperties = {

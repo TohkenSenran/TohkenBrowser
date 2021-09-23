@@ -34,6 +34,7 @@
     "react": "16.8.5",
     "react-beautiful-dnd": "11.0.0",
     "react-dom": "16.8.5",
+    "react-hot-toast": "^2.1.1",
     "react-redux": "^7.2.2",
     "react-spring": "^8.0.27",
     "redux": "^4.0.5",

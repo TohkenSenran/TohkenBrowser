@@ -6,11 +6,11 @@ import { headerMenuHeight } from '../../constants';
 import { ModeButton } from './ModeButton';
 import { MuteButton } from './MuteButton';
 import { ScreenshotButton } from './ScreenshotButton';
-import { ToastNotification } from './ToastNotification';
 import { ReloadButton } from './ReloadButton';
 import { DrawerMenu } from './DrawerMenu';
 import { HandbookButton } from './HandbookButton';
 import { Title } from './Title';
+import { HotToastNotification } from './HotToastNotification';
 
 export const HeaderMenu: React.FC = () => (
   <>
@@ -21,7 +21,7 @@ export const HeaderMenu: React.FC = () => (
         <ScreenshotButton />
         <MuteButton />
         <ModeButton />
-        <ToastNotification />
+        <HotToastNotification />
         <span style={{ marginLeft: 'auto', marginRight: -15 }}>
           <HandbookButton />
           <DrawerMenu />

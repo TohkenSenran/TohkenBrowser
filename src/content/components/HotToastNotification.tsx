@@ -1,23 +1,20 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import toastedNotes from 'toasted-notes';
+import { toast, Toaster } from 'react-hot-toast';
 
+import { forgeNo, repairNo } from '../../constants';
 import { RootState } from '../states/index';
 import { ResponseJsonState } from '../states/ResponseJsonState';
-import { forgeNo, repairNo } from '../../constants';
-import { NotificationCard } from './NotificationCard';
 import { getSwordName } from '../models/getSwordName';
+import { NotificationCard } from './NotificationCard';
 
-// 通知の出力
-export const toastNotify = (text: string, imagePath: string): void => {
-  toastedNotes.notify(
-    ({ onClose }) => <NotificationCard onClick={onClose} text={text} imagePath={imagePath} />,
-    { position: 'bottom-right', duration: 10000 },
-  );
-};
+const notify = (text: string, imagePath: string) =>
+  toast.custom((t) => (
+    <NotificationCard onClick={() => toast.dismiss(t.id)} text={text} imagePath={imagePath} />
+  ));
 
 let firstLoad = true;
-export const ToastNotification: React.FC = () => {
+export const HotToastNotification: React.FC = () => {
   const enableNotify = useSelector<RootState, boolean>(
     (state) => state.browserSetting.enableNotify,
   );
@@ -64,7 +61,8 @@ export const ToastNotification: React.FC = () => {
                   `img/Setting/Swords/${swordId.toString()}/Normal.png`,
                 );
               }
-              toastNotify(notifyText, notifyImagePath);
+              // toastNotify(notifyText, notifyImagePath);
+              notify(notifyText, notifyImagePath);
             }
           }
         }
@@ -85,7 +83,7 @@ export const ToastNotification: React.FC = () => {
 
               if (serialId && responseJson.sword) {
                 const swordId = responseJson.sword[serialId].sword_id;
-                toastNotify(
+                notify(
                   `${getSwordName(undefined, undefined, swordId)}\n手入完了`,
                   chrome.extension.getURL(`img/Setting/Swords/${swordId.toString()}/Repair.png`),
                 );
@@ -98,5 +96,6 @@ export const ToastNotification: React.FC = () => {
       firstLoad = false;
     }
   }
-  return <></>;
+
+  return <Toaster position="bottom-right" toastOptions={{ duration: 10000 }} />;
 };
