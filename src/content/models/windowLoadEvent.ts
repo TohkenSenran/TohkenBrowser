@@ -15,18 +15,8 @@ export const windowLoadEvent = () => {
     // console.log(`directLoad ${response.storageState.browserSetting.scale}`);
     // console.log('load loadBrowserState');
     // console.log(store.getState());
-    store.dispatch(
-      loadBrowserState(
-        storageState.browserSetting ? storageState.browserSetting : rootState.browserSetting,
-      ),
-    );
-    store.dispatch(
-      updateJsonState(
-        storageState.responseJson ? storageState.responseJson : rootState.responseJson,
-      ),
-    );
-    store.dispatch(
-      loadPartyPanelState(storageState.partyPanel ? storageState.partyPanel : rootState.partyPanel),
-    );
+    store.dispatch(loadBrowserState(storageState.browserSetting ?? rootState.browserSetting));
+    store.dispatch(updateJsonState(storageState.responseJson ?? rootState.responseJson));
+    store.dispatch(loadPartyPanelState(storageState.partyPanel ?? rootState.partyPanel));
   });
 };

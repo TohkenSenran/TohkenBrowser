@@ -23,7 +23,7 @@ if (typeof window.chooseFileSystemEntries !== 'undefined') {
 
 const JsonLogger: React.FC = () => {
   const handleClick = async () => {
-    console.log('in logger handleClick', window.chooseFileSystemEntries);
+    // console.log('in logger handleClick', window.chooseFileSystemEntries);
   };
 
   return <IconFontButton iconName="list" tooltipText="JsonLogger" onClick={handleClick} />;

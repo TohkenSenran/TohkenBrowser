@@ -27,7 +27,7 @@ export const RecordButton: React.FC = () => {
       // setTimeoutを使わないとスクリーンショットにtooltipが映り込む
       // スクリーンショットのタイミングがずれるため暫定処理
       setTimeout(() => {
-        console.log('send message');
+        // console.log('send message');
         // captureVideo();
         sendMessageToBackground(requestType.record);
         setOnShot(false);

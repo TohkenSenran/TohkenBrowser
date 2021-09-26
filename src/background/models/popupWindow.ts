@@ -27,7 +27,7 @@ export const popupWindow = {
     }
     // idが未定義 or 存在しない場合，ウィンドウを作成
     createWindow(
-      typeof windowState !== 'undefined' ? windowState : windowInitialState,
+      windowState ?? windowInitialState,
       loadUrl,
       (newWindow: chrome.windows.Window | undefined) => {
         if (newWindow && newWindow.tabs) {

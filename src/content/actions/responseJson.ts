@@ -22,10 +22,7 @@ export const updateJsonState = (responseJson: ResponseJsonState): UpdateJsonStat
     responseJson,
     ...(Object.keys(responseJsonInitialState) as (keyof ResponseJsonState)[]).map(
       (key: keyof ResponseJsonState) => ({
-        [key]:
-          typeof responseJson[key] !== 'undefined'
-            ? responseJson[key]
-            : responseJsonInitialState[key],
+        [key]: responseJson[key] ?? responseJsonInitialState[key],
       }),
     ),
   );

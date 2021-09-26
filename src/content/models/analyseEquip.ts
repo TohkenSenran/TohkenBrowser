@@ -9,7 +9,7 @@ export const analyseEquip = (jsonValue: any, page: string, oldEquip: Equips): Eq
     // 刀装1個のみの情報
     case 'equip/setequip':
     case 'equip/removeequip':
-      singleEquip = jsonValue.equip ? jsonValue.equip : equipInitialState;
+      singleEquip = jsonValue.equip ?? equipInitialState;
       // console.log(`get single equip: ${singleEquip.serial_id}`);
       // console.log('before oldEquip obj: %O', sword);
       // console.log(`sword equip: ${sword[singleEquip.serial_id].equip_serial_id1}`);
@@ -21,13 +21,13 @@ export const analyseEquip = (jsonValue: any, page: string, oldEquip: Equips): Eq
     case 'sally/eventresume':
     case 'item/sally_recover':
       // console.log('get partial equips');
-      partialEquip = jsonValue.equip ? jsonValue.equip : {};
+      partialEquip = jsonValue.equip ?? {};
       Object.keys(partialEquip).forEach((key: string) => {
         equip[partialEquip[key].serial_id] = partialEquip[key];
       });
       break;
     default:
-      equip = jsonValue.equip ? jsonValue.equip : oldEquip;
+      equip = jsonValue.equip ?? oldEquip;
   }
   return equip;
 };

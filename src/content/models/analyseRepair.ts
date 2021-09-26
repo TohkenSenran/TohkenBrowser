@@ -17,7 +17,7 @@ export const analyseRepair = (
       break;
     case 'repair/repair':
       // 手入開始 swordの修正を受けない
-      repair = jsonValue.repair ? jsonValue.repair : oldRepair;
+      repair = jsonValue.repair ?? oldRepair;
       break;
     case 'repair/complete':
     case 'repair/fast':
@@ -34,7 +34,7 @@ export const analyseRepair = (
       break;
     default:
       // 上記以外のページでは，repairの内容が数値でない場合oldRepairを返して更新しない
-      repair = jsonValue.repair ? jsonValue.repair : oldRepair;
+      repair = jsonValue.repair ?? oldRepair;
       // swordが更新された場合にその情報を活用
       for (let i = 0; i < repairNo; i += 1) {
         if (repair[i + 1]) {

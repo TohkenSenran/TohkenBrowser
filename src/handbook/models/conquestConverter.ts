@@ -102,7 +102,7 @@ export const conquestConverter = (seasonReword?: SeasonItem[]): ConquestTableCon
         file: getResource(value.reward.normal.item, resourceId.file),
         item: getItems(value.reward.normal.item),
         greatAdd: getItems(value.reward.greatAdd.item),
-        seasonReward: getItems(convertItems[key] ? convertItems[key] : [], true),
+        seasonReward: getItems(convertItems[key] ?? [], true),
       });
     }
   });

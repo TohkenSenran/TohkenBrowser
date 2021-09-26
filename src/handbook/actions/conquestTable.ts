@@ -22,14 +22,13 @@ export const updateConquestTable = (
 ): UpdateConquestTableAction => ({
   type: conquestTableActionType.UPDATE_CONQUESTTABLE,
   conquestTable:
-    conquestTable !== undefined
-      ? fillUndefinedProps<ConquestTableState>(conquestTable, conquestTableInitialState)
-      : conquestTableInitialState,
+    fillUndefinedProps<ConquestTableState>(conquestTable, conquestTableInitialState) ??
+    conquestTableInitialState,
 });
 
 export const setSeasonItems = (seasonRewardItems: SeasonItem[]): SetSeasonItemsAction => ({
   type: conquestTableActionType.SET_SEASONITEMS,
-  seasonRewardItems: typeof seasonRewardItems !== 'undefined' ? seasonRewardItems : [],
+  seasonRewardItems: seasonRewardItems ?? [],
 });
 
 export type ConquestTableActions = UpdateConquestTableAction | SetSeasonItemsAction;

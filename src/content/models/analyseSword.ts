@@ -37,7 +37,7 @@ export const analyseSword = (
     case 'composition/compose':
     case 'composition/union':
     case 'item/add_exp':
-      singleSword = jsonValue.sword ? jsonValue.sword : swordInitialState;
+      singleSword = jsonValue.sword ?? swordInitialState;
       // console.log(`get single sword: ${singleSword.serial_id}`);
       // console.log('before oldSword obj: %O', sword);
       // console.log(`sword equip: ${sword[singleSword.serial_id].equip_serial_id1}`);
@@ -58,7 +58,7 @@ export const analyseSword = (
     case 'practice/offer':
     case 'duty/complete':
     case 'item/sally_recover':
-      partialSword = jsonValue.sword ? jsonValue.sword : {};
+      partialSword = jsonValue.sword ?? {};
       // console.log('get partial swords: %O', partialSword);
       // console.log(Object.keys(partialSword).length);
       Object.keys(partialSword).forEach((key: string) => {
@@ -96,7 +96,7 @@ export const analyseSword = (
       break;
     default:
       // 通常の取得
-      sword = jsonValue.sword ? jsonValue.sword : oldSword;
+      sword = jsonValue.sword ?? oldSword;
       break;
   }
   // console.log('swords: %O', sword);

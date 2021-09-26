@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Dispatch } from 'redux';
@@ -13,10 +14,12 @@ export const EnableExtendView: React.FC = () => {
   );
 
   // console.log('switch状態', props.EnableExtendView);
-  const handleChange = () => (event: React.ChangeEvent<HTMLInputElement>): void => {
-    // console.log('switch切替', event.target.checked);
-    dispatch(setEnableExtendView(event.target.checked));
-  };
+  const handleChange =
+    () =>
+      (event: React.ChangeEvent<HTMLInputElement>): void => {
+      // console.log('switch切替', event.target.checked);
+        dispatch(setEnableExtendView(event.target.checked));
+      };
   return (
     <FormControlLabel
       control={

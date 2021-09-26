@@ -23,7 +23,7 @@ export const analyseParty = (jsonValue: any, page: string, oldParty: Parties): P
       party = {};
       for (let i = 0; i < partyNo; i += 1) {
         // console.log('oldParty %O', party[i + 1]);
-        party[i + 1] = jsonValue[i + 1] ? jsonValue[i + 1] : { ...oldParty[i + 1] };
+        party[i + 1] = jsonValue[i + 1] ?? { ...oldParty[i + 1] };
       }
       break;
     default:

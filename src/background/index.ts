@@ -113,7 +113,7 @@ chrome.runtime.onMessage.addListener(async (request: Request, sender, sendRespon
       removeWindow(await getWindowId(`${windowName.handbookWindow}Id`));
       break;
     case requestType.record:
-      console.log('calling desktopCapture');
+      // console.log('calling desktopCapture');
       // captureVideo();
       break;
     default:

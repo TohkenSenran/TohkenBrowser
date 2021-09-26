@@ -24,12 +24,11 @@ export interface RemoveHistoryAction {
 
 export const updateHistoryTable = (history: HistoryTableContents[]): UpdateHistoryTableAction => ({
   type: historyTableActionType.UPDATE_HISTORYTABLE,
-  history: typeof history !== 'undefined' ? history : [],
+  history: history ?? [],
 });
 export const pushHistory = (singleHistory: HistoryTableContents): PushHistoryAction => ({
   type: historyTableActionType.PUSH_HISTORY,
-  singleHistory:
-    typeof singleHistory !== 'undefined' ? singleHistory : historyTableContentsInitialState,
+  singleHistory: singleHistory ?? historyTableContentsInitialState,
 });
 export const removeHistory = (headValue: string): RemoveHistoryAction => ({
   type: historyTableActionType.REMOVE_HISTORY,

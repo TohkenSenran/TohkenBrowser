@@ -48,10 +48,7 @@ export const loadPartyPanelState = (
     partyPanelState,
     ...(Object.keys(partyPanelInitialState) as (keyof PartyPanelState)[]).map(
       (key: keyof PartyPanelState) => ({
-        [key]:
-          typeof partyPanelState[key] !== 'undefined'
-            ? partyPanelState[key]
-            : partyPanelInitialState[key],
+        [key]: partyPanelState[key] ?? partyPanelInitialState[key],
       }),
     ),
   );

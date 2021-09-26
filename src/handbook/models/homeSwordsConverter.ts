@@ -29,7 +29,7 @@ export const homeSwordsConverter = (
   selectCorrect: correctType,
 ): HomeSwordsTableContents[] => {
   // console.log('homeSwords %o', homeSwords);
-  const swords: Swords = homeSwords !== undefined ? homeSwords : {};
+  const swords: Swords = homeSwords ?? {};
   const data: HomeSwordsTableContents[] = [];
 
   Object.values(swords).forEach((value) => {

@@ -41,31 +41,28 @@ export const updateHomeSwordsTable = (
 ): UpdateHomeSwordsTableAction => ({
   type: homeSwordsTableActionType.UPDATE_HOMESWORDSTABLE,
   homeSwordsTable:
-    homeSwordsTable !== undefined
-      ? fillUndefinedProps<HomeSwordsTableState>(homeSwordsTable, homeSwordsTableInitialState)
-      : homeSwordsTableInitialState,
+    fillUndefinedProps<HomeSwordsTableState>(homeSwordsTable, homeSwordsTableInitialState) ??
+    homeSwordsTableInitialState,
 });
 
 export const setHomeSwords = (homeSwords: Swords): SetHomeSwordsAction => ({
   type: homeSwordsTableActionType.SET_HOMESWORDS,
-  homeSwords: homeSwords !== undefined ? homeSwords : homeSwordsTableInitialState.homeSwords,
+  homeSwords: homeSwords ?? homeSwordsTableInitialState.homeSwords,
 });
 
 export const selectCorrect = (correct: correctType): SelectCorrectAction => ({
   type: homeSwordsTableActionType.SELECT_CORRECT,
-  correct: correct !== undefined ? correct : homeSwordsTableInitialState.correct,
+  correct: correct ?? homeSwordsTableInitialState.correct,
 });
 
 export const selectDisplayedStatus = (displayedStatus: boolean[]): SelectDisplayedStatusAction => ({
   type: homeSwordsTableActionType.SELECT_DISPLAYEDSTATUS,
-  displayedStatus:
-    displayedStatus !== undefined ? displayedStatus : homeSwordsTableInitialState.displayedStatus,
+  displayedStatus: displayedStatus ?? homeSwordsTableInitialState.displayedStatus,
 });
 
 export const setColumnsOrder = (columnsOrder: string[]): SetColumnsOrderAction => ({
   type: homeSwordsTableActionType.SET_COLUMNSORDER,
-  columnsOrder:
-    columnsOrder !== undefined ? columnsOrder : homeSwordsTableInitialState.columnsOrder,
+  columnsOrder: columnsOrder ?? homeSwordsTableInitialState.columnsOrder,
 });
 
 export type HomeSwordsTableActions =
