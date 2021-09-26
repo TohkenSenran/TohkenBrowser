@@ -14,16 +14,18 @@ import { tabMenuInitialState } from '../states/TabMenu';
 export const windowLoadEvent = async (): Promise<void> => {
   // Load時に過去の設定値を再読み込み
   // console.log('onLoadEvent');
-  const response: { [key: string]: any } = await browser.storage.local.get();
+  const response: { [key: string]: any } = await browser.storage.local.get([
+    'rootState',
+    'handbookState',
+  ]);
+  // console.log('response %o', response);
 
   const handbookState: HandbookState = store.getState();
-  const storageState: HandbookState = response.handbookState
-    ? response.handbookState
-    : handbookState;
+  const storageState: HandbookState = response.handbookState ?? handbookState;
   // console.log(`directLoad ${response.storageState.browserSetting.scale}`);
   // console.log('load loadBrowserState');
-  // console.log('storage', response.handbookState);
-  // console.log('handbook', handbookState);
+  // console.log('storage %o', response.handbookState);
+  // console.log('handbook %o', handbookState);
   // console.log('Loading TabMenu %o', storageState.tabMenu);
   store.dispatch(updateTabMenu(storageState.tabMenu ?? tabMenuInitialState));
 

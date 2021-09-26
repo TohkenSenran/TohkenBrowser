@@ -9,6 +9,7 @@ export const homeSwordsTable: Reducer<HomeSwordsTableState, HomeSwordsTableActio
 ) => {
   switch (action.type) {
     case homeSwordsTableActionType.UPDATE_HOMESWORDSTABLE:
+      // console.log('homeSwordsTable: ', action.homeSwordsTable);
       return action.homeSwordsTable;
     case homeSwordsTableActionType.SET_HOMESWORDS:
       return {
@@ -21,6 +22,7 @@ export const homeSwordsTable: Reducer<HomeSwordsTableState, HomeSwordsTableActio
         correct: action.correct,
       };
     case homeSwordsTableActionType.SELECT_DISPLAYEDSTATUS:
+      // console.log('dispayedStatus: ', action.displayedStatus);
       return {
         ...state,
         displayedStatus: action.displayedStatus,

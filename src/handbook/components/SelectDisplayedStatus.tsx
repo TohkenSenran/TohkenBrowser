@@ -14,8 +14,7 @@ export const SelectDisplayedStatus: React.FC = () => {
   const displayedStatus = useSelector<HandbookState, boolean[]>(
     (state) => state.homeSwordsTable.displayedStatus,
   );
-  // eslint-disable-next-line no-undef
-  const checks: JSX.Element[] = [];
+  const checks: React.ReactElement[] = [];
   const [viewStatus, setDisplayedStatus] = React.useState(displayedStatus);
 
   const handleChange =

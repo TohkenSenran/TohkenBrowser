@@ -58,7 +58,7 @@ export const DrawerMenu: React.FC<{
           </ExpansionPanel>
           <ExpansionPanel style={expansionStyle}>
             <Tooltip
-              title="部隊部分をクリックした際に表示されるステータスを選択"
+              title="表に表示するステータスを選択"
               classes={{ tooltip: classes.customWidth }}
             >
               <ExpansionPanelSummary
