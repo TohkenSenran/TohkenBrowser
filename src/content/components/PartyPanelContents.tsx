@@ -1,8 +1,9 @@
 /* eslint-disable object-curly-newline */
 import React from 'react';
 
-import { Box, Divider, Fade, Tooltip } from '@material-ui/core';
+import { Box, Divider, Fade, Tooltip, useTheme } from '@material-ui/core';
 
+import { CustomTheme } from 'src/withRoot';
 import { partyMemberNo, partyNo } from '../../constants';
 import { partyConverter } from '../models/partyConverter';
 import { PartyPanelState } from '../states/PartyPanelState';
@@ -21,6 +22,7 @@ export const PartyPanelContents: React.FC<{
   onClick: () => void;
 }> = ({ partyData, swordData, equipData, extendView, partyPanel, date, onClick }) => {
   const parties: React.ReactElement[] = [];
+  const theme: CustomTheme = useTheme();
 
   for (let i = 0; i < partyNo; i += 1) {
     const party: React.ReactElement[] = [];
@@ -51,10 +53,13 @@ export const PartyPanelContents: React.FC<{
     // 状態に合わせて表示色を変更
     switch (partyState.state) {
       case '遠征中':
-        partyStateStyle = { ...partyStateStyle, color: '#9644E3' };
+        partyStateStyle = { ...partyStateStyle, color: theme.tohkenPalette.partyPanel.enseiText };
         break;
       case '出陣中':
-        partyStateStyle = { ...partyStateStyle, color: '#A24E36' };
+        partyStateStyle = {
+          ...partyStateStyle,
+          color: theme.tohkenPalette.partyPanel.syutsujinText,
+        };
         break;
       default:
         break;
@@ -82,7 +87,10 @@ export const PartyPanelContents: React.FC<{
       10,
     );
     if (averageFatigue >= 50) {
-      memberFatigueStyle = { ...memberFatigueStyle, color: 'deeppink' };
+      memberFatigueStyle = {
+        ...memberFatigueStyle,
+        color: theme.tohkenPalette.partyPanel.sakuraText,
+      };
     }
 
     const edoJoTips: React.ReactElement = (
@@ -119,10 +127,14 @@ export const PartyPanelContents: React.FC<{
     );
 
     const textShadow: string =
-      '  1px 1px 0 rgba(255,255,255,0.75), -1px -1px 0 rgba(255,255,255,0.75),' +
-      ' -1px 1px 0 rgba(255,255,255,0.75),  1px -1px 0 rgba(255,255,255,0.75),' +
-      '  0px 1px 0 rgba(255,255,255,0.75),  0px -1px 0 rgba(255,255,255,0.75),' +
-      ' -1px 0px 0 rgba(255,255,255,0.75),  1px  0px 0 rgba(255,255,255,0.75)';
+      `  1px  1px 0 ${theme.tohkenPalette.general.textShadow},` +
+      ` -1px -1px 0 ${theme.tohkenPalette.general.textShadow},` +
+      ` -1px  1px 0 ${theme.tohkenPalette.general.textShadow},` +
+      `  1px -1px 0 ${theme.tohkenPalette.general.textShadow},` +
+      `  0px  1px 0 ${theme.tohkenPalette.general.textShadow},` +
+      `  0px -1px 0 ${theme.tohkenPalette.general.textShadow},` +
+      ` -1px  0px 0 ${theme.tohkenPalette.general.textShadow},` +
+      `  1px  0px 0 ${theme.tohkenPalette.general.textShadow}`;
     const memberStateCompactComp: React.ReactElement = (
       <Box>
         <Box display="flex" alignItems="center" height="66px">

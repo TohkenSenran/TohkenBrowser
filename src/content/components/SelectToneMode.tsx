@@ -4,34 +4,34 @@ import { Dispatch } from 'redux';
 
 import { FormControl, InputLabel, MenuItem, Select } from '@material-ui/core';
 
-import { BrowserSettingActions, selectColorMode } from '../actions/browserSetting';
+import { BrowserSettingActions, selectToneMode } from '../actions/browserSetting';
 import { RootState } from '../states/index';
-import { colorMode } from '../../constants';
+import { toneMode } from '../../constants';
 
-export const SelectColorMode: React.FC = () => {
+export const SelectToneMode: React.FC = () => {
   const dispatch = useDispatch<Dispatch<BrowserSettingActions>>();
-  const color = useSelector<RootState, colorMode>((state) => state.browserSetting.color);
+  const color = useSelector<RootState, toneMode>((state) => state.browserSetting.colorTone);
 
   const [values, setValues] = React.useState(color);
   const handleChange = (event: React.ChangeEvent<{ value: unknown }>): void => {
     if (typeof event.target.value !== 'undefined') {
-      setValues(event.target.value as colorMode);
+      setValues(event.target.value as toneMode);
       // console.log(`GetValue: ${event.target.value}`);
-      dispatch(selectColorMode(event.target.value as colorMode));
+      dispatch(selectToneMode(event.target.value as toneMode));
     }
   };
 
   return (
     <FormControl style={{ marginTop: '6px' }}>
-      <InputLabel htmlFor="color-mode">色調選択</InputLabel>
+      <InputLabel htmlFor="tone-mode">色調選択</InputLabel>
       <Select
         value={values}
         onChange={handleChange}
-        inputProps={{ name: 'colorMode', id: 'color-mode' }}
+        inputProps={{ name: 'toneMode', id: 'tone-mode' }}
       >
-        <MenuItem value={colorMode.LIGHT}>ライト</MenuItem>
-        <MenuItem value={colorMode.DARK}>ダーク</MenuItem>
-        <MenuItem value={colorMode.AUTO}>OS連動</MenuItem>
+        <MenuItem value={toneMode.LIGHT}>ライト</MenuItem>
+        <MenuItem value={toneMode.DARK}>ダーク</MenuItem>
+        <MenuItem value={toneMode.AUTO}>OS連動</MenuItem>
       </Select>
     </FormControl>
   );

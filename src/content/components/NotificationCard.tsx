@@ -1,12 +1,15 @@
 import React from 'react';
 
-import { Box, Card, CardContent } from '@material-ui/core';
+import { Box, Card, CardContent, useTheme } from '@material-ui/core';
+import { CustomTheme } from 'src/withRoot';
 
 export const NotificationCard: React.FC<{
   onClick: () => void;
   imagePath: string;
   text: string;
 }> = ({ onClick, imagePath, text }) => {
+  const theme: CustomTheme = useTheme();
+
   const cardStyle: React.CSSProperties = {
     position: 'relative',
     overflow: 'hidden',
@@ -14,7 +17,7 @@ export const NotificationCard: React.FC<{
   };
 
   const boxStyle: React.CSSProperties = {
-    background: '#E6E6E6',
+    background: theme.tohkenPalette.swordPanel.background,
     width: 66,
     height: 66,
     padding: 3,

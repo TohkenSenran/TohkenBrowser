@@ -1,10 +1,10 @@
-import { colorMode, windowMode } from '../../constants';
+import { toneMode, windowMode } from '../../constants';
 
 export type BrowserSettingState = {
   mode: windowMode;
   mute: boolean;
   scale: number;
-  color: colorMode;
+  colorTone: toneMode;
   devConnect: boolean;
   enableNotify: boolean;
   showCopyright: boolean;
@@ -14,7 +14,7 @@ export const setBrowserSetting = (
   mode: windowMode = windowMode.SHOU,
   mute = false,
   scale = 0.75,
-  color = colorMode.LIGHT,
+  colorTone = toneMode.LIGHT,
   devConnect = false,
   enableNotify = true,
   showCopyright = false,
@@ -22,7 +22,7 @@ export const setBrowserSetting = (
   mode,
   mute,
   scale,
-  color,
+  colorTone,
   devConnect,
   enableNotify,
   showCopyright,

@@ -20,7 +20,7 @@ export enum windowMode {
   SHOU = 'SHOU',
   HYOU = 'HYOU',
 }
-export enum colorMode {
+export enum toneMode {
   LIGHT = 'LIGHT',
   DARK = 'DARK',
   AUTO = 'AUTO',

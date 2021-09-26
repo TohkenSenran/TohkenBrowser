@@ -12,6 +12,7 @@ const devConnectChecker = async (): Promise<void> => {
   // console.log('get devConnected :', devConnected);
   store.dispatch(checkDevConnect(devConnected));
 };
+// const colorTone = useSelector<RootState, toneMode>((state) => state.browserSetting.colorTone);
 
 // withRoot で export
 export const Content = withRoot(() => {

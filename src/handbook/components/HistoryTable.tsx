@@ -6,6 +6,8 @@ import { ExportCsv } from '@material-table/exporters';
 import { Box } from '@material-ui/core';
 import { browser } from 'webextension-polyfill-ts';
 
+import { CustomTheme } from 'src/withRoot';
+import { useTheme } from '@material-ui/core/styles';
 import { HandbookState } from '../states';
 import { HistoryTableState } from '../states/HistoryTable';
 import {
@@ -16,7 +18,7 @@ import { storageInitialState } from '../../background/states/StorageState';
 
 export const HistoryTable: React.FC = () => {
   const historyTable = useSelector<HandbookState, HistoryTableState>((state) => state.historyTable);
-
+  const theme: CustomTheme = useTheme();
   // console.log('in HistoryTable %o', historyTable.history);
   const data: HistoryTableContents[] = historyTable.history;
   // console.log('data: %o', data);
@@ -79,7 +81,11 @@ export const HistoryTable: React.FC = () => {
     ],
     pageSize: 10,
     pageSizeOptions: [10, 50, 100],
-    rowStyle: { borderStyle: 'solid', borderWidth: '1px 1px', borderColor: 'lightgray' },
+    rowStyle: {
+      borderStyle: 'solid',
+      borderWidth: '1px 1px',
+      borderColor: theme.tohkenPalette.general.textShadow,
+    },
   };
   const actions: Array<Action<HistoryTableContents>> = [
     {

@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Dispatch } from 'redux';
 
-import { Box, useMediaQuery } from '@material-ui/core';
+import { Box, useTheme } from '@material-ui/core';
 
 import MaterialTable, { Action, Localization, Options } from '@material-table/core';
 
@@ -36,14 +36,10 @@ export const HomeSwordsTable: React.FC = () => {
     homeSwordsTable.correct,
   );
 
-  const prefersDarkMode: boolean = useMediaQuery('(prefers-color-scheme: dark)');
-
-  // console.log('data: %o', data);
-
   const columns = generateColumns(
     homeSwordsTable.columnsOrder,
     homeSwordsTable.displayedStatus,
-    prefersDarkMode,
+    useTheme(),
   );
 
   const handleColumnDrag = (sourceIndex: number, destinationIndex: number): void => {

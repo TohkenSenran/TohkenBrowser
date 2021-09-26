@@ -1,12 +1,12 @@
 /* eslint-disable no-shadow */
-import { colorMode, windowMode } from '../../constants';
+import { toneMode, windowMode } from '../../constants';
 import { browserSettingInitialState, BrowserSettingState } from '../states/BrowserSettingState';
 
 export enum browserSettingActionType {
   SELECT_BROWSERSCALE = 'SELECT_BROWSERSCALE',
   CHANGE_VIEWMODE = 'CHANGE_VIEWMODE',
   CHANGE_MUTE = 'CHANGE_MUTE',
-  SELECT_COLORMODE = 'SELECT_COLORMODE',
+  SELECT_TONEMODE = 'SELECT_TONEMODE',
   LOAD_BROWSERSTATE = 'LOAD_BROWSERSTATE',
   CHECK_DEVCONNECT = 'CHECK_DEVCONNECT',
   SET_ENABLENOTIFY = 'SET_ENABLENOTIFY',
@@ -28,16 +28,17 @@ export interface ChangeMuteAction {
   mute: boolean;
 }
 
-export interface SelectColorModeAction {
-  type: browserSettingActionType.SELECT_COLORMODE;
-  color: colorMode;
+export interface SelectToneModeAction {
+  type: browserSettingActionType.SELECT_TONEMODE;
+  colorTone: toneMode;
 }
+
 export interface LoadBrowserStateAction {
   type: browserSettingActionType.LOAD_BROWSERSTATE;
   mode: windowMode;
   mute: boolean;
   scale: number;
-  color: colorMode;
+  colorTone: toneMode;
   enableNotify: boolean;
   showCopyright: boolean;
 }
@@ -89,9 +90,9 @@ export const changeMute = (mute: boolean): ChangeMuteAction => ({
   mute: !mute,
 });
 
-export const selectColorMode = (color: colorMode): SelectColorModeAction => ({
-  type: browserSettingActionType.SELECT_COLORMODE,
-  color,
+export const selectToneMode = (colorTone: toneMode): SelectToneModeAction => ({
+  type: browserSettingActionType.SELECT_TONEMODE,
+  colorTone,
 });
 
 export const loadBrowserState = (browserSetting: BrowserSettingState): LoadBrowserStateAction => ({
@@ -99,7 +100,7 @@ export const loadBrowserState = (browserSetting: BrowserSettingState): LoadBrows
   mode: browserSetting.mode ?? browserSettingInitialState.mode,
   mute: browserSetting.mute ?? browserSettingInitialState.mute,
   scale: browserSetting.scale ?? browserSettingInitialState.scale,
-  color: browserSetting.color ?? browserSettingInitialState.color,
+  colorTone: browserSetting.colorTone ?? browserSettingInitialState.colorTone,
   enableNotify: browserSetting.enableNotify ?? browserSettingInitialState.enableNotify,
   showCopyright: browserSetting.showCopyright ?? browserSettingInitialState.showCopyright,
 });
@@ -123,7 +124,7 @@ export type BrowserSettingActions =
   | SelectBrowserScaleAction
   | ChangeViewModeAction
   | ChangeMuteAction
-  | SelectColorModeAction
+  | SelectToneModeAction
   | LoadBrowserStateAction
   | CheckDevConnectAction
   | SetEnableNotifyAction

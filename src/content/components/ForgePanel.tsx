@@ -4,13 +4,14 @@ import { useSelector } from 'react-redux';
 import { Tooltip } from '@material-ui/core';
 import { useTheme } from '@material-ui/core/styles';
 
+import { CustomTheme } from 'src/withRoot';
 import { forgeNo } from '../../constants';
 import { RootState } from '../states/index';
 import { Forges, forgeInitialState } from '../states/responseJson/Forge';
 import { forgeConverter } from '../models/forgeConverter';
 
 export const ForgePanel: React.FC = () => {
-  const theme = useTheme();
+  const theme: CustomTheme = useTheme();
 
   const boxStyle: React.CSSProperties = {
     background: 'rgba(127, 127, 127, 0.25)',

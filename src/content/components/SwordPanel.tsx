@@ -1,8 +1,9 @@
 import React from 'react';
 
-import { Box, useMediaQuery } from '@material-ui/core';
-import { Theme, useTheme } from '@material-ui/core/styles';
+import { Box } from '@material-ui/core';
+import { useTheme } from '@material-ui/core/styles';
 
+import { CustomTheme } from 'src/withRoot';
 import { correctType, statusType } from '../../constants';
 import { swordConverter } from '../models/swordConverter';
 import { Equips } from '../states/responseJson/Equip';
@@ -27,9 +28,7 @@ export const SwordPanel: React.FC<{
     equips,
   );
 
-  const theme: Theme = useTheme();
-  const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
-
+  const theme: CustomTheme = useTheme();
   let textStyle: React.CSSProperties = {
     position: 'absolute',
     left: '50%',
@@ -48,11 +47,11 @@ export const SwordPanel: React.FC<{
       ` 1px  0px 0 ${theme.palette.background.paper}`,
   };
   if (swordState.selectStatus === '御守: 有' || swordState.selectStatus === '完了') {
-    textStyle = { ...textStyle, color: 'crimson' };
+    textStyle = { ...textStyle, color: theme.tohkenPalette.general.alertText };
   }
 
   let boxStyle: React.CSSProperties = {
-    background: 'rgba(127, 127, 127, 0.25)',
+    background: theme.tohkenPalette.swordPanel.background,
     position: 'relative',
     width: 66,
     height: 66,
@@ -61,19 +60,24 @@ export const SwordPanel: React.FC<{
   if (swordState.fatigueValue < 10) {
     boxStyle = {
       ...boxStyle,
-      background: 'linear-gradient(to top, red, rgba(127, 127, 127, 0.25))',
+      background:
+        `linear-gradient(to top, ${theme.tohkenPalette.swordPanel.fatigueHigh}, ` +
+        `${theme.tohkenPalette.swordPanel.background})`,
     };
   } else if (swordState.fatigueValue < 20) {
     boxStyle = {
       ...boxStyle,
-      background: 'linear-gradient(to top, orange, rgba(127, 127, 127, 0.25))',
+      background:
+        `linear-gradient(to top, ${theme.tohkenPalette.swordPanel.fatigueMiddle}, ` +
+        `${theme.tohkenPalette.swordPanel.background})`,
     };
   } else if (swordState.fatigueValue >= 50) {
     boxStyle = {
       ...boxStyle,
-      background: prefersDarkMode
-        ? `linear-gradient(to top, #954c93, ${theme.palette.background.paper}, #954c93)`
-        : `linear-gradient(to top, pink, ${theme.palette.background.paper}, pink)`,
+      background:
+        `linear-gradient(to top, ${theme.tohkenPalette.swordPanel.fatigueHigh} ,` +
+        `${theme.palette.background.paper}, ` +
+        `${theme.tohkenPalette.swordPanel.fatigueHigh})`,
     };
   }
 

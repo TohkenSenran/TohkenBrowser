@@ -12,6 +12,9 @@ export const tabMenu: Reducer<TabMenuState, TabMenuActions> = (
       return action.tabMenu;
     case tabMenuActionType.SET_TABMENUTYPE:
       return { ...state, tabType: action.tabType };
+    case tabMenuActionType.SELECT_TONEMODE:
+      // console.log('in Reducer %o', { ...state, colorTone: action.colorTone });
+      return { ...state, colorTone: action.colorTone };
     default:
       return state;
   }

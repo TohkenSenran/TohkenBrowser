@@ -1,7 +1,7 @@
 import * as React from 'react';
-
 import { Column } from '@material-table/core';
 
+import { CustomTheme } from 'src/withRoot';
 import { statusType, swordType, statusLabel } from '../../constants';
 import { HomeSwordsTableContents } from '../states/HomeSwordsTableContents';
 import { homeSwordsTableInitialState } from '../states/HomeSwordsTable';
@@ -31,7 +31,7 @@ const setStatusColumn = (selectType: statusType): Column<HomeSwordsTableContents
 };
 
 // デザイン要素を1か所に集約するため初期値の設定をここに用意
-const initialColumns = (prefersDarkMode: boolean): Array<Column<HomeSwordsTableContents>> => {
+const initialColumns = (theme: CustomTheme): Array<Column<HomeSwordsTableContents>> => {
   const swordTypeLabel: { [key: string]: string } = {};
   Object.values(swordType).forEach((value) => {
     swordTypeLabel[value] = value;
@@ -43,20 +43,20 @@ const initialColumns = (prefersDarkMode: boolean): Array<Column<HomeSwordsTableC
       title: 'No',
       field: 'sword_id',
       filtering: false,
-      cellStyle: { ...numberCellStyle, background: prefersDarkMode ? '#4b4b46' : 'ivory' },
+      cellStyle: { ...numberCellStyle, background: theme.tohkenPalette.handbook.yellowColumn },
     },
     { title: '刀名', field: 'name', cellStyle: textCellStyle },
     {
       title: '刀種',
       field: 'swordType',
       lookup: swordTypeLabel,
-      cellStyle: { ...textCellStyle, background: prefersDarkMode ? '#46484b' : 'aliceblue' },
+      cellStyle: { ...textCellStyle, background: theme.tohkenPalette.handbook.blueColumn },
     },
     {
       title: '刀装数',
       field: 'slotNumber',
       lookup: { 1: 1, 2: 2, 3: 3 },
-      cellStyle: { ...numberCellStyle, background: prefersDarkMode ? '#46484b' : 'aliceblue' },
+      cellStyle: { ...numberCellStyle, background: theme.tohkenPalette.handbook.blueColumn },
     },
     {
       title: '男士Lv',
@@ -64,7 +64,7 @@ const initialColumns = (prefersDarkMode: boolean): Array<Column<HomeSwordsTableC
       filtering: false,
       cellStyle: {
         ...numberCellStyle,
-        background: prefersDarkMode ? '#4b4648' : 'lavenderblush',
+        background: theme.tohkenPalette.handbook.redColumn,
       },
     },
     {
@@ -73,14 +73,14 @@ const initialColumns = (prefersDarkMode: boolean): Array<Column<HomeSwordsTableC
       filtering: false,
       cellStyle: {
         ...numberCellStyle,
-        background: prefersDarkMode ? '#4b4648' : 'lavenderblush',
+        background: theme.tohkenPalette.handbook.redColumn,
       },
     },
     {
       title: '入手日',
       field: 'created_at',
       filtering: false,
-      cellStyle: { ...numberCellStyle, background: prefersDarkMode ? '#4b4b46' : 'ivory' },
+      cellStyle: { ...numberCellStyle, background: theme.tohkenPalette.handbook.yellowColumn },
     },
   ];
   Object.values(statusType).forEach((value) => {
@@ -95,10 +95,10 @@ const initialColumns = (prefersDarkMode: boolean): Array<Column<HomeSwordsTableC
 export const generateColumns = (
   columnsOrder: string[] = homeSwordsTableInitialState.columnsOrder,
   displayedStatus: boolean[] = homeSwordsTableInitialState.displayedStatus,
-  prefersDarkMode = false,
+  theme: CustomTheme,
 ): Array<Column<HomeSwordsTableContents>> => {
   // カラムの順番情報からカラムを生成
-  const columns: Array<Column<HomeSwordsTableContents>> = initialColumns(prefersDarkMode);
+  const columns: Array<Column<HomeSwordsTableContents>> = initialColumns(theme);
   columns.sort(
     (a, b) =>
       columnsOrder.indexOf(a.field ?? homeSwordsTableInitialState.columnsOrder[0]) -

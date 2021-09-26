@@ -2,6 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 
+import { browser } from 'webextension-polyfill-ts';
+
+import { rootInitialState, RootState } from '../content/states';
+import { toneMode } from '../constants';
+import { browserSettingInitialState } from '../content/states/BrowserSettingState';
 import { SeasonItem } from '../content/states/responseJson/SeasonItem';
 import { store } from './store';
 import { Swords } from '../content/states/responseJson/Sword';
@@ -13,6 +18,7 @@ import { windowBeforeUnloadEvent } from './models/windowBeforeUnloadEvent';
 import { windowLoadEvent } from './models/windowLoadEvent';
 import { HistoryTableContents } from './states/HistoryTableContents';
 import { pushHistory, removeHistory } from './actions/historyTable';
+import { selectToneMode } from './actions/tabMenu';
 
 // 終了直前の処理
 window.onbeforeunload = (): void => {
@@ -20,8 +26,6 @@ window.onbeforeunload = (): void => {
 };
 
 // storageの変更取得
-// ループチェック
-let loopCount = 0;
 chrome.storage.onChanged.addListener(async (changes) => {
   // console.log('changes %o', changes);
   // console.log('changeKeysLength ', Object.keys(changes).length);
@@ -46,6 +50,22 @@ chrome.storage.onChanged.addListener(async (changes) => {
           if (JSON.stringify(newSwords) !== JSON.stringify(oldSwords)) {
             // console.log('homeSwords更新');
             store.dispatch(setHomeSwords(newSwords ?? {}));
+          }
+        }
+        // 本体側の色調モード更新の検出
+        if (
+          changes.rootState.newValue.browserSetting &&
+          changes.rootState.newValue.browserSetting.colorTone
+        ) {
+          const newToneMode: toneMode = changes.rootState.newValue.browserSetting.colorTone;
+          const oldToneMode: toneMode =
+            changes.rootState.oldValue &&
+            changes.rootState.oldValue.browserSetting &&
+            changes.rootState.oldValue.browserSetting.colorTone
+              ? changes.rootState.oldValue.browserSetting.colorTone
+              : browserSettingInitialState.colorTone;
+          if (newToneMode !== oldToneMode) {
+            store.dispatch(selectToneMode(newToneMode ?? browserSettingInitialState.colorTone));
           }
         }
         break;
@@ -73,23 +93,20 @@ chrome.storage.onChanged.addListener(async (changes) => {
             // console.log('newItem %o', newSeasonRewardItems);
             // console.log('oldItem %o', oldSeasonRewardItems);
             // console.log(`No ${loopCount} newItem ${newSeasonRewardItems}`);
-            loopCount += 1;
-            if (loopCount < 101) {
-              store.dispatch(setSeasonItems(newSeasonRewardItems ?? []));
-            }
+            store.dispatch(setSeasonItems(newSeasonRewardItems ?? []));
           }
         }
         break;
       default:
-        console.log('in default');
+        // console.log('in default');
         // 履歴情報の更新
         if (parseInt(key, 10).toString() === key) {
-          console.log('on historyRecord');
+          // console.log('on historyRecord');
           if (changes[key].newValue) {
-            console.log('pussing historyRecord %o', changes[key].newValue as HistoryTableContents);
+            // console.log('pussing history %o', changes[key].newValue as HistoryTableContents);
             store.dispatch(pushHistory(changes[key].newValue as HistoryTableContents));
           } else {
-            console.log('removing historyRecord', changes[key].oldValue.value0);
+            // console.log('removing history', changes[key].oldValue.value0);
             store.dispatch(removeHistory(changes[key].oldValue.value0));
           }
         }
@@ -101,17 +118,25 @@ chrome.storage.onChanged.addListener(async (changes) => {
 const startReactDom = async (): Promise<void> => {
   // 表示系の設定
   setWindowTitle(document);
+
+  // 過去の値を反映
+  // ロードイベントの前にdispatchを走らせるとstorageの取得内容が狂う
+  windowLoadEvent();
+
+  // storageからcontentの設定を引っ張ってくる
+  const storage = await browser.storage.local.get('rootState');
+  const storageRootState: RootState = storage.rootState ?? rootInitialState;
+  // console.log('handbookStart: %o', storageRootState.browserSetting.colorTone);
+  store.dispatch(selectToneMode(storageRootState.browserSetting.colorTone));
+
   const app = document.createElement('div');
   document.body.appendChild(app);
-
   ReactDOM.render(
     <Provider store={store}>
       <Content />
     </Provider>,
     app,
   );
-  // 過去の値を反映
-  windowLoadEvent();
 };
 
 startReactDom();
