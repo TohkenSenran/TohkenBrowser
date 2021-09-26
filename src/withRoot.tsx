@@ -85,6 +85,7 @@ export function withRoot<P>(Component: React.ComponentType<P>): (props: P) => JS
             },
             background: {
               default: setDarkMode ? '#202020' : '#fafafa',
+              paper: setDarkMode ? '#363636' : '#f6f6f6',
             },
           },
           typography: {

@@ -76,7 +76,7 @@ export const SwordPanel: React.FC<{
       ...boxStyle,
       background:
         `linear-gradient(to top, ${theme.tohkenPalette.swordPanel.fatigueHigh} ,` +
-        `${theme.palette.background.paper}, ` +
+        `${theme.tohkenPalette.swordPanel.background}, ` +
         `${theme.tohkenPalette.swordPanel.fatigueHigh})`,
     };
   }
