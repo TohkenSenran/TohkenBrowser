@@ -1,6 +1,6 @@
 {
   "name": "刀剣専覧-刀剣乱舞専用ブラウザ",
-  "version": "0.1.17",
+  "version": "0.1.18",
   "description": "刀剣乱舞の専用ブラウザです。専用のゲーム画面を用意します。",
   "devtools_page": "html/devtools.html",
   "background": {
@@ -31,7 +31,6 @@
   "content_scripts": [
     {
       "matches": [
-        "http://pc-play.games.dmm.com/play/tohken/",
         "https://pc-play.games.dmm.com/play/tohken/"
       ],
       "js": [

@@ -13,5 +13,6 @@ export const windowBeforeUnloadEvent = async (): Promise<void> => {
 
   // 便利帳を一緒に消す
   sendMessageToBackground(requestType.closeHandbookWindow);
+  // console.log('finish WindoBeforeUnloadEvent');
   // console.log(`settingBrowserWindow? ${await setBrowserWindow(browserWindow)}`);
 };

@@ -17,6 +17,9 @@ import { contentRequest } from './states/contentRequest';
 
 // 終了直前の処理
 window.onbeforeunload = (): void => {
+  // console.log('before returnValue');
+  // e.returnValue = '本当に終了してよろしいでしょうか？';
+  // console.log('after returnValue');
   windowBeforeUnloadEvent();
 };
 

@@ -1497,6 +1497,14 @@ export const swordsProps: { [index: string]: SwordProps } = {
     name: '姫鶴一文字・極',
     type: swordType.tachi,
   },
+  204: {
+    name: '福島光忠',
+    type: swordType.tachi,
+  },
+  205: {
+    name: '福島光忠・極',
+    type: swordType.tachi,
+  },
 };
 
 // 抜けている番号は情報不足のためフォロー必須
@@ -1563,6 +1571,10 @@ export const itemName: { [index1: string]: { [index2: string]: string } } = {
     160: '木通',
     161: '彼岸花',
     162: '鮭',
+    163: '百合根',
+    164: '柚子',
+    165: '冬牡丹',
+    166: '鰤',
     1001: '根兵糖',
   },
   2: {},
