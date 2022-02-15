@@ -6,6 +6,7 @@ export const analyseParty = (jsonValue: any, page: string, oldParty: Parties): P
   let party: Parties = oldParty ? { ...oldParty } : {};
   switch (page) {
     case 'party/change_battle_party':
+    case 'party/getsupportpartyinfo':
       // partyプロパティが不適当のため無視
       party = oldParty ?? {};
       break;
