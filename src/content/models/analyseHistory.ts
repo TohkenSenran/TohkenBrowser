@@ -245,9 +245,9 @@ export const analyseHistory = (
       case 'sally/sally':
       case 'sally/eventsally':
         // console.log('requestData: ', jsonValue.requestData);
+        console.log('requestProps ', requestProps);
         // request情報から出陣関連情報取得
         record.push('出陣');
-        // console.log('requestProps ', requestProps);
         if (page === 'sally/sally') {
           record.push(`${requestProps.episodeId}-${requestProps.fieldId}`);
         } else if (jsonValue.gimmick) {
@@ -281,6 +281,26 @@ export const analyseHistory = (
           record.push('特命調査-慶長熊本');
         } else if (jsonValue.kofu) {
           record.push('特命調査-慶応甲府');
+        } else if (jsonValue.kunren) {
+          record.push('対大侵寇強化プログラム');
+          // 序盤移行どうなるか注意
+          switch (requestProps.fieldId) {
+            case '1':
+              record.push('初級');
+              break;
+            case '2':
+              record.push('中級');
+              break;
+            case '3':
+              record.push('上級');
+              break;
+            case '4':
+              record.push('特級');
+              break;
+            default:
+              record.push('級不明');
+              break;
+          }
         } else {
           // console.log(record);
           record.push('戦力拡充計画');
