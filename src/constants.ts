@@ -1475,19 +1475,19 @@ export const swordsProps: { [index: string]: SwordProps } = {
   },
   198: {
     name: '一文字則宗',
-    type: swordType.uchigatana,
+    type: swordType.tachi,
   },
   199: {
     name: '一文字則宗・極',
-    type: swordType.uchigatana,
+    type: swordType.tachi,
   },
   200: {
     name: '村雲江',
-    type: swordType.tachi,
+    type: swordType.uchigatana,
   },
   201: {
     name: '村雲江・極',
-    type: swordType.tachi,
+    type: swordType.uchigatana,
   },
   202: {
     name: '姫鶴一文字',
@@ -1504,6 +1504,14 @@ export const swordsProps: { [index: string]: SwordProps } = {
   205: {
     name: '福島光忠・極',
     type: swordType.tachi,
+  },
+  206: {
+    name: '七星剣',
+    type: swordType.tsurugi,
+  },
+  207: {
+    name: '七星剣・極',
+    type: swordType.tsurugi,
   },
 };
 
